@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="fr-FR">
+<head>
+  <title> Glossaires scientifiques </title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Langages scientifiques">
+  <meta name="keywords" content="Glossaire, sciences, français, anglais, espagnol">
+  <meta name="author" content="Vincent Therrien">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="icon.png">
+  <script src="scripts/navigation.js"></script>
+  <script src="scripts/notationTable.js"></script>
+  <script type="text/javascript" src="data/regloj_fr.json"></script>
+  <script type="text/javascript" src="data/regloj_en.json"></script>
+  <script type="text/javascript" src="data/regloj_es.json"></script>
+</head>
+<body class="back-color" onload="fillTable();">
+<!--- Top Navigation (to go around different pages, change language, and search) -->
+<div id="title-banner">
+    <h1 id="websiteTitle"> Glossaires scientifiques </h1>
+</div>
+<div id="top-nav-bar">
+  <ul>
+    <!-- link one -->
+    <li>
+      <a href="index.html">Accueil</a>
+    </li>
+    <!-- link two -->
+    <li>
+      <a href="glossary.html"> Glossaire </a>
+    </li>
+    <!-- link three -->
+    <li class="active">
+      <a href="#">Notations </a>
+    </li>
+    <!-- link four -->
+    <li>
+      <a href="resources.html">Références</a>
+    </li>
+    <!-- Language selection -->
+    <!-- <div id="dropdown">
+      <li>
+        <a href="#"> Langue - fr </a>
+        <div id="dropdown-content">
+          <a href="#" hreflang="en"> English - en </a>
+          <a href="#" hreflang="en"> Español - es </a>
+          <a href="#" hreflang="fr"> Français - fr</a>
+        </div>
+      </li>
+    </div> -->
+  </ul>
+</div>
+
+<!--- Page Content -->
+<div id="full-page">
+  <h1> Notation </h1>
+</div>
+<div id="full-page">
+  <p style="padding-bottom:30px">
+    Cette page présente une liste de conventions utilisées dans plusieurs
+    langues pour l'écriture d'expressions mathématiques.
+  </p>
+</div>
+<h2 style="text-align:center; display: block; padding-bottom: 20px">
+  Conventions pour l'écriture d'expressions mathématiques </h2>
+<div style="text-align: center">
+<table id="notation_table" style="display: inline-block; table-layout: fixed; margin-left: 10%; margin-right: 10%;">
+  <tr class="c">
+    <th class="c">
+      <div class="ls" style="text-align: center; vertical-align: middle;">
+        <button class="lsbtn" id="L1" onfocus="rollTs();"> Français - fr </button>
+        <div class="ls-content" style="text-align: center;">
+          <a href="#" onClick="document.getElementById('L1').innerHTML = 'Français - fr '; fillTable();"> Français - fr </a>
+          <a href="#" onClick="document.getElementById('L1').innerHTML = 'English - en ';  fillTable();"> English - en </a>
+          <a href="#" onClick="document.getElementById('L1').innerHTML = 'Español - es ';  fillTable();"> Español - es </a>
+      </div>
+    </th>
+    <th class="c">
+      <div class="ls" style="text-align: center; vertical-align: middle;">
+        <button class="lsbtn" id="L2"> English - en </button>
+        <div class="ls-content" style="text-align: center;">
+          <a href="#" onClick="document.getElementById('L2').innerHTML = 'Français - fr '; fillTable();"> Français - fr </a>
+          <a href="#" onClick="document.getElementById('L2').innerHTML = 'English - en ';  fillTable();"> English - en </a>
+          <a href="#" onClick="document.getElementById('L2').innerHTML = 'Español - es ';  fillTable();"> Español - es </a>
+      </div>
+    </th>
+  </tr>
+</table>
+</div>
+<!-- Back to top reference -->
+<div class="back-to-top">
+  <a href="#top"> Haut de la page </a>
+</div>
+
+</body>
+</html>
