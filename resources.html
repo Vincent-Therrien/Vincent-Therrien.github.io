@@ -11,7 +11,7 @@
   <link rel="icon" href="icon.png">
   <script src="scripts/navigation.js"></script>
 </head>
-<body class="back-color" onscroll="reposition();">
+<body class="back-color" onscroll="reposition();", onload="selectSidebarVisibility();", onresize="selectSidebarVisibility()">
 <!--- Top Navigation (to go around different pages, change language, and search) -->
 <div id="title-banner">
     <h1 id="websiteTitle"> Glossaires scientifiques </h1>
@@ -49,14 +49,16 @@
 </div>
 
 <!--- Sidebar for in-page navigation and search queries -->
-<div id="side-banner1"></div> <!-- Add a background banner -->
-<div id="side-banner2"></div> <!-- Add a background banner -->
+<div id="side-container">
+<div id="side-banner1"></div> <!-- Background banner -->
+<div id="side-banner2"></div> <!-- Background banner -->
 <div id="side-nav2" class="at-top">
   <h1> Sommaire </h1>
   <a href="#ml-r"> Multilingue </a>
   <a href="#en-r"> Anglais </a>
   <a href="#es-r"> Espagnol </a>
   <a href="#fr-r"> Français </a>
+</div>
 </div>
 
 <!--- Page Content -->

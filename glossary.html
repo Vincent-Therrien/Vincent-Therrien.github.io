@@ -23,7 +23,7 @@
     <script type="text/javascript" src="data/elektro_en.json"></script>
     <script type="text/javascript" src="data/elektro_es.json"></script>
 </head>
-<body class="back-color" onload="fillTable('matematiko'); selectSectionInView();" onscroll="selectSectionInView(); reposition();">
+<body class="back-color" onload="fillTable('matematiko'); selectSectionInView(); selectSidebarVisibility();" onscroll="selectSectionInView(); reposition();", onresize="selectSidebarVisibility()">
 <script>
   var topic = 'matematiko';
 </script>
@@ -63,14 +63,16 @@
   </ul>
 </div>
 <!--- Sidebar for in-page navigation and search queries -->
-<div id="side-banner1"></div> <!-- Add a background banner -->
-<div id="side-banner2"></div> <!-- Add a background banner -->
+<div id="side-container">
+<div id="side-banner1"></div> <!-- Background banner -->
+<div id="side-banner2"></div> <!-- Background banner -->
 <div id="side-nav" class="at-top">
   <h1> Sommaire </h1>
   <a href="#table-title" id="s-b-title"> Mathématiques </a>
   <div id="s-b-sections">
     <!-- To be filled on load. -->
   </div>
+</div>
 </div>
 
 <!--- Page Content -->

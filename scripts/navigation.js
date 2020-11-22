@@ -41,6 +41,17 @@ function selectSectionInView(){
         t.style = "color: white; text-decoration: none; font-size: 20px; padding-left: 5px;";
     }
 }
+function selectSidebarVisibility(){
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var sidebar = document.getElementById("side-container");
+    if (w < h){
+        sidebar.style = "display: None";
+    }
+    else {
+        sidebar.style = "display: visible";
+    }
+}
 
 function searchInLexicon(query) {
     var resultList = [];
