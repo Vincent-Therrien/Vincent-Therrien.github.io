@@ -1,0 +1,199 @@
+var index_content = {
+"en":"\
+<div id='side-container'>\
+<div id='side-banner1'></div> <!-- Background banner -->\
+<div id='side-banner2'></div> <!-- Background banner -->\
+<div id='side-nav2' class='at-top'>\
+  <h1> Summary </h1>\
+  <a href='#'>Presentation</a>\
+  <a href='#'>Website Plan</a>\
+  <a href='#'>Conventions</a>\
+</div>\
+</div>\
+\
+<!--- Page Content -->\
+<div id='page-content'>\
+  <h1> Presentation </h1>\
+</div>\
+<div id='page-content'>\
+  <p>\
+    This website presents explanations and examples on scientific\
+    term usage in a few languages. Page contain aims at, among others,\
+    ease comprehension of technical documents and communication in\
+    scientific contexts.\
+  </p>\
+  <!-- Sections -->\
+  <h2 id='conv-list'>\
+    Website Plan </h2>\
+  <p>\
+  The website is split in three main sections:\
+  </p>\
+  <ul>\
+    <li>\
+      A <a  href='glossary.html'> glossary </a> presents a list of\
+      terms along with explanations and examples.\
+    </li>\
+    <li>\
+      The <a href='notations.html'> notations </a> page presents a list of\
+      conventions for writing mathematical expressions.\
+    </li>\
+    <li>\
+      External resources are listed in the\
+      <a href='resources.html'> references</a>. \
+    </li>\
+  </ul>\
+  <!-- Conventions -->\
+  <h2 id='conv-list'>\
+  Conventions </h2>\
+  <p>\
+    The following conventions are used throughout the website:\
+  </p>\
+  <ul>\
+    <li> adj - adjective</li>\
+    <li> F - feminine grammatical gender </li>\
+    <li> M - masculine grammatical gender </li>\
+    <li> N - neutral grammatical gender </li>\
+    <li> n - noun </li>\
+    <li> p - plural </li>\
+    <li> pre - preposition</li>\
+    <li> pro - pronoun </li>\
+    <li> s - singular </li>\
+    <li> v - verb </li>\
+    <li> Examples are given in <i>italic</i>.</li>\
+  </ul>\
+</div>",
+
+"es":"\
+<div id='side-container'>\
+<div id='side-banner1'></div> <!-- Background banner -->\
+<div id='side-banner2'></div> <!-- Background banner -->\
+<div id='side-nav2' class='at-top'>\
+  <h1> Índice </h1>\
+  <a href='#'>Presentación</a>\
+  <a href='#'>Plán del sitio</a>\
+  <a href='#'>Convenciones</a>\
+</div>\
+</div>\
+\
+<!--- Page Content -->\
+<div id='page-content'>\
+  <h1> Presentación </h1>\
+</div>\
+<div id='page-content'>\
+  <p>\
+    Este sitio presenta explicaciones y ejemplos sobre términos\
+    científicos en algunos idiomas. El contenido de las páginas\
+    tiene como objetivo facilitar la comprensión de documentos\
+    técnicos y la comunicación en contextos científicos.\
+  </p>\
+  <!-- Sections -->\
+  <h2 id='conv-list'>\
+    Plan del sitio </h2>\
+  <p>\
+  El sitio es separado en tres secciones principales:\
+  </p>\
+  <ul>\
+    <li>\
+      Un <a  href='glossary.html'> glosario </a> presenta una lista de\
+      términos junto con explicaciones y ejemplos.\
+    </li>\
+    <li>\
+      La página <a href='notations.html'> notación </a> presenta una lista de\
+      convenciones para escribir expresiones matemáticas.\
+    </li>\
+    <li>\
+      Referencias externas son listadas en las\
+      <a href='resources.html'> referencias </a>. \
+    </li>\
+  </ul>\
+  <!-- Conventions -->\
+  <h2 id='conv-list'>\
+  Convenciones </h2>\
+  <p>\
+    Las siguientes convenciones son utilizadas a través del sitio:\
+  </p>\
+  <ul>\
+    <li> adj - adjetivo </li>\
+    <li> F - género gramatical femenino </li>\
+    <li> M - género gramatical masculino </li>\
+    <li> N - género gramatical neutro </li>\
+    <li> n - sustantivo </li>\
+    <li> p - plural </li>\
+    <li> pre - preposición</li>\
+    <li> pro - pronombre </li>\
+    <li> s - singular </li>\
+    <li> v - verbo </li>\
+    <li>  Los ejemplos se dan en <i>cursiva</i>.</li>\
+  </ul>\
+</div>",
+
+"fr": "\
+<div id='side-container'>\
+<div id='side-banner1'></div> <!-- Background banner -->\
+<div id='side-banner2'></div> <!-- Background banner -->\
+<div id='side-nav2' class='at-top'>\
+  <h1> Sommaire </h1>\
+  <a href='#'>Présentation</a>\
+  <a href='#'>Plan du site</a>\
+  <a href='#'>Conventions</a>\
+</div>\
+</div>\
+\
+<!--- Page Content -->\
+<div id='page-content'>\
+  <h1> Présentation </h1>\
+</div>\
+<div id='page-content'>\
+  <p>\
+    Ce site présente des explications et des exemples sur\
+    l'utilisation de termes scientifiques dans plusieurs langues. Le contenu\
+    des pages vise à faciliter la compréhension d'ouvrages\
+    techniques et la communication dans des contextes scientifiques.\
+  </p>\
+  <!-- Sections -->\
+  <h2 id='conv-list'>\
+    Plan du site </h2>\
+  <p>\
+  Le site est divisé en trois sections principales :\
+  </p>\
+  <ul>\
+    <li>\
+      Le <a  href='glossary.html'> glossaire </a> fournit une\
+      liste de termes classés par langue et par sujets ainsi que des exemples\
+      d'utilisation et des explications.\
+    </li>\
+    <li>\
+      La page <a href='notations.html'> notations</a> présente une liste de\
+      conventions sur l'écriture d'expressions mathématiques.\
+    </li>\
+    <li>\
+      Des ressources externes sont données avec les\
+      <a href='resources.html'> références </a>. \
+    </li>\
+  </ul>\
+  <!-- Conventions -->\
+  <h2 id='conv-list'>\
+  Conventions </h2>\
+  <p>\
+    À travers le site, les conventions suivantes sont utilisées :\
+  </p>\
+  <ul>\
+    <li> adj - adjectif</li>\
+    <li> F - genre grammatical féminin </li>\
+    <li> M - genre grammatical masculin </li>\
+    <li> N - genre grammatical neutre ou mot\
+      <div class='tooltip'>épicène\
+        <span class='tooltiptext'>\
+          Mot ayant la même forme au féminin et au masculin\
+        </span>\
+      </div></li>\
+    <li> n - nom (ou substantif)</li>\
+    <li> p - pluriel</li>\
+    <li> pre - préposition</li>\
+    <li> pro - pronom </li>\
+    <li> s - singulier</li>\
+    <li> v - verbe</li>\
+    <li> Les exemples sont donnés en <i>italique</i>.</li>\
+  </ul>\
+</div>"
+}

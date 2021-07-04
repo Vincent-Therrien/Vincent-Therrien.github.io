@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="icon" href="icon.png">
+    <script type="text/javascript" src='pages-content/fill-pages.js'></script>
+  <script type="text/javascript" src="pages-content/glossary-content.json"></script>
     <script src="scripts/lexiconTable.js"></script>
     <script src="scripts/navigation.js"></script>
     <script type="text/javascript" src="data/kategorioj.json"></script>
@@ -23,45 +25,51 @@
     <script type="text/javascript" src="data/elektro_en.json"></script>
     <script type="text/javascript" src="data/elektro_es.json"></script>
 </head>
-<body class="back-color" onload="fillTable('matematiko'); selectSectionInView(); selectSidebarVisibility();" onscroll="selectSectionInView(); reposition();", onresize="selectSidebarVisibility()">
+<body class="back-color" onload="fillTable('matematiko');
+    var userLang = navigator.language || navigator.userLanguage;
+    fill_page(glossary_content, userLang);
+    selectSectionInView();
+    selectSidebarVisibility();"
+  onscroll="selectSectionInView(); reposition();", onresize="selectSidebarVisibility()">
 <script>
   var topic = 'matematiko';
 </script>
 <!--- Top Navigation (to go around different pages, change language, and search) -->
 <div id="title-banner">
-    <h1 id="websiteTitle"> Glossaires scientifiques </h1>
+  <h1 id="websiteTitle"> <div id=name-website>  </div> </h1>
 </div>
-<div id="top-nav-bar">
-  <ul>
-    <!-- link one -->
+<div id='top-nav-bar'>
+<ul>
+  <!-- link one -->
+  <li>
+    <a href='index.html'> <div id="name-home">  </div> </a>
+  </li>
+  <!-- link two -->
+  <li class='active'>
+    <a href='#'> <div id="name-glossary">  </div> </a>
+  </li>
+  <!-- link three -->
+  <li>
+    <a href='notation.html'> <div id="name-notation">  </div> </a>
+  </li>
+  <!-- link four -->
+  <li>
+    <a href='resources.html'> <div id="name-references">  </div> </a>
+  </li>
+  <!-- Language selection -->
+  <div id='dropdown'>
     <li>
-      <a href="index.html">Accueil</a>
+      <a href='#'>  <div id="language-name"> </div> </a>
+      <div id='dropdown-content'>
+        <a href='#' hreflang='en' onClick="fill_page(glossary_content, 'en');"> English - en </a>
+        <a href='#' hreflang='es'  onClick="fill_page(glossary_content, 'es');"> Español - es </a>
+        <a href='#' hreflang='fr' onClick="fill_page(glossary_content, 'fr');"> Français - fr</a>
+      </div>
     </li>
-    <!-- link two -->
-    <li class="active">
-      <a href="#"> Glossaire </a>
-    </li>
-    <!-- link three -->
-    <li>
-      <a href="notation.html">Notations </a>
-    </li>
-    <!-- link four -->
-    <li>
-      <a href="resources.html">Références</a>
-    </li>
-    <!-- Language selection -->
-    <!-- <div id="dropdown">
-      <li>
-        <a href="#"> Langue - fr </a>
-        <div id="dropdown-content">
-          <a href="#" hreflang="en"> English - en </a>
-          <a href="#" hreflang="en"> Español - es </a>
-          <a href="#" hreflang="fr"> Français - fr</a>
-        </div>
-      </li>
-    </div> -->
-  </ul>
+  </div>
+</ul>
 </div>
+
 <!--- Sidebar for in-page navigation and search queries -->
 <div id="side-container">
 <div id="side-banner1"></div> <!-- Background banner -->
@@ -77,20 +85,8 @@
 
 <!--- Page Content -->
 <div id="page-content">
-  <h1>Glossaire</h1>
-</div>
-<div id="page-content">
-  <p>
-    Cette section présente un ensemble de termes scientifiques
-    utilisés dans plusieurs langues. Pour voir le sens des abbréviations
-    utilisées dans cette section, consultez les
-    <a href="index.html#conv-list"> conventions</a>.
-  </p>
-  <p>
-    Utilisez le bouton dans le titre du tableau pour sélectionner une catégorie
-    de termes. Pour changer les langues affichées dans le tableau, utilisez les
-    boutons dans la première rangée.
-  </p>
+  <div id="content">  </div>
+
   <!-- Table Title -->
   <h2 id="table-title" style="text-align:center; display: block;"> Termes utilisés en
     <div class="ts"
@@ -132,8 +128,9 @@
 </div>
 <!-- Back to top reference -->
 <div class="back-to-top">
-  <a href="#top"> Haut de la page </a>
+  <a href="#top"> <div id="name-back-to-top">  </div> </a>
 </div>
+
 
 </body>
 </html>

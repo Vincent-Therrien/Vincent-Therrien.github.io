@@ -10,61 +10,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="icon.png">
+  <script type="text/javascript" src='pages-content/fill-pages.js'></script>
+  <script type="text/javascript" src="pages-content/notation-content.json"></script>
   <script src="scripts/navigation.js"></script>
   <script src="scripts/notationTable.js"></script>
   <script type="text/javascript" src="data/regloj_fr.json"></script>
   <script type="text/javascript" src="data/regloj_en.json"></script>
   <script type="text/javascript" src="data/regloj_es.json"></script>
 </head>
-<body class="back-color" onload="fillTable();">
+<body class="back-color" onload="fillTable();
+    var userLang = navigator.language || navigator.userLanguage;
+    fill_page(notation_content, userLang);">
 <!--- Top Navigation (to go around different pages, change language, and search) -->
 <div id="title-banner">
-    <h1 id="websiteTitle"> Glossaires scientifiques </h1>
+    <h1 id="websiteTitle"> <div id=name-website>  </div> </h1>
 </div>
-<div id="top-nav-bar">
+<div id='top-nav-bar'>
   <ul>
     <!-- link one -->
     <li>
-      <a href="index.html">Accueil</a>
+      <a href='index.html'> <div id="name-home">  </div> </a>
     </li>
     <!-- link two -->
     <li>
-      <a href="glossary.html"> Glossaire </a>
+      <a href='glossary.html'> <div id="name-glossary">  </div> </a>
     </li>
     <!-- link three -->
-    <li class="active">
-      <a href="#">Notations </a>
+    <li class='active'>
+      <a href='#'> <div id="name-notation">  </div> </a>
     </li>
     <!-- link four -->
     <li>
-      <a href="resources.html">Références</a>
+      <a href='resources.html'> <div id="name-references">  </div> </a>
     </li>
     <!-- Language selection -->
-    <!-- <div id="dropdown">
+    <div id='dropdown'>
       <li>
-        <a href="#"> Langue - fr </a>
-        <div id="dropdown-content">
-          <a href="#" hreflang="en"> English - en </a>
-          <a href="#" hreflang="en"> Español - es </a>
-          <a href="#" hreflang="fr"> Français - fr</a>
+        <a href='#'>  <div id="language-name"> </div> </a>
+        <div id='dropdown-content'>
+          <a href='#' hreflang='en' onClick="fill_page(notation_content, 'en');"> English - en </a>
+          <a href='#' hreflang='es'  onClick="fill_page(notation_content, 'es');"> Español - es </a>
+          <a href='#' hreflang='fr' onClick="fill_page(notation_content, 'fr');"> Français - fr</a>
         </div>
       </li>
-    </div> -->
+    </div>
   </ul>
 </div>
 
 <!--- Page Content -->
-<div id="full-page">
-  <h1> Notation </h1>
-</div>
-<div id="full-page">
-  <p style="padding-bottom:30px">
-    Cette page présente une liste de conventions utilisées dans plusieurs
-    langues pour l'écriture d'expressions mathématiques.
-  </p>
-</div>
-<h2 style="text-align:center; display: block; padding-bottom: 20px">
-  Conventions pour l'écriture d'expressions mathématiques </h2>
+<div id="content">  </div>
+
 <div style="text-align: center">
 <table id="notation_table" style="display: inline-block; table-layout: fixed; margin-left: 10%; margin-right: 10%;">
   <tr class="c">
@@ -91,7 +86,7 @@
 </div>
 <!-- Back to top reference -->
 <div class="back-to-top">
-  <a href="#top"> Haut de la page </a>
+  <a href="#top"> <div id="name-back-to-top">  </div> </a>
 </div>
 
 </body>

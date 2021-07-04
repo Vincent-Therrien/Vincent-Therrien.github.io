@@ -1,0 +1,47 @@
+var glossary_content = {
+"en":"\
+  <h1>Glossary</h1>\
+<p>\
+  This section presents a set of scientific terms used in some languages.\
+  To view the meaning of abbreviations used on the page, refer to the\
+  <a href='index.html#conv-list'> conventions</a>.\
+</p>\
+<p>\
+  Use the button in the title of the table to select a category of words.\
+  To change the displayed languages in the the table, use the buttons in the\
+  first row.\
+</p>\
+</div>",
+
+"es":"\
+  <h1>Glosario</h1>\
+<p>\
+  Esta sección presenta un conjunto de términos científicos en algunos idiomas.\
+  Para ver el significo de la abreviaciones usadas en la página, véase las\
+  <a href='index.html#conv-list'> convenciones</a>.\
+</p>\
+<p>\
+  Usa el botón en el título de la tabla para elegir una categoría de palabras.\
+  Para cambiar los idiomas mostrados en la tabla, usa los botones en la\
+  primera fila.\
+</p>\
+</div>",
+
+"fr":"\
+<div>\
+  <h1>Glossaire</h1>\
+</div>\
+<p>\
+  Cette section présente un ensemble de termes scientifiques\
+  utilisés dans plusieurs langues. Pour voir le sens des abbréviations\
+  utilisées dans cette section, consultez les\
+  <a href='index.html#conv-list'> conventions</a>.\
+</p>\
+<p>\
+  Utilisez le bouton dans le titre du tableau pour sélectionner une catégorie\
+  de termes. Pour changer les langues affichées dans le tableau, utilisez les\
+  boutons dans la première rangée.\
+</p>\
+</div>"
+
+}

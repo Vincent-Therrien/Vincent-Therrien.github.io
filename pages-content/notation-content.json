@@ -1,0 +1,44 @@
+var notation_content = {
+"en":"\
+<div id='full-page'>\
+  <h1> Notation </h1>\
+</div>\
+<div id='full-page'>\
+  <p style='padding-bottom:30px'>\
+    This page presents a list of conventions used in a few languages\
+    to write mathematical expressions.\
+  </p>\
+</div>\
+<h2 style='text-align:center; display: block; padding-bottom: 20px'>\
+  Some Conventions for Writing Mathematical Expression\
+</h2>",
+
+"es":"\
+<div id='full-page'>\
+  <h1> Notation </h1>\
+</div>\
+<div id='full-page'>\
+  <p style='padding-bottom:30px'>\
+    Esta página presenta une lista de convenciones usadas en algunos idiomas\
+    para escribir expresiones matemáticas.\
+  </p>\
+</div>\
+<h2 style='text-align:center; display: block; padding-bottom: 20px'>\
+  Algunas convenciones sobre la escritura de expresiones matemáticas \
+</h2>",
+
+"fr":"\
+<div id='full-page'>\
+  <h1> Notation </h1>\
+</div>\
+<div id='full-page'>\
+  <p style='padding-bottom:30px'>\
+    Cette page présente une liste de conventions utilisées dans plusieurs\
+    langues pour l'écriture d'expressions mathématiques.\
+  </p>\
+</div>\
+<h2 style='text-align:center; display: block; padding-bottom: 20px'>\
+  Quelques conventions pour l'écriture d'expressions mathématiques\
+</h2>"
+
+}
