@@ -28,3 +28,34 @@ function fill_page(content, language){
         document.getElementById("name-back-to-top").innerHTML = "Haut de la page";
     }
 }
+
+function set_table_title(language){
+    // Change table title
+    var title = document.getElementById("tableTitle");
+    var langTitle = eo_to_lang(topic, language);
+    title.innerHTML = langTitle;
+    // Update the sidebar
+    if (language == "en"){
+        document.getElementById("summary-name").innerHTML = "Content";
+        document.getElementById("table-title-content").innerHTML = "Terms used in ";
+        document.getElementById("st1").innerHTML = "mathematics";
+        document.getElementById("st2").innerHTML = "computer science";
+        document.getElementById("st3").innerHTML = "electricity";
+    }
+    else if (language == "es"){
+        document.getElementById("summary-name").innerHTML = "Índice";
+        document.getElementById("table-title-content").innerHTML = "Términos usados en ";
+        document.getElementById("st1").innerHTML = "matemáticas";
+        document.getElementById("st2").innerHTML = "informática";
+        document.getElementById("st3").innerHTML = "electricidad";
+    }
+    else if (language == "fr"){
+        document.getElementById("summary-name").innerHTML = "Sommaire";
+        document.getElementById("table-title-content").innerHTML = "Termes utilisés en ";
+        document.getElementById("st1").innerHTML = "mathématiques";
+        document.getElementById("st2").innerHTML = "informatique";
+        document.getElementById("st3").innerHTML = "électricité";
+    }
+    fillTable(userLang);
+    selectSectionInView();
+}

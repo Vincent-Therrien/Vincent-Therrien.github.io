@@ -35,12 +35,12 @@ function setTopic(topicName){
     topic = topicName;
 }
 
-function fillTable(){
+function fillTable(userLang){
     var topic1 = getTopic(topic, 1);
     var topic2 = getTopic(topic, 2);
     // Change table title
     var title = document.getElementById("tableTitle");
-    var langTitle = eo_to_lang(topic, "fr");
+    var langTitle = eo_to_lang(topic, userLang);
     title.innerHTML = langTitle;
     // Update the sidebar
     var sidebarTitle = document.getElementById('s-b-title');
@@ -60,20 +60,20 @@ function fillTable(){
     for (var category in topic1){
         if (category != "meta"){
             addTableSection(table, category,
-                topic1, topic2, use_theme_1);
+                topic1, topic2, use_theme_1, userLang);
             use_theme_1 = !use_theme_1;
         }
     }
     var t = document.getElementById('lexicon_table');
 }
 
-function addTableSection(table, category, lang1, lang2, theme){
+function addTableSection(table, category, lang1, lang2, theme, userLang){
     // Title
     var language1 = lang1["meta"].slice(-2);
     var language2 = lang2["meta"].slice(-2);
     var l_1_title = eo_to_lang(category, language1)
     var l_2_title = eo_to_lang(category, language2)
-    addSectionTitle(table, l_1_title, l_2_title, eo_to_lang(category, "fr"));
+    addSectionTitle(table, l_1_title, l_2_title, eo_to_lang(category, userLang));
     // Section content
     addSectionContent(table, lang1[category], lang2[category], theme);
 }

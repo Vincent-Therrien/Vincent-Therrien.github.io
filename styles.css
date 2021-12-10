@@ -74,6 +74,7 @@
 #dropdown li:hover {
     display: inline-block;
     position: absolute;
+    background-color: grey;
 }
 #dropdown-content a {
     display: block;
@@ -281,10 +282,6 @@ th.s {
   font-size: 100%;
   text-decoration: none;
 }
-.tsbtn:focus {
-  background-color: white;
-  color: black;
-}
 .ts {
   list-style-type: none;
   padding: 0;
@@ -356,9 +353,5 @@ th.s {
 .ls-content a:hover {
   background-color: rgb(80, 80, 80);
   color: white;}
-.ls-content a:focus {
-  background-color: rgb(80, 80, 80);
-  color: white;}
 .ls:hover .ls-content {display: block;}
-.ls:focus-within ul .ls-content {display: block;}
 .ls:hover .lsbtn {background-color: rgb(80, 80, 80);}

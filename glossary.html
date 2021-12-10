@@ -25,10 +25,12 @@
     <script type="text/javascript" src="data/elektro_en.json"></script>
     <script type="text/javascript" src="data/elektro_es.json"></script>
 </head>
-<body class="back-color" onload="fillTable('matematiko');
-    var userLang = navigator.language || navigator.userLanguage;
+<body class="back-color" onload="
+    userLang = navigator.language || navigator.userLanguage;
+    setTopic('matematiko');
+    fillTable(userLang);
     fill_page(glossary_content, userLang);
-    selectSectionInView();
+    set_table_title(userLang);
     selectSidebarVisibility();"
   onscroll="selectSectionInView(); reposition();", onresize="selectSidebarVisibility()">
 <script>
@@ -42,28 +44,39 @@
 <ul>
   <!-- link one -->
   <li>
-    <a href='index.html'> <div id="name-home">  </div> </a>
+    <a href='index.html'
+    onFocus="style='background-color: grey;'"
+    onFocusout="style='background-color: ;'"> <div id="name-home">  </div> </a>
   </li>
   <!-- link two -->
-  <li class='active'>
-    <a href='#'> <div id="name-glossary">  </div> </a>
+  <li>
+    <a href='#'
+      style='background-color: dimgrey'
+      onmouseover="style='background-color: grey;'"
+      onmouseout="style='background-color: dimgrey;'"
+      onFocus="style='background-color: grey;'"
+      onFocusout="style='background-color: dimgrey;'"> <div id="name-glossary">  </div> </a>
   </li>
   <!-- link three -->
   <li>
-    <a href='notation.html'> <div id="name-notation">  </div> </a>
+    <a href='notation.html'
+    onFocus="style='background-color: grey;'"
+    onFocusout="style='background-color: ;'"> <div id="name-notation">  </div> </a>
   </li>
   <!-- link four -->
   <li>
-    <a href='resources.html'> <div id="name-references">  </div> </a>
+    <a href='resources.html'
+      onFocus="style='background-color: grey;'"
+      onFocusout="style='background-color: ;'"> <div id="name-references">  </div> </a>
   </li>
   <!-- Language selection -->
   <div id='dropdown'>
     <li>
       <a href='#'>  <div id="language-name"> </div> </a>
       <div id='dropdown-content'>
-        <a href='#' hreflang='en' onClick="fill_page(glossary_content, 'en');"> English - en </a>
-        <a href='#' hreflang='es'  onClick="fill_page(glossary_content, 'es');"> Español - es </a>
-        <a href='#' hreflang='fr' onClick="fill_page(glossary_content, 'fr');"> Français - fr</a>
+        <a href='#' hreflang='en' onClick="fill_page(glossary_content, 'en');  userLang='en'; set_table_title(userLang);"> English - en </a>
+        <a href='#' hreflang='es' onClick="fill_page(glossary_content, 'es'); userLang='es'; set_table_title(userLang);">  Español - es </a>
+        <a href='#' hreflang='fr' onClick="fill_page(glossary_content, 'fr');  userLang='fr'; set_table_title(userLang);"> Français - fr</a>
       </div>
     </li>
   </div>
@@ -75,8 +88,8 @@
 <div id="side-banner1"></div> <!-- Background banner -->
 <div id="side-banner2"></div> <!-- Background banner -->
 <div id="side-nav" class="at-top">
-  <h1> Sommaire </h1>
-  <a href="#table-title" id="s-b-title"> Mathématiques </a>
+  <h1 id="summary-name">  </h1>
+  <a href="#table-title" id="s-b-title">  </a>
   <div id="s-b-sections">
     <!-- To be filled on load. -->
   </div>
@@ -88,15 +101,16 @@
   <div id="content">  </div>
 
   <!-- Table Title -->
-  <h2 id="table-title" style="text-align:center; display: block;"> Termes utilisés en
+  <h2 id="table-title" style="text-align:center; display: block;">
     <div class="ts"
     style="text-align: center; vertical-align: middle;"
     onmouseover="unrollTs();" onmouseout="rollTs()">
-      <button class="tsbtn" onfocus="unrollTs();" id="tableTitle"> Mathématiques </button>
+      <div id="table-title-content">  </div>
+      <button class="tsbtn" onfocus="unrollTs();" id="tableTitle">  </button>
       <div class="ts-content" style="text-align: center;" id="tsStyle">
-        <a onClick="setTopic('matematiko'); fillTable(); selectSectionInView();" href="#"> Mathématiques </a>
-        <a onClick="setTopic('komputiko'); fillTable(); selectSectionInView();" href="#"> Informatique </a>
-        <a onClick="setTopic('elektro'); fillTable(); selectSectionInView();" href="#"> Électricité </a>
+        <a id="st1" onClick="setTopic('matematiko'); fillTable(userLang); selectSectionInView();" href="#">  </a>
+        <a id="st2" onClick="setTopic('komputiko'); fillTable(userLang); selectSectionInView();" href="#">  </a>
+        <a id="st3" onClick="setTopic('elektro'); fillTable(userLang); selectSectionInView();" href="#">  </a>
       </div>
     </div>
   </h2>
@@ -108,18 +122,18 @@
         <div class="ls" style="text-align: center; vertical-align: middle;">
           <button class="lsbtn" id="L1" onfocus="rollTs();"> Français - fr </button>
           <div class="ls-content" style="text-align: center;">
-            <a href="#" onClick="document.getElementById('L1').innerHTML = 'Français - fr '; fillTable(); selectSectionInView();"> Français - fr </a>
-            <a href="#" onClick="document.getElementById('L1').innerHTML = 'English - en ';  fillTable(); selectSectionInView();"> English - en </a>
-            <a href="#" onClick="document.getElementById('L1').innerHTML = 'Español - es ';  fillTable(); selectSectionInView();"> Español - es </a>
+            <a href="#" onClick="document.getElementById('L1').innerHTML = 'English - en ';  fillTable(userLang); selectSectionInView();"> English - en </a>
+            <a href="#" onClick="document.getElementById('L1').innerHTML = 'Español - es ';  fillTable(userLang); selectSectionInView();"> Español - es </a>
+            <a href="#" onClick="document.getElementById('L1').innerHTML = 'Français - fr '; fillTable(userLang); selectSectionInView();"> Français - fr </a>
         </div>
       </th>
       <th class="c">
         <div class="ls" style="text-align: center; vertical-align: middle;">
           <button class="lsbtn" id="L2"> English - en </button>
           <div class="ls-content" style="text-align: center;">
-            <a href="#" onClick="document.getElementById('L2').innerHTML = 'Français - fr '; fillTable(); selectSectionInView();"> Français - fr </a>
-            <a href="#" onClick="document.getElementById('L2').innerHTML = 'English - en ';  fillTable(); selectSectionInView();"> English - en </a>
-            <a href="#" onClick="document.getElementById('L2').innerHTML = 'Español - es ';  fillTable(); selectSectionInView();"> Español - es </a>
+            <a href="#" onClick="document.getElementById('L2').innerHTML = 'English - en ';  fillTable(userLang); selectSectionInView();"> English - en </a>
+            <a href="#" onClick="document.getElementById('L2').innerHTML = 'Español - es ';  fillTable(userLang); selectSectionInView();"> Español - es </a>
+            <a href="#" onClick="document.getElementById('L2').innerHTML = 'Français - fr '; fillTable(userLang); selectSectionInView();"> Français - fr </a>
         </div>
       </th>
     </tr>
