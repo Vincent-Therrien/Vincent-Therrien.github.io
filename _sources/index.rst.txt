@@ -10,6 +10,7 @@ Trouver des BGC avec l'apprentissage par renforcement
    :maxdepth: 2
    :caption: Contents:
 
+Article à résumer : https://academic.oup.com/bioinformatics/article/38/16/3984/6619162?login=false
 
 Mise en contexte
 ----------------
