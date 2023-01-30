@@ -1,0 +1,35 @@
+.. Trouver des BGC avec l'apprentissage par renforcement documentation master file, created by
+   sphinx-quickstart on Sun Jan 29 21:01:15 2023.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Trouver des BGC avec l'apprentissage par renforcement
+=====================================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+Article à résumer : https://academic.oup.com/bioinformatics/article/38/16/3984/6619162?login=false
+
+Mise en contexte
+----------------
+
+- BGC = Biosynthetic Gene Clusters
+- SM = Secondary metabolites
+
+L'apprentissage par renforcement
+--------------------------------
+
+- Q-learning
+
+Autres méthodes
+---------------
+
+- TOUCAN
+- fungiSMASH
+- DeepBGC
+
+Ensemble de données
+-------------------
+
