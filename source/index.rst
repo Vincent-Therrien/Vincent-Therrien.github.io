@@ -66,8 +66,8 @@ un robot comment marcher en ligne droite, on peut considérer que :
   exemple, avancer pourrait entraîner une récompense positive tandis que tomber
   ou reculer entraînerait une récompense négative.
 
-L'algoritme Q-learning
-``````````````````````
+L'algorithme Q-learning
+```````````````````````
 
 L'algorithme Q-learning est une manière d'entraîner un agent. Soient :
 
