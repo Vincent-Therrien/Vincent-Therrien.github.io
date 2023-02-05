@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Trouver des BGC avec l’apprentissage par renforcement &#8212; Documentation Trouver des BGC avec l&#39;apprentissage par renforcement 1.0</title>
+    <title>Identifier des gènes biosynthétiques avec l’apprentissage par renforcement &#8212; Documentation Trouver des BGC avec l&#39;apprentissage par renforcement 1.0</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -32,6 +32,7 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -169,24 +170,48 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mise-en-contexte">
-   Mise en contexte
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Identifier des gènes biosynthétiques avec l’apprentissage par renforcement
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mise-en-contexte">
+     Mise en contexte
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#survol-de-l-apprentissage-par-renforcement">
+     Survol de l’apprentissage par renforcement
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#l-algoritme-q-learning">
+       L’algoritme Q-learning
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exemple-d-utilisation-du-q-learning">
+       Exemple d’utilisation du Q-learning
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#l-apprentissage-par-renforcement-pour-identifier-des-bcg">
+     L’apprentissage par renforcement pour identifier des BCG
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ensemble-de-donnees-pour-identifier-des-bcg">
+     Ensemble de données pour identifier des BCG
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#l-apprentissage-par-renforcement">
-   L’apprentissage par renforcement
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#autres-methodes">
-   Autres méthodes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ensemble-de-donnees">
-   Ensemble de données
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliographie">
+   Bibliographie
   </a>
  </li>
 </ul>
@@ -198,7 +223,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Trouver des BGC avec l’apprentissage par renforcement</h1>
+                <h1>Identifier des gènes biosynthétiques avec l’apprentissage par renforcement</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -208,24 +233,48 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mise-en-contexte">
-   Mise en contexte
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Identifier des gènes biosynthétiques avec l’apprentissage par renforcement
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mise-en-contexte">
+     Mise en contexte
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#survol-de-l-apprentissage-par-renforcement">
+     Survol de l’apprentissage par renforcement
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#l-algoritme-q-learning">
+       L’algoritme Q-learning
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exemple-d-utilisation-du-q-learning">
+       Exemple d’utilisation du Q-learning
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#l-apprentissage-par-renforcement-pour-identifier-des-bcg">
+     L’apprentissage par renforcement pour identifier des BCG
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ensemble-de-donnees-pour-identifier-des-bcg">
+     Ensemble de données pour identifier des BCG
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#l-apprentissage-par-renforcement">
-   L’apprentissage par renforcement
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#autres-methodes">
-   Autres méthodes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ensemble-de-donnees">
-   Ensemble de données
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliographie">
+   Bibliographie
   </a>
  </li>
 </ul>
@@ -238,35 +287,130 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="trouver-des-bgc-avec-l-apprentissage-par-renforcement">
-<h1>Trouver des BGC avec l’apprentissage par renforcement<a class="headerlink" href="#trouver-des-bgc-avec-l-apprentissage-par-renforcement" title="Lien permanent vers ce titre">#</a></h1>
-<div class="toctree-wrapper compound">
+  <section id="identifier-des-genes-biosynthetiques-avec-l-apprentissage-par-renforcement">
+<h1>Identifier des gènes biosynthétiques avec l’apprentissage par renforcement<a class="headerlink" href="#identifier-des-genes-biosynthetiques-avec-l-apprentissage-par-renforcement" title="Lien permanent vers ce titre">#</a></h1>
+<span class="target" id="id1"></span><p>Almeida <em>et al.</em> <span id="id5">[<a class="reference internal" href="#id11" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">1</a>]</span> présentent une technique
+d’apprentissage par renforcement pour identifier des grappes de gènes
+biosynthétiques chez les champignons. Cette page présente leurs découvertes
+ainsi que des informations supplémentaires sur l’apprentissage par
+renforcement.</p>
+<div class="contents local topic" id="contenu">
+<p class="topic-title">Contenu</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#mise-en-contexte" id="id14">Mise en contexte</a></p></li>
+<li><p><a class="reference internal" href="#survol-de-l-apprentissage-par-renforcement" id="id15">Survol de l’apprentissage par renforcement</a></p>
+<ul>
+<li><p><a class="reference internal" href="#l-algoritme-q-learning" id="id16">L’algoritme Q-learning</a></p></li>
+<li><p><a class="reference internal" href="#exemple-d-utilisation-du-q-learning" id="id17">Exemple d’utilisation du Q-learning</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#l-apprentissage-par-renforcement-pour-identifier-des-bcg" id="id18">L’apprentissage par renforcement pour identifier des BCG</a></p></li>
+<li><p><a class="reference internal" href="#ensemble-de-donnees-pour-identifier-des-bcg" id="id19">Ensemble de données pour identifier des BCG</a></p></li>
+</ul>
 </div>
-<p>Article à résumer : <a class="reference external" href="https://academic.oup.com/bioinformatics/article/38/16/3984/6619162?login=false">https://academic.oup.com/bioinformatics/article/38/16/3984/6619162?login=false</a></p>
 <section id="mise-en-contexte">
 <h2>Mise en contexte<a class="headerlink" href="#mise-en-contexte" title="Lien permanent vers ce titre">#</a></h2>
+<p>Les métabolites secondaires sont des molécules qui n’appartiennent pas au
+métabolisme primaire <span id="id6">[<a class="reference internal" href="#id12" title="Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. Microbiology spectrum, 2021. doi:10.1128/Spectrum.00898-21.">2</a>]</span>. En plus d’être présents chez une variété
+d’organismes, comme les plantes, les champignons ou les bactéries, les
+métabolites secondaires remplissent des rôles très diversifiés. Ils peuvent
+entre autres, défendre un organisme, lui permettre de communiquer avec ses
+semblables et attirer des espèces favorables à sa survie.</p>
+<p>Dans l’industrie pharmaceutique et en agriculture, les métabolites secondaires
+ont une grande importance puisqu’ils permettent de découvrir des molécules
+bénéfiques pour des activités humaines, comme la fabrication de médicaments
+<span id="id7">[<a class="reference internal" href="#id12" title="Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. Microbiology spectrum, 2021. doi:10.1128/Spectrum.00898-21.">2</a>]</span>. Malheureusement, les métabolites secondaires sont diffciles
+à identifier. Les voies métaboliques impliquées dans leur synthèse sont
+encodées dans le génome de l’organisme sur des grappes (<em>clusters</em>) de gènes
+contigus nommés <strong>grappe de gènes biosynthétiques</strong> (<em>Biosynthetic Gene Clusters</em>,
+BGC). Étant donné leur grande diversité, les méthodes modernes ont du mal à
+identifier efficacement les BCG <span id="id8">[<a class="reference internal" href="#id11" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">1</a>]</span>.</p>
+<p>La technique de Almeida <em>et al.</em> est basé sur l’apprentissage par renforcement,
+un type d’intelligence artificielle. La méthode surpasse les performances de
+modèles développés par d’autres équipes.</p>
+</section>
+<section id="survol-de-l-apprentissage-par-renforcement">
+<h2>Survol de l’apprentissage par renforcement<a class="headerlink" href="#survol-de-l-apprentissage-par-renforcement" title="Lien permanent vers ce titre">#</a></h2>
+<p>L’apprentissage par renforcement consiste à entraîner un modèle en simulant des
+interaction avec un environnement. En expérimentant différentes actions dans un
+milieu virtuel, un <em>agent</em> apprend quelles <em>actions</em> poser pour atteindre un
+<em>état</em> voulu <span id="id9">[<a class="reference internal" href="#id13" title="Justin Fu, Aviral Kumar, Matthew Soh, and Sergey Levine. Diagnosing bottlenecks in deep q-learning algorithms. Proceedings of the 36th International Conference on Machine Learning, 97:2021–2030, 09–15 Jun 2019. URL: https://proceedings.mlr.press/v97/fu19a.html.">3</a>]</span>. Les <em>récompenses</em> sont des valeurs qui
+guident l’agent dans son entraînement quand il se rapproche de l’état voulu.</p>
+<p>Par exemple, si l’on utilise l’apprentissage par renforcement pour apprendre à
+un robot comment marcher en ligne droite, on peut considérer que :</p>
 <ul class="simple">
-<li><p>BGC = Biosynthetic Gene Clusters</p></li>
-<li><p>SM = Secondary metabolites</p></li>
+<li><p><strong>L’agent</strong> est le robot.</p></li>
+<li><p><strong>L’environnement</strong> est le milieu dans lequel il se déplace.</p></li>
+<li><p>Les <strong>états</strong> représentent toutes les configurations possibles de robot et sa
+position dans l’espace.</p></li>
+<li><p>Les <strong>actions</strong> de l’agent consistent à bouger ses articulations.</p></li>
+<li><p>Les <strong>récompenses</strong> mesurent comment l’agent accomplit sa tâches. Par
+exemple, avancer pourrait entraîner une récompense positive tandis que tomber
+ou reculer entraînerait une récompense négative.</p></li>
+</ul>
+<section id="l-algoritme-q-learning">
+<h3>L’algoritme Q-learning<a class="headerlink" href="#l-algoritme-q-learning" title="Lien permanent vers ce titre">#</a></h3>
+<p>L’algorithme Q-learning est une manière d’entraîner un agent.</p>
+<p>Soient :</p>
+<ul class="simple">
+<li><p>Un ensemble d’états <span class="math notranslate nohighlight">\(S\)</span> composé de <span class="math notranslate nohighlight">\(n\)</span> états <span class="math notranslate nohighlight">\(s\)</span>.</p></li>
+<li><p>Un ensemble d’actions <span class="math notranslate nohighlight">\(A\)</span> composé de <span class="math notranslate nohighlight">\(m\)</span> actions <span class="math notranslate nohighlight">\(a\)</span>.</p></li>
+</ul>
+<p>Un agent dans un état <span class="math notranslate nohighlight">\(s_t\)</span> peut poser une action <span class="math notranslate nohighlight">\(a_t\)</span> pour passer
+à un état <span class="math notranslate nohighlight">\(s_{t+1}\)</span>. À chaque transition d’état, l’agent observe une
+récompense <span class="math notranslate nohighlight">\(r_t\)</span>.</p>
+<p>Le but du Q-learning est d’apprendre quelle est la meilleure action à
+sélectionner lorsque l’agent est dans un état donné. Pour ce faire, on cherche
+à élaborer une <strong>fonction de qualité</strong> <span class="math notranslate nohighlight">\(Q\)</span> qui calcule la qualité
+(c’est-à-dire, la tendance à produire des récompenses positives) de chaque
+combinaison état-action. L’équation <a class="reference internal" href="#equation-qlearning">(1)</a> présente l’algorithme
+utilisé pour calculer la fonction de qualité :</p>
+<div class="math notranslate nohighlight" id="equation-qlearning">
+<span class="eqno">(1)<a class="headerlink" href="#equation-qlearning" title="Lien permanent vers cette équation">#</a></span>\[Q_{t+1}(s_t, a_t) \leftarrow Q_t(s_t, a_t) + \alpha \{ r_t + \gamma \cdot argmax[Q(s_{t+1}, a)] - Q(s_t, a_t) \}\]</div>
+<p>où :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> est le facteur d’apprentissage. Plus
+<span class="math notranslate nohighlight">\(\alpha\)</span> est élevé, plus l’algorithme privilégie les informations
+récentes par rapport aux informations anciennes. On doit observer
+<span class="math notranslate nohighlight">\(0 &lt; \alpha &lt; 1\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span> est le facteur d’actualisation. Plus <span class="math notranslate nohighlight">\(\gamma\)</span> est élevé,
+plus l’algorithme privilégie les récompenses à long terme par rapport aux
+récompenses à court terme. On doit observer
+<span class="math notranslate nohighlight">\(0 &lt; \gamma &lt; 1\)</span>.</p></li>
 </ul>
 </section>
-<section id="l-apprentissage-par-renforcement">
-<h2>L’apprentissage par renforcement<a class="headerlink" href="#l-apprentissage-par-renforcement" title="Lien permanent vers ce titre">#</a></h2>
-<ul class="simple">
-<li><p>Q-learning</p></li>
-</ul>
+<section id="exemple-d-utilisation-du-q-learning">
+<h3>Exemple d’utilisation du Q-learning<a class="headerlink" href="#exemple-d-utilisation-du-q-learning" title="Lien permanent vers ce titre">#</a></h3>
 </section>
-<section id="autres-methodes">
-<h2>Autres méthodes<a class="headerlink" href="#autres-methodes" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+<section id="l-apprentissage-par-renforcement-pour-identifier-des-bcg">
+<h2>L’apprentissage par renforcement pour identifier des BCG<a class="headerlink" href="#l-apprentissage-par-renforcement-pour-identifier-des-bcg" title="Lien permanent vers ce titre">#</a></h2>
 <ul class="simple">
 <li><p>TOUCAN</p></li>
 <li><p>fungiSMASH</p></li>
 <li><p>DeepBGC</p></li>
 </ul>
 </section>
-<section id="ensemble-de-donnees">
-<h2>Ensemble de données<a class="headerlink" href="#ensemble-de-donnees" title="Lien permanent vers ce titre">#</a></h2>
+<section id="ensemble-de-donnees-pour-identifier-des-bcg">
+<h2>Ensemble de données pour identifier des BCG<a class="headerlink" href="#ensemble-de-donnees-pour-identifier-des-bcg" title="Lien permanent vers ce titre">#</a></h2>
+<p>Résultats des tests</p>
 </section>
+</section>
+<section id="bibliographie">
+<h1>Bibliographie<a class="headerlink" href="#bibliographie" title="Lien permanent vers ce titre">#</a></h1>
+<div class="docutils container" id="id10">
+<dl class="citation">
+<dt class="label" id="id11"><span class="brackets">1</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id8">2</a>)</span></dt>
+<dd><p>Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. <em>Bioinformatics</em>, 38(16):3984–3991, 06 2022. URL: <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac420">https://doi.org/10.1093/bioinformatics/btac420</a>, <a class="reference external" href="https://arxiv.org/abs/https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf">arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf</a>, <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac420">doi:10.1093/bioinformatics/btac420</a>.</p>
+</dd>
+<dt class="label" id="id12"><span class="brackets">2</span><span class="fn-backref">(<a href="#id6">1</a>,<a href="#id7">2</a>)</span></dt>
+<dd><p>Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. <em>Microbiology spectrum</em>, 2021. <a class="reference external" href="https://doi.org/10.1128/Spectrum.00898-21">doi:10.1128/Spectrum.00898-21</a>.</p>
+</dd>
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id9">3</a></span></dt>
+<dd><p>Justin Fu, Aviral Kumar, Matthew Soh, and Sergey Levine. Diagnosing bottlenecks in deep q-learning algorithms. <em>Proceedings of the 36th International Conference on Machine Learning</em>, 97:2021–2030, 09–15 Jun 2019. URL: <a class="reference external" href="https://proceedings.mlr.press/v97/fu19a.html">https://proceedings.mlr.press/v97/fu19a.html</a>.</p>
+</dd>
+</dl>
+</div>
 </section>
 
 
