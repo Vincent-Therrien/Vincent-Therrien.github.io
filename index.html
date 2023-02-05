@@ -201,11 +201,28 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#l-apprentissage-par-renforcement-pour-identifier-des-bcg">
      L’apprentissage par renforcement pour identifier des BCG
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ensemble-de-donnees-pour-identifier-des-bcg">
-     Ensemble de données pour identifier des BCG
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#presentation-de-la-problematique">
+       Présentation de la problématique
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ensembles-de-donnees">
+       Ensembles de données
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#identification-des-bcg">
+       Identification des BCG
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#autres-approches-possibles">
+       Autres approches possibles
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -264,11 +281,28 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#l-apprentissage-par-renforcement-pour-identifier-des-bcg">
      L’apprentissage par renforcement pour identifier des BCG
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ensemble-de-donnees-pour-identifier-des-bcg">
-     Ensemble de données pour identifier des BCG
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#presentation-de-la-problematique">
+       Présentation de la problématique
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ensembles-de-donnees">
+       Ensembles de données
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#identification-des-bcg">
+       Identification des BCG
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#autres-approches-possibles">
+       Autres approches possibles
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -289,7 +323,7 @@ title="Print to PDF"
                 
   <section id="identifier-des-genes-biosynthetiques-avec-l-apprentissage-par-renforcement">
 <h1>Identifier des gènes biosynthétiques avec l’apprentissage par renforcement<a class="headerlink" href="#identifier-des-genes-biosynthetiques-avec-l-apprentissage-par-renforcement" title="Lien permanent vers ce titre">#</a></h1>
-<span class="target" id="id1"></span><p>Almeida <em>et al.</em> <span id="id5">[<a class="reference internal" href="#id11" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">1</a>]</span> présentent une technique
+<span class="target" id="id1"></span><p>Almeida <em>et al.</em> <span id="id6">[<a class="reference internal" href="#id13" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">1</a>]</span> présentent une technique
 d’apprentissage par renforcement pour identifier des grappes de gènes
 biosynthétiques chez les champignons. Cette page présente leurs découvertes
 ainsi que des informations supplémentaires sur l’apprentissage par
@@ -297,21 +331,27 @@ renforcement.</p>
 <div class="contents local topic" id="contenu">
 <p class="topic-title">Contenu</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#mise-en-contexte" id="id14">Mise en contexte</a></p></li>
-<li><p><a class="reference internal" href="#survol-de-l-apprentissage-par-renforcement" id="id15">Survol de l’apprentissage par renforcement</a></p>
+<li><p><a class="reference internal" href="#mise-en-contexte" id="id19">Mise en contexte</a></p></li>
+<li><p><a class="reference internal" href="#survol-de-l-apprentissage-par-renforcement" id="id20">Survol de l’apprentissage par renforcement</a></p>
 <ul>
-<li><p><a class="reference internal" href="#l-algoritme-q-learning" id="id16">L’algoritme Q-learning</a></p></li>
-<li><p><a class="reference internal" href="#exemple-d-utilisation-du-q-learning" id="id17">Exemple d’utilisation du Q-learning</a></p></li>
+<li><p><a class="reference internal" href="#l-algoritme-q-learning" id="id21">L’algoritme Q-learning</a></p></li>
+<li><p><a class="reference internal" href="#exemple-d-utilisation-du-q-learning" id="id22">Exemple d’utilisation du Q-learning</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#l-apprentissage-par-renforcement-pour-identifier-des-bcg" id="id18">L’apprentissage par renforcement pour identifier des BCG</a></p></li>
-<li><p><a class="reference internal" href="#ensemble-de-donnees-pour-identifier-des-bcg" id="id19">Ensemble de données pour identifier des BCG</a></p></li>
+<li><p><a class="reference internal" href="#l-apprentissage-par-renforcement-pour-identifier-des-bcg" id="id23">L’apprentissage par renforcement pour identifier des BCG</a></p>
+<ul>
+<li><p><a class="reference internal" href="#presentation-de-la-problematique" id="id24">Présentation de la problématique</a></p></li>
+<li><p><a class="reference internal" href="#ensembles-de-donnees" id="id25">Ensembles de données</a></p></li>
+<li><p><a class="reference internal" href="#identification-des-bcg" id="id26">Identification des BCG</a></p></li>
+<li><p><a class="reference internal" href="#autres-approches-possibles" id="id27">Autres approches possibles</a></p></li>
+</ul>
+</li>
 </ul>
 </div>
 <section id="mise-en-contexte">
 <h2>Mise en contexte<a class="headerlink" href="#mise-en-contexte" title="Lien permanent vers ce titre">#</a></h2>
 <p>Les métabolites secondaires sont des molécules qui n’appartiennent pas au
-métabolisme primaire <span id="id6">[<a class="reference internal" href="#id12" title="Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. Microbiology spectrum, 2021. doi:10.1128/Spectrum.00898-21.">2</a>]</span>. En plus d’être présents chez une variété
+métabolisme primaire <span id="id7">[<a class="reference internal" href="#id14" title="Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. Microbiology spectrum, 2021. doi:10.1128/Spectrum.00898-21.">2</a>]</span>. En plus d’être présents chez une variété
 d’organismes, comme les plantes, les champignons ou les bactéries, les
 métabolites secondaires remplissent des rôles très diversifiés. Ils peuvent
 entre autres, défendre un organisme, lui permettre de communiquer avec ses
@@ -319,12 +359,12 @@ semblables et attirer des espèces favorables à sa survie.</p>
 <p>Dans l’industrie pharmaceutique et en agriculture, les métabolites secondaires
 ont une grande importance puisqu’ils permettent de découvrir des molécules
 bénéfiques pour des activités humaines, comme la fabrication de médicaments
-<span id="id7">[<a class="reference internal" href="#id12" title="Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. Microbiology spectrum, 2021. doi:10.1128/Spectrum.00898-21.">2</a>]</span>. Malheureusement, les métabolites secondaires sont diffciles
+<span id="id8">[<a class="reference internal" href="#id14" title="Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. Microbiology spectrum, 2021. doi:10.1128/Spectrum.00898-21.">2</a>]</span>. Malheureusement, les métabolites secondaires sont difficiles
 à identifier. Les voies métaboliques impliquées dans leur synthèse sont
 encodées dans le génome de l’organisme sur des grappes (<em>clusters</em>) de gènes
 contigus nommés <strong>grappe de gènes biosynthétiques</strong> (<em>Biosynthetic Gene Clusters</em>,
 BGC). Étant donné leur grande diversité, les méthodes modernes ont du mal à
-identifier efficacement les BCG <span id="id8">[<a class="reference internal" href="#id11" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">1</a>]</span>.</p>
+identifier efficacement les BCG <span id="id9">[<a class="reference internal" href="#id13" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">1</a>]</span>.</p>
 <p>La technique de Almeida <em>et al.</em> est basé sur l’apprentissage par renforcement,
 un type d’intelligence artificielle. La méthode surpasse les performances de
 modèles développés par d’autres équipes.</p>
@@ -334,7 +374,7 @@ modèles développés par d’autres équipes.</p>
 <p>L’apprentissage par renforcement consiste à entraîner un modèle en simulant des
 interaction avec un environnement. En expérimentant différentes actions dans un
 milieu virtuel, un <em>agent</em> apprend quelles <em>actions</em> poser pour atteindre un
-<em>état</em> voulu <span id="id9">[<a class="reference internal" href="#id13" title="Justin Fu, Aviral Kumar, Matthew Soh, and Sergey Levine. Diagnosing bottlenecks in deep q-learning algorithms. Proceedings of the 36th International Conference on Machine Learning, 97:2021–2030, 09–15 Jun 2019. URL: https://proceedings.mlr.press/v97/fu19a.html.">3</a>]</span>. Les <em>récompenses</em> sont des valeurs qui
+<em>état</em> voulu <span id="id10">[<a class="reference internal" href="#id15" title="Justin Fu, Aviral Kumar, Matthew Soh, and Sergey Levine. Diagnosing bottlenecks in deep q-learning algorithms. Proceedings of the 36th International Conference on Machine Learning, 97:2021–2030, 09–15 Jun 2019. URL: https://proceedings.mlr.press/v97/fu19a.html.">3</a>]</span>. Les <em>récompenses</em> sont des valeurs qui
 guident l’agent dans son entraînement quand il se rapproche de l’état voulu.</p>
 <p>Par exemple, si l’on utilise l’apprentissage par renforcement pour apprendre à
 un robot comment marcher en ligne droite, on peut considérer que :</p>
@@ -350,8 +390,7 @@ ou reculer entraînerait une récompense négative.</p></li>
 </ul>
 <section id="l-algoritme-q-learning">
 <h3>L’algoritme Q-learning<a class="headerlink" href="#l-algoritme-q-learning" title="Lien permanent vers ce titre">#</a></h3>
-<p>L’algorithme Q-learning est une manière d’entraîner un agent.</p>
-<p>Soient :</p>
+<p>L’algorithme Q-learning est une manière d’entraîner un agent. Soient :</p>
 <ul class="simple">
 <li><p>Un ensemble d’états <span class="math notranslate nohighlight">\(S\)</span> composé de <span class="math notranslate nohighlight">\(n\)</span> états <span class="math notranslate nohighlight">\(s\)</span>.</p></li>
 <li><p>Un ensemble d’actions <span class="math notranslate nohighlight">\(A\)</span> composé de <span class="math notranslate nohighlight">\(m\)</span> actions <span class="math notranslate nohighlight">\(a\)</span>.</p></li>
@@ -381,33 +420,158 @@ récompenses à court terme. On doit observer
 </section>
 <section id="exemple-d-utilisation-du-q-learning">
 <h3>Exemple d’utilisation du Q-learning<a class="headerlink" href="#exemple-d-utilisation-du-q-learning" title="Lien permanent vers ce titre">#</a></h3>
+<p>Cette section présente une application du Q-learning pour résoudre un problème
+simple disponible dans la bibliothèque <code class="docutils literal notranslate"><span class="pre">Gymnasium</span></code>, un projet destiné à
+étudier l’apprentissage par renforcement <span id="id11">[<a class="reference internal" href="#id16" title="Farama Foundation. Gymnasium documentation. 2023. URL: https://gymnasium.farama.org/ (visited on 2023-02-05).">4</a>]</span>.</p>
+<p>L’environnement <code class="docutils literal notranslate"><span class="pre">FrozenLake-v1</span></code> de la bibliothèque permet de tester des
+algorithmes. Il est composé d’une grille de seize cellules. L’agent doit se
+déplacer d’une position de départ vers une cible en évitant des obstacles.
+Atteindre la cible entraîne une récompense de <code class="docutils literal notranslate"><span class="pre">1,0</span></code>.</p>
+<p>Au début de l’entraînement, l’agent ne sait pas quelles actions sélectionner
+pour atteindre l’objectif. Il pose des actions aléatoires qui ne lui permettent
+pas d’obtenir des valeurs de récompense, comme le montre l’animation suivante :</p>
+<figure class="align-default" id="id17">
+<img alt="_images/frozen_lake_aleatoire.gif" src="_images/frozen_lake_aleatoire.gif" />
+<figcaption>
+<p><span class="caption-text">Exploration aléatoire de l’environnement</span><a class="headerlink" href="#id17" title="Lien permanent vers cette image">#</a></p>
+</figcaption>
+</figure>
+<p>Pour améliorer les performances, on calcule la fonction de qualité en suivant
+l’algorithme Q-learning. Le code Python suivant montre comment appliquer la
+fonction <a class="reference internal" href="#equation-qlearning">(1)</a> en interagissant avec l’environnement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">ALPHA</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># Facteur d&#39;apprentissage (vitesse de changement de la valeur Q)</span>
+<span class="linenos"> 2</span><span class="n">GAMMA</span> <span class="o">=</span> <span class="mf">0.9</span> <span class="c1"># Facteur d&#39;actualisation (importance des récompenses futures)</span>
+<span class="linenos"> 3</span><span class="n">N_EPISODES</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># Nombre d&#39;essais</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1"># Créer l&#39;environnement d&#39;apprentissage et la table de qualité.</span>
+<span class="linenos"> 6</span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;FrozenLake-v1&quot;</span><span class="p">,</span> <span class="n">is_slippery</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">qtable</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">env</span><span class="o">.</span><span class="n">observation_space</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c1"># Entraîner le modèle en réinitialisant l&#39;environnement à chaque épisode.</span>
+<span class="linenos">10</span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_EPISODES</span><span class="p">):</span>
+<span class="linenos">11</span>    <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos">12</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos">13</span>        <span class="c1"># Sélectionner l&#39;action avec la meilleure qualité. Si aucune action</span>
+<span class="linenos">14</span>        <span class="c1"># n&#39;a été évaluée pour l&#39;état, choisir une action aléatoirement.</span>
+<span class="linenos">15</span>        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">qtable</span><span class="p">[</span><span class="n">state</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">16</span>            <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">qtable</span><span class="p">[</span><span class="n">state</span><span class="p">])</span>
+<span class="linenos">17</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">18</span>            <span class="n">action</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="linenos">19</span>        <span class="c1"># Interagir avec l&#39;environnement et mesurer la réponse.</span>
+<span class="linenos">20</span>        <span class="n">new_state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+<span class="linenos">21</span>        <span class="k">if</span> <span class="n">truncated</span> <span class="ow">or</span> <span class="n">terminated</span><span class="p">:</span>
+<span class="linenos">22</span>            <span class="k">break</span>
+<span class="linenos">23</span>        <span class="c1"># Actualiser la table.</span>
+<span class="linenos">24</span>        <span class="n">q_0</span> <span class="o">=</span> <span class="n">qtable</span><span class="p">[</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">]</span>
+<span class="linenos">25</span>        <span class="n">q_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">qtable</span><span class="p">[</span><span class="n">new_state</span><span class="p">])</span>
+<span class="linenos">26</span>        <span class="n">qtable</span><span class="p">[</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ALPHA</span> <span class="o">*</span> <span class="p">(</span><span class="n">reward</span> <span class="o">+</span> <span class="n">GAMMA</span><span class="o">*</span><span class="n">q_1</span> <span class="o">-</span> <span class="n">q_0</span><span class="p">)</span>
+<span class="linenos">27</span>        <span class="n">state</span> <span class="o">=</span> <span class="n">new_state</span>
+<span class="linenos">28</span><span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>On obtient la table de qualité suivante :</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 15%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Table de qualité</p></th>
+<th class="head"></th>
+<th class="head" colspan="4"><p>Action (direction vers laquelle se déplacer)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(\leftarrow\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\downarrow\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\rightarrow\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\uparrow\)</span></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="5"><p><strong>État (position
+de l’agent)</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\((0, 0)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,59\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\((0, 1)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(...\)</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\((3, 2)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1,0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\((3, 3)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Par exemple, on voit que l’algorithme a déterminé que la meilleure action à
+sélectionner lorsque l’agent se trouve dans la cellule <span class="math notranslate nohighlight">\((0, 0)\)</span> consiste
+à descendre. En suivant ce modèle, l’agent peut alors se déplacer dans
+l’environnement sans rencontrer d’obstacle pour atteindre son but.</p>
+<figure class="align-default" id="id18">
+<img alt="_images/frozen_lake_qlearning.gif" src="_images/frozen_lake_qlearning.gif" />
+<figcaption>
+<p><span class="caption-text">Déplacement dans l’environnement après apprentissage par Q-learning</span><a class="headerlink" href="#id18" title="Lien permanent vers cette image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="l-apprentissage-par-renforcement-pour-identifier-des-bcg">
 <h2>L’apprentissage par renforcement pour identifier des BCG<a class="headerlink" href="#l-apprentissage-par-renforcement-pour-identifier-des-bcg" title="Lien permanent vers ce titre">#</a></h2>
-<ul class="simple">
-<li><p>TOUCAN</p></li>
-<li><p>fungiSMASH</p></li>
-<li><p>DeepBGC</p></li>
-</ul>
+<p>La section suivante présente comment appliquer l’algorithme Q-learning à la
+découverte de BCG chez les champignons.</p>
+<section id="presentation-de-la-problematique">
+<h3>Présentation de la problématique<a class="headerlink" href="#presentation-de-la-problematique" title="Lien permanent vers ce titre">#</a></h3>
 </section>
-<section id="ensemble-de-donnees-pour-identifier-des-bcg">
-<h2>Ensemble de données pour identifier des BCG<a class="headerlink" href="#ensemble-de-donnees-pour-identifier-des-bcg" title="Lien permanent vers ce titre">#</a></h2>
-<p>Résultats des tests</p>
+<section id="ensembles-de-donnees">
+<h3>Ensembles de données<a class="headerlink" href="#ensembles-de-donnees" title="Lien permanent vers ce titre">#</a></h3>
+</section>
+<section id="identification-des-bcg">
+<h3>Identification des BCG<a class="headerlink" href="#identification-des-bcg" title="Lien permanent vers ce titre">#</a></h3>
+</section>
+<section id="autres-approches-possibles">
+<h3>Autres approches possibles<a class="headerlink" href="#autres-approches-possibles" title="Lien permanent vers ce titre">#</a></h3>
+</section>
 </section>
 </section>
 <section id="bibliographie">
 <h1>Bibliographie<a class="headerlink" href="#bibliographie" title="Lien permanent vers ce titre">#</a></h1>
-<div class="docutils container" id="id10">
+<div class="docutils container" id="id12">
 <dl class="citation">
-<dt class="label" id="id11"><span class="brackets">1</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id8">2</a>)</span></dt>
+<dt class="label" id="id13"><span class="brackets">1</span><span class="fn-backref">(<a href="#id6">1</a>,<a href="#id9">2</a>)</span></dt>
 <dd><p>Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. <em>Bioinformatics</em>, 38(16):3984–3991, 06 2022. URL: <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac420">https://doi.org/10.1093/bioinformatics/btac420</a>, <a class="reference external" href="https://arxiv.org/abs/https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf">arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf</a>, <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac420">doi:10.1093/bioinformatics/btac420</a>.</p>
 </dd>
-<dt class="label" id="id12"><span class="brackets">2</span><span class="fn-backref">(<a href="#id6">1</a>,<a href="#id7">2</a>)</span></dt>
+<dt class="label" id="id14"><span class="brackets">2</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id8">2</a>)</span></dt>
 <dd><p>Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. <em>Microbiology spectrum</em>, 2021. <a class="reference external" href="https://doi.org/10.1128/Spectrum.00898-21">doi:10.1128/Spectrum.00898-21</a>.</p>
 </dd>
-<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id9">3</a></span></dt>
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id10">3</a></span></dt>
 <dd><p>Justin Fu, Aviral Kumar, Matthew Soh, and Sergey Levine. Diagnosing bottlenecks in deep q-learning algorithms. <em>Proceedings of the 36th International Conference on Machine Learning</em>, 97:2021–2030, 09–15 Jun 2019. URL: <a class="reference external" href="https://proceedings.mlr.press/v97/fu19a.html">https://proceedings.mlr.press/v97/fu19a.html</a>.</p>
+</dd>
+<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id11">4</a></span></dt>
+<dd><p>Farama Foundation. Gymnasium documentation. 2023. URL: <a class="reference external" href="https://gymnasium.farama.org/">https://gymnasium.farama.org/</a> (visited on 2023-02-05).</p>
 </dd>
 </dl>
 </div>
