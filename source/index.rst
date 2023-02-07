@@ -9,11 +9,13 @@ Identifier des gènes biosynthétiques avec l'apprentissage par renforcement
 .. bibliography:: references.bib
    :filter: False
 
-Almeida *et al.* :cite:`almeida2022` présentent une technique
-d'apprentissage par renforcement pour identifier des grappes de gènes
-biosynthétiques chez les champignons. Cette page présente leurs découvertes
-ainsi que des informations supplémentaires sur l'apprentissage par
-renforcement.
+On découvre avec le génome de plusieurs organismes des composés chimiques
+utiles pour des activités humaines. Parmi ceux-ci, les métabolites secondaires
+présents, entre autres, chez les plantes et les champignons, ont des
+applications variées allant de la médecine à l'agriculture :cite:`kwon2021`.
+Des équipes de recherche s'efforcent de trouver des manières d'identifier
+davantage de tels composés en explorant différentes approches. Cette page
+présente un survol de techniques utilisées dans ce but.
 
 .. contents:: Contenu
    :depth: 2
@@ -22,7 +24,6 @@ renforcement.
 
 Mise en contexte
 ----------------
-
 
 Les métabolites secondaires sont des molécules qui n'appartiennent pas au
 métabolisme primaire :cite:`kwon2021`. En plus d'être présents chez une variété
@@ -33,7 +34,7 @@ semblables et attirer des espèces favorables à sa survie.
 
 Dans l'industrie pharmaceutique et en agriculture, les métabolites secondaires
 ont une grande importance puisqu'ils permettent de découvrir des molécules
-bénéfiques pour des activités humaines, comme la fabrication de médicaments
+bénéfiques dans plusieurs domaines, comme la fabrication de médicaments
 :cite:`kwon2021`. Malheureusement, les métabolites secondaires sont difficiles
 à identifier. Les voies métaboliques impliquées dans leur synthèse sont
 encodées dans le génome de l'organisme sur des grappes (*clusters*) de gènes
@@ -41,9 +42,10 @@ contigus nommés **grappe de gènes biosynthétiques** (*Biosynthetic Gene Clust
 BGC). Étant donné leur grande diversité, les méthodes modernes ont du mal à
 identifier efficacement les BCG :cite:`almeida2022`.
 
-La technique de Almeida *et al.* est basé sur l'apprentissage par renforcement,
-un type d'intelligence artificielle. La méthode surpasse les performances de
-modèles développés par d'autres équipes.
+Almeida *et al.* :cite:`almeida2022` présentent une technique de détection des
+BCG basée sur l'apprentissage par renforcement, un type d'intelligence
+artificielle. Cette page présente le fonctionnement de leur méthode ainsi que
+des comparaisons avec d'autres approches.
 
 Survol de l'apprentissage par renforcement
 ------------------------------------------
@@ -176,8 +178,9 @@ On obtient la table de qualité suivante :
 
 Par exemple, on voit que l'algorithme a déterminé que la meilleure action à
 sélectionner lorsque l'agent se trouve dans la cellule :math:`(0, 0)` consiste
-à descendre. En suivant ce modèle, l'agent peut alors se déplacer dans
-l'environnement sans rencontrer d'obstacle pour atteindre son but.
+se diriger vers le bas (:math:`\downarrow`). En suivant ce modèle, l'agent
+peut alors se déplacer dans l'environnement sans rencontrer d'obstacle pour
+atteindre son but.
 
 .. figure:: figures/frozen_lake_qlearning.gif
    

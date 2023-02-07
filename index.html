@@ -323,27 +323,29 @@ title="Print to PDF"
                 
   <section id="identifier-des-genes-biosynthetiques-avec-l-apprentissage-par-renforcement">
 <h1>Identifier des gènes biosynthétiques avec l’apprentissage par renforcement<a class="headerlink" href="#identifier-des-genes-biosynthetiques-avec-l-apprentissage-par-renforcement" title="Lien permanent vers ce titre">#</a></h1>
-<span class="target" id="id1"></span><p>Almeida <em>et al.</em> <span id="id6">[<a class="reference internal" href="#id13" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">1</a>]</span> présentent une technique
-d’apprentissage par renforcement pour identifier des grappes de gènes
-biosynthétiques chez les champignons. Cette page présente leurs découvertes
-ainsi que des informations supplémentaires sur l’apprentissage par
-renforcement.</p>
+<span class="target" id="id1"></span><p>On découvre avec le génome de plusieurs organismes des composés chimiques
+utiles pour des activités humaines. Parmi ceux-ci, les métabolites secondaires
+présents, entre autres, chez les plantes et les champignons, ont des
+applications variées allant de la médecine à l’agriculture <span id="id6">[<a class="reference internal" href="#id15" title="Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. Microbiology spectrum, 2021. doi:10.1128/Spectrum.00898-21.">1</a>]</span>.
+Des équipes de recherche s’efforcent de trouver des manières d’identifier
+davantage de tels composés en explorant différentes approches. Cette page
+présente un survol de techniques utilisées dans ce but.</p>
 <div class="contents local topic" id="contenu">
 <p class="topic-title">Contenu</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#mise-en-contexte" id="id19">Mise en contexte</a></p></li>
-<li><p><a class="reference internal" href="#survol-de-l-apprentissage-par-renforcement" id="id20">Survol de l’apprentissage par renforcement</a></p>
+<li><p><a class="reference internal" href="#mise-en-contexte" id="id20">Mise en contexte</a></p></li>
+<li><p><a class="reference internal" href="#survol-de-l-apprentissage-par-renforcement" id="id21">Survol de l’apprentissage par renforcement</a></p>
 <ul>
-<li><p><a class="reference internal" href="#l-algorithme-q-learning" id="id21">L’algorithme Q-learning</a></p></li>
-<li><p><a class="reference internal" href="#exemple-d-utilisation-du-q-learning" id="id22">Exemple d’utilisation du Q-learning</a></p></li>
+<li><p><a class="reference internal" href="#l-algorithme-q-learning" id="id22">L’algorithme Q-learning</a></p></li>
+<li><p><a class="reference internal" href="#exemple-d-utilisation-du-q-learning" id="id23">Exemple d’utilisation du Q-learning</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#l-apprentissage-par-renforcement-pour-identifier-des-bcg" id="id23">L’apprentissage par renforcement pour identifier des BCG</a></p>
+<li><p><a class="reference internal" href="#l-apprentissage-par-renforcement-pour-identifier-des-bcg" id="id24">L’apprentissage par renforcement pour identifier des BCG</a></p>
 <ul>
-<li><p><a class="reference internal" href="#presentation-de-la-problematique" id="id24">Présentation de la problématique</a></p></li>
-<li><p><a class="reference internal" href="#ensembles-de-donnees" id="id25">Ensembles de données</a></p></li>
-<li><p><a class="reference internal" href="#identification-des-bcg" id="id26">Identification des BCG</a></p></li>
-<li><p><a class="reference internal" href="#autres-approches-possibles" id="id27">Autres approches possibles</a></p></li>
+<li><p><a class="reference internal" href="#presentation-de-la-problematique" id="id25">Présentation de la problématique</a></p></li>
+<li><p><a class="reference internal" href="#ensembles-de-donnees" id="id26">Ensembles de données</a></p></li>
+<li><p><a class="reference internal" href="#identification-des-bcg" id="id27">Identification des BCG</a></p></li>
+<li><p><a class="reference internal" href="#autres-approches-possibles" id="id28">Autres approches possibles</a></p></li>
 </ul>
 </li>
 </ul>
@@ -351,30 +353,31 @@ renforcement.</p>
 <section id="mise-en-contexte">
 <h2>Mise en contexte<a class="headerlink" href="#mise-en-contexte" title="Lien permanent vers ce titre">#</a></h2>
 <p>Les métabolites secondaires sont des molécules qui n’appartiennent pas au
-métabolisme primaire <span id="id7">[<a class="reference internal" href="#id14" title="Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. Microbiology spectrum, 2021. doi:10.1128/Spectrum.00898-21.">2</a>]</span>. En plus d’être présents chez une variété
+métabolisme primaire <span id="id7">[<a class="reference internal" href="#id15" title="Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. Microbiology spectrum, 2021. doi:10.1128/Spectrum.00898-21.">1</a>]</span>. En plus d’être présents chez une variété
 d’organismes, comme les plantes, les champignons ou les bactéries, les
 métabolites secondaires remplissent des rôles très diversifiés. Ils peuvent
 entre autres, défendre un organisme, lui permettre de communiquer avec ses
 semblables et attirer des espèces favorables à sa survie.</p>
 <p>Dans l’industrie pharmaceutique et en agriculture, les métabolites secondaires
 ont une grande importance puisqu’ils permettent de découvrir des molécules
-bénéfiques pour des activités humaines, comme la fabrication de médicaments
-<span id="id8">[<a class="reference internal" href="#id14" title="Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. Microbiology spectrum, 2021. doi:10.1128/Spectrum.00898-21.">2</a>]</span>. Malheureusement, les métabolites secondaires sont difficiles
+bénéfiques dans plusieurs domaines, comme la fabrication de médicaments
+<span id="id8">[<a class="reference internal" href="#id15" title="Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. Microbiology spectrum, 2021. doi:10.1128/Spectrum.00898-21.">1</a>]</span>. Malheureusement, les métabolites secondaires sont difficiles
 à identifier. Les voies métaboliques impliquées dans leur synthèse sont
 encodées dans le génome de l’organisme sur des grappes (<em>clusters</em>) de gènes
 contigus nommés <strong>grappe de gènes biosynthétiques</strong> (<em>Biosynthetic Gene Clusters</em>,
 BGC). Étant donné leur grande diversité, les méthodes modernes ont du mal à
-identifier efficacement les BCG <span id="id9">[<a class="reference internal" href="#id13" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">1</a>]</span>.</p>
-<p>La technique de Almeida <em>et al.</em> est basé sur l’apprentissage par renforcement,
-un type d’intelligence artificielle. La méthode surpasse les performances de
-modèles développés par d’autres équipes.</p>
+identifier efficacement les BCG <span id="id9">[<a class="reference internal" href="#id14" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>.</p>
+<p>Almeida <em>et al.</em> <span id="id10">[<a class="reference internal" href="#id14" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span> présentent une technique de détection des
+BCG basée sur l’apprentissage par renforcement, un type d’intelligence
+artificielle. Cette page présente le fonctionnement de leur méthode ainsi que
+des comparaisons avec d’autres approches.</p>
 </section>
 <section id="survol-de-l-apprentissage-par-renforcement">
 <h2>Survol de l’apprentissage par renforcement<a class="headerlink" href="#survol-de-l-apprentissage-par-renforcement" title="Lien permanent vers ce titre">#</a></h2>
 <p>L’apprentissage par renforcement consiste à entraîner un modèle en simulant des
 interaction avec un environnement. En expérimentant différentes actions dans un
 milieu virtuel, un <em>agent</em> apprend quelles <em>actions</em> poser pour atteindre un
-<em>état</em> voulu <span id="id10">[<a class="reference internal" href="#id15" title="Justin Fu, Aviral Kumar, Matthew Soh, and Sergey Levine. Diagnosing bottlenecks in deep q-learning algorithms. Proceedings of the 36th International Conference on Machine Learning, 97:2021–2030, 09–15 Jun 2019. URL: https://proceedings.mlr.press/v97/fu19a.html.">3</a>]</span>. Les <em>récompenses</em> sont des valeurs qui
+<em>état</em> voulu <span id="id11">[<a class="reference internal" href="#id16" title="Justin Fu, Aviral Kumar, Matthew Soh, and Sergey Levine. Diagnosing bottlenecks in deep q-learning algorithms. Proceedings of the 36th International Conference on Machine Learning, 97:2021–2030, 09–15 Jun 2019. URL: https://proceedings.mlr.press/v97/fu19a.html.">3</a>]</span>. Les <em>récompenses</em> sont des valeurs qui
 guident l’agent dans son entraînement quand il se rapproche de l’état voulu.</p>
 <p>Par exemple, si l’on utilise l’apprentissage par renforcement pour apprendre à
 un robot comment marcher en ligne droite, on peut considérer que :</p>
@@ -422,7 +425,7 @@ récompenses à court terme. On doit observer
 <h3>Exemple d’utilisation du Q-learning<a class="headerlink" href="#exemple-d-utilisation-du-q-learning" title="Lien permanent vers ce titre">#</a></h3>
 <p>Cette section présente une application du Q-learning pour résoudre un problème
 simple disponible dans la bibliothèque <code class="docutils literal notranslate"><span class="pre">Gymnasium</span></code>, un projet destiné à
-étudier l’apprentissage par renforcement <span id="id11">[<a class="reference internal" href="#id16" title="Farama Foundation. Gymnasium documentation. 2023. URL: https://gymnasium.farama.org/ (visited on 2023-02-05).">4</a>]</span>.</p>
+étudier l’apprentissage par renforcement <span id="id12">[<a class="reference internal" href="#id17" title="Farama Foundation. Gymnasium documentation. 2023. URL: https://gymnasium.farama.org/ (visited on 2023-02-05).">4</a>]</span>.</p>
 <p>L’environnement <code class="docutils literal notranslate"><span class="pre">FrozenLake-v1</span></code> de la bibliothèque permet de tester des
 algorithmes. Il est composé d’une grille de seize cellules. L’agent doit se
 déplacer d’une position de départ vers une cible en évitant des obstacles.
@@ -430,10 +433,10 @@ Atteindre la cible entraîne une récompense de <code class="docutils literal no
 <p>Au début de l’entraînement, l’agent ne sait pas quelles actions sélectionner
 pour atteindre l’objectif. Il pose des actions aléatoires qui ne lui permettent
 pas d’obtenir des valeurs de récompense, comme le montre l’animation suivante :</p>
-<figure class="align-default" id="id17">
+<figure class="align-default" id="id18">
 <img alt="_images/frozen_lake_aleatoire.gif" src="_images/frozen_lake_aleatoire.gif" />
 <figcaption>
-<p><span class="caption-text">Exploration aléatoire de l’environnement</span><a class="headerlink" href="#id17" title="Lien permanent vers cette image">#</a></p>
+<p><span class="caption-text">Exploration aléatoire de l’environnement</span><a class="headerlink" href="#id18" title="Lien permanent vers cette image">#</a></p>
 </figcaption>
 </figure>
 <p>Pour améliorer les performances, on calcule la fonction de qualité en suivant
@@ -529,12 +532,13 @@ de l’agent)</strong></p></td>
 </table>
 <p>Par exemple, on voit que l’algorithme a déterminé que la meilleure action à
 sélectionner lorsque l’agent se trouve dans la cellule <span class="math notranslate nohighlight">\((0, 0)\)</span> consiste
-à descendre. En suivant ce modèle, l’agent peut alors se déplacer dans
-l’environnement sans rencontrer d’obstacle pour atteindre son but.</p>
-<figure class="align-default" id="id18">
+se diriger vers le bas (<span class="math notranslate nohighlight">\(\downarrow\)</span>). En suivant ce modèle, l’agent
+peut alors se déplacer dans l’environnement sans rencontrer d’obstacle pour
+atteindre son but.</p>
+<figure class="align-default" id="id19">
 <img alt="_images/frozen_lake_qlearning.gif" src="_images/frozen_lake_qlearning.gif" />
 <figcaption>
-<p><span class="caption-text">Déplacement dans l’environnement après apprentissage par Q-learning</span><a class="headerlink" href="#id18" title="Lien permanent vers cette image">#</a></p>
+<p><span class="caption-text">Déplacement dans l’environnement après apprentissage par Q-learning</span><a class="headerlink" href="#id19" title="Lien permanent vers cette image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -559,18 +563,18 @@ découverte de BCG chez les champignons.</p>
 </section>
 <section id="bibliographie">
 <h1>Bibliographie<a class="headerlink" href="#bibliographie" title="Lien permanent vers ce titre">#</a></h1>
-<div class="docutils container" id="id12">
+<div class="docutils container" id="id13">
 <dl class="citation">
-<dt class="label" id="id13"><span class="brackets">1</span><span class="fn-backref">(<a href="#id6">1</a>,<a href="#id9">2</a>)</span></dt>
-<dd><p>Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. <em>Bioinformatics</em>, 38(16):3984–3991, 06 2022. URL: <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac420">https://doi.org/10.1093/bioinformatics/btac420</a>, <a class="reference external" href="https://arxiv.org/abs/https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf">arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf</a>, <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac420">doi:10.1093/bioinformatics/btac420</a>.</p>
-</dd>
-<dt class="label" id="id14"><span class="brackets">2</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id8">2</a>)</span></dt>
+<dt class="label" id="id15"><span class="brackets">1</span><span class="fn-backref">(<a href="#id6">1</a>,<a href="#id7">2</a>,<a href="#id8">3</a>)</span></dt>
 <dd><p>Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. <em>Microbiology spectrum</em>, 2021. <a class="reference external" href="https://doi.org/10.1128/Spectrum.00898-21">doi:10.1128/Spectrum.00898-21</a>.</p>
 </dd>
-<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id10">3</a></span></dt>
+<dt class="label" id="id14"><span class="brackets">2</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id10">2</a>)</span></dt>
+<dd><p>Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. <em>Bioinformatics</em>, 38(16):3984–3991, 06 2022. URL: <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac420">https://doi.org/10.1093/bioinformatics/btac420</a>, <a class="reference external" href="https://arxiv.org/abs/https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf">arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf</a>, <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac420">doi:10.1093/bioinformatics/btac420</a>.</p>
+</dd>
+<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id11">3</a></span></dt>
 <dd><p>Justin Fu, Aviral Kumar, Matthew Soh, and Sergey Levine. Diagnosing bottlenecks in deep q-learning algorithms. <em>Proceedings of the 36th International Conference on Machine Learning</em>, 97:2021–2030, 09–15 Jun 2019. URL: <a class="reference external" href="https://proceedings.mlr.press/v97/fu19a.html">https://proceedings.mlr.press/v97/fu19a.html</a>.</p>
 </dd>
-<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id11">4</a></span></dt>
+<dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id12">4</a></span></dt>
 <dd><p>Farama Foundation. Gymnasium documentation. 2023. URL: <a class="reference external" href="https://gymnasium.farama.org/">https://gymnasium.farama.org/</a> (visited on 2023-02-05).</p>
 </dd>
 </dl>
