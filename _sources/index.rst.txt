@@ -34,13 +34,14 @@ semblables et attirer des espèces favorables à sa survie.
 
 Dans l'industrie pharmaceutique et en agriculture, les métabolites secondaires
 ont une grande importance puisqu'ils permettent de découvrir des molécules
-bénéfiques dans plusieurs domaines, comme la fabrication de médicaments
-:cite:`kwon2021`. Malheureusement, les métabolites secondaires sont difficiles
-à identifier. Les voies métaboliques impliquées dans leur synthèse sont
-encodées dans le génome de l'organisme sur des grappes (*clusters*) de gènes
-contigus nommés **grappe de gènes biosynthétiques** (*Biosynthetic Gene Clusters*,
-BGC). Étant donné leur grande diversité, les méthodes modernes ont du mal à
-identifier efficacement les BCG :cite:`almeida2022`.
+bénéfiques dans plusieurs domaines, comme la fabrication de médicaments,
+de pesticides ou de cosmétiques :cite:`kwon2021`. Malheureusement, les
+métabolites secondaires sont difficiles à identifier. Les voies métaboliques
+impliquées dans leur synthèse sont encodées dans le génome de l'organisme sur
+des grappes (*clusters*) de gènes contigus nommés **grappe de gènes
+biosynthétiques** (*Biosynthetic Gene Clusters*, BGC). Étant donné leur grande
+diversité, les méthodes modernes ont du mal à identifier efficacement les
+BCG :cite:`almeida2022`.
 
 Almeida *et al.* :cite:`almeida2022` présentent une technique de détection des
 BCG basée sur l'apprentissage par renforcement, un type d'intelligence
