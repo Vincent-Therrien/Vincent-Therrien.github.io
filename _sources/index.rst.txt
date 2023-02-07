@@ -62,10 +62,10 @@ un robot comment marcher en ligne droite, on peut considérer que :
 
 - **L'agent** est le robot.
 - **L'environnement** est le milieu dans lequel il se déplace.
-- Les **états** représentent toutes les configurations possibles de robot et sa
+- Les **états** représentent toutes les configurations possibles du robot et sa
   position dans l'espace.
 - Les **actions** de l'agent consistent à bouger ses articulations.
-- Les **récompenses** mesurent comment l'agent accomplit sa tâches. Par
+- Les **récompenses** mesurent à quel point l'agent accomplit ses tâches. Par
   exemple, avancer pourrait entraîner une récompense positive tandis que tomber
   ou reculer entraînerait une récompense négative.
 
