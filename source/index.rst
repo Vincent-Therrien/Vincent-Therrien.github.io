@@ -25,6 +25,12 @@ présente un survol de techniques utilisées dans ce but.
 Mise en contexte
 ----------------
 
+Les métabolites secondaires, des composés essentiels à la survie de plusieurs organismes, sont utilisés dans des activités industrielles et scientifiques :cite:`almeida2022`. On retrouve ces composants dans de nombreux produits tels que la caféine, la nicotine, la carotène ainsi que dans de nombreux produits pharmaceutiques tels que la pénicilline, la morphine et les antibiotiques. La découverte de métabolites secondaires peut donc aider l’industrie à développer de nouveaux médicaments ou traitements. Les champignons représentent une riche source de métabolites secondaires, mais l’identification de ces composés représente un défi. Afin de faciliter leur découverte, Almeida et al. ont développé une technique basée sur l’apprentissage par renforcement. La figure 1 présente quelques exemples de médicaments issus de métabolites secondaires produits chez des champignons.
+
+
+
+
+
 Les métabolites secondaires sont des molécules qui n'appartiennent pas au
 métabolisme primaire :cite:`kwon2021`. En plus d'être présents chez une variété
 d'organismes, comme les plantes, les champignons ou les bactéries, les
@@ -47,6 +53,17 @@ Almeida *et al.* :cite:`almeida2022` présentent une technique de détection des
 BCG basée sur l'apprentissage par renforcement, un type d'intelligence
 artificielle. Cette page présente le fonctionnement de leur méthode ainsi que
 des comparaisons avec d'autres approches.
+
+
+
+
+
+
+
+
+
+
+
 
 Survol de l'apprentissage par renforcement
 ------------------------------------------
