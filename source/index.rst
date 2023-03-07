@@ -71,7 +71,7 @@ On peut diviser les approches de découverte des BGC en trois catégories :cite:
 
 La plupart des approches créées pour identifier des BGC visent d’abord le génome des bactéries parce qu’il existe davantage de données liées à ces organismes. On compte moins de techniques pour les BGC des champignons étant donné le manque de données.
 
-Les techniques d’apprentissage par renforcement (AR) sont moins communes que les approches basées sur l’apprentissage supervisé pour traiter des données biologiques. Des approches de type AR ont servi à réaliser des tâches d’optimisation comme l’alignement de séquences :cite:`mircea2018`, les réseaux régulatoires de contrôle de gènes :cite:`imani2018`, la conception de séquences d’ARN :cite:`eastman2018` et l’assemblage de composés pour les médicaments :cite:`gottipati2020`, :cite:`almeida2022`. Il est donc logique d’appliquer cette technique à l’identification de BGC.
+Les techniques d’apprentissage par renforcement (AR) sont moins communes que les approches basées sur l’apprentissage supervisé pour traiter des données biologiques. Des approches de type AR ont servi à réaliser des tâches d’optimisation comme l’alignement de séquences :cite:`mircea2020`, les réseaux régulatoires de contrôle de gènes :cite:`imani2018`, la conception de séquences d’ARN :cite:`eastman2018` et l’assemblage de composés pour les médicaments :cite:`gottipati2020`, :cite:`almeida2022`. Il est donc logique d’appliquer cette technique à l’identification de BGC.
 
 Techniques d'apprentissage supervisé
 ------------------------------------
@@ -170,6 +170,15 @@ où :
   récompenses à court terme. On doit observer
   :math:`0 < \gamma < 1`.
 - r représente la récompense observée quand l’agent pose une action.
+
+On peut utiliser un autre hyperparamètre, :math:`\epsilon`, qui représente le
+facteur d'exploration. Plus :math:`\epsilon` est élevé, plus l'algorithme a
+tendance à poser des actions aléatoires qui peuvent lui permettre de découvrir
+des combinaisons état-action menant à de plus grandes récompences. On doit
+observer :math:`0 < \epsilon < 1`. Souvent, on commence l'entraînement avec une
+valeur de :math:`\epsilon` élevée pour explorer l'environnement. À mesure que
+la fonction de qualité converge vers une forme optimale, la valeur de
+:math:`\epsilon` diminue.
 
 Exemple d'utilisation du Q-learning
 ```````````````````````````````````
