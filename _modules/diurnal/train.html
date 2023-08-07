@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>diurnal.train &mdash; diurnal 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            diurnal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../literature_review.html">Literature Review</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">diurnal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">diurnal.train</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for diurnal.train</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    RNA secondary structure training utility module.</span>
+
+<span class="sd">    - Author: Vincent Therrien (therrien.vincent.2@courrier.uqam.ca)</span>
+<span class="sd">    - Affiliation: Département d&#39;informatique, UQÀM</span>
+<span class="sd">    - File creation date: April 2023</span>
+<span class="sd">    - License: MIT</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">shuffle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="kn">from</span> <span class="nn">diurnal.utils</span> <span class="kn">import</span> <span class="n">log</span>
+<span class="kn">import</span> <span class="nn">diurnal.family</span>
+<span class="kn">import</span> <span class="nn">diurnal.structure</span>
+
+
+<span class="c1"># Input data transformation</span>
+<span class="k">def</span> <span class="nf">_split_arrays</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fractions</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="n">subarrays</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fractions</span><span class="p">:</span>
+        <span class="c1"># Determine the indices to use.</span>
+        <span class="n">index2</span> <span class="o">=</span> <span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">f</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">index2</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">:</span>
+            <span class="n">index2</span> <span class="o">%=</span> <span class="n">n</span>
+        <span class="c1"># Make the subarray according to the indices.</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="n">index2</span><span class="p">:</span>
+            <span class="n">subarrays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">:</span><span class="n">index2</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">:]</span>
+            <span class="n">tmp</span> <span class="o">+=</span> <span class="n">data</span><span class="p">[:</span><span class="n">index2</span><span class="p">]</span>
+            <span class="n">subarrays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">index2</span>
+    <span class="k">return</span> <span class="n">subarrays</span>
+
+
+<div class="viewcode-block" id="split_data"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.train.split_data">[docs]</a><span class="k">def</span> <span class="nf">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fractions</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Split data in subsets according to the specified fractions.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data: Array-like object containing the data to split.</span>
+<span class="sd">        fractions: Proportion of each subset. For instance, to use 80% of the</span>
+<span class="sd">            data for training and 20% for testing, use [0.8, 0.2].</span>
+<span class="sd">        offset: Number of indices to offset to assemble the subsets. Used for</span>
+<span class="sd">            K-fold data splits.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A list containing the split data object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">fractions</span><span class="p">)</span> <span class="o">!=</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Invalid data split proportions.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]])):</span>
+            <span class="n">element</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+                <span class="n">element</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+        <span class="n">split_values</span> <span class="o">=</span> <span class="n">_split_arrays</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">fractions</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
+        <span class="n">new_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">split</span> <span class="ow">in</span> <span class="n">split_values</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">keys</span><span class="p">):</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">element</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">split</span><span class="p">]</span>
+            <span class="n">new_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_data</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_split_arrays</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fractions</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="k_fold_split"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.train.k_fold_split">[docs]</a><span class="k">def</span> <span class="nf">k_fold_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fractions</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Split the data to make a K-fold split.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data: Array-like object containing the data to split.</span>
+<span class="sd">        fractions: Proportion of each subset. For instance, to use 80% of the</span>
+<span class="sd">            data for training and 20% for testing, use [0.8, 0.2].</span>
+<span class="sd">        k: Number of folds.</span>
+<span class="sd">        i: Zero-based index of the fold.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A tuple containing the split data object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="s2">&quot;Invalid K-fold parameters.&quot;</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fractions</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="shuffle_data"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.train.shuffle_data">[docs]</a><span class="k">def</span> <span class="nf">shuffle_data</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Shuffle vectors to preserve one-to-one original pairings.</span>
+
+<span class="sd">    For instance, consider</span>
+<span class="sd">    - a = [ 0,   1,   2 ]</span>
+<span class="sd">    - b = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+<span class="sd">    Shuffling lists `a` and `b` may result in:</span>
+<span class="sd">    - a = [ 2,   1,   0 ]</span>
+<span class="sd">    - b = [&#39;c&#39;, &#39;b&#39;, &#39;a&#39;]</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        args: List-like elements to be shuffled. They need to be of the</span>
+<span class="sd">            same dimensions.</span>
+
+<span class="sd">    Returns (tuple): Shuffled data. The vector are returned in the same</span>
+<span class="sd">        order as they were provided.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Parameter validation</span>
+    <span class="n">lengths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="n">lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">lengths</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">lengths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lengths</span><span class="p">):</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Shuffled data are not homogeneous.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span>
+    <span class="c1"># Shuffling</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">))</span>
+    <span class="n">shuffle</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">tmp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">args</span></div>
+
+
+<span class="c1"># Training functions</span>
+<span class="k">def</span> <span class="nf">_read_formatted_data</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read an RNA dataset encoded into .npy Numpy files.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Directory path of the folder containing the dataset</span>
+<span class="sd">            files.</span>
+
+<span class="sd">    Returns (tuple(list)):  List-converted file content in the following</span>
+<span class="sd">        order: (primary structure, secondary structure, families, names)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span>
+    <span class="c1"># Load data.</span>
+    <span class="n">relative_paths</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;primary_structures.npy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;secondary_structures.npy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;names.txt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;families.txt&quot;</span>
+    <span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">relative_paths</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.npy&quot;</span><span class="p">):</span>
+            <span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">p</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">p</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">array</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">p</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.txt&quot;</span><span class="p">):</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+            <span class="n">names</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+    <span class="c1"># Validate the loaded data.</span>
+    <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">lengths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">lengths</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">lengths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lengths</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;load_data: Inhomogeneous sequences: </span><span class="si">{</span><span class="n">lengths</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+
+<span class="k">def</span> <span class="nf">_convert_data_to_dict</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Format loaded data into a dictionary.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (list): Input data.</span>
+
+<span class="sd">    Return (dict): Input data represented in a labelled dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;primary_structures&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="s2">&quot;secondary_structures&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="s2">&quot;names&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+        <span class="s2">&quot;families&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="p">}</span>
+
+
+<div class="viewcode-block" id="load_data"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.train.load_data">[docs]</a><span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">randomize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read formatted data into tensors.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Name of the directory that contains the Numpy files</span>
+<span class="sd">            written by the function `diurnal.database.format`.</span>
+<span class="sd">        randomize (bool): Randomize data if set to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: Loaded data represented as</span>
+<span class="sd">            [primary structure, secondary structure, family].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">_read_formatted_data</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="c1"># Shuffle data.</span>
+    <span class="k">if</span> <span class="n">randomize</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">shuffle_data</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">_convert_data_to_dict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_families"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.train.load_families">[docs]</a><span class="k">def</span> <span class="nf">load_families</span><span class="p">(</span>
+        <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">families</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">randomize</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read formatted molecules of the specified RNA family.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Name of the directory that contains the Numpy files</span>
+<span class="sd">            written by the function `diurnal.database.format`.</span>
+<span class="sd">        families (List(str) | str): Families to read.</span>
+<span class="sd">        randomize (bool): Randomize data if set to True.</span>
+<span class="sd">        verbose (bool): Print informative messages.</span>
+
+<span class="sd">    Returns (dict): Loaded data represented as</span>
+<span class="sd">        `{&quot;primary_structure&quot;: list,</span>
+<span class="sd">          &quot;secondary_structure&quot;: list,</span>
+<span class="sd">          &quot;names&quot;: list(str),</span>
+<span class="sd">          &quot;family&quot;: list}`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">families</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">families</span> <span class="o">=</span> <span class="p">[</span><span class="n">families</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">families</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading the families </span><span class="si">{</span><span class="n">families</span><span class="si">}</span><span class="s2"> from `</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">`.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading the family </span><span class="si">{</span><span class="n">families</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> from `</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">`.&quot;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">_read_formatted_data</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">selected_data</span> <span class="o">=</span> <span class="p">[[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]]</span>
+    <span class="k">for</span> <span class="n">family</span> <span class="ow">in</span> <span class="n">families</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">diurnal</span><span class="o">.</span><span class="n">family</span><span class="o">.</span><span class="n">is_known</span><span class="p">(</span><span class="n">family</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Family `</span><span class="si">{</span><span class="n">family</span><span class="si">}</span><span class="s2">` not recognized.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">families</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                <span class="n">selected_data</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">randomize</span><span class="p">:</span>
+        <span class="n">selected_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">shuffle_data</span><span class="p">(</span><span class="o">*</span><span class="n">selected_data</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">_convert_data_to_dict</span><span class="p">(</span><span class="n">selected_data</span><span class="p">)</span></div>
+
+
+<span class="c1"># Output data manipulation</span>
+<div class="viewcode-block" id="categorize_vector"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.train.categorize_vector">[docs]</a><span class="k">def</span> <span class="nf">categorize_vector</span><span class="p">(</span><span class="n">prediction</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a vector of predicted pairings into a one-hot vector. For</span>
+<span class="sd">    instance, `[[0.9, 0.5, 0.1], [0.0, 0.5, 0.1]]` is converted to</span>
+<span class="sd">    `[[1, 0, 0], [0, 1, 0]]`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        prediction (list-like): Secondary structure prediction.</span>
+
+<span class="sd">    Returns: Reformatted secondary structure.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+        <span class="n">pred_vector</span> <span class="o">=</span> <span class="n">prediction</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pred_vector</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prediction</span><span class="p">]</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">pred_vector</span><span class="p">]</span>
+    <span class="n">element_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred_vector</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="n">i</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">element_size</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="clean_vectors"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.train.clean_vectors">[docs]</a><span class="k">def</span> <span class="nf">clean_vectors</span><span class="p">(</span><span class="n">primary</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">true</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">pred</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prepare a secondary structure prediction for evaluation.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        primary (list): Vector-encoded primary structure.</span>
+<span class="sd">        true (list): True vector-encoded secondary structure.</span>
+<span class="sd">        pred (list): Predicted vector-encoded secondary structure.</span>
+
+<span class="sd">    Returns (tuple): A tuple of elements organized as:</span>
+<span class="sd">      - sequence of bases</span>
+<span class="sd">      - stripped true secondary structure</span>
+<span class="sd">      - stripped predicted secondary structure</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">bases</span> <span class="o">=</span> <span class="n">diurnal</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">Primary</span><span class="o">.</span><span class="n">to_sequence</span><span class="p">(</span><span class="n">primary</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bases</span><span class="p">,</span> <span class="n">true</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">bases</span><span class="p">)],</span> <span class="n">categorize_vector</span><span class="p">(</span><span class="n">pred</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">bases</span><span class="p">)])</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Vincent Therrien.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

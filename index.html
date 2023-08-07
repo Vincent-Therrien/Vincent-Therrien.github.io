@@ -1,728 +1,246 @@
-
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-<html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Identifier des gènes biosynthétiques avec l’apprentissage par renforcement &#8212; Documentation Trouver des BGC avec l&#39;apprentissage par renforcement 1.0</title>
-    
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script src="_static/translations.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>diurnal &mdash; diurnal 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Recherche" href="search.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="fr">
-    
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="User Guide" href="user_guide.html" /> 
+</head>
 
-    <!-- Google Analytics -->
-    
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint single-page" id="site-navigation">
-</div>
-
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
 
           
-
-
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/index.rst.txt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.rst</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
+          <a href="#" class="icon icon-home">
+            diurnal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
-</div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Identifier des gènes biosynthétiques avec l’apprentissage par renforcement
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mise-en-contexte">
-     Mise en contexte
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probleme-de-recherche">
-     Problème de recherche
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#outils-de-detection-des-bgc">
-     Outils de détection des BGC
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#techniques-d-apprentissage-supervise">
-     Techniques d’apprentissage supervisé
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#techniques-d-apprentissage-par-renforcement">
-     Techniques d’apprentissage par renforcement
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#exemple-d-utilisation-du-q-learning">
-       Exemple d’utilisation du Q-learning
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#application-du-q-learning-a-l-identification-des-bgc">
-       Application du Q-learning à l’identification des BGC
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conclusion-et-directions-futures">
-     Conclusion et directions futures
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bibliographie">
-   Bibliographie
-  </a>
- </li>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="literature_review.html">Literature Review</a></li>
 </ul>
 
+        </div>
+      </div>
     </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Identifier des gènes biosynthétiques avec l’apprentissage par renforcement</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Identifier des gènes biosynthétiques avec l’apprentissage par renforcement
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mise-en-contexte">
-     Mise en contexte
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probleme-de-recherche">
-     Problème de recherche
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#outils-de-detection-des-bgc">
-     Outils de détection des BGC
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#techniques-d-apprentissage-supervise">
-     Techniques d’apprentissage supervisé
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#techniques-d-apprentissage-par-renforcement">
-     Techniques d’apprentissage par renforcement
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#exemple-d-utilisation-du-q-learning">
-       Exemple d’utilisation du Q-learning
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#application-du-q-learning-a-l-identification-des-bgc">
-       Application du Q-learning à l’identification des BGC
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conclusion-et-directions-futures">
-     Conclusion et directions futures
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bibliographie">
-   Bibliographie
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <main id="main-content" role="main">
-                
-              <div>
-                
-  <section id="identifier-des-genes-biosynthetiques-avec-l-apprentissage-par-renforcement">
-<h1>Identifier des gènes biosynthétiques avec l’apprentissage par renforcement<a class="headerlink" href="#identifier-des-genes-biosynthetiques-avec-l-apprentissage-par-renforcement" title="Lien permanent vers ce titre">#</a></h1>
-<span class="target" id="id1"></span><p>On découvre avec le génome de plusieurs organismes des composés chimiques
-utiles pour des activités humaines. Parmi ceux-ci, les métabolites secondaires
-présents, entre autres, chez les plantes et les champignons, ont des
-applications variées allant de la médecine à l’agriculture <span id="id12">[<a class="reference internal" href="#id42" title="Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. Microbiology spectrum, 2021. doi:10.1128/Spectrum.00898-21.">1</a>]</span>.
-Des équipes de recherche s’efforcent de trouver des manières d’identifier
-davantage de tels composés en explorant différentes approches. Cette page
-présente un survol de techniques utilisées dans ce but.</p>
-<div class="contents local topic" id="contenu">
-<p class="topic-title">Contenu</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#mise-en-contexte" id="id54">Mise en contexte</a></p></li>
-<li><p><a class="reference internal" href="#probleme-de-recherche" id="id55">Problème de recherche</a></p></li>
-<li><p><a class="reference internal" href="#outils-de-detection-des-bgc" id="id56">Outils de détection des BGC</a></p></li>
-<li><p><a class="reference internal" href="#techniques-d-apprentissage-supervise" id="id57">Techniques d’apprentissage supervisé</a></p></li>
-<li><p><a class="reference internal" href="#techniques-d-apprentissage-par-renforcement" id="id58">Techniques d’apprentissage par renforcement</a></p>
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">diurnal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">diurnal</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="diurnal">
+<h1>diurnal<a class="headerlink" href="#diurnal" title="Permalink to this headline"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">diurnal</span></code> is a Python library that facilitates RNA secondary structure
+predictions.</p>
+<p>This library aims at streamlining the process of elaborating, training, and
+validating RNA structure predictive models. Researchers can use it under the MIT
+license to develop and publish models that can be easily replicated by other
+users.</p>
+<p>This page presents an <a class="reference internal" href="#overview"><span class="std std-ref">Overview</span></a> of the project and its
+<a class="reference internal" href="#usage"><span class="std std-ref">Basic Usage</span></a>. The <a class="reference internal" href="user_guide.html#user-guide"><span class="std std-ref">User Guide</span></a> provides detailed explanations of
+the library. The <a class="reference internal" href="source/modules.html#source-code-documentation"><span class="std std-ref">Source Code Documentation</span></a> presents the signature
+of all the components of the library. The <a class="reference internal" href="literature_review.html#lit-review"><span class="std std-ref">Literature Review</span></a> provides the list of
+references that were used to develop the project and discusses other similar
+projects. The <a class="reference internal" href="developer_guide.html#developer-guide"><span class="std std-ref">Developer Guide</span></a> explains how the project is organized and
+how to contribute to it.</p>
+<div class="toctree-wrapper compound">
 <ul>
-<li><p><a class="reference internal" href="#exemple-d-utilisation-du-q-learning" id="id59">Exemple d’utilisation du Q-learning</a></p></li>
-<li><p><a class="reference internal" href="#application-du-q-learning-a-l-identification-des-bgc" id="id60">Application du Q-learning à l’identification des BGC</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#conclusion-et-directions-futures" id="id61">Conclusion et directions futures</a></p></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="literature_review.html">Literature Review</a></li>
 </ul>
 </div>
-<section id="mise-en-contexte">
-<h2>Mise en contexte<a class="headerlink" href="#mise-en-contexte" title="Lien permanent vers ce titre">#</a></h2>
-<p>Les métabolites secondaires, des composés essentiels à la survie de plusieurs organismes, sont utilisés dans des activités industrielles et scientifiques <span id="id13">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>. On retrouve ces composants dans de nombreux produits tels que la caféine, la nicotine, la carotène ainsi que dans de nombreux produits pharmaceutiques tels que la pénicilline, la morphine et les antibiotiques. La découverte de métabolites secondaires peut donc aider l’industrie à développer de nouveaux médicaments ou traitements. Les champignons représentent une riche source de métabolites secondaires, mais l’identification de ces composés représente un défi. Afin de faciliter leur découverte, Almeida et al. ont développé une technique basée sur l’apprentissage par renforcement. La figure suivante présente quelques exemples de médicaments issus de métabolites secondaires produits chez des champignons.</p>
-<figure class="align-default" id="id46">
-<img alt="_images/figure1.png" src="_images/figure1.png" />
+<section id="overview">
+<span id="id1"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>This library contains <strong>RNA secondary structure predictive models</strong>. It also
+comprises utility components that automate data processing tasks.</p>
+<p>In short, RNA secondary structure describes the <em>pairings</em> of nucleotides. RNA
+(ribonucleic acid) is a molecule that performs a variety of biological
+functions. It is therefore the subject of interest for molecular biologists who
+aim at determining their function. An RNA molecules is made of a chain of
+<em>nucleotides</em> that can fold onto itself. One can describe the structure of RNA
+molecules in different ways.</p>
+<ul class="simple">
+<li><p>The sequence of nucleotides is the <em>primary structure</em>. In general, RNA uses
+four possible nucleotides: adenine, cytosine, guanine, and uracil. They are
+represented by the letters <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>, <code class="docutils literal notranslate"><span class="pre">G</span></code>, and <code class="docutils literal notranslate"><span class="pre">U</span></code>, respectively.</p></li>
+<li><p>The way that nucleotides combine with one another is the <em>secondary
+structure</em>. One way to represent the secondary structure is to use the
+<strong>dot-bracket notation</strong>. Unpaired nucleotides are represented by a dot
+(<code class="docutils literal notranslate"><span class="pre">.</span></code>). A nucleotide paired with a nucleotide closer to the 3’ end of the
+molecule (i.e. to the right) is represented by an opening parenthesis
+( <code class="docutils literal notranslate"><span class="pre">(</span></code> ). A nucleotide paired with a nucleotide closer to the 5’ end of the
+molecule (i.e. to the left) is represented by a closing parenthesis ( <code class="docutils literal notranslate"><span class="pre">)</span></code> ).</p></li>
+<li><p>The 3D arrangement of the molecule is the <em>tertiary structure</em>. The tertiary
+structure is not studied in this project but can be used to better understand
+the function of the molecule.</p></li>
+</ul>
+<p>The image below displays the primary and secondary structures of a short RNA
+molecule.</p>
+<figure class="align-default" id="id4">
+<img alt="Primary and secondary structures of a simple RNA molecule. The left part of the image displays a straight chain of 31 nucleotides. This is the primary structure. The right part of the image shows a 2D representation of paired nucleotides that form stems and loops. This is the secondary structure." src="_images/structure_example.png" />
 <figcaption>
-<p><span class="caption-text">Exemples de métabolites secondaires chez les champignons (Almeida)</span><a class="headerlink" href="#id46" title="Lien permanent vers cette image">#</a></p>
+<p><span class="caption-text">Primary and secondary structures of a short RNA molecule. Nucleotide sequence
+taken from <span id="id2">[<a class="reference internal" href="user_guide.html#id17" title="Mehdi Saman Booy, Alexander Ilin, and Pekka Orponen. Rna secondary structure prediction with convolutional neural networks. BMC Bioinformatics, 23(1):58, 2022. URL: https://doi.org/10.1186/s12859-021-04540-7, doi:10.1186/s12859-021-04540-7.">1</a>]</span> and images generated with the <code class="docutils literal notranslate"><span class="pre">forna</span></code>
+<span id="id3">[<a class="reference internal" href="user_guide.html#id27" title="Accessed: 2023-07-15. URL: http://rna.tbi.univie.ac.at/forna/.">2</a>]</span> visualization tool.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
-<p>Afin d’identifier les métabolites secondaires, il faut se pencher sur les voies biosynthétiques qui les produisent et qui sont encodées dans des groupes de gènes dans le génome des organismes nommés <strong>groupes de gènes biosynthétiques</strong> ou BGC. La diversité génomique des champignons rend l’identification des BGC très difficile, même avec des outils de pointe, les cures manuelles ou les caractérisations expérimentales faites par des experts.</p>
-<p>Les métabolites secondaires sont généralement composés minimalement d’un squelette enzymatique, qui définit les principaux composants chimiques à produire, et d’une enzyme d’adaptation capable de générer des variants en modifiant les composants principaux du groupe. Ils peuvent aussi contenir des facteurs de transcription spécifiques, des transporteurs et des protéines hypothétiques. La figure suivante présente des exemples de BGC qui permettent de synthétiser des métabolites secondaires.</p>
-<figure class="align-default" id="id47">
-<img alt="_images/figure2.png" src="_images/figure2.png" />
-<figcaption>
-<p><span class="caption-text">Exemples de BGC chez les champignons (Almeida)</span><a class="headerlink" href="#id47" title="Lien permanent vers cette image">#</a></p>
-</figcaption>
-</figure>
+<p>In the example above:</p>
+<ul class="simple">
+<li><p>The <strong>primary structure</strong> can be represented as
+<code class="docutils literal notranslate"><span class="pre">CGUGUCAGGUCCGGAAGGAAGCAGCACUAAC</span></code>.</p></li>
+<li><p>The <strong>secondary structure</strong> can be represented as
+<code class="docutils literal notranslate"><span class="pre">.((((....(((....)))....))))....</span></code>.</p></li>
+</ul>
+<p>Since determining the function of an RNA molecule from its primary structure is
+difficult, researchers rely on its secondary structure. Unfortunately,
+determining secondary structures experimentally is costly and time-consuming.
+There is hence an interest in reliably determining secondary structures from
+primary structures to understand the function of RNA molecules more effectively.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">diurnal</span></code> library <strong>predicts secondary structures from primary
+structures</strong>. It can:</p>
+<ul class="simple">
+<li><p>download RNA structure datasets,</p></li>
+<li><p>encode the datasets into trainable representations,</p></li>
+<li><p>prepare the data for different evaluation methods,</p></li>
+<li><p>train and evaluate models, and</p></li>
+<li><p>visualize results.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">diurnal</span></code> is released under the MIT license and developed in Python. It relies
+on the <code class="docutils literal notranslate"><span class="pre">Numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code> libraries for data manipulation and neural
+network utilization.</p>
 </section>
-<section id="probleme-de-recherche">
-<h2>Problème de recherche<a class="headerlink" href="#probleme-de-recherche" title="Lien permanent vers ce titre">#</a></h2>
-<p>L’objectif principal du projet de recherche est de faciliter la découverte de BGC chez les champignons.</p>
-<p>Identifier des BGC est une tâche ardue pour plusieurs raisons. D’abord, la diversité génomique des champignons est élevée, même à l’intérieur d’une seule espèce. Une étude comparative sur des espèces d’<em>Aspergillus</em> a démontré que plus de 50 % du génome des champignons varie entre celles-ci <span id="id14">[<a class="reference internal" href="#id40" title="Kjærbølling. A comparative genomics study of 23 aspergillus species from section flavi. Nature Communication, 2020. URL: https://www.nature.com/articles/s41467-019-14051-y.">3</a>]</span>. De plus, il est difficile de définir précisément les limites in silico ( avec des modèles informatiques) des BGC. S’ajoute à cela l’ambiguïté fonctionnelle des gènes voisins des BGC. Par exemple, certains gènes voisins des BGC peuvent montrer un rôle fonctionnel pertinent mais pas nécessairement appartenir au BGC le plus proche ou prendre part à la production de métabolites <span id="id15">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>. La validation des BGC in silico par des experts est nécessaire à cette analyse et constitue une tâche complexe. Par la suite, les BGC candidats doivent être expérimentalement caractérisés. Un important nombre de voies métaboliques des BGC candidats sont silencieuses ou très peu exprimées dans des conditions de laboratoire, ce qui peut empêcher la prédiction de BGC in silico et même la production de composants de métabolites secondaires <span id="id16">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>.</p>
-<p>On décompose la question de recherche en trois sous-questions :</p>
-<ol class="arabic simple">
-<li><p>Comment obtenir les données pour la découverte de BGC fongiques?</p></li>
-<li><p>Comment concevoir un outil qui permet la découverte de BGC fongique?</p></li>
-<li><p>Comment optimiser les prédictions des BGC fongiques en tenant compte des connaissances des experts?</p></li>
-</ol>
-<p>Répondre à ces questions soulève trois défis majeurs : la rareté des données, la prédiction des régions de BGC et l’optimisation des prédictions des BGC.</p>
-<ul class="simple">
-<li><p><strong>Rareté des données</strong> : Étant donnée la difficulté d’identifier des BGC chez les champignons, le nombre de composants déjà cartographiés et expérimentalement caractérisés est très limité. Parmi les bases de données de BGC publiques, le nombre de BGC fongiques est très bas comparativement aux bactéries. Par exemple, les bases de données MIBiG et antiSMASH contiennent respectivement 84,3% et 98,1% de données d’eucaryotes contre 15,7% et 1,9% de données pour les bactéries et archées. De plus, les régions BGC elles-mêmes sont rares dans les génomes des champignons et s’élèvent, selon une étude des données du MIBiG, à  1% du génome total, en moyenne. À cause de cette rareté, il est difficile de déterminer quelles régions non BGC pourraient contribuer à la découverte de BGC. Tous ces défis complexifient le développement d’outils et de méthodes  robustes  pour découvrir des BGC <span id="id17">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>.</p></li>
-<li><p><strong>Prédiction des régions BGC</strong> : Identifier des candidats comme des régions de BGC est une étape importante pour la caractérisation et la reproduction des composants de métabolites secondaires. Généralement, cette tâche se base sur  des approches bioinformatique et de calcul biologiques développé pour la découverte de BGC, mais la rareté des données ainsi que la diversité de la caractérisation génomique de ces groupes ont un impact direct sur le développement de ces approches.
-- D’une part, les approches précédentes se basent principalement sur des règles ou des manuels de données curatives. Toutefois, ceux-ci résultent en des approches qui surestiment les limites génomiques des BGC ou qui ne sont pas capables de généraliser correctement les prédictions de nouveaux candidats. S’ajoute à tout cela des coûts supplémentaires lorsque les limites surestimées sont traduites lors de l’étape de la caractérisation expérimentale. Finalement, un autre défi consiste à distinguer les composants nouvellement découverts des composants déjà identifiés.
-- D’autre part, les approches pour découvrir des BGC doivent souvent tenir compte de l’équilibre entre la robustesse de la méthode, qui permet d’identifier des BGC déjà connus au sein de nouveaux groupe, et la nouveauté, qui permet de découvrir de BCG avec des structures moins communes au détriments de trouver des structures déjà connues <span id="id18">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>.</p></li>
-<li><p><strong>Optimisation de la prédiction des BGC</strong> : Les BGC sont essentiellement composés de gènes qui codent pour un squelette enzymatique et d’une enzyme d’adaptation. Toutefois, les composants des BGC varient significativement au niveau des gènes impliqués dans les voies métaboliques qui synthétisent les composants des métabolites secondaires. La compositions des groupes peut varier selon la présence ou l’absence de certains composants et d’autres fois selon la localisation ou les composants apparaissent, telles que des régions de BGC voisin qui se chevauchent ou qui s’étendent sur plusieurs chromosomes <span id="id19">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>. Finalement les BGC peuvent présenter des composants spécifiques à un groupe, ce qui peut contribuer à rendre l’optimisation des prédictions encore plus complexe.</p></li>
-</ul>
-</section>
-<section id="outils-de-detection-des-bgc">
-<h2>Outils de détection des BGC<a class="headerlink" href="#outils-de-detection-des-bgc" title="Lien permanent vers ce titre">#</a></h2>
-<p>On peut diviser les approches de découverte des BGC en trois catégories <span id="id20">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span> :</p>
-<ul class="simple">
-<li><p>Les <strong>approches basées sur les données</strong> consistent à analyser les informations contenues dans le génome des organismes en portant particulièrement attention aux alignements de séquences, à l’expression des gènes et aux cooccurrences. Ces techniques requièrent un plus grand effort manuel pour le traitement des données.</p></li>
-<li><p>Les <strong>approches probabilistes</strong> sont basées sur les chaînes de Markov cachées en combinaison ou non avec d’autres méthodes. Par exemple, l’outil fungiSMASH s’appuie sur les chaînes de Markov de différentes bases de données (Pfam, TIGRFAM) pour extraire des domaines de protéines d’intérêt.</p></li>
-<li><p>Les <strong>approches basées sur l’apprentissage automatique</strong> s’appuient généralement sur des techniques d’apprentissage supervisé. Par exemple, DeepBGC utilise un réseau récurrent (BiLSTM) et l’ensemble de données Pfam pour prédire les régions génomiques appartenant à des régions BGC et non-BGC. Un classificateur de type forêt aléatoire est utilisé pour identifier des métabolites secondaires candidats.</p></li>
-</ul>
-<p>La plupart des approches créées pour identifier des BGC visent d’abord le génome des bactéries parce qu’il existe davantage de données liées à ces organismes. On compte moins de techniques pour les BGC des champignons étant donné le manque de données.</p>
-<p>Les techniques d’apprentissage par renforcement (AR) sont moins communes que les approches basées sur l’apprentissage supervisé pour traiter des données biologiques. Des approches de type AR ont servi à réaliser des tâches d’optimisation comme l’alignement de séquences <span id="id21">[<a class="reference internal" href="#id41" title="Mircea. A reinforcement learning based approach to multiple sequence alignment. International Workshop Soft Computing Applications, 2018. URL: https://www.researchgate.net/publication/320187339_A_Reinforcement_Learning_Based_Approach_to_Multiple_Sequence_Alignment.">4</a>]</span>, les réseaux régulatoires de contrôle de gènes <span id="id22">[<a class="reference internal" href="#id38" title="Imani and Braga-Neto. Control of gene regulatory networks using bayesian inverse reinforcement learning. 2018. URL: https://pubmed.ncbi.nlm.nih.gov/29993697/.">5</a>]</span>, la conception de séquences d’ARN <span id="id23">[<a class="reference internal" href="#id37" title="Eastman, Shi, Ramsundar, and Pande. Solving the rna design problem with reinforcement learning. Computational Biology, 2018. URL: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006176.">6</a>]</span> et l’assemblage de composés pour les médicaments <span id="id24">[<a class="reference internal" href="#id39" title="Gottipati. Learning to navigate the synthetically accessible chemical space using reinforcement learning. 2020. URL: http://proceedings.mlr.press/v119/gottipati20a/gottipati20a.pdf.">7</a>]</span>, <span id="id25">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>. Il est donc logique d’appliquer cette technique à l’identification de BGC.</p>
-</section>
-<section id="techniques-d-apprentissage-supervise">
-<h2>Techniques d’apprentissage supervisé<a class="headerlink" href="#techniques-d-apprentissage-supervise" title="Lien permanent vers ce titre">#</a></h2>
-<p>Par l’apprentissage supervisé l’objectif est d’apprendre d’une fonction <span class="math notranslate nohighlight">\(f: X \to Y\)</span>, avec une entrée <span class="math notranslate nohighlight">\(x \in X\)</span> qui produit une sortie <span class="math notranslate nohighlight">\(y \in Y\)</span> pour une tâche donnée. Pour déterminer cette transformation, un algorithme échantillonne <span class="math notranslate nohighlight">\(E\)</span> à partir d’un lot d’exemples <span class="math notranslate nohighlight">\(D(X,Y)\)</span>. Le lot de données <span class="math notranslate nohighlight">\(D\)</span> est composé de pairs d’entrées-sorties dans lesquels x sont des caractéristiques extraites de données et y sont des labels ou catégories. Un algorithme d’apprentissage est ajusté à D en minimisant une fonction d’erreur <span class="math notranslate nohighlight">\(l(y,y’)\)</span> où y’ est un label prédit à partir d’une entrée x <span id="id26">[<a class="reference internal" href="#id45" title="Tom Mitchell. Machine learning. 1997. URL: http://www.cs.cmu.edu/~tom/mlbook.html.">8</a>]</span>, <span id="id27">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>. Plus simplement, l’apprentissage supervisé apprend à classifier des données en s’appuyant sur des exemples de données classifiées.</p>
-<p>L’utilisation d’un cadre pour l’apprentissage supervisé pour les BGC fongiques soulève trois questions importantes :</p>
-<ol class="arabic simple">
-<li><p>En prenant en considération de nouvelles données, est-ce que les approches basées sur l’apprentissage par supervision nous permettent de supporter la découverte de BGC fongiques?</p></li>
-<li><p>Comment modéliser la découverte de BGC fongiques comme un problème d’apprentissage supervisé?</p></li>
-<li><p>Est-ce que ces modèles seront capables de fonctionner en dépit de la diversité génomique et de la rareté des données?</p></li>
-</ol>
-<p>L’étude cherche à déterminer si l’apprentissage supervisé permet d’atteindre les objectifs suivants :</p>
-<ul class="simple">
-<li><p>Concevoir la découverte de BGC en terme d’une classification binaire</p></li>
-<li><p>Analyser une variété de ratios BGC et non BGC dans les jeux de données</p></li>
-<li><p>Évaluer les paramètres qui se chevauchent et les paramètres d’analyse fenêtre</p></li>
-<li><p>Étudier la performance de différents classificateurs</p></li>
-<li><p>Comparer les performances de l’outils avec les outils les plus performants déjà existants</p></li>
-</ul>
-<p>Les approches dérivés de technique d’apprentissage par supervision ont démontré de bonnes performances pour la prédiction de BGC bactériens. Par contre, cette méthode n’a pas été utilisée jusqu’à présent pour identifier les BGC fongiques. Des méthodes telles que RiPPMiner et DeepBGC qui ont été développées pour les bactéries ont démontré des résultats décevants lorsque appliqué à des données fongiques. Ceci suggère que les méthodes de découverte de BGC développées pour les bactéries ne semblent pas être fonctionnelles pour les champignons à cause de la grande diversité des BGC fongiques qui semble varier même entre espèces très proches. De ce fait, il est important de développer des approches de découvertes de BGC pour les champignons en prenant en considération les caractéristiques des BGC fongiques, tel que la grande diversité, la composition des BGC mais aussi la longueur des BGC et des génomes qui sont plus grands que ceux des bactéries. C’est pour cela que TOUCAN a été proposé, une structure d’apprentissage supervisée qui s’attaque à la découverte de BGC chez les champignons et qui est basée sur la combinaison de caractéristiques biologiques: les k-mers, les domaines protéiques, et la gene Ontologie pour représenter les motif protéiques et les fonctions pertinentes des BGC fongiques <span id="id28">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>.</p>
-<p>Les modèles de classifications de TOUCAN ont été construits en se basant sur un ensemble de 6 bases de données de BGC fongiques avec une distribution variable, un total de six classificateurs et des méthodes de post-traitement. Pour construire et valider les modèles, une division aléatoire de 80% des données est faite pour entraîner les modèles et 20% pour leur validation. Pour représenter les données des BGC fongiques en termes de vecteurs caractéristiques, l’étude a utilisé les caractéristiques biologiques hétérogènes suivantes : k-mers, les termes GO et les domaines protéiques pfams. En terme de classificateurs les six suivant ont été utilisés :</p>
-<ul class="simple">
-<li><p>trois Support Vector Machine (SVM) classificateurs: C-Support Vector (svc), Linear Support Vector (lsvc), and Nu-Support Vector (nusvc) classifiers</p></li>
-<li><p>les trois autres sont: Multilayer Perceptron (mlp), Logistic Regression (logit) and Random Forest (randomf)</p></li>
-</ul>
-<p>Pour les post-traitement et la validation du modèle, six ensembles de données d’un génome de Aspergillus Niger sélectionnés manuellement ont été utilisés. Des régions de 5K, 7k, ou 10k d’acides aminés avec un chevauchement de 30% ou 50% ont été extraits du génome pour la validation <span id="id29">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>.</p>
-<p>Le graphique suivant résume l’ensemble de la démarche et des paramètres utilisé pour développer la structure TOUCAN :</p>
-<figure class="align-default" id="id48">
-<img alt="_images/figure3.png" src="_images/figure3.png" />
-<figcaption>
-<p><span class="caption-text">Structure de l’outil TOUCAN</span><a class="headerlink" href="#id48" title="Lien permanent vers cette image">#</a></p>
-</figcaption>
-</figure>
-<p>Il en résulte que TOUCAN est significativement supérieur en termes de performance que les autres outils déjà existant, à savoir fungiSMASH et DeepBGC. La table ci-dessous, montre clairement qu’en termes de performance TOUCAN est supérieur à ses paires  dans les 3 caractéristiques mesurées, P (précision), R ( Recall) et F-m (Fold measure) <span id="id30">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>.</p>
-<figure class="align-default" id="id49">
-<img alt="_images/figure4.png" src="_images/figure4.png" />
-<figcaption>
-<p><span class="caption-text">Comparaison des performances de TOUCAN, fungiSMASH et DeepBGC</span><a class="headerlink" href="#id49" title="Lien permanent vers cette image">#</a></p>
-</figcaption>
-</figure>
-<p>L’analyse de la présence d’enzymes de structures dans les gènes ayant une prédiction TP (True Positive) à aussi été faite. Les enzymes de structures sont considérées comme étant le cœur des BGC, jouent un rôle clé dans la biosynthèse permettant de définir les composants à produire <span id="id31">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>. Nous pouvons voir que TOUCAN a mieux performé que fungiSMASH et DeppBGC pour <em>A. niger</em> comme le montre l’image suivante :</p>
-<figure class="align-default" id="id50">
-<img alt="_images/figure5.png" src="_images/figure5.png" />
-<figcaption>
-<p><span class="caption-text">Prédictions des modèles TOUCAN, fungiSMASH et DeepBGC</span><a class="headerlink" href="#id50" title="Lien permanent vers cette image">#</a></p>
-</figcaption>
-</figure>
-<p>Pour conclure cette section, on peut dire que TOUCAN à mieux performer que les derniers outils existants, fungiSMASH et DeepBGC, pour <em>A. niger</em>. Les résultats obtenus sont reproductibles pour d’autres champignons tel que <em>A. nudilans</em>. L’outil permet d’améliorer la couverture de gènes BGC. TOUCAN obtient plus de BGC contenant des enzymes de structures, que les autres outils, et favorise la découverte sur des génomes nouvellement séquencés. Finalement, TOUCAN a le potentiel de sur-prédire les limites.</p>
-</section>
-<section id="techniques-d-apprentissage-par-renforcement">
-<h2>Techniques d’apprentissage par renforcement<a class="headerlink" href="#techniques-d-apprentissage-par-renforcement" title="Lien permanent vers ce titre">#</a></h2>
-<p>L’apprentissage par renforcement consiste à entraîner un modèle en simulant des
-interaction avec un environnement. En expérimentant différentes actions dans un
-milieu virtuel, un <em>agent</em> apprend quelles <em>actions</em> poser pour atteindre un
-<em>état</em> voulu <span id="id32">[<a class="reference internal" href="#id43" title="Justin Fu, Aviral Kumar, Matthew Soh, and Sergey Levine. Diagnosing bottlenecks in deep q-learning algorithms. Proceedings of the 36th International Conference on Machine Learning, 97:2021–2030, 09–15 Jun 2019. URL: https://proceedings.mlr.press/v97/fu19a.html.">9</a>]</span>. Les <em>récompenses</em> sont des valeurs qui
-guident l’agent dans son entraînement quand il se rapproche de l’état voulu.</p>
-<p>Par exemple, si l’on utilise l’apprentissage par renforcement pour apprendre à
-un robot comment marcher en ligne droite, on peut considérer que :</p>
-<ul class="simple">
-<li><p><strong>L’agent</strong> est le robot.</p></li>
-<li><p><strong>L’environnement</strong> est le milieu dans lequel il se déplace.</p></li>
-<li><p>Les <strong>états</strong> représentent toutes les configurations possibles du robot et sa
-position dans l’espace.</p></li>
-<li><p>Les <strong>actions</strong> de l’agent consistent à bouger ses articulations.</p></li>
-<li><p>Les <strong>récompenses</strong> mesurent à quel point l’agent accomplit ses tâches. Par
-exemple, avancer pourrait entraîner une récompense positive tandis que tomber
-ou reculer entraînerait une récompense négative.</p></li>
-</ul>
-<p>L’algorithme Q-learning est une manière d’entraîner un agent. Soient :</p>
-<ul class="simple">
-<li><p>Un ensemble d’états <span class="math notranslate nohighlight">\(S\)</span> composé de <span class="math notranslate nohighlight">\(n\)</span> états <span class="math notranslate nohighlight">\(s\)</span>.</p></li>
-<li><p>Un ensemble d’actions <span class="math notranslate nohighlight">\(A\)</span> composé de <span class="math notranslate nohighlight">\(m\)</span> actions <span class="math notranslate nohighlight">\(a\)</span>.</p></li>
-</ul>
-<p>Un agent dans un état <span class="math notranslate nohighlight">\(s_t\)</span> peut poser une action <span class="math notranslate nohighlight">\(a_t\)</span> pour passer
-à un état <span class="math notranslate nohighlight">\(s_{t+1}\)</span>. À chaque transition d’état, l’agent observe une
-récompense <span class="math notranslate nohighlight">\(r_t\)</span>. Le but du Q-learning est d’apprendre quelle est la meilleure action à
-sélectionner lorsque l’agent est dans un état donné. Pour ce faire, on cherche
-à élaborer une <strong>fonction de qualité</strong> <span class="math notranslate nohighlight">\(Q\)</span> qui calcule la qualité
-(c’est-à-dire, la tendance à produire des récompenses positives) de chaque
-combinaison état-action. L’équation <a class="reference internal" href="#equation-qlearning">(1)</a> présente l’algorithme
-utilisé pour calculer la fonction de qualité :</p>
-<div class="math notranslate nohighlight" id="equation-qlearning">
-<span class="eqno">(1)<a class="headerlink" href="#equation-qlearning" title="Lien permanent vers cette équation">#</a></span>\[Q_{t+1}(s_t, a_t) \leftarrow Q_t(s_t, a_t) + \alpha \{ r_t + \gamma \cdot argmax[Q(s_{t+1}, a)] - Q(s_t, a_t) \}\]</div>
-<p>où :</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> est le facteur d’apprentissage. Plus
-<span class="math notranslate nohighlight">\(\alpha\)</span> est élevé, plus l’algorithme privilégie les informations
-récentes par rapport aux informations anciennes. On doit observer
-<span class="math notranslate nohighlight">\(0 &lt; \alpha &lt; 1\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\gamma\)</span> est le facteur d’actualisation. Plus <span class="math notranslate nohighlight">\(\gamma\)</span> est élevé,
-plus l’algorithme privilégie les récompenses à long terme par rapport aux
-récompenses à court terme. On doit observer
-<span class="math notranslate nohighlight">\(0 &lt; \gamma &lt; 1\)</span>.</p></li>
-<li><p>r représente la récompense observée quand l’agent pose une action.</p></li>
-</ul>
-<p>On peut utiliser un autre hyperparamètre, <span class="math notranslate nohighlight">\(\epsilon\)</span>, qui représente le
-facteur d’exploration. Plus <span class="math notranslate nohighlight">\(\epsilon\)</span> est élevé, plus l’algorithme a
-tendance à poser des actions aléatoires qui peuvent lui permettre de découvrir
-des combinaisons état-action menant à de plus grandes récompences. On doit
-observer <span class="math notranslate nohighlight">\(0 &lt; \epsilon &lt; 1\)</span>. Souvent, on commence l’entraînement avec une
-valeur de <span class="math notranslate nohighlight">\(\epsilon\)</span> élevée pour explorer l’environnement. À mesure que
-la fonction de qualité converge vers une forme optimale, la valeur de
-<span class="math notranslate nohighlight">\(\epsilon\)</span> diminue.</p>
-<section id="exemple-d-utilisation-du-q-learning">
-<h3>Exemple d’utilisation du Q-learning<a class="headerlink" href="#exemple-d-utilisation-du-q-learning" title="Lien permanent vers ce titre">#</a></h3>
-<p>Cette section présente une application du Q-learning pour résoudre un problème
-simple disponible dans la bibliothèque <code class="docutils literal notranslate"><span class="pre">Gymnasium</span></code>, un projet destiné à
-étudier l’apprentissage par renforcement <span id="id33">[<a class="reference internal" href="#id44" title="Farama Foundation. Gymnasium documentation. 2023. URL: https://gymnasium.farama.org/ (visited on 2023-02-05).">10</a>]</span>.</p>
-<p>L’environnement <code class="docutils literal notranslate"><span class="pre">FrozenLake-v1</span></code> de la bibliothèque permet de tester des
-algorithmes. Il est composé d’une grille de seize cellules. L’agent doit se
-déplacer d’une position de départ vers une cible en évitant des obstacles.
-Atteindre la cible entraîne une récompense de <code class="docutils literal notranslate"><span class="pre">1,0</span></code>.</p>
-<p>Au début de l’entraînement, l’agent ne sait pas quelles actions sélectionner
-pour atteindre l’objectif. Il pose des actions aléatoires qui ne lui permettent
-pas d’obtenir des valeurs de récompense, comme le montre l’animation suivante :</p>
-<figure class="align-default" id="id51">
-<img alt="_images/frozen_lake_aleatoire.gif" src="_images/frozen_lake_aleatoire.gif" />
-<figcaption>
-<p><span class="caption-text">Exploration aléatoire de l’environnement</span><a class="headerlink" href="#id51" title="Lien permanent vers cette image">#</a></p>
-</figcaption>
-</figure>
-<p>Pour améliorer les performances, on calcule la fonction de qualité en suivant
-l’algorithme Q-learning. Le code Python suivant montre comment appliquer la
-fonction <a class="reference internal" href="#equation-qlearning">(1)</a> en interagissant avec l’environnement.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">ALPHA</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># Facteur d&#39;apprentissage (vitesse de changement de la valeur Q)</span>
-<span class="linenos"> 2</span><span class="n">GAMMA</span> <span class="o">=</span> <span class="mf">0.9</span> <span class="c1"># Facteur d&#39;actualisation (importance des récompenses futures)</span>
-<span class="linenos"> 3</span><span class="n">N_EPISODES</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># Nombre d&#39;essais</span>
-<span class="linenos"> 4</span>
-<span class="linenos"> 5</span><span class="c1"># Créer l&#39;environnement d&#39;apprentissage et la table de qualité.</span>
-<span class="linenos"> 6</span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;FrozenLake-v1&quot;</span><span class="p">,</span> <span class="n">is_slippery</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="linenos"> 7</span><span class="n">qtable</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">env</span><span class="o">.</span><span class="n">observation_space</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="c1"># Entraîner le modèle en réinitialisant l&#39;environnement à chaque épisode.</span>
-<span class="linenos">10</span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_EPISODES</span><span class="p">):</span>
-<span class="linenos">11</span>    <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="linenos">12</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="linenos">13</span>        <span class="c1"># Sélectionner l&#39;action avec la meilleure qualité. Si aucune action</span>
-<span class="linenos">14</span>        <span class="c1"># n&#39;a été évaluée pour l&#39;état, choisir une action aléatoirement.</span>
-<span class="linenos">15</span>        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">qtable</span><span class="p">[</span><span class="n">state</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="linenos">16</span>            <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">qtable</span><span class="p">[</span><span class="n">state</span><span class="p">])</span>
-<span class="linenos">17</span>        <span class="k">else</span><span class="p">:</span>
-<span class="linenos">18</span>            <span class="n">action</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
-<span class="linenos">19</span>        <span class="c1"># Interagir avec l&#39;environnement et mesurer la réponse.</span>
-<span class="linenos">20</span>        <span class="n">new_state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
-<span class="linenos">21</span>        <span class="k">if</span> <span class="n">truncated</span> <span class="ow">or</span> <span class="n">terminated</span><span class="p">:</span>
-<span class="linenos">22</span>            <span class="k">break</span>
-<span class="linenos">23</span>        <span class="c1"># Actualiser la table.</span>
-<span class="linenos">24</span>        <span class="n">q_0</span> <span class="o">=</span> <span class="n">qtable</span><span class="p">[</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">]</span>
-<span class="linenos">25</span>        <span class="n">q_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">qtable</span><span class="p">[</span><span class="n">new_state</span><span class="p">])</span>
-<span class="linenos">26</span>        <span class="n">qtable</span><span class="p">[</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ALPHA</span> <span class="o">*</span> <span class="p">(</span><span class="n">reward</span> <span class="o">+</span> <span class="n">GAMMA</span><span class="o">*</span><span class="n">q_1</span> <span class="o">-</span> <span class="n">q_0</span><span class="p">)</span>
-<span class="linenos">27</span>        <span class="n">state</span> <span class="o">=</span> <span class="n">new_state</span>
-<span class="linenos">28</span><span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<section id="basic-usage">
+<span id="usage"></span><h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline"></a></h2>
+<p><strong>Install</strong> the library with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>diurnal
 </pre></div>
 </div>
-<p>On obtient la table de qualité suivante :</p>
-<table class="table">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 15%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 16%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Table de qualité</p></th>
-<th class="head"></th>
-<th class="head" colspan="4"><p>Action (direction vers laquelle se déplacer)</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td></td>
-<td></td>
-<td><p><span class="math notranslate nohighlight">\(\leftarrow\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\downarrow\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\rightarrow\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\uparrow\)</span></p></td>
-</tr>
-<tr class="row-odd"><td rowspan="5"><p><strong>État (position
-de l’agent)</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\((0, 0)\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,59\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\((0, 1)\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(...\)</span></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\((3, 2)\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(1,0\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\((3, 3)\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0,0\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<p>Par exemple, on voit que l’algorithme a déterminé que la meilleure action à
-sélectionner lorsque l’agent se trouve dans la cellule <span class="math notranslate nohighlight">\((0, 0)\)</span> consiste
-se diriger vers le bas (<span class="math notranslate nohighlight">\(\downarrow\)</span>). En suivant ce modèle, l’agent
-peut alors se déplacer dans l’environnement sans rencontrer d’obstacle pour
-atteindre son but.</p>
-<figure class="align-default" id="id52">
-<img alt="_images/frozen_lake_qlearning.gif" src="_images/frozen_lake_qlearning.gif" />
-<figcaption>
-<p><span class="caption-text">Déplacement dans l’environnement après apprentissage par Q-learning</span><a class="headerlink" href="#id52" title="Lien permanent vers cette image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="application-du-q-learning-a-l-identification-des-bgc">
-<h3>Application du Q-learning à l’identification des BGC<a class="headerlink" href="#application-du-q-learning-a-l-identification-des-bgc" title="Lien permanent vers ce titre">#</a></h3>
-<p>L’algorithme Q-learning possède les caractéristiques suivantes :
-- Il est sans modèle, c’est-à-dire qu’il ne construit pas de modèle de transition des états mais uniquement une fonction de récompense.
-- Il est en ligne, c’est-à-dire que les données sont utilisées dans un ordre séquentiel plutôt qu’en lots de données.
-- Il est incrémental, c’est-à-dire qu’il est actualisé à chaque fois qu’une donnée d’entrée est traitée par l’algorithme.</p>
-<p>Ces caractéristiques rendent le Q-learning adapté à des tâches d’optimisation de prises de décisions en biologie <span id="id34">[<a class="reference internal" href="#id36" title="Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. Bioinformatics, 38(16):3984-3991, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac420, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac420.">2</a>]</span>. La simplicité de cet algorithme constitue un avantage supplémentaire qui diminue le temps requis pour réaliser le code source.</p>
-<p>Dans le contexte d’identification des BGC, on peut <strong>entraîner</strong> un modèle d’apprentissage par renforcement en considérant les aspects suivants :</p>
-<ul class="simple">
-<li><p>L’environnement est composé d’un ensemble de domaines de protéines Pfam réparties en trois catégories. L’ensemble de données contient un nombre égal de groupes de gènes contenant des BGC que de groupes n’en contenant pas parce que cette distribution donne empiriquement les meilleurs résultats.
-- Domaines munis de BGC
-- Domaines sans BGC
-- Domaines condidats pour des BGC</p></li>
-<li><p>Les actions consistent à classifier les composants et à définir correctement les frontières entre les groupes. On utilise deux actions : <span class="math notranslate nohighlight">\(A = {garder, passer}\)</span>, qui correspondent à retenir un gène comme BGC ou à l’éliminer.</p></li>
-<li><p>Les récompenses sont assignées lorsque les gènes sont correctement identifiés et retirés lorsque l’agent commet des erreurs. Une valeur de récompense est ainsi calculée chaque fois que l’agent sélectionne une action.</p></li>
-</ul>
-<p>En apprentissage par renforcement, un épisode désigne l’application de l’algorithme à toutes les données de l’ensemble. Il faut utiliser plusieurs épisodes pour laisser l’algorithme converger vers une solution. L’implémentation de référence utilise 500 épisodes pour l’entraînement.</p>
-<p>Pour améliorer la précision du modèle, l’outil s’appuie sur des annotations fonctionnelles qui consistent à identifier le rôle de différentes parties d’un groupe de gènes. Par exemple, on peut annoter certaines séquences correspondantes au squelette enzymatique, à des facteurs de transcription, à des transporteurs ou à des protéines. Le squelette enzymatique est considéré comme essentiel dans la synthèse des BGC. Un total de 85 gènes de <em>Aspergillus niger</em> ont été manuellement annotés pour surligner la fonction de chaque partie des BGC. Trois stratégies permettent ensuite d’améliorer les décisions prises par l’agent :</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(averageAction\)</span> : traite les gènes manquants dans les domaines de Pfam.</p></li>
-<li><p><span class="math notranslate nohighlight">\(neighborWeight\)</span> : gère la présence d’annotation dans les gènes voisins.</p></li>
-<li><p><span class="math notranslate nohighlight">\(dryIslands\)</span> : gère l’absence d’annotations.</p></li>
-</ul>
-<p>Les <strong>tests</strong> du modèle sont effectués en prédisant la nature d’un groupe de gène (BGC ou non BGC) avec le Q-learning et en la comparant avec les résultats de trois outils :</p>
-<ul class="simple">
-<li><p>TOUCAN</p></li>
-<li><p>fungiSMASH</p></li>
-<li><p>DeepBGC</p></li>
-</ul>
-<p>Plus précisément, on utilise le génome d’un champignon dont l’utilisation est répandue dans les processus industriels et en biotechnologie : <em>Aspergillus niger</em>. Pour obtenir des BGC candidats, on extrait des séquences de 10 000 acides aminés. Les régions correspondant aux séquences d’acides aminés se chevauchent à 30 %. Le chevauchement des régions aide à prévenir la fragmentation de l’ensemble de données pour éviter d’analyser un même gène en deux fenêtres distinctes. La catégorie d’une région (BGC ou non BGC) est déterminée par un vote de consensus entre les trois outils.</p>
-<p>L’apprentissage par renforcement mène à des performances supérieures aux techniques précédemment développées. On utilise trois métriques : la précision, l’exhaustivité et la mesure F. Le tableau suivant montre les performances observées :</p>
-<figure class="align-default" id="id53">
-<img alt="_images/figure6.png" src="_images/figure6.png" />
-<figcaption>
-<p><span class="caption-text">Amélioration des performances de TOUCAN, fungiSMASH et DeepBGC avec l’apprentissage par renforcement (Almeida)</span><a class="headerlink" href="#id53" title="Lien permanent vers cette image">#</a></p>
-</figcaption>
-</figure>
-<p>Dans chaque cas, l’application du Q-learning augmente les performances de la méthode utilisée. La combinaison de l’apprentissage par renforcement et des annotations fonctionnelles entraînent les meilleurs résultats.</p>
-<p>Bien qu’elle permette d’améliorer les résultats, la méthodologie comprend des limites.</p>
-<ul class="simple">
-<li><p>L’annotation manuelle des données de Aspergillus niger constitue une faiblesse du modèle parce qu’elle représente un effort considérable. Cette approche limite les applications possibles de l’outil parce que la rareté des données annotées empêche d’entraîner efficacement des modèles d’apprentissage automatique.</p></li>
-<li><p>L’utilisation d’une fenêtre de taille fixe pour analyser les séquences est utile pour analyser des séquences inconnues, mais chez certains organismes, une fenêtre de taille variable pourrait être plus appropriée.</p></li>
-<li><p>Les méthodes basées sur l’apprentissage profond pourraient être plus appropriées pour détecter des BGC. La rareté des données empêche les techniques de générer des résultats satisfaisants, mais si davantage de séquences chez les champignons deviennent disponibles, les réseaux neuronaux pourraient entraîner de meilleurs résultats.</p></li>
-</ul>
-</section>
-</section>
-<section id="conclusion-et-directions-futures">
-<h2>Conclusion et directions futures<a class="headerlink" href="#conclusion-et-directions-futures" title="Lien permanent vers ce titre">#</a></h2>
-<p>On peut conclure dans un premier temps que cette étude a permis de déterminer des nouveaux ensembles de données de références pour supporter les approches permettant d’identifier spécifiquement les BGC fongiques. Ces données représentent la diversité génomique, et permettent d’explorer l’usage d’orthologues. Par la suite, l’outil TOUCAN basé sur une approche d’apprentissage par supervision, a été développé et est spécifique à la prédiction des BGC fongiques. Cet outil a permis d’améliorer, en moyenne, de 26% les groupe  f-m et de 10% la couverture en termes d’enzymes de structure chez les BGC comparativement aux outils existants. Afin d’optimiser la prédictions des BGC fongique faites par TOUCAN, l’outil a été amélioré en implémentant une approche basée sur la combinaison de l’apprentissage supervisé et d’annotation fonctionnelle. Une amélioration de 15% en termes de précision de gènes et de 25% en termes de précision de groupe a été constatée.
-Plusieurs potentiels voies d’exploration et d’amélioration sont possibles pour l’avenir. Tout d’abord, il serait possible d’utiliser les méthodes développées plus haut pour de nouvelles espèces de champignons. Il est aussi possible d’élargir la recherche aux données métabolomiques afin d’établir des diagnostiques.</p>
-</section>
-</section>
-<section id="bibliographie">
-<h1>Bibliographie<a class="headerlink" href="#bibliographie" title="Lien permanent vers ce titre">#</a></h1>
-<div class="docutils container" id="id35">
-<dl class="citation">
-<dt class="label" id="id42"><span class="brackets"><a class="fn-backref" href="#id12">1</a></span></dt>
-<dd><p>Min Jin Kwon and others. Beyond the biosynthetic gene cluster paradigm: genome-wide coexpression networks connect clustered and unclustered transcription factors to secondary metabolic pathways. <em>Microbiology spectrum</em>, 2021. <a class="reference external" href="https://doi.org/10.1128/Spectrum.00898-21">doi:10.1128/Spectrum.00898-21</a>.</p>
-</dd>
-<dt class="label" id="id36"><span class="brackets">2</span><span class="fn-backref">(<a href="#id13">1</a>,<a href="#id15">2</a>,<a href="#id16">3</a>,<a href="#id17">4</a>,<a href="#id18">5</a>,<a href="#id19">6</a>,<a href="#id20">7</a>,<a href="#id25">8</a>,<a href="#id27">9</a>,<a href="#id28">10</a>,<a href="#id29">11</a>,<a href="#id30">12</a>,<a href="#id31">13</a>,<a href="#id34">14</a>)</span></dt>
-<dd><p>Hayda Almeida, Adrian Tsang, and Abdoulaye Baniré Diallo. Improving candidate Biosynthetic Gene Clusters in fungi through reinforcement learning. <em>Bioinformatics</em>, 38(16):3984–3991, 06 2022. URL: <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac420">https://doi.org/10.1093/bioinformatics/btac420</a>, <a class="reference external" href="https://arxiv.org/abs/https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf">arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3984/45300943/btac420\_supplementary\_data.pdf</a>, <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac420">doi:10.1093/bioinformatics/btac420</a>.</p>
-</dd>
-<dt class="label" id="id40"><span class="brackets"><a class="fn-backref" href="#id14">3</a></span></dt>
-<dd><p>Kjærbølling. A comparative genomics study of 23 aspergillus species from section flavi. <em>Nature Communication</em>, 2020. URL: <a class="reference external" href="https://www.nature.com/articles/s41467-019-14051-y">https://www.nature.com/articles/s41467-019-14051-y</a>.</p>
-</dd>
-<dt class="label" id="id41"><span class="brackets"><a class="fn-backref" href="#id21">4</a></span></dt>
-<dd><p>Mircea. A reinforcement learning based approach to multiple sequence alignment. <em>International Workshop Soft Computing Applications</em>, 2018. URL: <a class="reference external" href="https://www.researchgate.net/publication/320187339_A_Reinforcement_Learning_Based_Approach_to_Multiple_Sequence_Alignment">https://www.researchgate.net/publication/320187339_A_Reinforcement_Learning_Based_Approach_to_Multiple_Sequence_Alignment</a>.</p>
-</dd>
-<dt class="label" id="id38"><span class="brackets"><a class="fn-backref" href="#id22">5</a></span></dt>
-<dd><p>Imani and Braga-Neto. Control of gene regulatory networks using bayesian inverse reinforcement learning. 2018. URL: <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/29993697/">https://pubmed.ncbi.nlm.nih.gov/29993697/</a>.</p>
-</dd>
-<dt class="label" id="id37"><span class="brackets"><a class="fn-backref" href="#id23">6</a></span></dt>
-<dd><p>Eastman, Shi, Ramsundar, and Pande. Solving the rna design problem with reinforcement learning. <em>Computational Biology</em>, 2018. URL: <a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006176">https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006176</a>.</p>
-</dd>
-<dt class="label" id="id39"><span class="brackets"><a class="fn-backref" href="#id24">7</a></span></dt>
-<dd><p>Gottipati. Learning to navigate the synthetically accessible chemical space using reinforcement learning. 2020. URL: <a class="reference external" href="http://proceedings.mlr.press/v119/gottipati20a/gottipati20a.pdf">http://proceedings.mlr.press/v119/gottipati20a/gottipati20a.pdf</a>.</p>
-</dd>
-<dt class="label" id="id45"><span class="brackets"><a class="fn-backref" href="#id26">8</a></span></dt>
-<dd><p>Tom Mitchell. Machine learning. 1997. URL: <a class="reference external" href="http://www.cs.cmu.edu/~tom/mlbook.html">http://www.cs.cmu.edu/~tom/mlbook.html</a>.</p>
-</dd>
-<dt class="label" id="id43"><span class="brackets"><a class="fn-backref" href="#id32">9</a></span></dt>
-<dd><p>Justin Fu, Aviral Kumar, Matthew Soh, and Sergey Levine. Diagnosing bottlenecks in deep q-learning algorithms. <em>Proceedings of the 36th International Conference on Machine Learning</em>, 97:2021–2030, 09–15 Jun 2019. URL: <a class="reference external" href="https://proceedings.mlr.press/v97/fu19a.html">https://proceedings.mlr.press/v97/fu19a.html</a>.</p>
-</dd>
-<dt class="label" id="id44"><span class="brackets"><a class="fn-backref" href="#id33">10</a></span></dt>
-<dd><p>Farama Foundation. Gymnasium documentation. 2023. URL: <a class="reference external" href="https://gymnasium.farama.org/">https://gymnasium.farama.org/</a> (visited on 2023-02-05).</p>
-</dd>
-</dl>
+<p>The code snippet below illustrates how to use the library to fetch data, train
+a CNN-based model, and evaluate the model. More advanced usage is explained in
+the <a class="reference internal" href="user_guide.html#user-guide"><span class="std std-ref">User Guide</span></a>. You can test this example by copying it in a file and
+executing it as a Python script.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">diurnal</span> <span class="kn">import</span> <span class="n">database</span><span class="p">,</span> <span class="n">family</span><span class="p">,</span> <span class="n">train</span>
+<span class="kn">import</span> <span class="nn">diurnal.models</span>
+<span class="kn">from</span> <span class="nn">diurnal.models.networks</span> <span class="kn">import</span> <span class="n">cnn</span>
+
+<span class="n">SIZE</span> <span class="o">=</span> <span class="mi">512</span>  <span class="c1"># Maximum length of molecules used for training.</span>
+
+<span class="c1"># Download the `archiveII` dataset in the `data/` directory.</span>
+<span class="n">database</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;./data/&quot;</span><span class="p">,</span> <span class="s2">&quot;archiveII&quot;</span><span class="p">)</span>
+<span class="c1"># Format the raw data from the `archiveII` dataset into Numpy vectors.</span>
+<span class="n">database</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="s2">&quot;./data/archiveII&quot;</span><span class="p">,</span>  <span class="c1"># Directory of the raw data to format.</span>
+    <span class="s2">&quot;./data/formatted&quot;</span><span class="p">,</span>  <span class="c1"># Formatted data output directory.</span>
+    <span class="n">SIZE</span>  <span class="c1"># Normalized size.</span>
+<span class="p">)</span>
+
+<span class="c1"># Use the `5s` family as the test set and others as the training set.</span>
+<span class="n">test_family</span> <span class="o">=</span> <span class="s2">&quot;5s&quot;</span>
+<span class="n">train_families</span> <span class="o">=</span> <span class="n">family</span><span class="o">.</span><span class="n">all_but</span><span class="p">(</span><span class="n">test_family</span><span class="p">)</span>
+<span class="n">test_set</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">load_families</span><span class="p">(</span><span class="s2">&quot;./data/formatted&quot;</span><span class="p">,</span> <span class="n">test_family</span><span class="p">)</span>
+<span class="n">train_set</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">load_families</span><span class="p">(</span><span class="s2">&quot;./data/formatted&quot;</span><span class="p">,</span> <span class="n">train_families</span><span class="p">)</span>
+
+<span class="c1"># Create a predictive model.</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">diurnal</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">NN</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">cnn</span><span class="o">.</span><span class="n">Dot_Bracket</span><span class="p">,</span>
+    <span class="n">N</span><span class="o">=</span><span class="n">SIZE</span><span class="p">,</span>
+    <span class="n">n_epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">,</span>
+    <span class="n">loss_fn</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">,</span>
+    <span class="n">optimizer_args</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;eps&quot;</span><span class="p">:</span> <span class="mf">1e-4</span><span class="p">},</span>
+    <span class="n">loss_fn_args</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">verbosity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">train_set</span><span class="p">)</span>  <span class="c1"># Train the model.</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span>  <span class="c1"># Test the model.</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average F1-score: </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="si">:</span><span class="s2">.4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
 </section>
 
 
-              </div>
-              
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-</div>
-            </footer>
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_guide.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Vincent Therrien.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Sofia FASSI FEHRI, Vincent THERRIEN<br/>
-  
-      &copy; Copyright 2023, Sofia FASSI FEHRI, Vincent THERRIEN.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
-    </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
 
-
-  </body>
+</body>
 </html>

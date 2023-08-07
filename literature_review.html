@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Literature Review &mdash; diurnal 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Developer Guide" href="developer_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            diurnal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Literature Review</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#problem-statement">Problem Statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classical-prediction-models">Classical Prediction Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prediction-models-based-on-neural-networks">Prediction Models Based on Neural Networks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cnnfold-2022">CNNFold (2022)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attfold-2020">ATTFold (2020)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ufold-2022">UFold (2022)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mxfold2-2021">MXFold2 (2021)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cdpfold-2019">CDPFold (2019)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spot-rna-2019">SPOT-RNA (2019)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-observations">General Observations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#datasets">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">diurnal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Literature Review</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/literature_review.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="literature-review">
+<span id="lit-review"></span><h1>Literature Review<a class="headerlink" href="#literature-review" title="Permalink to this headline"></a></h1>
+<span class="target" id="id1"></span><p>This page presents research efforts conducted in the field of RNA structure
+prediction.</p>
+<p>View the section <a class="reference internal" href="index.html#overview"><span class="std std-ref">Overview</span></a> for background information about RNA molecules.</p>
+<section id="problem-statement">
+<h2>Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this headline"></a></h2>
+<p>The objective of RNA secondary structure prediction is to determine the pairing
+of nucleotide from their sequence. This can be described as a
+<strong>prediction problem</strong> in which:</p>
+<ul>
+<li><p>The <strong>input</strong> is a sequence of four characters: <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>, <code class="docutils literal notranslate"><span class="pre">G</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">U</span></code> (i.e. primary structure).</p></li>
+<li><p>The <strong>output</strong> is s sequence of characters describing the pairing of
+nucleotides (i.e. secondary structure). This structure can be described in
+different ways:
+- The <strong>bracket notation</strong> uses the characters <code class="docutils literal notranslate"><span class="pre">.</span></code>, <code class="docutils literal notranslate"><span class="pre">(</span></code>, and <code class="docutils literal notranslate"><span class="pre">)</span></code> to</p>
+<blockquote>
+<div><p>designate nucleotides that are unpaired, paired with a nucleotide in the
+3’ direction, or paired with a nucleotide in the 5’ direction, respectively.
+It cannot represent pseudo-knots.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>The <strong>shadow</strong> of the secondary structure is a sequence of Boolean values
+to distinguish paired and unpaired nucleotides (e.g. <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code>). The
+shadow describes the secondary structure in less detail than the bracket
+notation.</p></li>
+<li><p>The <strong>list of pairing indices</strong> is a sequence of integers that each indicate
+to which nucleotide a nucleotide in the sequence is paired. For instance, in
+the zero-based list <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">-1,</span> <span class="pre">0]</span></code>, the first nucleotide is paired to the
+third nucleotide. The value <code class="docutils literal notranslate"><span class="pre">-1</span></code> designates an unpaired nucleotide. CT
+files use one-based lists of pairing indices. It can represent pseudo-knots.</p></li>
+<li><p>The <strong>scoring matrix</strong> presents a list of pairing indices in a 2D matrix.
+It can represent pseudo-knots.</p></li>
+</ul>
+</li>
+</ul>
+<p>Alternatively, this problem can be described as “multiple binary classification
+problems that predict whether each pair of nucleotides forms a base pair or not”
+<span id="id19">[<a class="reference internal" href="#id34" title="Kengo Sato, Manato Akiyama, and Yasubumi Sakakibara. Rna secondary structure prediction using deep learning with thermodynamic integration. Nature Communications, 12(1):941, 2021. URL: https://doi.org/10.1038/s41467-021-21194-4, doi:10.1038/s41467-021-21194-4.">5</a>]</span>.</p>
+<p>RNA secondary structure prediction methods usually comprise the following
+stages:</p>
+<ul class="simple">
+<li><p><strong>Pre-processing</strong> transforms the primary structure (i.e. sequence of letters)
+into another representation.</p></li>
+<li><p><strong>Prediction</strong> converts the input into an output using a previously
+trained model.</p></li>
+<li><p><strong>Post-processing</strong> transforms the output of the model into a secondary
+structure (e.g. bracket notation or shadow).</p></li>
+</ul>
+</section>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Term</p></th>
+<th class="head"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>contact matrix
+or pairing scoring
+matrix</p></td>
+<td><p>A 2D matrix in which 0 indicates a non-paired base
+and 1 indicates a paired base. Can represent a
+secondary structure with pseudo-knots <span id="id20">[<a class="reference internal" href="#id35" title="Mehdi Saman Booy, Alexander Ilin, and Pekka Orponen. Rna secondary structure prediction with convolutional neural networks. BMC Bioinformatics, 23(1):58, 2022. URL: https://doi.org/10.1186/s12859-021-04540-7, doi:10.1186/s12859-021-04540-7.">1</a>]</span>
+<span id="id21">[<a class="reference internal" href="#id37" title="Laiyi Fu, Yingxin Cao, Jie Wu, Qinke Peng, Qing Nie, and Xiaohui Xie. UFold: fast and accurate RNA secondary structure prediction with deep learning. Nucleic Acids Research, 50(3):e14-e14, 11 2021. URL: https://doi.org/10.1093/nar/gkab1074, arXiv:https://academic.oup.com/nar/article-pdf/50/3/e14/42544496/gkab1074\_supplemental\_file.pdf, doi:10.1093/nar/gkab1074.">7</a>]</span>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="classical-prediction-models">
+<h2>Classical Prediction Models<a class="headerlink" href="#classical-prediction-models" title="Permalink to this headline"></a></h2>
+<p>The term “classical model” is used in this context to refer to predictive models
+that do not rely on neural network.</p>
+<ul class="simple">
+<li><p>MXFold2</p></li>
+<li><p>RNAfold</p></li>
+<li><p>RNAstructure</p></li>
+<li><p>TORNADO</p></li>
+</ul>
+</section>
+<section id="prediction-models-based-on-neural-networks">
+<h2>Prediction Models Based on Neural Networks<a class="headerlink" href="#prediction-models-based-on-neural-networks" title="Permalink to this headline"></a></h2>
+<p>This section summarizes a few recent RNA secondary structure prediction models.</p>
+<section id="cnnfold-2022">
+<h3>CNNFold (2022)<a class="headerlink" href="#cnnfold-2022" title="Permalink to this headline"></a></h3>
+<p>CNNFold <span id="id22">[<a class="reference internal" href="#id35" title="Mehdi Saman Booy, Alexander Ilin, and Pekka Orponen. Rna secondary structure prediction with convolutional neural networks. BMC Bioinformatics, 23(1):58, 2022. URL: https://doi.org/10.1186/s12859-021-04540-7, doi:10.1186/s12859-021-04540-7.">1</a>]</span> is a predictive model designed by Booy, Ilin, and
+Orponen that <em>uses no energy model and can predict pseudo-knots</em>.</p>
+<p>The <strong>input</strong> of the model is a <strong>matrix of possible pairings</strong>. Each cell
+indicates if the pairing is possible and, if so, what bases would be paired to
+one another, as shown in the figure below:</p>
+<figure class="align-default" id="id48">
+<img alt="Example of a pairing matrix." src="_images/potential_pairings.png" />
+<figcaption>
+<p><span class="caption-text">Example of a matrix of potential pairings.</span><a class="headerlink" href="#id48" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>This representation makes the predictive model more efficient because it
+captures global information about the structure of the molecule. Instead of
+only using the local information of a primary structure (i.e. a nucleotide and
+its neighboring nucleotides), the model can rely on the pre-processed potential
+pairings.</p>
+<p>The <strong>predictive model</strong> is a <strong>deep convolutional neural network</strong>. It uses
+only the pairing matrix as the input and does not consider any energy model.</p>
+<p>The <strong>output</strong> is a <strong>scoring matrix</strong> that is converted to a secondary
+structure.</p>
+</section>
+<section id="attfold-2020">
+<h3>ATTFold (2020)<a class="headerlink" href="#attfold-2020" title="Permalink to this headline"></a></h3>
+<p>ATTFold <span id="id23">[<a class="reference internal" href="#id38" title="Yili Wang, Yuanning Liu, Shuo Wang, Zhen Liu, Yubing Gao, Hao Zhang, and Liyan Dong. Attfold: rna secondary structure prediction with pseudoknots based on attention mechanism. Frontiers in Genetics, 2020. URL: https://www.frontiersin.org/articles/10.3389/fgene.2020.612086, doi:10.3389/fgene.2020.612086.">6</a>]</span> is a predictive model designed by Wang, Liu, Gao, Zhang,
+and Dong that <em>uses no energy model and can predict pseudo-knots</em>.</p>
+<p>The <strong>input</strong> is a one-hot encoded primary structure.</p>
+<p>The <strong>model</strong> is a pipeline of components:</p>
+<ul class="simple">
+<li><p>The first component is a transformer network that encodes the primary
+structure.</p></li>
+<li><p>A CNN follows the transformer and decodes the output of the transformer into
+a base pairing scoring matrix.</p></li>
+<li><p><strong>Hard constraints</strong> are then applied to the scoring matrix to (1) remove
+impossible pairings (e.g. <code class="docutils literal notranslate"><span class="pre">A</span></code> to <code class="docutils literal notranslate"><span class="pre">C</span></code>) and (2) remove pairings less than
+three bases apart.</p></li>
+</ul>
+<p>The <strong>output</strong> is a base pairing scoring matrix.</p>
+</section>
+<section id="ufold-2022">
+<h3>UFold (2022)<a class="headerlink" href="#ufold-2022" title="Permalink to this headline"></a></h3>
+<p>UFold <span id="id24">[<a class="reference internal" href="#id37" title="Laiyi Fu, Yingxin Cao, Jie Wu, Qinke Peng, Qing Nie, and Xiaohui Xie. UFold: fast and accurate RNA secondary structure prediction with deep learning. Nucleic Acids Research, 50(3):e14-e14, 11 2021. URL: https://doi.org/10.1093/nar/gkab1074, arXiv:https://academic.oup.com/nar/article-pdf/50/3/e14/42544496/gkab1074\_supplemental\_file.pdf, doi:10.1093/nar/gkab1074.">7</a>]</span> is a predictive model designed by Fu, Cao, Wu, Peng, Nie,
+and Xie that <em>uses no energy model and can predict pseudo-knots</em>.</p>
+<p>The <strong>input</strong> is a contact matrix, which is generated by computing the Kronecker
+product of the one-hot encoded primary structure with itself. This data
+structure differs from the matrix of possible pairings used in CNNFold.</p>
+<p>The <strong>model</strong> is a U-Net neural network.</p>
+<p>The <strong>output</strong> is a base pairing scoring matrix.</p>
+</section>
+<section id="mxfold2-2021">
+<h3>MXFold2 (2021)<a class="headerlink" href="#mxfold2-2021" title="Permalink to this headline"></a></h3>
+<p>MXFold2 <span id="id25">[<a class="reference internal" href="#id34" title="Kengo Sato, Manato Akiyama, and Yasubumi Sakakibara. Rna secondary structure prediction using deep learning with thermodynamic integration. Nature Communications, 12(1):941, 2021. URL: https://doi.org/10.1038/s41467-021-21194-4, doi:10.1038/s41467-021-21194-4.">5</a>]</span> is a predictive model designed by Sato, Akiyama, and
+Sakakibara that <em>uses an energy model and cannot predict pseudo-knots</em>.</p>
+<p>The <strong>input</strong> is the one-hot encoded primary structure.</p>
+<p>The <strong>model</strong> is a pipeline of components:</p>
+<ul class="simple">
+<li><p>A BiLSTM recurrent neural network.</p></li>
+<li><p>Convolutional and concatenation layers.</p></li>
+<li><p>A Zucker-style dynamic programming algorithm (THAT’s the energy model, right
+there).</p></li>
+</ul>
+<p>The <strong>output</strong> is the secondary structure in dot-bracket notation.</p>
+</section>
+<section id="cdpfold-2019">
+<h3>CDPFold (2019)<a class="headerlink" href="#cdpfold-2019" title="Permalink to this headline"></a></h3>
+<p>CDPFold <span id="id26">[<a class="reference internal" href="#id39" title="Hui Zhang, Cong Zhang, Zhe Li, Chunhua Li, Xiaopeng Wei, Baofeng Zhang, and Yunlong Liu. A new method of rna secondary structure prediction based on convolutional neural network and dynamic programming. Frontiers in Genetics, 10:467, 2019. doi:10.3389/fgene.2019.00467.">8</a>]</span> is a predictive model designed by Zhang, Li, and Wei
+that <em>uses no energy model and cannot predict pseudo-knots</em>.</p>
+<p>The <strong>input</strong> of the model is a matrix-encoded encoded primary structure whose
+element represent possible base pairings. This is similar to CNNFold, but the
+elements of the matrix are scalars instead of vectors.</p>
+<p>The <strong>model</strong> is a pipeline of components:</p>
+<ul class="simple">
+<li><p>A CNN predicts base pairing probabilities.</p></li>
+<li><p>A maximum probability sum algorithm (a modified Nussimov dynamic programming
+method) corrects predictions to obtain valid secondary structures.</p></li>
+</ul>
+<p>The <strong>output</strong> is the secondary structure in dot-bracket notation.</p>
+</section>
+<section id="spot-rna-2019">
+<h3>SPOT-RNA (2019)<a class="headerlink" href="#spot-rna-2019" title="Permalink to this headline"></a></h3>
+<p>SPOT-RNA <span id="id27">[<a class="reference internal" href="#id40" title="Jaswinder Singh, Jack Hanson, Kuldip Paliwal, and Yaoqi Zhou. Rna secondary structure prediction using an ensemble of two-dimensional deep neural networks and transfer learning. Nature Communications, 10:2041-1723, 2019. doi:10.1038/s41467-019-13395-9.">9</a>]</span> is a predictive model designed by Singh, Hanson,
+Paliwal, and Zhou that <em>uses no energy model and can predict pseudo-knots</em>.</p>
+<p>The model uses ensemble and transfer learning to predict structures.</p>
+</section>
+<section id="general-observations">
+<h3>General Observations<a class="headerlink" href="#general-observations" title="Permalink to this headline"></a></h3>
+<p>Szikszai et al. <span id="id28">[<a class="reference internal" href="#id41" title="Marcell Szikszai, Michael Wise, Amitava Datta, Max Ward, and David H Mathews. Deep learning models for RNA secondary structure prediction (probably) do not generalize across families. Bioinformatics, 38(16):3892-3899, 06 2022. URL: https://doi.org/10.1093/bioinformatics/btac415, arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3892/45300927/btac415\_supplementary\_data.pdf, doi:10.1093/bioinformatics/btac415.">10</a>]</span> show that most models based on neural
+networks perform poorly at family-wise cross validation. In other words, they
+have a hard time generalizing predictions to unfamiliar structures.</p>
+</section>
+</section>
+<section id="datasets">
+<h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline"></a></h2>
+<p><span id="id29">[<a class="reference internal" href="#id44" title="Andronescu, Bereg, Hoos, and Condon. Rna strand v2.0 - the rna secondary structure and statistical analysis database. 2009. Accessed: 2023-04-15. URL: http://www.rnasoft.ca/strand/.">4</a>]</span></p>
+<ul class="simple">
+<li><p>RNAStralign: <a class="reference external" href="https://www.urmc.rochester.edu/rna/">https://www.urmc.rochester.edu/rna/</a></p></li>
+<li><p>RNAalign: <a class="reference external" href="https://drive.google.com/drive/folders/19KPRYJjjMJh1qdMhtmUoYA_ncw3ocAHc">https://drive.google.com/drive/folders/19KPRYJjjMJh1qdMhtmUoYA_ncw3ocAHc</a></p></li>
+<li><p>RFam: <a class="reference external" href="https://rfam.org/">https://rfam.org/</a></p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
+<div class="docutils container" id="id30">
+<dl class="citation">
+<dt class="label" id="id35"><span class="brackets">1</span><span class="fn-backref">(<a href="#id20">1</a>,<a href="#id22">2</a>)</span></dt>
+<dd><p>Mehdi Saman Booy, Alexander Ilin, and Pekka Orponen. Rna secondary structure prediction with convolutional neural networks. <em>BMC Bioinformatics</em>, 23(1):58, 2022. URL: <a class="reference external" href="https://doi.org/10.1186/s12859-021-04540-7">https://doi.org/10.1186/s12859-021-04540-7</a>, <a class="reference external" href="https://doi.org/10.1186/s12859-021-04540-7">doi:10.1186/s12859-021-04540-7</a>.</p>
+</dd>
+<dt class="label" id="id45"><span class="brackets">2</span></dt>
+<dd><p>Accessed: 2023-07-15. URL: <a class="reference external" href="http://rna.tbi.univie.ac.at/forna/">http://rna.tbi.univie.ac.at/forna/</a>.</p>
+</dd>
+<dt class="label" id="id43"><span class="brackets">3</span></dt>
+<dd><p>David Mathews. Mathews lab. Accessed: 2023-04-15. URL: <a class="reference external" href="https://rna.urmc.rochester.edu/">https://rna.urmc.rochester.edu/</a>.</p>
+</dd>
+<dt class="label" id="id44"><span class="brackets"><a class="fn-backref" href="#id29">4</a></span></dt>
+<dd><p>Andronescu, Bereg, Hoos, and Condon. Rna strand v2.0 - the rna secondary structure and statistical analysis database. 2009. Accessed: 2023-04-15. URL: <a class="reference external" href="http://www.rnasoft.ca/strand/">http://www.rnasoft.ca/strand/</a>.</p>
+</dd>
+<dt class="label" id="id34"><span class="brackets">5</span><span class="fn-backref">(<a href="#id19">1</a>,<a href="#id25">2</a>)</span></dt>
+<dd><p>Kengo Sato, Manato Akiyama, and Yasubumi Sakakibara. Rna secondary structure prediction using deep learning with thermodynamic integration. <em>Nature Communications</em>, 12(1):941, 2021. URL: <a class="reference external" href="https://doi.org/10.1038/s41467-021-21194-4">https://doi.org/10.1038/s41467-021-21194-4</a>, <a class="reference external" href="https://doi.org/10.1038/s41467-021-21194-4">doi:10.1038/s41467-021-21194-4</a>.</p>
+</dd>
+<dt class="label" id="id38"><span class="brackets"><a class="fn-backref" href="#id23">6</a></span></dt>
+<dd><p>Yili Wang, Yuanning Liu, Shuo Wang, Zhen Liu, Yubing Gao, Hao Zhang, and Liyan Dong. Attfold: rna secondary structure prediction with pseudoknots based on attention mechanism. <em>Frontiers in Genetics</em>, 2020. URL: <a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fgene.2020.612086">https://www.frontiersin.org/articles/10.3389/fgene.2020.612086</a>, <a class="reference external" href="https://doi.org/10.3389/fgene.2020.612086">doi:10.3389/fgene.2020.612086</a>.</p>
+</dd>
+<dt class="label" id="id37"><span class="brackets">7</span><span class="fn-backref">(<a href="#id21">1</a>,<a href="#id24">2</a>)</span></dt>
+<dd><p>Laiyi Fu, Yingxin Cao, Jie Wu, Qinke Peng, Qing Nie, and Xiaohui Xie. UFold: fast and accurate RNA secondary structure prediction with deep learning. <em>Nucleic Acids Research</em>, 50(3):e14–e14, 11 2021. URL: <a class="reference external" href="https://doi.org/10.1093/nar/gkab1074">https://doi.org/10.1093/nar/gkab1074</a>, <a class="reference external" href="https://arxiv.org/abs/https://academic.oup.com/nar/article-pdf/50/3/e14/42544496/gkab1074\_supplemental\_file.pdf">arXiv:https://academic.oup.com/nar/article-pdf/50/3/e14/42544496/gkab1074\_supplemental\_file.pdf</a>, <a class="reference external" href="https://doi.org/10.1093/nar/gkab1074">doi:10.1093/nar/gkab1074</a>.</p>
+</dd>
+<dt class="label" id="id39"><span class="brackets"><a class="fn-backref" href="#id26">8</a></span></dt>
+<dd><p>Hui Zhang, Cong Zhang, Zhe Li, Chunhua Li, Xiaopeng Wei, Baofeng Zhang, and Yunlong Liu. A new method of rna secondary structure prediction based on convolutional neural network and dynamic programming. <em>Frontiers in Genetics</em>, 10:467, 2019. <a class="reference external" href="https://doi.org/10.3389/fgene.2019.00467">doi:10.3389/fgene.2019.00467</a>.</p>
+</dd>
+<dt class="label" id="id40"><span class="brackets"><a class="fn-backref" href="#id27">9</a></span></dt>
+<dd><p>Jaswinder Singh, Jack Hanson, Kuldip Paliwal, and Yaoqi Zhou. Rna secondary structure prediction using an ensemble of two-dimensional deep neural networks and transfer learning. <em>Nature Communications</em>, 10:2041–1723, 2019. <a class="reference external" href="https://doi.org/10.1038/s41467-019-13395-9">doi:10.1038/s41467-019-13395-9</a>.</p>
+</dd>
+<dt class="label" id="id41"><span class="brackets"><a class="fn-backref" href="#id28">10</a></span></dt>
+<dd><p>Marcell Szikszai, Michael Wise, Amitava Datta, Max Ward, and David H Mathews. Deep learning models for RNA secondary structure prediction (probably) do not generalize across families. <em>Bioinformatics</em>, 38(16):3892–3899, 06 2022. URL: <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac415">https://doi.org/10.1093/bioinformatics/btac415</a>, <a class="reference external" href="https://arxiv.org/abs/https://academic.oup.com/bioinformatics/article-pdf/38/16/3892/45300927/btac415\_supplementary\_data.pdf">arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3892/45300927/btac415\_supplementary\_data.pdf</a>, <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac415">doi:10.1093/bioinformatics/btac415</a>.</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="developer_guide.html" class="btn btn-neutral float-left" title="Developer Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Vincent Therrien.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

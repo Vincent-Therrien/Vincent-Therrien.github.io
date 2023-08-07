@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>diurnal.evaluate &mdash; diurnal 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            diurnal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../literature_review.html">Literature Review</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">diurnal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">diurnal.evaluate</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for diurnal.evaluate</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    RNA secondary prediction evaluation module.</span>
+
+<span class="sd">    This module contains functions to evaluate RNA secondary predictions</span>
+<span class="sd">    by comparing a predicted structure to a reference structure.</span>
+
+<span class="sd">    - Author: Vincent Therrien (therrien.vincent.2@courrier.uqam.ca)</span>
+<span class="sd">    - Affiliation: Département d&#39;informatique, UQÀM</span>
+<span class="sd">    - File creation date: April 2023</span>
+<span class="sd">    - License: MIT</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">statistics</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+
+<span class="kn">from</span> <span class="nn">diurnal.utils</span> <span class="kn">import</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="nn">diurnal.structure</span> <span class="kn">import</span> <span class="n">Schemes</span>
+<span class="kn">from</span> <span class="nn">diurnal</span> <span class="kn">import</span> <span class="n">train</span>
+
+
+<span class="k">def</span> <span class="nf">_convert_to_scalars</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a vector of vectors into a vector of scalars.</span>
+<span class="sd">    For instance, `[[0, 1], [0, 1], [1, 0]]` and `[&#39;.&#39;, &#39;.&#39;, &#39;(&#39;]`</span>
+<span class="sd">    are converted to `[0, 0, 1]`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        true (list-like): Vector of the true structure.</span>
+<span class="sd">        pred (list-like): Vector of the predicted structure.</span>
+
+<span class="sd">    Returns (list): Tuple containing the scalar vectors.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">true</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">symbols</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">pred</span> <span class="o">+</span> <span class="n">true</span><span class="p">)</span>
+        <span class="n">digits</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">symbols</span><span class="p">):</span>
+            <span class="n">digits</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="p">[</span><span class="n">digits</span><span class="p">[</span><span class="n">e</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">pred</span><span class="p">]</span>
+        <span class="n">true</span> <span class="o">=</span> <span class="p">[</span><span class="n">digits</span><span class="p">[</span><span class="n">e</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">true</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">symbols</span>
+    <span class="k">return</span> <span class="n">train</span><span class="o">.</span><span class="n">categorize_vector</span><span class="p">(</span><span class="n">true</span><span class="p">),</span> <span class="n">train</span><span class="o">.</span><span class="n">categorize_vector</span><span class="p">(</span><span class="n">pred</span><span class="p">),</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="micro_f1"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.evaluate.micro_f1">[docs]</a><span class="k">def</span> <span class="nf">micro_f1</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Compute the micro F1-score by considering the secondary</span>
+<span class="sd">    structure symbols &#39;(&#39;, &#39;.&#39;, and &#39;)&#39; as three different classes.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        true (list-like): Vector of the true structure.</span>
+<span class="sd">        pred (list-like): Vector of the predicted structure.</span>
+
+<span class="sd">    Returns (float): F1-score of the prediction, i.e. a value</span>
+<span class="sd">        between 0 and 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">scalar_true</span><span class="p">,</span> <span class="n">scalar_pred</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_convert_to_scalars</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">scalar_pred</span><span class="p">,</span> <span class="n">scalar_true</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;micro&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_confusion_matrix"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.evaluate.get_confusion_matrix">[docs]</a><span class="k">def</span> <span class="nf">get_confusion_matrix</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the confusion matrix of the prediction.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        true (list-like): Vector of the true structure.</span>
+<span class="sd">        pred (list-like): Vector of the predicted structure.</span>
+
+<span class="sd">    Returns (tuple): A tuple containing the confusion matrix and a</span>
+<span class="sd">        list of symbols that correspond to each row of the matrix.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">symbols</span> <span class="o">=</span> <span class="n">_convert_to_scalars</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="n">symbols</span></div>
+
+
+<div class="viewcode-block" id="Matrix"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.evaluate.Matrix">[docs]</a><span class="k">class</span> <span class="nc">Matrix</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluate predictions made with matrices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="get_TP"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.evaluate.get_TP">[docs]</a><span class="k">def</span> <span class="nf">get_TP</span><span class="p">(</span>
+        <span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">unpaired_symbol</span><span class="p">:</span> <span class="nb">any</span> <span class="o">=</span> <span class="n">Schemes</span><span class="o">.</span><span class="n">BRACKET_TO_ONEHOT</span><span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">]</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the true positive value (predicted paired bases that</span>
+<span class="sd">    are actually paired).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tp</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">true</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">pred</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">unpaired_symbol</span> <span class="ow">and</span> <span class="n">true</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">unpaired_symbol</span><span class="p">:</span>
+            <span class="n">tp</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">tp</span></div>
+
+<div class="viewcode-block" id="get_TN"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.evaluate.get_TN">[docs]</a><span class="k">def</span> <span class="nf">get_TN</span><span class="p">(</span>
+        <span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">unpaired_symbol</span><span class="p">:</span> <span class="nb">any</span> <span class="o">=</span> <span class="n">Schemes</span><span class="o">.</span><span class="n">BRACKET_TO_ONEHOT</span><span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">]</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the true negative value (predicted unpaired bases</span>
+<span class="sd">    that are actually unpaired).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tn</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">true</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">pred</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">unpaired_symbol</span> <span class="ow">and</span> <span class="n">true</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">unpaired_symbol</span><span class="p">:</span>
+            <span class="n">tn</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">tn</span></div>
+
+<div class="viewcode-block" id="get_FP"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.evaluate.get_FP">[docs]</a><span class="k">def</span> <span class="nf">get_FP</span><span class="p">(</span>
+        <span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">unpaired_symbol</span><span class="p">:</span> <span class="nb">any</span> <span class="o">=</span> <span class="n">Schemes</span><span class="o">.</span><span class="n">BRACKET_TO_ONEHOT</span><span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">]</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the false positive value (predicted paired bases that</span>
+<span class="sd">    are actually unpaired).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">true</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">pred</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">unpaired_symbol</span> <span class="ow">and</span> <span class="n">true</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">unpaired_symbol</span><span class="p">:</span>
+            <span class="n">fp</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">fp</span></div>
+
+<div class="viewcode-block" id="get_FN"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.evaluate.get_FN">[docs]</a><span class="k">def</span> <span class="nf">get_FN</span><span class="p">(</span>
+        <span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">unpaired_symbol</span><span class="p">:</span> <span class="nb">any</span> <span class="o">=</span> <span class="n">Schemes</span><span class="o">.</span><span class="n">BRACKET_TO_ONEHOT</span><span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">]</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the false negative value (predicted unpaired bases</span>
+<span class="sd">    that are actually unpaired).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">true</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">pred</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">unpaired_symbol</span> <span class="ow">and</span> <span class="n">pred</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">true</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">fn</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">fn</span></div>
+
+<div class="viewcode-block" id="recall"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.evaluate.recall">[docs]</a><span class="k">def</span> <span class="nf">recall</span><span class="p">(</span>
+        <span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">unpaired_symbol</span><span class="p">:</span> <span class="nb">any</span> <span class="o">=</span> <span class="n">Schemes</span><span class="o">.</span><span class="n">BRACKET_TO_ONEHOT</span><span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">]</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the recall value obtained by comparing two</span>
+<span class="sd">    secondary structures. Recall is defined as:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        TP / (TP + FN).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tp</span> <span class="o">=</span> <span class="n">get_TP</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">unpaired_symbol</span><span class="p">)</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">get_FN</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">unpaired_symbol</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tp</span> <span class="o">+</span> <span class="n">fn</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tp</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fn</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span></div>
+
+<div class="viewcode-block" id="precision"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.evaluate.precision">[docs]</a><span class="k">def</span> <span class="nf">precision</span><span class="p">(</span>
+        <span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">unpaired_symbol</span><span class="p">:</span> <span class="nb">any</span> <span class="o">=</span> <span class="n">Schemes</span><span class="o">.</span><span class="n">BRACKET_TO_ONEHOT</span><span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">]</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the precision obtained by comparing two</span>
+<span class="sd">    secondary structures. Precision is defined as:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        TP / (TP + FP).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tp</span> <span class="o">=</span> <span class="n">get_TP</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">unpaired_symbol</span><span class="p">)</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">get_FP</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">unpaired_symbol</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tp</span> <span class="o">+</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tp</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fp</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span></div>
+
+<div class="viewcode-block" id="recall_precision_f1"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.evaluate.recall_precision_f1">[docs]</a><span class="k">def</span> <span class="nf">recall_precision_f1</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">unpaired_symbol</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the F1-score obtained by comparing two secondary</span>
+<span class="sd">    structures. The f1-score is defined as:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        F1 = 2 \times \frac{recall \times precision}{recall + precision}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">recall</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">unpaired_symbol</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">precision</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">unpaired_symbol</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="o">+</span> <span class="n">p</span><span class="p">:</span>
+        <span class="n">f1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">((</span><span class="n">r</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">p</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">r</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">f1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">r</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mf">0.0</span></div>
+
+
+<span class="c1"># Result presentation</span>
+<div class="viewcode-block" id="summarize_results"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.evaluate.summarize_results">[docs]</a><span class="k">def</span> <span class="nf">summarize_results</span><span class="p">(</span><span class="n">f1_scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Summarize the f1-scores.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        f1_scores (list(float)): List of f1-scores.</span>
+<span class="sd">        name (str): Name of the results printed along with the summary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Results for `</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">`:&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of elements: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">f1_scores</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">f1_scores</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Harmonic mean: </span><span class="si">{</span><span class="n">statistics</span><span class="o">.</span><span class="n">harmonic_mean</span><span class="p">(</span><span class="n">f1_scores</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Maximum: </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">f1_scores</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Median:  </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">f1_scores</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minimum: </span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="n">f1_scores</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Vincent Therrien.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

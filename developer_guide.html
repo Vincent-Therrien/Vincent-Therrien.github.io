@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Guide &mdash; diurnal 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Literature Review" href="literature_review.html" />
+    <link rel="prev" title="diurnal.utils package" href="source/diurnal.utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            diurnal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#project-organization">Project Organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#development-objectives">Development Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-suite">Test Suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-contribute">How to Contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#development-history">Development History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="literature_review.html">Literature Review</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">diurnal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Developer Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/developer_guide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="developer-guide">
+<span id="id1"></span><h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Permalink to this headline"></a></h1>
+<p>This page explains the inner workings of the library and how one can contribute
+to its development.</p>
+<section id="project-organization">
+<h2>Project Organization<a class="headerlink" href="#project-organization" title="Permalink to this headline"></a></h2>
+<p>The project comprises the following subdirectories:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">demo</span></code>: Python scripts that illustrate the usage of the library.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs</span></code>: Documentation file written with <code class="docutils literal notranslate"><span class="pre">Sphinx</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diurnal</span></code>: Library source code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test</span></code>: Automated test framework written with <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p></li>
+</ul>
+</section>
+<section id="development-objectives">
+<h2>Development Objectives<a class="headerlink" href="#development-objectives" title="Permalink to this headline"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">diurnal</span></code> library aims at facilitating research in the field of
+molecule structure prediction and analysis. As such, its development emphasizes
+the following points:</p>
+<ul class="simple">
+<li><p><strong>Traceability</strong>: Users should always know the source of data and how to use
+them. For instance, when downloading datasets, the
+library produces an informative file that lists when the file was obtain,
+from which URL, and how the data are represented. This avoids letting users
+figure that out by themselves.</p></li>
+<li><p><strong>Inspectability</strong>: The source code should be as easy to understand as
+possible to let reviewers confirm the validity of the results produced by
+the library. <em>Readability is favored over performances. Prefer functions that
+are easy to understand but slow over highly optimized, hard-to-understand
+functions</em>.</p></li>
+<li><p><strong>Modularity</strong>: The modules of the library should be easy to use and
+understand in isolation. Limit interactions between modules.</p></li>
+</ul>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline"></a></h2>
+<p>The library is written in Python and relies mainly on the following external
+libraries:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Numpy</span></code> (data manipulation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PyTorch</span></code> (neural networks)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> (data visualization)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> (evaluation methods)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytest</span></code> (only used by the test suite, not the actual library)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx</span></code> (documentation only, not for the actual library)</p></li>
+</ul>
+<p>The complete list of dependencies for the library is comprised in the file
+<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>. The file <code class="docutils literal notranslate"><span class="pre">docs/requirements.txt</span></code> lists the dependencies
+required to build the documentation. The file <code class="docutils literal notranslate"><span class="pre">test/requirements.txt</span></code> lists
+the dependencies required to execute the test framework.</p>
+</section>
+<section id="test-suite">
+<h2>Test Suite<a class="headerlink" href="#test-suite" title="Permalink to this headline"></a></h2>
+<p>The project comprises a
+<a class="reference external" href="https://github.com/Vincent-Therrien/diurnal/tree/main/test">test suite</a> that
+validates the features of the library. It is written with the
+<a class="reference external" href="https://docs.pytest.org/en/7.4.x/">pytest</a> library. Each feature of the
+library should be validated with a test case.</p>
+</section>
+<section id="how-to-contribute">
+<h2>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline"></a></h2>
+<p>Contributions from any individual are welcome.</p>
+<p>Before opening a pull request, please address the following points:</p>
+<ul class="simple">
+<li><p>Document newly added features in the <code class="docutils literal notranslate"><span class="pre">docs/</span></code> directory.</p></li>
+<li><p>Add appropriate test cases in the <code class="docutils literal notranslate"><span class="pre">test/</span></code> directory.</p></li>
+<li><p>Ensure that the new feature interoperates well with existing code and follows
+the PEP 8 coding style.</p></li>
+</ul>
+<p>You can execute the Python script <code class="docutils literal notranslate"><span class="pre">pre_commit.py</span></code> to ensure that (1) the
+source code does follow the PEP 8 style and (2) the test suite passes.</p>
+<p>Provided that the points described above are taken into consideration, one can
+submit a contribution by opening a pull request on the
+<a class="reference external" href="https://github.com/Vincent-Therrien/diurnal">homepage</a> of the project.
+Please provide a rationale for opening the pull request and references, if
+relevant.</p>
+</section>
+<section id="development-history">
+<h2>Development History<a class="headerlink" href="#development-history" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="source/diurnal.utils.html" class="btn btn-neutral float-left" title="diurnal.utils package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="literature_review.html" class="btn btn-neutral float-right" title="Literature Review" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Vincent Therrien.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

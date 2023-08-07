@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>diurnal.database &mdash; diurnal 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            diurnal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../literature_review.html">Literature Review</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">diurnal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">diurnal.database</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for diurnal.database</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    RNA secondary structure database utility module.</span>
+
+<span class="sd">    This module contains functions to install (i.e. download and unwrap)</span>
+<span class="sd">    RNA dataset and manipulate the data into matrix formats usable by</span>
+<span class="sd">    processing algorithms. Note: the word `dataset` is used to refer to</span>
+<span class="sd">    a given set of RNA secondary structures (e.g. archiveII or</span>
+<span class="sd">    RNASTRalign). The collection of datasets is referred as the database.</span>
+
+<span class="sd">    ::</span>
+
+<span class="sd">       import diurnal.database as db</span>
+<span class="sd">       db.download(&quot;./data/&quot;, &quot;archiveII&quot;)</span>
+<span class="sd">       db.format(&quot;./data/archiveII&quot;, &quot;./data/formatted&quot;, 512)</span>
+
+<span class="sd">    - Author: Vincent Therrien (therrien.vincent.2@courrier.uqam.ca)</span>
+<span class="sd">    - Affiliation: Département d&#39;informatique, UQÀM</span>
+<span class="sd">    - File creation date: April 2023</span>
+<span class="sd">    - License: MIT</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">from</span> <span class="nn">diurnal.utils</span> <span class="kn">import</span> <span class="n">file_io</span><span class="p">,</span> <span class="n">log</span>
+<span class="kn">import</span> <span class="nn">diurnal.utils.rna_data</span> <span class="k">as</span> <span class="nn">rna_data</span>
+<span class="kn">import</span> <span class="nn">diurnal.structure</span>
+<span class="kn">import</span> <span class="nn">diurnal.family</span>
+
+<span class="c1"># Constant values.</span>
+<span class="n">URL_PREFIX</span> <span class="o">=</span> \
+    <span class="s2">&quot;https://github.com/Vincent-Therrien/rna-2s-database/raw/main/data/&quot;</span>
+<span class="n">DATA_FILE_ENDING</span> <span class="o">=</span> <span class="s2">&quot;.tar.gz&quot;</span>
+<span class="n">INFO_FILE_ENDING</span> <span class="o">=</span> <span class="s2">&quot;.rst&quot;</span>
+<span class="n">ALLOWED_DATASETS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;archiveII&quot;</span><span class="p">:</span> <span class="mi">3975</span><span class="p">,</span>
+    <span class="s2">&quot;RNASTRalign&quot;</span><span class="p">:</span> <span class="mi">37149</span><span class="p">,</span>
+    <span class="s2">&quot;RNA_STRAND&quot;</span><span class="p">:</span> <span class="mi">4666</span>
+<span class="p">}</span>
+
+
+<span class="c1"># Installation functions.</span>
+<div class="viewcode-block" id="download"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.database.download">[docs]</a><span class="k">def</span> <span class="nf">download</span><span class="p">(</span>
+        <span class="n">dst</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">datasets</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">cleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Download and unpack RNA secondary structure databases.</span>
+
+<span class="sd">    Download the datasets listed in the `datasets` argument, places them</span>
+<span class="sd">    in the `dst` directory, and unpacks the downloaded files.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dst (str): Directory path in which the files are downloaded and</span>
+<span class="sd">            unwrapped.</span>
+<span class="sd">        datasets (list(str)): The list of databases to download. The</span>
+<span class="sd">            allowed databases are `archiveII` and `RNASTRalign`.</span>
+<span class="sd">        cleanup (bool): If True, the raw, compressed file is deleted. If</span>
+<span class="sd">            False, that file is not deleted.</span>
+<span class="sd">        verbosity (int): Verbosity of the function. 1 (default) prints</span>
+<span class="sd">            informative messages. 0 silences the function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Download and install an RNA database.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dst</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+        <span class="n">dst</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dst</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span>
+    <span class="c1"># Data validation.</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">datasets</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">datasets</span> <span class="o">=</span> <span class="p">[</span><span class="n">datasets</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dataset</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ALLOWED_DATASETS</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The dataset `</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s2">` is not allowed. &quot;</span>
+                <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;Allowed databases are </span><span class="si">{</span><span class="n">ALLOWED_DATASETS</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span>
+    <span class="c1"># Data obtention.</span>
+    <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
+        <span class="c1"># Check if the data have already been downloaded.</span>
+        <span class="k">if</span> <span class="n">file_io</span><span class="o">.</span><span class="n">is_downloaded</span><span class="p">(</span><span class="n">dst</span> <span class="o">+</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">ALLOWED_DATASETS</span><span class="p">[</span><span class="n">dataset</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The dataset `</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s2">` &quot;</span>
+                    <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;is already downloaded at `</span><span class="si">{</span><span class="n">dst</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dataset</span><span class="si">}</span><span class="s2">`.&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="c1"># Information file.</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">URL_PREFIX</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">dataset</span> <span class="o">+</span> <span class="n">INFO_FILE_ENDING</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">dst</span> <span class="o">+</span> <span class="n">dataset</span> <span class="o">+</span> <span class="n">INFO_FILE_ENDING</span>
+        <span class="n">file_io</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+        <span class="c1"># Data file.</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">URL_PREFIX</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">dataset</span> <span class="o">+</span> <span class="n">DATA_FILE_ENDING</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">dst</span> <span class="o">+</span> <span class="n">dataset</span> <span class="o">+</span> <span class="n">DATA_FILE_ENDING</span>
+        <span class="n">file_io</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+        <span class="n">file_io</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;r:gz&quot;</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cleanup</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Files installed in `</span><span class="si">{</span><span class="n">dst</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dataset</span><span class="si">}</span><span class="s2">`.&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="download_all"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.database.download_all">[docs]</a><span class="k">def</span> <span class="nf">download_all</span><span class="p">(</span><span class="n">dst</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Download all available RNA secondary structure datasets</span>
+<span class="sd">    (archiveII and RNASTRalign).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dst (str): Directory path in which the files are</span>
+<span class="sd">            downloaded and unwrapped.</span>
+<span class="sd">        cleanup (bool): If True, the raw, compressed file is deleted. If</span>
+<span class="sd">            False, that file is not deleted.</span>
+<span class="sd">        verbosity (int): Verbosity of the function. 1 (default) prints</span>
+<span class="sd">            informative messages. 0 silences the function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">download</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">ALLOWED_DATASETS</span><span class="p">,</span> <span class="n">cleanup</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_is_already_encoded</span><span class="p">(</span>
+        <span class="n">src</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dst</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">primary_structure_map</span><span class="p">,</span>
+        <span class="n">secondary_structure_map</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if a directory already contains already encoded data.</span>
+
+<span class="sd">    The function makes the following verifications:</span>
+<span class="sd">    - Ensure that the files for (1) the primary structure, (2) the</span>
+<span class="sd">      secondary structure, (3) the names, (4) the families, and (5) the</span>
+<span class="sd">      informative file are all present.</span>
+<span class="sd">    - The data points are of expected dimensions.</span>
+<span class="sd">    - The encoding for primary and secondary structures as well as</span>
+<span class="sd">      families are formatted as expected.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        src (str): Directory of the raw data files.</span>
+<span class="sd">        dst (str): Directory of the formatted date files.</span>
+<span class="sd">        size (int): Maximum size of a structure.</span>
+<span class="sd">        primary_structure_map</span>
+<span class="sd">        secondary_structure_map</span>
+
+<span class="sd">    Returns (bool): True if data are formatted as expected, False</span>
+<span class="sd">        otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Expected files.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dst</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">filenames</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span>
+    <span class="n">expected_filenames</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;families.txt&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;names.txt&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;primary_structures.npy&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;readme.rst&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;secondary_structures.npy&#39;</span>
+    <span class="p">]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">filenames</span> <span class="o">!=</span> <span class="n">expected_filenames</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">primary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">dst</span> <span class="o">+</span> <span class="s1">&#39;primary_structures.npy&#39;</span><span class="p">)</span>
+    <span class="n">secondary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">dst</span> <span class="o">+</span> <span class="s1">&#39;secondary_structures.npy&#39;</span><span class="p">)</span>
+    <span class="c1"># Expected number of data points</span>
+    <span class="n">n_families</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">dst</span> <span class="o">+</span> <span class="s1">&#39;families.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">n_names</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">dst</span> <span class="o">+</span> <span class="s1">&#39;names.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">n_primary</span> <span class="o">=</span> <span class="n">primary</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n_secondary</span> <span class="o">=</span> <span class="n">secondary</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">n_families</span> <span class="o">==</span> <span class="n">n_names</span> <span class="o">==</span> <span class="n">n_primary</span> <span class="o">==</span> <span class="n">n_secondary</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="c1"># Expected dimensions.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">primary</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">size</span> <span class="ow">or</span> <span class="n">secondary</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">size</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="c1"># Expected encoding.</span>
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">src</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*.ct&#39;</span><span class="p">):</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">pairings</span> <span class="o">=</span> <span class="n">rna_data</span><span class="o">.</span><span class="n">read_ct_file</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bases</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">size</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="n">test_primary</span> <span class="o">=</span> <span class="n">primary_structure_map</span><span class="p">(</span><span class="n">bases</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+    <span class="n">test_secondary</span> <span class="o">=</span> <span class="n">secondary_structure_map</span><span class="p">(</span><span class="n">pairings</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">test_primary</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">!=</span> <span class="n">primary</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="ow">or</span> <span class="n">test_secondary</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">!=</span> <span class="n">secondary</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<div class="viewcode-block" id="format"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.database.format">[docs]</a><span class="k">def</span> <span class="nf">format</span><span class="p">(</span>
+        <span class="n">src</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">dst</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">max_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">primary_structure_map</span><span class="p">:</span> <span class="nb">any</span> <span class="o">=</span> <span class="n">diurnal</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">Primary</span><span class="o">.</span><span class="n">to_onehot</span><span class="p">,</span>
+        <span class="n">secondary_structure_map</span><span class="p">:</span> <span class="nb">any</span> <span class="o">=</span> <span class="n">diurnal</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">Secondary</span><span class="o">.</span><span class="n">to_onehot</span><span class="p">,</span>
+        <span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Transform the original datasets into the representation provided</span>
+<span class="sd">    by the arguments.</span>
+
+<span class="sd">    This function reads the RNA dataset files comprised in the directory</span>
+<span class="sd">    `dataset_path`, applies the encoding schemes defined by the</span>
+<span class="sd">    arguments, and writes the result in the `formatted_path` directory.</span>
+<span class="sd">    All encoded elements are zero-padded to obtain elements of</span>
+<span class="sd">    dimensions [1 X max_size].</span>
+
+<span class="sd">    The function writes four files:</span>
+<span class="sd">    - `info.rst` describes the data.</span>
+<span class="sd">    - `primary_structure.np` contains the encoded primary structures of</span>
+<span class="sd">        the molecules.</span>
+<span class="sd">    - `secondary_structure.np` contains the encoded secondary structures</span>
+<span class="sd">        of the molecules.</span>
+<span class="sd">    - `families.np` contains the encoded family of the molecules.</span>
+<span class="sd">    - `names.txt` contains the newline-delimited names of the molecules.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        src (str): The directory in which RNA datasets are located. The</span>
+<span class="sd">            function searches for RNA files recursively.</span>
+<span class="sd">        dst (str): The directory in which the encoded RNA structures</span>
+<span class="sd">            are written. If the directory does not exist, it is created.</span>
+<span class="sd">        max_size (int): Maximal number of nucleotides in an RNA</span>
+<span class="sd">            structure. If an RNA structure has more nucleotides than</span>
+<span class="sd">            `max_size`, it is not included in the formatted dataset.</span>
+<span class="sd">        primary_structure_map: A dictionary or function that maps</span>
+<span class="sd">            an RNA primary structure symbol to a vector (e.g. map A to</span>
+<span class="sd">            [1, 0, 0, 0]). If None, the file `x.np` is not written.</span>
+<span class="sd">        secondary_structure_map: A dictionary or function that maps</span>
+<span class="sd">            an RNA secondary structure symbol to a vector (e.g. map &#39;.&#39;</span>
+<span class="sd">            to [0, 1, 0]). If None, the file `y.np` is not written.</span>
+<span class="sd">        verbosity (int): Verbosity level of the function. 1 (default)</span>
+<span class="sd">            prints informative messages. 0 silences the function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Format RNA data into Numpy files.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dst</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+        <span class="n">dst</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span>
+    <span class="c1"># If the data is already encoded in the directory, exit.</span>
+    <span class="k">if</span> <span class="n">_is_already_encoded</span><span class="p">(</span>
+            <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">max_size</span><span class="p">,</span> <span class="n">primary_structure_map</span><span class="p">,</span>
+            <span class="n">secondary_structure_map</span><span class="p">):</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The directory </span><span class="si">{</span><span class="n">dst</span><span class="si">}</span><span class="s2"> already contains the formatted data.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="c1"># Create the directory if it des not exist.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dst</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span>
+    <span class="c1"># Obtain the list of files to read.</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">src</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*.ct&#39;</span><span class="p">):</span>
+        <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="c1"># Encode the content of each file.</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>           <span class="c1"># RNA molecule names included in the dataset.</span>
+    <span class="n">rejected_names</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># RNA molecule names excluded from the dataset.</span>
+    <span class="n">families</span> <span class="o">=</span> <span class="p">[]</span>        <span class="c1"># Family</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>               <span class="c1"># Primary structure</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="p">[]</span>               <span class="c1"># Secondary structure</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">paths</span><span class="p">):</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">pairings</span> <span class="o">=</span> <span class="n">rna_data</span><span class="o">.</span><span class="n">read_ct_file</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+        <span class="n">family</span> <span class="o">=</span> <span class="n">diurnal</span><span class="o">.</span><span class="n">family</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bases</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_size</span><span class="p">:</span>
+            <span class="n">rejected_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+            <span class="k">continue</span>
+        <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+        <span class="n">families</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
+        <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">primary_structure_map</span><span class="p">(</span><span class="n">bases</span><span class="p">,</span> <span class="n">max_size</span><span class="p">))</span>
+        <span class="n">Y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">secondary_structure_map</span><span class="p">(</span><span class="n">pairings</span><span class="p">,</span> <span class="n">max_size</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Encoding </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span><span class="si">}</span><span class="s2"> files: &quot;</span>
+            <span class="n">suffix</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">progress_bar</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">paths</span><span class="p">),</span> <span class="n">i</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">suffix</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">()</span>  <span class="c1"># Change the line after the progress bar.</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rejected_names</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Encoded </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> files. Rejected </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2"> files.&quot;</span><span class="p">)</span>
+    <span class="c1"># Write the encoded file content into Numpy files.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">X</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No structure to write.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">dst</span> <span class="o">+</span> <span class="s2">&quot;primary_structures&quot;</span>
+    <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Writing primary structures at `</span><span class="si">{</span><span class="n">s1</span><span class="si">}</span><span class="s2">.npy`.&quot;</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="n">dst</span> <span class="o">+</span> <span class="s2">&quot;secondary_structures&quot;</span>
+    <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Writing secondary structures at `</span><span class="si">{</span><span class="n">s2</span><span class="si">}</span><span class="s2">.npy`.&quot;</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">dst</span> <span class="o">+</span> <span class="s2">&quot;families.txt&quot;</span>
+    <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Writing families at `</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">`.&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+        <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">families</span><span class="p">))</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">dst</span> <span class="o">+</span> <span class="s2">&quot;names.txt&quot;</span>
+    <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Writing names at `</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">`.&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+        <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
+    <span class="c1"># Write an informative file to sum up the content of the formatted folder.</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="n">dst</span> <span class="o">+</span> <span class="s2">&quot;readme.rst&quot;</span>
+    <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Writing an informative file at `</span><span class="si">{</span><span class="n">info</span><span class="si">}</span><span class="s2">`.&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+        <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">summarize</span><span class="p">(</span>
+            <span class="n">dst</span><span class="p">,</span> <span class="n">primary_structure_map</span><span class="p">,</span>
+            <span class="n">secondary_structure_map</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="summarize"><a class="viewcode-back" href="../../source/diurnal.html#diurnal.database.summarize">[docs]</a><span class="k">def</span> <span class="nf">summarize</span><span class="p">(</span>
+        <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">primary_structure_map</span><span class="p">,</span>
+        <span class="n">secondary_structure_map</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Summarize the content of the formatted file directory.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): File path of the formatted data.</span>
+<span class="sd">        primary_structure_map: A dictionary or function that maps</span>
+<span class="sd">            an RNA primary structure symbol to a vector (e.g. map A to</span>
+<span class="sd">            [1, 0, 0, 0]). If None, the file `x.np` is not written.</span>
+<span class="sd">        secondary_structure_map: A dictionary or function that maps</span>
+<span class="sd">            an RNA secondary structure symbol to a vector (e.g. map &#39;.&#39;</span>
+<span class="sd">            to [0, 1, 0]). If None, the file `y.np` is not written.</span>
+
+<span class="sd">    Returns (str): Informative file containing:</span>
+<span class="sd">        - Title</span>
+<span class="sd">        - Generation date and time</span>
+<span class="sd">        - Number of structures</span>
+<span class="sd">        - Structure size (number of nucleotides)</span>
+<span class="sd">        - Primary structure encoding example</span>
+<span class="sd">        - Secondary structure encoding example</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;[&gt; DIURNAL] RNA Database File Formatting</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">content</span> <span class="o">+=</span> <span class="s2">&quot;========================================</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Generation timestamp: </span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="si">}</span><span class="s2"> UTC</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;primary_structures.npy&quot;</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Number of structures: </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">content</span> <span class="o">+=</span> <span class="s2">&quot;RNA molecule **names** are listed in `names.txt`.</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">content</span> <span class="o">+=</span> <span class="s2">&quot;RNA molecule **families** are listed in `families.txt`.</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="n">X</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="s2">&quot;Primary Structure Encoding</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="s2">&quot;--------------------------</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;File: `</span><span class="si">{</span><span class="n">path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;primary_structures.npy&#39;</span><span class="si">}</span><span class="s2">`</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="n">example</span> <span class="o">=</span> <span class="s2">&quot;ACGU-&quot;</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Encoding of the structure `</span><span class="si">{</span><span class="n">example</span><span class="si">}</span><span class="s2">`:</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">primary_structure_map</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">example</span><span class="p">)):</span>
+            <span class="n">content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">example</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">code</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">&quot;</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;secondary_structures.npy&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">Y</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="s2">&quot;Secondary Structure Encoding</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="s2">&quot;----------------------------</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;File: `</span><span class="si">{</span><span class="n">path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;secondary_structures.npy&#39;</span><span class="si">}</span><span class="s2">`</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="n">example</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Corresponds to `(.)` in bracket notation.</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Encoding of the structure `</span><span class="si">{</span><span class="n">example</span><span class="si">}</span><span class="s2">`:</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">secondary_structure_map</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">example</span><span class="p">)):</span>
+            <span class="n">content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">example</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">code</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">content</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Vincent Therrien.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
