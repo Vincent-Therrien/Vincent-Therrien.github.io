@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>diurnal package &mdash; diurnal 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="diurnal.models package" href="diurnal.models.html" />
+    <link rel="prev" title="Source Code Documentation" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            diurnal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Source Code Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">diurnal package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diurnal.models.html">diurnal.models package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diurnal.utils.html">diurnal.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-diurnal.database">diurnal.database module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-diurnal.evaluate">diurnal.evaluate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-diurnal.family">diurnal.family module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-diurnal.structure">diurnal.structure module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-diurnal.train">diurnal.train module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-diurnal.visualize">diurnal.visualize module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-diurnal">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../literature_review.html">Literature Review</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">diurnal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Source Code Documentation</a></li>
+      <li class="breadcrumb-item active">diurnal package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/diurnal.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="diurnal-package">
+<h1>diurnal package<a class="headerlink" href="#diurnal-package" title="Permalink to this headline"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="diurnal.models.html">diurnal.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="diurnal.models.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diurnal.models.networks.html">diurnal.models.networks package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diurnal.models.networks.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diurnal.models.networks.html#module-diurnal.models.networks.cnn">diurnal.models.networks.cnn module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diurnal.models.networks.html#module-diurnal.models.networks.mlp">diurnal.models.networks.mlp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diurnal.models.networks.html#module-diurnal.models.networks">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diurnal.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diurnal.models.html#module-diurnal.models.baseline">diurnal.models.baseline module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diurnal.models.html#module-diurnal.models">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diurnal.utils.html">diurnal.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="diurnal.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diurnal.utils.html#module-diurnal.utils.file_io">diurnal.utils.file_io module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diurnal.utils.html#module-diurnal.utils.log">diurnal.utils.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diurnal.utils.html#module-diurnal.utils.rna_data">diurnal.utils.rna_data module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diurnal.utils.html#module-diurnal.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-diurnal.database">
+<span id="diurnal-database-module"></span><h2>diurnal.database module<a class="headerlink" href="#module-diurnal.database" title="Permalink to this headline"></a></h2>
+<p>RNA secondary structure database utility module.</p>
+<p>This module contains functions to install (i.e. download and unwrap)
+RNA dataset and manipulate the data into matrix formats usable by
+processing algorithms. Note: the word <cite>dataset</cite> is used to refer to
+a given set of RNA secondary structures (e.g. archiveII or
+RNASTRalign). The collection of datasets is referred as the database.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">diurnal.database</span> <span class="k">as</span> <span class="nn">db</span>
+<span class="n">db</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;./data/&quot;</span><span class="p">,</span> <span class="s2">&quot;archiveII&quot;</span><span class="p">)</span>
+<span class="n">db</span><span class="o">.</span><span class="n">format_basic</span><span class="p">(</span><span class="s2">&quot;./data/archiveII&quot;</span><span class="p">,</span> <span class="s2">&quot;./data/formatted&quot;</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Author: Vincent Therrien (<a class="reference external" href="mailto:therrien&#46;vincent&#46;2&#37;&#52;&#48;courrier&#46;uqam&#46;ca">therrien<span>&#46;</span>vincent<span>&#46;</span>2<span>&#64;</span>courrier<span>&#46;</span>uqam<span>&#46;</span>ca</a>)</p></li>
+<li><p>Affiliation: Département d’informatique, UQÀM</p></li>
+<li><p>File creation date: April 2023</p></li>
+<li><p>License: MIT</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.database.download">
+<span class="sig-prename descclassname"><span class="pre">diurnal.database.</span></span><span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datasets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cleanup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/database.html#download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.database.download" title="Permalink to this definition"></a></dt>
+<dd><p>Download and unpack RNA secondary structure databases.</p>
+<p>Download the datasets listed in the <cite>datasets</cite> argument, places them
+in the <cite>dst</cite> directory, and unpacks the downloaded files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> (<em>str</em>) – Directory path in which the files are downloaded and
+unwrapped.</p></li>
+<li><p><strong>datasets</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – The list of databases to download. The
+allowed databases are <cite>archiveII</cite> and <cite>RNASTRalign</cite>.</p></li>
+<li><p><strong>cleanup</strong> (<em>bool</em>) – If True, the raw, compressed file is deleted. If
+False, that file is not deleted.</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em>) – Verbosity of the function. 1 (default) prints
+informative messages. 0 silences the function.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.database.download_all">
+<span class="sig-prename descclassname"><span class="pre">diurnal.database.</span></span><span class="sig-name descname"><span class="pre">download_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cleanup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/database.html#download_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.database.download_all" title="Permalink to this definition"></a></dt>
+<dd><p>Download all available RNA secondary structure datasets
+(archiveII and RNASTRalign).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> (<em>str</em>) – Directory path in which the files are
+downloaded and unwrapped.</p></li>
+<li><p><strong>cleanup</strong> (<em>bool</em>) – If True, the raw, compressed file is deleted. If
+False, that file is not deleted.</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em>) – Verbosity of the function. 1 (default) prints
+informative messages. 0 silences the function.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.database.format_basic">
+<span class="sig-prename descclassname"><span class="pre">diurnal.database.</span></span><span class="sig-name descname"><span class="pre">format_basic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary_structure_map:</span> <span class="pre">any</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">Primary.to_onehot&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">secondary_structure_map:</span> <span class="pre">any</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">Secondary.to_onehot&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/database.html#format_basic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.database.format_basic" title="Permalink to this definition"></a></dt>
+<dd><p>Transform the original datasets into the representation provided
+by the arguments.</p>
+<p>This function reads the RNA dataset files comprised in the directory
+<cite>dataset_path</cite>, applies the encoding schemes defined by the
+arguments, and writes the result in the <cite>formatted_path</cite> directory.
+All encoded elements are zero-padded to obtain elements of
+dimensions [1 X max_size].</p>
+<p>The function writes four files:
+- <cite>info.rst</cite> describes the data.
+- <cite>primary_structure.np</cite> contains the encoded primary structures of</p>
+<blockquote>
+<div><p>the molecules.</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>secondary_structure.np</cite> contains the encoded secondary structures</dt><dd><p>of the molecules.</p>
+</dd>
+</dl>
+</li>
+<li><p><cite>families.np</cite> contains the encoded family of the molecules.</p></li>
+<li><p><cite>names.txt</cite> contains the newline-delimited names of the molecules.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src</strong> (<em>str</em>) – The directory in which RNA datasets are located. The
+function searches for RNA files recursively.</p></li>
+<li><p><strong>dst</strong> (<em>str</em>) – The directory in which the encoded RNA structures
+are written. If the directory does not exist, it is created.</p></li>
+<li><p><strong>max_size</strong> (<em>int</em>) – Maximal number of nucleotides in an RNA
+structure. If an RNA structure has more nucleotides than
+<cite>max_size</cite>, it is not included in the formatted dataset.</p></li>
+<li><p><strong>primary_structure_map</strong> – A dictionary or function that maps
+an RNA primary structure symbol to a vector (e.g. map A to
+[1, 0, 0, 0]). If None, the file <cite>x.np</cite> is not written.</p></li>
+<li><p><strong>secondary_structure_map</strong> – A dictionary or function that maps
+an RNA secondary structure symbol to a vector (e.g. map ‘.’
+to [0, 1, 0]). If None, the file <cite>y.np</cite> is not written.</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em>) – Verbosity level of the function. 1 (default)
+prints informative messages. 0 silences the function.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.database.format_filenames">
+<span class="sig-prename descclassname"><span class="pre">diurnal.database.</span></span><span class="sig-name descname"><span class="pre">format_filenames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">families</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">randomize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/diurnal/database.html#format_filenames"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.database.format_filenames" title="Permalink to this definition"></a></dt>
+<dd><p>Obtain all file names that satisfy the arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src</strong> (<em>str</em>) – Directory of the sequence files.</p></li>
+<li><p><strong>dst</strong> (<em>str</em>) – Output file name. Set to <cite>None</cite> for no output.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Maximum length of a sequence. Provide <cite>0</cite> for no
+maximum length.</p></li>
+<li><p><strong>families</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Set of RNA families to include. Provide
+<cite>[]</cite> to include all families.</p></li>
+<li><p><strong>randomize</strong> (<em>bool</em>) – If True, shuffle the filenames.</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em>) – Verbosity level. <cite>0</cite> to disable the output.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (list[str]): List of file names.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.database.format_primary_secondary_structure">
+<span class="sig-prename descclassname"><span class="pre">diurnal.database.</span></span><span class="sig-name descname"><span class="pre">format_primary_secondary_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/diurnal/database.html#format_primary_secondary_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.database.format_primary_secondary_structure" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a combination of primary and secondary structures into a
+Numpy file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>names</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of sequence file names.</p></li>
+<li><p><strong>dst</strong> (<em>str</em>) – Output file name.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Maximum length of a sequence.</p></li>
+<li><p><strong>map</strong> (<em>Callable</em>) – Function that transforms the sequence of bases
+into a formatted primary structure.</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em>) – Verbosity level. <cite>0</cite> to disable the output.</p></li>
+<li><p><strong>epsilon</strong> – Maximum Manhattan distance between two matrices to
+consider them different. Used to account for rounding.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.database.format_primary_structure">
+<span class="sig-prename descclassname"><span class="pre">diurnal.database.</span></span><span class="sig-name descname"><span class="pre">format_primary_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/diurnal/database.html#format_primary_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.database.format_primary_structure" title="Permalink to this definition"></a></dt>
+<dd><p>Convert primary structures into a Numpy file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>names</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of sequence file names.</p></li>
+<li><p><strong>dst</strong> (<em>str</em>) – Output file name.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Maximum length of a sequence.</p></li>
+<li><p><strong>map</strong> (<em>Callable</em>) – Function that transforms the sequence of bases
+into a formatted primary structure.</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em>) – Verbosity level. <cite>0</cite> to disable the output.</p></li>
+<li><p><strong>epsilon</strong> – Maximum Manhattan distance between two matrices to
+consider them different. Used to account for rounding.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.database.format_secondary_structure">
+<span class="sig-prename descclassname"><span class="pre">diurnal.database.</span></span><span class="sig-name descname"><span class="pre">format_secondary_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/diurnal/database.html#format_secondary_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.database.format_secondary_structure" title="Permalink to this definition"></a></dt>
+<dd><p>Convert secondary structures into a Numpy file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>names</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of sequence file names.</p></li>
+<li><p><strong>dst</strong> (<em>str</em>) – Output file name.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Maximum length of a sequence.</p></li>
+<li><p><strong>map</strong> (<em>Callable</em>) – Function that transforms the sequence of bases
+into a formatted primary structure.</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em>) – Verbosity level. <cite>0</cite> to disable the output.</p></li>
+<li><p><strong>epsilon</strong> – Maximum Manhattan distance between two matrices to
+consider them different. Used to account for rounding.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.database.save">
+<span class="sig-prename descclassname"><span class="pre">diurnal.database.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/database.html#save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.database.save" title="Permalink to this definition"></a></dt>
+<dd><p>Save a matrix into a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> – Input</p></li>
+<li><p><strong>name</strong> – Complete filename. Directories are created.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.database.summarize">
+<span class="sig-prename descclassname"><span class="pre">diurnal.database.</span></span><span class="sig-name descname"><span class="pre">summarize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary_structure_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">secondary_structure_map</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/diurnal/database.html#summarize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.database.summarize" title="Permalink to this definition"></a></dt>
+<dd><p>Summarize the content of the formatted file directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – File path of the formatted data.</p></li>
+<li><p><strong>primary_structure_map</strong> – A dictionary or function that maps
+an RNA primary structure symbol to a vector (e.g. map A to
+[1, 0, 0, 0]). If None, the file <cite>x.np</cite> is not written.</p></li>
+<li><p><strong>secondary_structure_map</strong> – A dictionary or function that maps
+an RNA secondary structure symbol to a vector (e.g. map ‘.’
+to [0, 1, 0]). If None, the file <cite>y.np</cite> is not written.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns (str): Informative file containing:</dt><dd><ul class="simple">
+<li><p>Title</p></li>
+<li><p>Generation date and time</p></li>
+<li><p>Number of structures</p></li>
+<li><p>Structure size (number of nucleotides)</p></li>
+<li><p>Primary structure encoding example</p></li>
+<li><p>Secondary structure encoding example</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-diurnal.evaluate">
+<span id="diurnal-evaluate-module"></span><h2>diurnal.evaluate module<a class="headerlink" href="#module-diurnal.evaluate" title="Permalink to this headline"></a></h2>
+<p>RNA secondary prediction evaluation module.</p>
+<p>This module contains functions to evaluate RNA secondary predictions
+by comparing a predicted structure to a reference structure.</p>
+<ul class="simple">
+<li><p>Author: Vincent Therrien (<a class="reference external" href="mailto:therrien&#46;vincent&#46;2&#37;&#52;&#48;courrier&#46;uqam&#46;ca">therrien<span>&#46;</span>vincent<span>&#46;</span>2<span>&#64;</span>courrier<span>&#46;</span>uqam<span>&#46;</span>ca</a>)</p></li>
+<li><p>Affiliation: Département d’informatique, UQÀM</p></li>
+<li><p>File creation date: April 2023</p></li>
+<li><p>License: MIT</p></li>
+</ul>
+<dl class="py class">
+<dt class="sig sig-object py" id="diurnal.evaluate.Bracket">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diurnal.evaluate.</span></span><span class="sig-name descname"><span class="pre">Bracket</span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Bracket"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Bracket" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Evaluate predictions made with the bracket notation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.Bracket.confusion_matrix">
+<span class="sig-name descname"><span class="pre">confusion_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'(.)'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Bracket.confusion_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Bracket.confusion_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Get the confusion matrix of the prediction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>true</strong> (<em>list-like</em>) – Vector of the true structure.</p></li>
+<li><p><strong>pred</strong> (<em>list-like</em>) – Vector of the predicted structure.</p></li>
+<li><p><strong>symbols</strong> – Set of possible elements.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns (tuple): A tuple containing the confusion matrix and a</dt><dd><p>list of symbols that correspond to each row of the matrix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.Bracket.convert_to_scalars">
+<span class="sig-name descname"><span class="pre">convert_to_scalars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Bracket.convert_to_scalars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Bracket.convert_to_scalars" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a vector of vectors into a vector of scalars.
+For instance, <cite>[[0, 1], [0, 1], [1, 0]]</cite> and <cite>[‘.’, ‘.’, ‘(‘]</cite>
+are converted to <cite>[0, 0, 1]</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>true</strong> (<em>list-like</em>) – Vector of the true structure.</p></li>
+<li><p><strong>pred</strong> (<em>list-like</em>) – Vector of the predicted structure.</p></li>
+<li><p><strong>symbols</strong> – Set of possible elements.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (list): Tuple containing the scalar vectors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.Bracket.crop">
+<span class="sig-name descname"><span class="pre">crop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Bracket.crop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Bracket.crop" title="Permalink to this definition"></a></dt>
+<dd><p>Return a cropped secondary structure to exclude padding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bracket</strong> – Bracket notation of the secondary structure.</p></li>
+<li><p><strong>length</strong> – Number of bases in the primary structure.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: The <cite>bracket</cite> argument from element <cite>0</cite> to <cite>length</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.Bracket.micro_f1">
+<span class="sig-name descname"><span class="pre">micro_f1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'(.)'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Bracket.micro_f1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Bracket.micro_f1" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the micro F1-score by considering the secondary
+structure symbols ‘(’, ‘.’, and ‘)’ as three different classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>true</strong> (<em>list-like</em>) – Vector of the true structure.</p></li>
+<li><p><strong>pred</strong> (<em>list-like</em>) – Vector of the predicted structure.</p></li>
+<li><p><strong>symbols</strong> – Set of possible elements.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns (float): F1-score of the prediction, i.e. a value</dt><dd><p>between 0 and 1.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="diurnal.evaluate.ContactMatrix">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diurnal.evaluate.</span></span><span class="sig-name descname"><span class="pre">ContactMatrix</span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#ContactMatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.ContactMatrix" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Evaluate predictions made with contact matrices.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.ContactMatrix.FN">
+<span class="sig-name descname"><span class="pre">FN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#ContactMatrix.FN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.ContactMatrix.FN" title="Permalink to this definition"></a></dt>
+<dd><p>Get the number of false negatives.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.ContactMatrix.FP">
+<span class="sig-name descname"><span class="pre">FP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#ContactMatrix.FP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.ContactMatrix.FP" title="Permalink to this definition"></a></dt>
+<dd><p>Get the number of false positives.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.ContactMatrix.TN">
+<span class="sig-name descname"><span class="pre">TN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#ContactMatrix.TN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.ContactMatrix.TN" title="Permalink to this definition"></a></dt>
+<dd><p>Get the number of true negatives.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.ContactMatrix.TP">
+<span class="sig-name descname"><span class="pre">TP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#ContactMatrix.TP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.ContactMatrix.TP" title="Permalink to this definition"></a></dt>
+<dd><p>Get the number of true positives.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.ContactMatrix.crop">
+<span class="sig-name descname"><span class="pre">crop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#ContactMatrix.crop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.ContactMatrix.crop" title="Permalink to this definition"></a></dt>
+<dd><p>Return a cropped contact matrix to exclude padding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>contact</strong> – Contact matrix of the secondary structure.</p></li>
+<li><p><strong>length</strong> – Number of bases in the primary structure.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns: The <cite>length</cite> by <cite>length</cite> upper left square of the</dt><dd><p>contact matrix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.ContactMatrix.f1">
+<span class="sig-name descname"><span class="pre">f1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#ContactMatrix.f1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.ContactMatrix.f1" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the F1 score, a harmonic mean of precision and
+recall.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.ContactMatrix.precision">
+<span class="sig-name descname"><span class="pre">precision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#ContactMatrix.precision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.ContactMatrix.precision" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the precision obtained by comparing two secondary
+structures. Precision is defined as:</p>
+<div class="math notranslate nohighlight">
+\[TP / (TP + FP).\]</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.ContactMatrix.recall">
+<span class="sig-name descname"><span class="pre">recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#ContactMatrix.recall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.ContactMatrix.recall" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the recall obtained by comparing two secondary
+structures. Precision is defined as:</p>
+<div class="math notranslate nohighlight">
+\[TP / (TP + FN).\]</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="diurnal.evaluate.Shadow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diurnal.evaluate.</span></span><span class="sig-name descname"><span class="pre">Shadow</span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Shadow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Shadow" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Evaluate predictions made with secondary structure shadows,
+i.e. a sequence of paired / unpaired bases.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.Shadow.FN">
+<span class="sig-name descname"><span class="pre">FN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Shadow.FN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Shadow.FN" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the false negative value (predicted unpaired bases
+that are actually unpaired).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.Shadow.FP">
+<span class="sig-name descname"><span class="pre">FP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Shadow.FP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Shadow.FP" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the false positive value (predicted paired bases that
+are actually unpaired).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.Shadow.TN">
+<span class="sig-name descname"><span class="pre">TN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Shadow.TN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Shadow.TN" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the true negative value (predicted unpaired bases
+that are actually unpaired).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.Shadow.TP">
+<span class="sig-name descname"><span class="pre">TP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Shadow.TP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Shadow.TP" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the true positive value (predicted paired bases that
+are actually paired).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.Shadow.crop">
+<span class="sig-name descname"><span class="pre">crop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Shadow.crop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Shadow.crop" title="Permalink to this definition"></a></dt>
+<dd><p>Return a cropped shadow to exclude padding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shadow</strong> – Shadow of the secondary structure.</p></li>
+<li><p><strong>length</strong> – Number of bases in the primary structure.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: The <cite>shadow</cite> argument from element <cite>0</cite> to <cite>length</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.Shadow.precision">
+<span class="sig-name descname"><span class="pre">precision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Shadow.precision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Shadow.precision" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the precision obtained by comparing two
+secondary structures. Precision is defined as:</p>
+<div class="math notranslate nohighlight">
+\[TP / (TP + FP).\]</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.Shadow.recall">
+<span class="sig-name descname"><span class="pre">recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Shadow.recall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Shadow.recall" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the recall value obtained by comparing two
+secondary structures. Recall is defined as:</p>
+<div class="math notranslate nohighlight">
+\[TP / (TP + FN).\]</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.evaluate.Shadow.recall_precision_f1">
+<span class="sig-name descname"><span class="pre">recall_precision_f1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/diurnal/evaluate.html#Shadow.recall_precision_f1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.Shadow.recall_precision_f1" title="Permalink to this definition"></a></dt>
+<dd><dl>
+<dt>Compute the F1-score obtained by comparing two secondary</dt><dd><p>structures. The f1-score is defined as:</p>
+<div class="math notranslate nohighlight">
+\[F1 = 2      imes\]</div>
+</dd>
+</dl>
+<p>rac{recall        imes precision}{recall + precision}</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.evaluate.summarize_results">
+<span class="sig-prename descclassname"><span class="pre">diurnal.evaluate.</span></span><span class="sig-name descname"><span class="pre">summarize_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f1_scores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#summarize_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.summarize_results" title="Permalink to this definition"></a></dt>
+<dd><p>Summarize the f1-scores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f1_scores</strong> (<em>list</em><em>(</em><em>float</em><em>)</em>) – List of f1-scores.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name of the results printed along with the summary.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.evaluate.to_shadow">
+<span class="sig-prename descclassname"><span class="pre">diurnal.evaluate.</span></span><span class="sig-name descname"><span class="pre">to_shadow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bracket</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/diurnal/evaluate.html#to_shadow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.evaluate.to_shadow" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a bracket notation to a secondary structure shadow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bracket</strong> – Secondary structure represented in bracket notation
+with the characters <cite>(</cite>, <cite>.</cite>, and <cite>)</cite>.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns: Secondary structure shadow in which <cite>0</cite> stands for <cite>(</cite> or</dt><dd><p><cite>)</cite> and <cite>1</cite> stands for <cite>.</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-diurnal.family">
+<span id="diurnal-family-module"></span><h2>diurnal.family module<a class="headerlink" href="#module-diurnal.family" title="Permalink to this headline"></a></h2>
+<p>RNA family utility module.</p>
+<p>This module simplifies operations related to the encoding of RNA
+families into other representations.</p>
+<ul class="simple">
+<li><p>Author: Vincent Therrien (<a class="reference external" href="mailto:therrien&#46;vincent&#46;2&#37;&#52;&#48;courrier&#46;uqam&#46;ca">therrien<span>&#46;</span>vincent<span>&#46;</span>2<span>&#64;</span>courrier<span>&#46;</span>uqam<span>&#46;</span>ca</a>)</p></li>
+<li><p>Affiliation: Département d’informatique, UQÀM</p></li>
+<li><p>File creation date: June 2023</p></li>
+<li><p>License: MIT</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.family.all_but">
+<span class="sig-prename descclassname"><span class="pre">diurnal.family.</span></span><span class="sig-name descname"><span class="pre">all_but</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">families</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/diurnal/family.html#all_but"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.family.all_but" title="Permalink to this definition"></a></dt>
+<dd><p>Return all RNA family names except those provided as arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>families</strong> (<em>List</em><em>(</em><em>str</em><em>) </em><em>| </em><em>str</em>) – RNA families to exclude.</p>
+</dd>
+</dl>
+<p>Returns (List(str)): The list of selected RNA families.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.family.get_name">
+<span class="sig-prename descclassname"><span class="pre">diurnal.family.</span></span><span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/diurnal/family.html#get_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.family.get_name" title="Permalink to this definition"></a></dt>
+<dd><p>Attempt to determine the family of an RNA molecule based on its
+filename.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Name of the file containing the representation
+of the RNA molecule.</p>
+</dd>
+</dl>
+<p>Returns (str): RNA family if found, empty string otherwise.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.family.is_known">
+<span class="sig-prename descclassname"><span class="pre">diurnal.family.</span></span><span class="sig-name descname"><span class="pre">is_known</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/diurnal/family.html#is_known"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.family.is_known" title="Permalink to this definition"></a></dt>
+<dd><p>Check if an RNA family is recognized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>family</strong> (<em>str</em>) – Family test name.</p>
+</dd>
+</dl>
+<p>Returns (bool): True if the family is recognized, False otherwise.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.family.select">
+<span class="sig-prename descclassname"><span class="pre">diurnal.family.</span></span><span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">families</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/diurnal/family.html#select"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.family.select" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of molecule names that belong to a provided family.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>names</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of names to filter.</p></li>
+<li><p><strong>families</strong> (<em>str</em><em> | </em><em>list</em><em>[</em><em>str</em><em>]</em>) – Family or families to preserve.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (list[str]) List of names.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.family.split">
+<span class="sig-prename descclassname"><span class="pre">diurnal.family.</span></span><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/diurnal/family.html#split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.family.split" title="Permalink to this definition"></a></dt>
+<dd><p>Split a list of molecule names into a dictionary of names
+organized by family.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>names</strong> – List of molecule names.</p>
+</dd>
+</dl>
+<p>Returns: Dictionary formatted as {“family”: [names]}.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.family.to_name">
+<span class="sig-prename descclassname"><span class="pre">diurnal.family.</span></span><span class="sig-name descname"><span class="pre">to_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/diurnal/family.html#to_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.family.to_name" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a one-hot-encoded family back into its name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vector</strong> (<em>list</em>) – A one-hot encoded family.</p>
+</dd>
+</dl>
+<p>Returns (str): Family name.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.family.to_onehot">
+<span class="sig-prename descclassname"><span class="pre">diurnal.family.</span></span><span class="sig-name descname"><span class="pre">to_onehot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'16s':</span> <span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0],</span> <span class="pre">'23s':</span> <span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0],</span> <span class="pre">'5s':</span> <span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0],</span> <span class="pre">'RNaseP':</span> <span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0],</span> <span class="pre">'SRP':</span> <span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0],</span> <span class="pre">'grp1':</span> <span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0],</span> <span class="pre">'grp2':</span> <span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0],</span> <span class="pre">'tRNA':</span> <span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1],</span> <span class="pre">'telomerase':</span> <span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0],</span> <span class="pre">'tmRNA':</span> <span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0]}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/diurnal/family.html#to_onehot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.family.to_onehot" title="Permalink to this definition"></a></dt>
+<dd><p>Encode a family into a one-hot vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>family</strong> (<em>str</em>) – RNA family.</p></li>
+<li><p><strong>map</strong> (<em>dict</em>) – A dictionary that assigns a family to a vector.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (list(int)): One-hot encoded family.</p>
+</dd></dl>
+
+</section>
+<section id="module-diurnal.structure">
+<span id="diurnal-structure-module"></span><h2>diurnal.structure module<a class="headerlink" href="#module-diurnal.structure" title="Permalink to this headline"></a></h2>
+<p>Transform RNA structures into useful representations.</p>
+<ul class="simple">
+<li><p>Author: Vincent Therrien (<a class="reference external" href="mailto:therrien&#46;vincent&#46;2&#37;&#52;&#48;courrier&#46;uqam&#46;ca">therrien<span>&#46;</span>vincent<span>&#46;</span>2<span>&#64;</span>courrier<span>&#46;</span>uqam<span>&#46;</span>ca</a>)</p></li>
+<li><p>Affiliation: Département d’informatique, UQÀM</p></li>
+<li><p>File creation date: June 2023</p></li>
+<li><p>License: MIT</p></li>
+</ul>
+<dl class="py class">
+<dt class="sig sig-object py" id="diurnal.structure.Constants">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diurnal.structure.</span></span><span class="sig-name descname"><span class="pre">Constants</span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Constants"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Constants" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Set of physical values that contraint RNA structures.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diurnal.structure.Constants.LOOP_MIN_DISTANCE">
+<span class="sig-name descname"><span class="pre">LOOP_MIN_DISTANCE</span></span><a class="headerlink" href="#diurnal.structure.Constants.LOOP_MIN_DISTANCE" title="Permalink to this definition"></a></dt>
+<dd><p>Minimum number of nucleotides between
+two bases paired to each other. For instance, in the
+sequence <cite>ACCCU</cite>, the bases <cite>A</cite> and <cite>U</cite> can be paired
+because they are separated by three bases. However, in the
+sequence <cite>ACU</cite>, the bases <cite>A</cite> and <cite>U</cite> cannot be paired
+because they are too close.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">LOOP_MIN_DISTANCE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="diurnal.structure.Primary">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diurnal.structure.</span></span><span class="sig-name descname"><span class="pre">Primary</span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Primary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Primary" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Transform RNA primary structures into useful formats.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Primary.to_mask">
+<span class="sig-name descname"><span class="pre">to_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Primary.to_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Primary.to_mask" title="Permalink to this definition"></a></dt>
+<dd><p>Make a primary structure pairing mask.</p>
+<p>Return the a copy of the input matrix in which impossible
+pairings are set to 0 and possible pairings are set to 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pairings</strong> (<em>np.ndarray</em>) – Primary structure potential pairing
+matrix.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Matrix dimension. <cite>0</cite> for no padding.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (np.ndarray): Pairing matrix mask.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Primary.to_matrix">
+<span class="sig-name descname"><span class="pre">to_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'-':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'AU':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'CG':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'GC':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'GU':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'UA':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'UG':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'invalid':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0)}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Primary.to_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Primary.to_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Encode a primary structure in a matrix of potential pairings.</p>
+<p>Create an <cite>n</cite> by <cite>n</cite> matrix, where <cite>n</cite> is the number of bases,
+in which element each represent a potential RNA base pairing.
+For instance, the pairing <cite>AA</cite> is not possible and will be
+assigned the <cite>invalid</cite> value of the <cite>map</cite> parameter. <cite>AU</cite> is a
+valid pairing and the corresponding element will be assigned to
+its value in the <cite>map</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bases</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – Primary structure (sequence of bases).</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Matrix dimension. <cite>0</cite> for no padding.</p></li>
+<li><p><strong>map</strong> (<em>dict</em>) – Assign a pairing to a matrix element. The
+elements of the map must be (1) convertible to a Numpy
+array and (2) of the same dimension.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (np.ndarray): Encoded matrix.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Primary.to_onehot">
+<span class="sig-name descname"><span class="pre">to_onehot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'-':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'.':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'A':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'B':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">'C':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'D':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">'G':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0),</span> <span class="pre">'H':</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'K':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">'M':</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'N':</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">'R':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0),</span> <span class="pre">'S':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0),</span> <span class="pre">'T':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'U':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'V':</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0),</span> <span class="pre">'W':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'Y':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">1)}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Primary.to_onehot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Primary.to_onehot" title="Permalink to this definition"></a></dt>
+<dd><p>Transform a sequence of bases into a one-hot encoded vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bases</strong> (<em>List</em><em>[</em><em>str</em><em>] </em><em>| </em><em>str</em>) – A sequence of bases.
+E.g.: <code class="docutils literal notranslate"><span class="pre">['A',</span> <span class="pre">'U']</span></code> or <code class="docutils literal notranslate"><span class="pre">AU</span></code>.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Size of a normalized vector. <cite>0</cite> for no padding.</p></li>
+<li><p><strong>map</strong> (<em>dict</em>) – Assign an input to a vector.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns (np.ndarray): One-hot encoded primary structure.</dt><dd><p>E.g.: <code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0],</span> <span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0]]</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Primary.to_sequence">
+<span class="sig-name descname"><span class="pre">to_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'-':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'.':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'A':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'B':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">'C':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'D':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">'G':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0),</span> <span class="pre">'H':</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'K':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">'M':</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'N':</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">'R':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0),</span> <span class="pre">'S':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0),</span> <span class="pre">'T':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'U':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'V':</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0),</span> <span class="pre">'W':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'Y':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">1)}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Primary.to_sequence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Primary.to_sequence" title="Permalink to this definition"></a></dt>
+<dd><p>Transform a one-hot encoded vector into a sequence of bases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vector</strong> (<em>list-like</em>) – One-hot encoded primary structure.</p></li>
+<li><p><strong>strip</strong> (<em>bool</em>) – Remove empty elements at the vector’s right end.</p></li>
+<li><p><strong>map</strong> – A dictionary or function that maps bases to vectors.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (list): A sequence of bases. E.g.: <code class="docutils literal notranslate"><span class="pre">['A',</span> <span class="pre">'U']</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Primary.unpad_matrix">
+<span class="sig-name descname"><span class="pre">unpad_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'-':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'AU':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'CG':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'GC':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'GU':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'UA':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'UG':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'invalid':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0)}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Primary.unpad_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Primary.unpad_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Strip a matrix of its padding elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> – Input matrix (Numpy array of Python lists).</p></li>
+<li><p><strong>map</strong> (<em>dict</em>) – Assign a pairing to a matrix element.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (list): Unpadded matrix.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="diurnal.structure.Schemes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diurnal.structure.</span></span><span class="sig-name descname"><span class="pre">Schemes</span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Schemes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Schemes" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>RNA structure schemes</p>
+<p>The attributes of this class are used to transform raw RNA sequence
+data into other representations that can be used for prediction
+problems.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diurnal.structure.Schemes.IUPAC_TO_ONEHOT">
+<span class="sig-name descname"><span class="pre">IUPAC_TO_ONEHOT</span></span><a class="headerlink" href="#diurnal.structure.Schemes.IUPAC_TO_ONEHOT" title="Permalink to this definition"></a></dt>
+<dd><p>One-hot encoding dictionary for IUPAC
+symbols. See: <a class="reference external" href="https://www.bioinformatics.org/sms/iupac.html">https://www.bioinformatics.org/sms/iupac.html</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diurnal.structure.Schemes.IUPAC_ONEHOT_PAIRINGS_VECTOR">
+<span class="sig-name descname"><span class="pre">IUPAC_ONEHOT_PAIRINGS_VECTOR</span></span><a class="headerlink" href="#diurnal.structure.Schemes.IUPAC_ONEHOT_PAIRINGS_VECTOR" title="Permalink to this definition"></a></dt>
+<dd><p>One-hot encoded nucleotide
+pairings, including normal ones (AU, UA, CG, and GC) and
+wobble pairs (GU and UG). Taken from CNNFold by Booy et al.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diurnal.structure.Schemes.BRACKET_TO_ONEHOT">
+<span class="sig-name descname"><span class="pre">BRACKET_TO_ONEHOT</span></span><a class="headerlink" href="#diurnal.structure.Schemes.BRACKET_TO_ONEHOT" title="Permalink to this definition"></a></dt>
+<dd><p>One-hot encoding dictionary for a
+secondary structure that relies on the bracket notation. <cite>.</cite>
+is an unpaired base. <cite>(</cite> is a base paired to a downstream
+base. <cite>)</cite> is a base paired to an upstream base. <cite>-</cite> is a
+padding (i.e. empty) base.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diurnal.structure.Schemes.SHADOW_ENCODING">
+<span class="sig-name descname"><span class="pre">SHADOW_ENCODING</span></span><a class="headerlink" href="#diurnal.structure.Schemes.SHADOW_ENCODING" title="Permalink to this definition"></a></dt>
+<dd><p>One-hot encoding dictionary to encode
+the shadow of the secondary structure (i.e. the symbols <cite>(</cite>
+and <cite>)</cite> of the bracket notation are considered identical).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">BRACKET_TO_ONEHOT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'(':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">')':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'-':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'.':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">0)}</span></em><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">IUPAC_ONEHOT_PAIRINGS_VECTOR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'-':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'AU':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'CG':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'GC':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'GU':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'UA':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'UG':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'invalid':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0)}</span></em><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diurnal.structure.Schemes.IUPAC_PAIRINGS_SCALARS">
+<span class="sig-name descname"><span class="pre">IUPAC_PAIRINGS_SCALARS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'-':</span> <span class="pre">0,</span> <span class="pre">'AU':</span> <span class="pre">2,</span> <span class="pre">'CG':</span> <span class="pre">3,</span> <span class="pre">'GC':</span> <span class="pre">3,</span> <span class="pre">'GU':</span> <span class="pre">1,</span> <span class="pre">'UA':</span> <span class="pre">2,</span> <span class="pre">'UG':</span> <span class="pre">1,</span> <span class="pre">'invalid':</span> <span class="pre">0}</span></em><a class="headerlink" href="#diurnal.structure.Schemes.IUPAC_PAIRINGS_SCALARS" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diurnal.structure.Schemes.IUPAC_PAIRINGS_SCALARS_NEGATIVE_PADDING">
+<span class="sig-name descname"><span class="pre">IUPAC_PAIRINGS_SCALARS_NEGATIVE_PADDING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'-':</span> <span class="pre">-1,</span> <span class="pre">'AU':</span> <span class="pre">2,</span> <span class="pre">'CG':</span> <span class="pre">3,</span> <span class="pre">'GC':</span> <span class="pre">3,</span> <span class="pre">'GU':</span> <span class="pre">1,</span> <span class="pre">'UA':</span> <span class="pre">2,</span> <span class="pre">'UG':</span> <span class="pre">1,</span> <span class="pre">'invalid':</span> <span class="pre">0}</span></em><a class="headerlink" href="#diurnal.structure.Schemes.IUPAC_PAIRINGS_SCALARS_NEGATIVE_PADDING" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">IUPAC_TO_ONEHOT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'-':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'.':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'A':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'B':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">'C':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'D':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">'G':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0),</span> <span class="pre">'H':</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'K':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">'M':</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'N':</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">'R':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0),</span> <span class="pre">'S':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0),</span> <span class="pre">'T':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'U':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'V':</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0),</span> <span class="pre">'W':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'Y':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">1)}</span></em><a class="headerlink" href="#id3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">SHADOW_ENCODING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'(':</span> <span class="pre">1,</span> <span class="pre">')':</span> <span class="pre">1,</span> <span class="pre">'-':</span> <span class="pre">0,</span> <span class="pre">'.':</span> <span class="pre">0}</span></em><a class="headerlink" href="#id4" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="diurnal.structure.Secondary">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diurnal.structure.</span></span><span class="sig-name descname"><span class="pre">Secondary</span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Secondary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Secondary" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Transform RNA secondary structures into useful formats.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Secondary.normalize_distance_matrix">
+<span class="sig-name descname"><span class="pre">normalize_distance_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Secondary.normalize_distance_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Secondary.normalize_distance_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Normalize the distance matrix.</p>
+<p>This function returns a new distance matrix whose elements are
+normalized within the range 0.0 (farthest from a paired base)
+to 1.0 (paired base).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>distance_matrix</strong> (<em>np.ndarray</em>) – Result of the function
+<cite>to_distance_matrix</cite>.</p>
+</dd>
+</dl>
+<p>Returns (np.ndarray): Normalized distance matrix.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Secondary.quantize">
+<span class="sig-name descname"><span class="pre">quantize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Secondary.quantize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Secondary.quantize" title="Permalink to this definition"></a></dt>
+<dd><p>Eliminate invalid pairings in a secondary structure matrix.</p>
+<p>Let the following represent a secondary structure matrix:</p>
+<dl class="simple">
+<dt><a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></dt><dd><dl class="simple">
+<dt>[[_, _, _, _, c, b],</dt><dd><p>[_, _, _, _, _, a],
+[_, _, _, _, _, _],
+[_, _, _, _, _, _],
+[x, _, _, _, _, _],
+[y, z, _, _, _, _]]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a></p>
+<p>It follows that (x, a), (y, b), and (z, c) must all be pairs
+of identical elements because they represent either paired or
+unpaired bases. Differing elements would indicate that a base is
+both paired and unpaired, which is impossible. This function
+assigns the value <cite>0</cite> to all impossible pairings and <cite>1</cite> to all
+other values.</p>
+<p>Steps:
+- Symmetrize the matrix by multiplying it by its transpose.
+- Determine a threshold value from the average of non-paired</p>
+<blockquote>
+<div><p>elements.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Assign <cite>0</cite> to all the elements below the threshold.</p></li>
+<li><p>Quantize the matrix along both axes and multiply the result
+with each other.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>np.ndarray</em>) – Contact matrix.</p></li>
+<li><p><strong>mask</strong> (<em>np.ndarray</em>) – Valid pairing mask.</p></li>
+<li><p><strong>threshold</strong> (<em>float</em>) – Value below which elements are discarded.
+Determined at runtime if not provided.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (np.ndarray): Folded pairing matrix.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Secondary.quantize_distance_matrix">
+<span class="sig-name descname"><span class="pre">quantize_distance_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Secondary.quantize_distance_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Secondary.quantize_distance_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Create a contact matrix from a distance matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>distance_matrix</strong> (<em>np.ndarray</em>) – Result of the function
+<cite>to_distance_matrix</cite>.</p>
+</dd>
+</dl>
+<p>Returns (np.ndarray): Contact matrix.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Secondary.quantize_vector">
+<span class="sig-name descname"><span class="pre">quantize_vector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Secondary.quantize_vector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Secondary.quantize_vector" title="Permalink to this definition"></a></dt>
+<dd><p>Quantize a secondary structure vector.</p>
+<p>Convert a vector of predicted brackets into a one-hot vector. For
+instance, <cite>[[0.9, 0.5, 0.1], [0.0, 0.5, 0.1]]</cite> is converted to
+<cite>[[1, 0, 0], [0, 1, 0]]</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prediction</strong> (<em>list-like</em>) – Secondary structure prediction.</p>
+</dd>
+</dl>
+<p>Returns: Reformatted secondary structure.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Secondary.to_bracket">
+<span class="sig-name descname"><span class="pre">to_bracket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Secondary.to_bracket"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Secondary.to_bracket" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a list of nucleotide pairings into a secondary
+structure bracket notation, e.g. <cite>‘(((…)))</cite>’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pairings</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – A list of nucleotide pairings, e.g.
+the pairing <cite>(((…)))</cite> is represented as
+<cite>[8, 7, 6, -1, -1, -1, 2, 1, 0]</cite>.</p>
+</dd>
+</dl>
+<p>Returns (list): Secondary structure bracket notation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Secondary.to_distance_matrix">
+<span class="sig-name descname"><span class="pre">to_distance_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Secondary.to_distance_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Secondary.to_distance_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Encode a secondary structure into a score contact matrix.</p>
+<p>Transform the sequence of pairings into an <cite>n</cite> by <cite>n</cite> matrix,
+where <cite>n</cite> is the number of pairings, whose elements can be <cite>1</cite>
+for a paired base and <cite>x</cite> for unpaired bases, where <cite>x</cite> is
+given by: <cite>x = 1 - (d / n)</cite>, in which <cite>d</cite> is the Manhattan
+distance with the closest paired base.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pairings</strong> (<em>list</em><em>(</em><em>int</em>) – List of base pairings.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Dimension of the matrix. <cite>0</cite> for no padding.</p></li>
+<li><p><strong>normalize</strong> (<em>bool</em>) – If True, scale distances so that
+paired elements are 1 and the farthest elements are 0.</p></li>
+<li><p><strong>power</strong> (<em>float</em>) – Power to apply to normalized distances.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (np.ndarray): Encoded matrix of the secondary structure.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Secondary.to_elements">
+<span class="sig-name descname"><span class="pre">to_elements</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Secondary.to_elements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Secondary.to_elements" title="Permalink to this definition"></a></dt>
+<dd><p>Convert pairings into secondary structure elements.</p>
+<p>The possible <em>elements</em> or <em>loops</em> are:</p>
+<div class="line-block">
+<div class="line">element         | character |</div>
+</div>
+<p>+=================+===========+
+| bulge           | <cite>b</cite>       |
+| external loop   | <cite>e</cite>       |
+| hairpin loop    | <cite>h</cite>       |
+| internal loop   | <cite>i</cite>       |
+| multiloop       | <cite>m</cite>       |
+| stem / stacking | <cite>s</cite>       |</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pairings</strong> – List of pairings as indices or bracket notations.</p>
+</dd>
+</dl>
+<p>Returns (str): List of elements.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Secondary.to_matrix">
+<span class="sig-name descname"><span class="pre">to_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Secondary.to_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Secondary.to_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Encode a secondary structure into a contact matrix.</p>
+<p>Transform the sequence of pairings into an <cite>n</cite> by <cite>n</cite> matrix,
+where <cite>n</cite> is the number of pairings, whose elements can be <cite>0</cite>
+for an unpaired base and <cite>1</cite> for a paired base.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pairings</strong> (<em>list</em><em>(</em><em>int</em>) – List of base pairings.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Dimension of the matrix. <cite>0</cite> for no padding.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (np.ndarray): Encoded matrix of the secondary structure.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Secondary.to_onehot">
+<span class="sig-name descname"><span class="pre">to_onehot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'(':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">')':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1),</span> <span class="pre">'-':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'.':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">0)}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Secondary.to_onehot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Secondary.to_onehot" title="Permalink to this definition"></a></dt>
+<dd><p>Encode pairings in a one-hot encoded dot-bracket secondary
+structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pairings</strong> (<em>List</em><em>[</em><em>int</em><em>|</em><em>str</em><em>]</em>) – A list of nucleotide pairings.
+The pairing <cite>(((…)))</cite> can be represented as
+<cite>[8, 7, 6, -1, -1, -1, 2, 1, 0]</cite> or
+<cite>[‘(’, ‘(’, ‘(’, ‘.’, ‘.’, ‘.’, ‘)’, ‘)’, ‘)’]</cite>.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Size of the output. <cite>0</cite> for no padding.</p></li>
+<li><p><strong>map</strong> (<em>dict</em>) – Assign an input to a vector.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (np.ndarray): One-hot encoded secondary structure.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Secondary.to_pairings">
+<span class="sig-name descname"><span class="pre">to_pairings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Secondary.to_pairings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Secondary.to_pairings" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the bracket notation to a list of pairings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bracket</strong> (<em>List</em><em>[</em><em>str</em><em>] </em><em>| </em><em>str</em>) – Secondary structure.</p>
+</dd>
+</dl>
+<p>Returns (List[int]): List of pairings.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diurnal.structure.Secondary.to_shadow">
+<span class="sig-name descname"><span class="pre">to_shadow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/diurnal/structure.html#Secondary.to_shadow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.structure.Secondary.to_shadow" title="Permalink to this definition"></a></dt>
+<dd><p>Return the shadow of a secondary structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pairings</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Secondary structure.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Final sequence length.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-diurnal.train">
+<span id="diurnal-train-module"></span><h2>diurnal.train module<a class="headerlink" href="#module-diurnal.train" title="Permalink to this headline"></a></h2>
+<p>RNA secondary structure training utility module.</p>
+<ul class="simple">
+<li><p>Author: Vincent Therrien (<a class="reference external" href="mailto:therrien&#46;vincent&#46;2&#37;&#52;&#48;courrier&#46;uqam&#46;ca">therrien<span>&#46;</span>vincent<span>&#46;</span>2<span>&#64;</span>courrier<span>&#46;</span>uqam<span>&#46;</span>ca</a>)</p></li>
+<li><p>Affiliation: Département d’informatique, UQÀM</p></li>
+<li><p>File creation date: April 2023</p></li>
+<li><p>License: MIT</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.train.categorize_matrix">
+<span class="sig-prename descclassname"><span class="pre">diurnal.train.</span></span><span class="sig-name descname"><span class="pre">categorize_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prediction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="../_modules/diurnal/train.html#categorize_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.train.categorize_matrix" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.train.categorize_vector">
+<span class="sig-prename descclassname"><span class="pre">diurnal.train.</span></span><span class="sig-name descname"><span class="pre">categorize_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prediction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/diurnal/train.html#categorize_vector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.train.categorize_vector" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a vector of predicted pairings into a one-hot vector. For
+instance, <cite>[[0.9, 0.5, 0.1], [0.0, 0.5, 0.1]]</cite> is converted to
+<cite>[[1, 0, 0], [0, 1, 0]]</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prediction</strong> (<em>list-like</em>) – Secondary structure prediction.</p>
+</dd>
+</dl>
+<p>Returns: Reformatted secondary structure.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.train.clean_matrices">
+<span class="sig-prename descclassname"><span class="pre">diurnal.train.</span></span><span class="sig-name descname"><span class="pre">clean_matrices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">primary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="../_modules/diurnal/train.html#clean_matrices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.train.clean_matrices" title="Permalink to this definition"></a></dt>
+<dd><p>Prepare a secondary structure prediction for evaluation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>primary</strong> (<em>list</em>) – Vector-encoded primary structure.</p></li>
+<li><p><strong>true</strong> (<em>list</em>) – True vector-encoded secondary structure.</p></li>
+<li><p><strong>pred</strong> (<em>list</em>) – Predicted vector-encoded secondary structure.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns (tuple): A tuple of elements organized as:</dt><dd><ul class="simple">
+<li><p>sequence of bases</p></li>
+<li><p>stripped true secondary structure matrix</p></li>
+<li><p>stripped predicted secondary structure matrix</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.train.clean_vectors">
+<span class="sig-prename descclassname"><span class="pre">diurnal.train.</span></span><span class="sig-name descname"><span class="pre">clean_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">primary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="../_modules/diurnal/train.html#clean_vectors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.train.clean_vectors" title="Permalink to this definition"></a></dt>
+<dd><p>Prepare a secondary structure prediction for evaluation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>primary</strong> (<em>list</em>) – Vector-encoded primary structure.</p></li>
+<li><p><strong>true</strong> (<em>list</em>) – True vector-encoded secondary structure.</p></li>
+<li><p><strong>pred</strong> (<em>list</em>) – Predicted vector-encoded secondary structure.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns (tuple): A tuple of elements organized as:</dt><dd><ul class="simple">
+<li><p>sequence of bases</p></li>
+<li><p>stripped true secondary structure</p></li>
+<li><p>stripped predicted secondary structure</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.train.k_fold_indices">
+<span class="sig-prename descclassname"><span class="pre">diurnal.train.</span></span><span class="sig-name descname"><span class="pre">k_fold_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fractions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/diurnal/train.html#k_fold_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.train.k_fold_indices" title="Permalink to this definition"></a></dt>
+<dd><p>Return tuples of indices for K-fold splits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fractions</strong> – Proportion of each subset. For instance, to use 80% of the
+data for training and 20% for testing, use [0.8, 0.2].</p></li>
+<li><p><strong>k</strong> – Number of folds.</p></li>
+<li><p><strong>n</strong> – Number of indices.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (list): <cite>k</cite> tuples containing <cite>len(fractions)</cite> of index lists.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.train.k_fold_split">
+<span class="sig-prename descclassname"><span class="pre">diurnal.train.</span></span><span class="sig-name descname"><span class="pre">k_fold_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/diurnal/train.html#k_fold_split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.train.k_fold_split" title="Permalink to this definition"></a></dt>
+<dd><p>Split the data to make a K-fold split.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Array-like object containing the data to split.</p></li>
+<li><p><strong>fractions</strong> – Proportion of each subset. For instance, to use 80% of the
+data for training and 20% for testing, use [0.8, 0.2].</p></li>
+<li><p><strong>k</strong> – Number of folds.</p></li>
+<li><p><strong>i</strong> – Zero-based index of the fold.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple containing the split data object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.train.load_data">
+<span class="sig-prename descclassname"><span class="pre">diurnal.train.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">randomize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="../_modules/diurnal/train.html#load_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.train.load_data" title="Permalink to this definition"></a></dt>
+<dd><p>Read formatted data into tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Name of the directory that contains the Numpy files
+written by the function <cite>diurnal.database.format</cite>.</p></li>
+<li><p><strong>randomize</strong> (<em>bool</em>) – Randomize data if set to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Loaded data represented as</dt><dd><p>[primary structure, secondary structure, family].</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.train.load_families">
+<span class="sig-prename descclassname"><span class="pre">diurnal.train.</span></span><span class="sig-name descname"><span class="pre">load_families</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">families</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">randomize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/diurnal/train.html#load_families"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.train.load_families" title="Permalink to this definition"></a></dt>
+<dd><p>Read formatted molecules of the specified RNA family.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Name of the directory that contains the Numpy files
+written by the function <cite>diurnal.database.format</cite>.</p></li>
+<li><p><strong>families</strong> (<em>List</em><em>(</em><em>str</em><em>) </em><em>| </em><em>str</em>) – Families to read.</p></li>
+<li><p><strong>randomize</strong> (<em>bool</em>) – Randomize data if set to True.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Print informative messages.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Returns (dict): Loaded data represented as</dt><dd><dl class="simple">
+<dt><a href="#id13"><span class="problematic" id="id14">`</span></a>{</dt><dd><p>“input”: tuple[list],
+“secondary”: list,
+“names”: list(str),
+“family”: list</p>
+</dd>
+</dl>
+<p>}`</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.train.quantize_matrix">
+<span class="sig-prename descclassname"><span class="pre">diurnal.train.</span></span><span class="sig-name descname"><span class="pre">quantize_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/train.html#quantize_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.train.quantize_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Quantize a matrix.</p>
+<p>All the rows of the matrix are formatted as follows:
+- The maximum element is set to 1.
+- The other elements are set to 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> – Input matrix</p></li>
+<li><p><strong>dim</strong> – Dimension along which to quantize the matrix.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.train.shuffle_data">
+<span class="sig-prename descclassname"><span class="pre">diurnal.train.</span></span><span class="sig-name descname"><span class="pre">shuffle_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="../_modules/diurnal/train.html#shuffle_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.train.shuffle_data" title="Permalink to this definition"></a></dt>
+<dd><p>Shuffle vectors to preserve one-to-one original pairings.</p>
+<p>For instance, consider
+- a = [ 0,   1,   2 ]
+- b = [‘a’, ‘b’, ‘c’]
+Shuffling lists <cite>a</cite> and <cite>b</cite> may result in:
+- a = [ 2,   1,   0 ]
+- b = [‘c’, ‘b’, ‘a’]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> – List-like elements to be shuffled. They need to be of the
+same dimensions.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns (tuple): Shuffled data. The vector are returned in the same</dt><dd><p>order as they were provided.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.train.split">
+<span class="sig-prename descclassname"><span class="pre">diurnal.train.</span></span><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/diurnal/train.html#split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.train.split" title="Permalink to this definition"></a></dt>
+<dd><p>Split an array of data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>any</em>) – Array-like data to split.</p></li>
+<li><p><strong>fractions</strong> (<em>tuple</em><em>[</em><em>float</em><em>]</em>) – Fraction of data in each resulting
+set. Elements must sum to 1.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Index offset.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (list[any]): List of split sets.</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">[[1, 2], [3, 4, 5, 6, 7, 8, 9, 0]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.train.split_data">
+<span class="sig-prename descclassname"><span class="pre">diurnal.train.</span></span><span class="sig-name descname"><span class="pre">split_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/diurnal/train.html#split_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.train.split_data" title="Permalink to this definition"></a></dt>
+<dd><p>Split data in subsets according to the specified fractions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Array-like object containing the data to split.</p></li>
+<li><p><strong>fractions</strong> – Proportion of each subset. For instance, to use 80%
+of the data for training and 20% for testing, use [0.8, 0.2].</p></li>
+<li><p><strong>offset</strong> – Number of indices to offset to assemble the subsets.
+Used for K-fold data splits.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list containing the split data object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.train.split_indices">
+<span class="sig-prename descclassname"><span class="pre">diurnal.train.</span></span><span class="sig-name descname"><span class="pre">split_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fractions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/diurnal/train.html#split_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.train.split_indices" title="Permalink to this definition"></a></dt>
+<dd><p>Split a range of indices in subsets according to the specified
+fractions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fractions</strong> – Proportion of each subset. For instance, to use 80% of the
+data for training and 20% for testing, use [0.8, 0.2].</p></li>
+<li><p><strong>n</strong> – Number of indices.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns (list): A list containing the split data object.</p>
+</dd></dl>
+
+</section>
+<section id="module-diurnal.visualize">
+<span id="diurnal-visualize-module"></span><h2>diurnal.visualize module<a class="headerlink" href="#module-diurnal.visualize" title="Permalink to this headline"></a></h2>
+<p>Data visualization module.</p>
+<ul class="simple">
+<li><p>Author: Vincent Therrien (<a class="reference external" href="mailto:therrien&#46;vincent&#46;2&#37;&#52;&#48;courrier&#46;uqam&#46;ca">therrien<span>&#46;</span>vincent<span>&#46;</span>2<span>&#64;</span>courrier<span>&#46;</span>uqam<span>&#46;</span>ca</a>)</p></li>
+<li><p>Affiliation: Département d’informatique, UQÀM</p></li>
+<li><p>File creation date: April 2023</p></li>
+<li><p>License: MIT</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.visualize.compare_pairings">
+<span class="sig-prename descclassname"><span class="pre">diurnal.visualize.</span></span><span class="sig-name descname"><span class="pre">compare_pairings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prediction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Comparison</span> <span class="pre">of</span> <span class="pre">Secondary</span> <span class="pre">Structures'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/visualize.html#compare_pairings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.visualize.compare_pairings" title="Permalink to this definition"></a></dt>
+<dd><p>Compare secondary structures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrices</strong> – Contact matrices. Must contain two (2) matrices.</p></li>
+<li><p><strong>labels</strong> – Name of each contact matrix.</p></li>
+<li><p><strong>title</strong> – Graph title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.visualize.heatmap">
+<span class="sig-prename descclassname"><span class="pre">diurnal.visualize.</span></span><span class="sig-name descname"><span class="pre">heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/visualize.html#heatmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.visualize.heatmap" title="Permalink to this definition"></a></dt>
+<dd><p>Visualize heatmaps.</p>
+<p>The function opens a plot that visualizes the <cite>matrices</cite> argument.
+If the <cite>matrices</cite> is a 3D array, the heatmap is the sum of all
+arrays along the 0 axis. If <cite>matrices</cite> is a 2D array, it is used as
+the heatmap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrices</strong> – Set 2D matrices or one 2D matrix.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Graph title.</p></li>
+<li><p><strong>label</strong> (<em>bool</em>) – If True, label each axis.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.visualize.lengths">
+<span class="sig-prename descclassname"><span class="pre">diurnal.visualize.</span></span><span class="sig-name descname"><span class="pre">lengths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/visualize.html#lengths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.visualize.lengths" title="Permalink to this definition"></a></dt>
+<dd><p>Display a histogram of the length of the data.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.visualize.potential_pairings">
+<span class="sig-prename descclassname"><span class="pre">diurnal.visualize.</span></span><span class="sig-name descname"><span class="pre">potential_pairings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">primary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">secondary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'RNA</span> <span class="pre">Molecule</span> <span class="pre">Potential</span> <span class="pre">Pairings'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'-':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'AU':</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'CG':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'GC':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'GU':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'UA':</span> <span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'UG':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">'invalid':</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0)}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/visualize.html#potential_pairings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.visualize.potential_pairings" title="Permalink to this definition"></a></dt>
+<dd><p>Display a heatmap of potential pairings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>primary</strong> (<em>str</em>) – List of bases or potential pairing matrix.</p></li>
+<li><p><strong>secondary</strong> (<em>list</em>) – Secondary structure or tuple of secondary
+structures represented as contact matrices or lists of
+pairings.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Name of the graph.</p></li>
+<li><p><strong>map</strong> – Potential pairing to string map.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.visualize.prediction">
+<span class="sig-prename descclassname"><span class="pre">diurnal.visualize.</span></span><span class="sig-name descname"><span class="pre">prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">primary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/visualize.html#prediction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.visualize.prediction" title="Permalink to this definition"></a></dt>
+<dd><p>Compare true and predicted secondary structures.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.visualize.primary_structure">
+<span class="sig-prename descclassname"><span class="pre">diurnal.visualize.</span></span><span class="sig-name descname"><span class="pre">primary_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">primary</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/visualize.html#primary_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.visualize.primary_structure" title="Permalink to this definition"></a></dt>
+<dd><p>Print the sequence of nucleotides from a one-hot encoded
+primary structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>primary</strong> – Primary structure.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.visualize.print_contact_matrix">
+<span class="sig-prename descclassname"><span class="pre">diurnal.visualize.</span></span><span class="sig-name descname"><span class="pre">print_contact_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/diurnal/visualize.html#print_contact_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.visualize.print_contact_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Print a contact matrix in the terminal.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.visualize.secondary_structure">
+<span class="sig-prename descclassname"><span class="pre">diurnal.visualize.</span></span><span class="sig-name descname"><span class="pre">secondary_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'RNA</span> <span class="pre">Molecule</span> <span class="pre">Pairings'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/visualize.html#secondary_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.visualize.secondary_structure" title="Permalink to this definition"></a></dt>
+<dd><p>Display a heatmap of the secondary structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>primary</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Primary structure.</p></li>
+<li><p><strong>matrix</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>bool</em><em>]</em><em>]</em>) – Secondary structure.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.visualize.shadow">
+<span class="sig-prename descclassname"><span class="pre">diurnal.visualize.</span></span><span class="sig-name descname"><span class="pre">shadow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">primary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/visualize.html#shadow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.visualize.shadow" title="Permalink to this definition"></a></dt>
+<dd><p>Compare shadows.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diurnal.visualize.structure_length_per_family">
+<span class="sig-prename descclassname"><span class="pre">diurnal.visualize.</span></span><span class="sig-name descname"><span class="pre">structure_length_per_family</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/diurnal/visualize.html#structure_length_per_family"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diurnal.visualize.structure_length_per_family" title="Permalink to this definition"></a></dt>
+<dd><p>Display a histogram of RNA lengths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Database file path.</p></li>
+<li><p><strong>max_size</strong> (<em>int</em>) – If provided, reject larger molecules.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-diurnal">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-diurnal" title="Permalink to this headline"></a></h2>
+<p>Diurnal is a Python library designed to predict RNA secondary
+structures.</p>
+<ul class="simple">
+<li><p>Author: Vincent Therrien (<a class="reference external" href="mailto:therrien&#46;vincent&#46;2&#37;&#52;&#48;courrier&#46;uqam&#46;ca">therrien<span>&#46;</span>vincent<span>&#46;</span>2<span>&#64;</span>courrier<span>&#46;</span>uqam<span>&#46;</span>ca</a>)</p></li>
+<li><p>Affiliation: Département d’informatique, UQÀM</p></li>
+<li><p>File creation date: April 2023</p></li>
+<li><p>License: MIT</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="Source Code Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="diurnal.models.html" class="btn btn-neutral float-right" title="diurnal.models package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Vincent Therrien.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

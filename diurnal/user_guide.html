@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Guide &mdash; diurnal 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Source Code Documentation" href="source/modules.html" />
+    <link rel="prev" title="diurnal" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            diurnal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-modules">List of Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#download-data">Download Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#format-data">Format Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prepare-data-for-training">Prepare Data for Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#train-models">Train Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#predict-structures">Predict Structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate-results">Evaluate Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#save-models">Save Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-models">Load Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualize-results">Visualize Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#elaborate-predictive-models">Elaborate Predictive Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source/modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="literature_review.html">Literature Review</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">diurnal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/user_guide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="user-guide">
+<span id="id1"></span><h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline"></a></h1>
+<p>This page presents how to use the <code class="docutils literal notranslate"><span class="pre">diurnal</span></code> library to predict RNA secondary
+structures.</p>
+<p>The information presented on this page is also available in a
+<a class="reference external" href="https://github.com/Vincent-Therrien/diurnal/blob/main/demo/example.ipynb">Jupyter notebook</a>.</p>
+<section id="list-of-modules">
+<h2>List of Modules<a class="headerlink" href="#list-of-modules" title="Permalink to this headline"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">diurnal</span></code> library comprises the following modules. The <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and
+<code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> libraries must be installed in the Python virtual environment
+to use them.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="source/diurnal.html#module-diurnal.database">diurnal.database</a>: Download
+and use RNA datasets.</p></li>
+<li><p><a class="reference external" href="source/diurnal.html#module-diurnal.evaluate">diurnal.evaluate</a>: Evaluate
+the performances of predictive models.</p></li>
+<li><p><a class="reference external" href="source/diurnal.html#module-diurnal.family">diurnal.family</a>: Manipulate
+data related to RNA families.</p></li>
+<li><p><a class="reference external" href="source/diurnal.html#module-diurnal.structure">diurnal.structure</a>: Format
+RNA structures into different representations.</p></li>
+<li><p><a class="reference external" href="source/diurnal.html#module-diurnal.train">diurnal.train</a>: Prepare data
+for training models.</p></li>
+<li><p><a class="reference external" href="source/diurnal.html#module-diurnal.visualize">diurnal.visualize</a>:
+Visualize data with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> graphs or output in the terminal.</p></li>
+</ul>
+<p>The library also contains the <a class="reference external" href="source/diurnal.models.html">diurnal.models</a>
+subpackage that comprises predictive models. The
+<a class="reference external" href="https://pytorch.org/">pytorch</a> library must be installed to use this
+package.</p>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
+<section id="download-data">
+<h3>Download Data<a class="headerlink" href="#download-data" title="Permalink to this headline"></a></h3>
+<p>The code snippet below illustrates how to download RNA datasets:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diurnal</span> <span class="kn">import</span> <span class="n">database</span>
+
+<span class="c1"># `data` is the directory in which data is downloaded. `archiveII` is the</span>
+<span class="c1"># name of the dataset.</span>
+<span class="n">database</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;./data/&quot;</span><span class="p">,</span> <span class="s2">&quot;archiveII&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This code will download the <cite>archiveII</cite> dataset and write the raw data into the
+<cite>data</cite> directory. If the directory does not exist, it is created. Three
+datasets can be downloaded:</p>
+<ul class="simple">
+<li><p><cite>archiveII</cite>: 3975 molecules. Originally retrieved from
+<a class="reference external" href="https://rna.urmc.rochester.edu/pub/archiveII.tar.gz">https://rna.urmc.rochester.edu/pub/archiveII.tar.gz</a> <span id="id2">[<a class="reference internal" href="#id26" title="David Mathews. Mathews lab. Accessed: 2023-04-15. URL: https://rna.urmc.rochester.edu/.">3</a>]</span>.</p></li>
+<li><p><cite>RNASTRalign</cite>: 37149 molecules. Originally retrieved from
+<a class="reference external" href="https://www.urmc.rochester.edu/rna/">https://www.urmc.rochester.edu/rna/</a> <span id="id3">[<a class="reference internal" href="#id26" title="David Mathews. Mathews lab. Accessed: 2023-04-15. URL: https://rna.urmc.rochester.edu/.">3</a>]</span>.</p></li>
+<li><p><cite>RNA_STRAND</cite>: 4666 molecules. Originally retrieved from
+<a class="reference external" href="http://www.rnasoft.ca/strand/">http://www.rnasoft.ca/strand/</a> <span id="id4">[<a class="reference internal" href="#id27" title="Andronescu, Bereg, Hoos, and Condon. Rna strand v2.0 - the rna secondary structure and statistical analysis database. 2009. Accessed: 2023-04-15. URL: http://www.rnasoft.ca/strand/.">4</a>]</span>.</p></li>
+</ul>
+<p>One may instead use the function <code class="docutils literal notranslate"><span class="pre">diurnal.database.download_all()</span></code> to
+download all available datasets.</p>
+<p>Molecules are represented in these datasets with CT files, which is a
+tab-separated format. The first line of a CT file contains (1) the number of
+nucleotides in the molecule and (2) the name of the molecule. The other lines
+of the files all follow the same syntax, which is presented in the table below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 88%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Content</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Index of the nucleotide (starts at 1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Nucleotide (A, C, G, or U)</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Neighboring nucleotide index in the 5’ direction (i.e. upstream)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Neighboring nucleotide index in the 3’ direction (i.e. downstream)</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Index of the paired nucleotide. If the nucleotide is unpaired,
+the value <code class="docutils literal notranslate"><span class="pre">0</span></code> is used.</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Index of the nucleotide (same as column 1)</p></td>
+</tr>
+</tbody>
+</table>
+<p>One can read the content of CT files with the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the first molecule of the `archiveII` dataset.</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;./data/archiveII/5s_Acanthamoeba-castellanii-1.ct&quot;</span>
+<span class="n">name</span><span class="p">,</span> <span class="n">primary</span><span class="p">,</span> <span class="n">secondary</span> <span class="o">=</span> <span class="n">diurnal</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">rna_data</span><span class="o">.</span><span class="n">read_ct_file</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which returns the following data:</p>
+<ul class="simple">
+<li><p>The <strong>name</strong> of the molecule.</p></li>
+<li><p>The <strong>primary structure</strong> of the molecule, represented as a list of
+<code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>, <code class="docutils literal notranslate"><span class="pre">G</span></code>, and <code class="docutils literal notranslate"><span class="pre">U</span></code> characters.</p></li>
+<li><p>The <strong>secondary structure</strong> of the molecule, represented as a list of
+pairings in which the <em>i</em> th element of the list is paired with the index
+that it contains (for instance, <code class="docutils literal notranslate"><span class="pre">(((...)))</span></code> can be represented as
+<code class="docutils literal notranslate"><span class="pre">[8,</span> <span class="pre">7,</span> <span class="pre">6,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">2,</span> <span class="pre">1,</span> <span class="pre">0]</span></code>). Since Python uses zero-based indices,
+<code class="docutils literal notranslate"><span class="pre">-1</span></code> is used for unpaired nucleotides instead of <code class="docutils literal notranslate"><span class="pre">0</span></code> like CT files do.</p></li>
+</ul>
+</section>
+<section id="format-data">
+<h3>Format Data<a class="headerlink" href="#format-data" title="Permalink to this headline"></a></h3>
+<p>The RNA structure data of CT files must be converted into numerical vectors to
+train predictive models. The module <code class="docutils literal notranslate"><span class="pre">diurnal.structure</span></code> can encode the data
+into other formats, as shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diurnal.structure</span> <span class="kn">import</span> <span class="n">Primary</span><span class="p">,</span> <span class="n">Secondary</span>
+
+<span class="c1"># Encode the list of bases into a one-hot vector. For instance, if `primary`</span>
+<span class="c1"># contains the value `[&#39;A&#39;, &#39;C&#39;]`, the encoded structure will be</span>
+<span class="c1"># `[[1, 0, 0, 0], [0, 1, 0, 0]]`.</span>
+<span class="n">primary_onehot</span> <span class="o">=</span> <span class="n">Primary</span><span class="o">.</span><span class="n">to_onehot</span><span class="p">(</span><span class="n">primary</span><span class="p">)</span>
+
+<span class="c1"># Encode the list of pairings into a one-hot vector. For instance, if</span>
+<span class="c1"># `secondary` contains the value `[2, -1, 0]`, the encoded structure will be</span>
+<span class="c1"># `[[1, 0, 0], [0, 1, 0], [0, 0, 1]]`, which correspond to `(.)`.</span>
+<span class="n">secondary_onehot</span> <span class="o">=</span> <span class="n">Secondary</span><span class="o">.</span><span class="n">to_onehot</span><span class="p">(</span><span class="n">secondary</span><span class="p">)</span>
+
+<span class="c1"># Obtain the list of bases from an encoded vector.</span>
+<span class="n">primary</span> <span class="o">=</span> <span class="n">Primary</span><span class="o">.</span><span class="n">to_sequence</span><span class="p">(</span><span class="n">primary_onehot</span><span class="p">)</span>
+
+<span class="c1"># Obtain the bracket notation from an encoded vector.</span>
+<span class="n">bracket</span> <span class="o">=</span> <span class="n">Secondary</span><span class="o">.</span><span class="n">to_bracket</span><span class="p">(</span><span class="n">secondary_onehot</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For convenience, the library can encode a whole dataset of CT files into
+another representation and store them in Numpy files. Users can subsequently
+read these already-formatted files instead of reading CT files every time. The
+following code snippet shows how to do that:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diurnal</span> <span class="kn">import</span> <span class="n">database</span><span class="p">,</span> <span class="n">structure</span>
+
+<span class="n">database</span><span class="o">.</span><span class="n">format_basic</span><span class="p">(</span>
+    <span class="s2">&quot;./data/archiveII&quot;</span><span class="p">,</span>  <span class="c1"># Directory of the raw data to format.</span>
+    <span class="s2">&quot;./data/formatted&quot;</span><span class="p">,</span>  <span class="c1"># Formatted data output directory.</span>
+    <span class="mi">512</span><span class="p">,</span>  <span class="c1"># Normalized size. Short molecules are padded at the 3&#39; end.</span>
+    <span class="n">structure</span><span class="o">.</span><span class="n">Primary</span><span class="o">.</span><span class="n">to_onehot</span><span class="p">,</span>  <span class="c1"># Primary to vector map.</span>
+    <span class="n">structure</span><span class="o">.</span><span class="n">Secondary</span><span class="o">.</span><span class="n">to_onehot</span>  <span class="c1"># Secondary to vector map.</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Executing this function will generate the following files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">families.npy</span></code>: Encoded RNA families.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">readme.rst</span></code>: Metadata such as the file creation date.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">names.txt</span></code>: The list of molecule names.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">primary_structures.npy</span></code>: Encoded primary structures.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">secondary_structures.npy</span></code>: Encoded secondary structures.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">.npy</span></code> files can be read with the function <code class="docutils literal notranslate"><span class="pre">numpy.load(filename)</span></code>,
+which returns a <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code> object.</p>
+</section>
+<section id="prepare-data-for-training">
+<h3>Prepare Data for Training<a class="headerlink" href="#prepare-data-for-training" title="Permalink to this headline"></a></h3>
+<p>Formatted data can be loaded and split for training. In the context of RNA
+secondary structure prediction, there are a few ways to divide data:</p>
+<ul class="simple">
+<li><p>In <strong>inter-family testing</strong> (also called <em>family-wise cross-validation</em> by
+Sato et al. <span id="id5">[<a class="reference internal" href="#id16" title="Kengo Sato, Manato Akiyama, and Yasubumi Sakakibara. Rna secondary structure prediction using deep learning with thermodynamic integration. Nature Communications, 12(1):941, 2021. URL: https://doi.org/10.1038/s41467-021-21194-4, doi:10.1038/s41467-021-21194-4.">5</a>]</span>), the model is trained and tested with datasets
+that comprise different RNA families. Therefore, training and testing data
+are structurally different. The point of this type of training is to measure
+how well the model can predict the structure of unfamiliar molecules.</p></li>
+<li><p>In <strong>sequence testing</strong> (also called <em>sequence-wise cross-validation</em>
+by Sato et al. <span id="id6">[<a class="reference internal" href="#id16" title="Kengo Sato, Manato Akiyama, and Yasubumi Sakakibara. Rna secondary structure prediction using deep learning with thermodynamic integration. Nature Communications, 12(1):941, 2021. URL: https://doi.org/10.1038/s41467-021-21194-4, doi:10.1038/s41467-021-21194-4.">5</a>]</span>), the model is trained and tested with datasets
+that comprise the same RNA families. Therefore, training and testing data
+are structurally similar. Consequently, this type of testing is expected to
+yield more accurate results than inter-family testing.</p></li>
+<li><p>In <strong>intra-family testing</strong>, models are trained and tested with RNA molecules
+that belong to the same family. Therefore, training and testing data
+are structurally very similar and results are expected to yield more accurate
+results than sequence testing. This type of testing does not appear to be
+discussed in published work, but it can be useful to validate models.</p></li>
+</ul>
+<p>The code snippet below shows how to load data for inter-family and sequence
+testing.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diurnal</span> <span class="kn">import</span> <span class="n">train</span><span class="p">,</span> <span class="n">family</span>
+
+<span class="c1"># Inter-family testing.</span>
+<span class="n">test_set</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">load_families</span><span class="p">(</span><span class="s2">&quot;./data/formatted&quot;</span><span class="p">,</span> <span class="s2">&quot;5s&quot;</span><span class="p">)</span>
+<span class="n">train_set</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">load_families</span><span class="p">(</span><span class="s2">&quot;./data/formatted&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">.</span><span class="n">all_but</span><span class="p">(</span><span class="s2">&quot;5s&quot;</span><span class="p">))</span>
+
+<span class="c1"># Sequence testing.</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="s2">&quot;./data/formatted&quot;</span><span class="p">,</span> <span class="n">randomize</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Divide data in training (80 % of points) and test sets (20 % of points).</span>
+<span class="n">train_set</span><span class="p">,</span> <span class="n">test_set</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>One may also divide data to perform K-fold validation, as shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diurnal</span> <span class="kn">import</span> <span class="n">train</span>
+
+<span class="c1"># Do five K-fold splits.</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="s2">&quot;./data/formatted&quot;</span><span class="p">,</span> <span class="n">randomize</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+    <span class="n">train_set</span><span class="p">,</span> <span class="n">test_set</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">k_fold_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">K</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="c1"># Train and test a model for this K-split.</span>
+</pre></div>
+</div>
+</section>
+<section id="train-models">
+<h3>Train Models<a class="headerlink" href="#train-models" title="Permalink to this headline"></a></h3>
+<p>One can load predictive models comprised within the <code class="docutils literal notranslate"><span class="pre">diurnal</span></code> library, as
+demonstrated in the code snippet below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">diurnal</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="c1"># Load a `diurnal` neural network based on the `Dot_Bracket` architecture.</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">NN</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">cnn</span><span class="o">.</span><span class="n">Dot_Bracket</span><span class="p">,</span>
+    <span class="n">N</span><span class="o">=</span><span class="n">SIZE</span><span class="p">,</span>
+    <span class="n">n_epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">,</span>
+    <span class="n">loss_fn</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">,</span>
+    <span class="n">optimizer_args</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;eps&quot;</span><span class="p">:</span> <span class="mf">1e-4</span><span class="p">},</span>
+    <span class="n">loss_fn_args</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">verbosity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Train the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">train_set</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the example above, the class <code class="docutils literal notranslate"><span class="pre">diurnal.models.NN</span></code> is a wrapper around a
+<code class="docutils literal notranslate"><span class="pre">pytorch</span></code> neural network. Another type of <code class="docutils literal notranslate"><span class="pre">diurnal</span></code> models are baselines,
+which make basic predictions. For instance, in the code below,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diurnal.models</span> <span class="kn">import</span> <span class="n">baseline</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">baseline</span><span class="o">.</span><span class="n">Random</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">train_set</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>the model makes random predictions. This can be useful to compare performances
+with other models and ensure that the data processing pipeline works well.</p>
+</section>
+<section id="predict-structures">
+<h3>Predict Structures<a class="headerlink" href="#predict-structures" title="Permalink to this headline"></a></h3>
+<p>You can predict structures as shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diurnal</span> <span class="kn">import</span> <span class="n">structure</span>
+
+<span class="c1"># Assume that `model` is a trained `diurnal.model` object. The method</span>
+<span class="c1"># `predict` accepts primary structures encoded in the same format</span>
+<span class="c1"># that was used for training (in this case, one-hot encoding).</span>
+<span class="n">primary_structure</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s2">&quot;AAAACCCCUUUU&quot;</span><span class="p">)</span>
+<span class="n">encoded_primary_structure</span> <span class="o">=</span> <span class="n">structure</span><span class="o">.</span><span class="n">Primary</span><span class="o">.</span><span class="n">to_onehot</span><span class="p">(</span><span class="n">primary_structure</span><span class="p">)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">encoded_primary_structure</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The data format returned by the <code class="docutils literal notranslate"><span class="pre">predict</span></code> method depends on the architecture
+of the <code class="docutils literal notranslate"><span class="pre">model</span></code> object. For example, a model may return a one-hot encoded
+bracket notation of the secondary structure.</p>
+</section>
+<section id="evaluate-results">
+<h3>Evaluate Results<a class="headerlink" href="#evaluate-results" title="Permalink to this headline"></a></h3>
+<p>The are two main ways to evaluate secondary structure predictions.</p>
+<p>The first and most widespread method consists in using the <strong>recall</strong> and
+<strong>precision</strong> <span id="id7">[<a class="reference internal" href="#id17" title="Mehdi Saman Booy, Alexander Ilin, and Pekka Orponen. Rna secondary structure prediction with convolutional neural networks. BMC Bioinformatics, 23(1):58, 2022. URL: https://doi.org/10.1186/s12859-021-04540-7, doi:10.1186/s12859-021-04540-7.">1</a>]</span> <span id="id8">[<a class="reference internal" href="#id16" title="Kengo Sato, Manato Akiyama, and Yasubumi Sakakibara. Rna secondary structure prediction using deep learning with thermodynamic integration. Nature Communications, 12(1):941, 2021. URL: https://doi.org/10.1038/s41467-021-21194-4, doi:10.1038/s41467-021-21194-4.">5</a>]</span> <span id="id9">[<a class="reference internal" href="#id21" title="Yili Wang, Yuanning Liu, Shuo Wang, Zhen Liu, Yubing Gao, Hao Zhang, and Liyan Dong. Attfold: rna secondary structure prediction with pseudoknots based on attention mechanism. Frontiers in Genetics, 2020. URL: https://www.frontiersin.org/articles/10.3389/fgene.2020.612086, doi:10.3389/fgene.2020.612086.">6</a>]</span> <span id="id10">[<a class="reference internal" href="#id19" title="Laiyi Fu, Yingxin Cao, Jie Wu, Qinke Peng, Qing Nie, and Xiaohui Xie. UFold: fast and accurate RNA secondary structure prediction with deep learning. Nucleic Acids Research, 50(3):e14-e14, 11 2021. URL: https://doi.org/10.1093/nar/gkab1074, arXiv:https://academic.oup.com/nar/article-pdf/50/3/e14/42544496/gkab1074\_supplemental\_file.pdf, doi:10.1093/nar/gkab1074.">7</a>]</span>
+<span id="id11">[<a class="reference internal" href="#id22" title="Hui Zhang, Cong Zhang, Zhe Li, Chunhua Li, Xiaopeng Wei, Baofeng Zhang, and Yunlong Liu. A new method of rna secondary structure prediction based on convolutional neural network and dynamic programming. Frontiers in Genetics, 10:467, 2019. doi:10.3389/fgene.2019.00467.">8</a>]</span>. This evaluation method uses the following metrics:</p>
+<ul class="simple">
+<li><p>True positives (TP): number of paired bases that are correctly predicted to
+be paired.</p></li>
+<li><p>True negative (TN): number of unpaired bases that are correctly predicted to
+be unpaired.</p></li>
+<li><p>False positives (FP): number of paired bases that are erroneously predicted
+to be unpaired.</p></li>
+<li><p>False negatives (FN): number of unpaired bases that are erroneously predicted
+to be paired.</p></li>
+</ul>
+<p>Recall (or <em>true positive rate</em> or <em>sensitivity</em>) is the probability that a
+positive prediction is actually positive. It is computed with the following
+equation:</p>
+<div class="math notranslate nohighlight">
+\[recall = \frac{TP}{TP + FN}\]</div>
+<p>Precision (or <em>positive predictive value</em>) is the fraction of relevant elements
+among retrieved elements. It is computed with the following equation:</p>
+<div class="math notranslate nohighlight">
+\[precision = \frac{TP}{TP + FP}\]</div>
+<p>The geometric mean of these two values is the <strong>F1-score</strong>, which is
+also called <em>F1</em>, <em>F1-measure</em>, <em>F-score</em>, or <em>F-measure</em>:</p>
+<div class="math notranslate nohighlight">
+\[F1 = 2 \times \frac{recall \times precision}{recall + precision}\]</div>
+<p>These evaluation metrics can be computed with the function
+<code class="docutils literal notranslate"><span class="pre">diurnal.evaluate.recall_precision_f1</span></code>, as shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diurnal</span> <span class="kn">import</span> <span class="n">evaluate</span>
+
+<span class="n">true</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s2">&quot;(((....)))&quot;</span><span class="p">)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s2">&quot;((......))&quot;</span><span class="p">)</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">recall_precision_f1</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">prediction</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>One drawback of these evaluation metrics is that they do not make a distinction
+about whether a nucleotide is paired with a base in the 5’ or 3’ direction.
+Therefore, when comparing the structures <code class="docutils literal notranslate"><span class="pre">(((....)))</span></code> and <code class="docutils literal notranslate"><span class="pre">)))....(((</span></code>, the
+precision, recall, and f1-score all have a perfect value of 1 even though the
+predicted structure is inaccurate. The <code class="docutils literal notranslate"><span class="pre">diurnal</span></code> library therefore uses
+another metric, the <em>micro f1-score</em>, which generalizes precision and recall to
+classification problems that rely on more than two classes. One can also obtain
+the confusion matrix of predicted structures. The code snippet below
+shows how to compute the micro f1-score and confusion matrix:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diurnal</span> <span class="kn">import</span> <span class="n">evaluate</span>
+
+<span class="n">true</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s2">&quot;(((....)))&quot;</span><span class="p">)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s2">&quot;((......))&quot;</span><span class="p">)</span>
+<span class="n">micro_f1</span> <span class="o">=</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">micro_f1</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">prediction</span><span class="p">)</span>
+<span class="n">confusion_matrix</span> <span class="o">=</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">get_confusion_matrix</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">prediction</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="save-models">
+<h3>Save Models<a class="headerlink" href="#save-models" title="Permalink to this headline"></a></h3>
+<p>Predictive models can be written in files for subsequent reuse, as shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume that `model` is a trained `diurnal.model` object.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;saved_model&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In addition to writing the model in the provided directory, the library also
+generates:</p>
+<ul class="simple">
+<li><p>a file containing the list of the names of the molecules that were used for
+training the model, and</p></li>
+<li><p>an informative file containing metadata.</p></li>
+</ul>
+</section>
+<section id="load-models">
+<h3>Load Models<a class="headerlink" href="#load-models" title="Permalink to this headline"></a></h3>
+<p>Predictive models can be loaded from saved files, as shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diurnal</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">NN</span><span class="p">(</span>
+   <span class="n">cnn</span><span class="o">.</span><span class="n">Dot_Bracket</span><span class="p">,</span>
+   <span class="n">SIZE</span><span class="p">,</span>
+   <span class="kc">None</span><span class="p">,</span>
+   <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">,</span>
+   <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">,</span>
+   <span class="p">{</span><span class="s2">&quot;eps&quot;</span><span class="p">:</span> <span class="mf">1e-4</span><span class="p">},</span>
+   <span class="kc">None</span><span class="p">,</span>
+   <span class="n">verbosity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;saved_model&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="visualize-results">
+<h3>Visualize Results<a class="headerlink" href="#visualize-results" title="Permalink to this headline"></a></h3>
+<p>The module <code class="docutils literal notranslate"><span class="pre">diurnal.visualize</span></code> contains utility functions that can help users
+visualize results with graphs or console output.</p>
+</section>
+</section>
+<section id="elaborate-predictive-models">
+<h2>Elaborate Predictive Models<a class="headerlink" href="#elaborate-predictive-models" title="Permalink to this headline"></a></h2>
+<p>The class <code class="docutils literal notranslate"><span class="pre">diurnal.models.Basic</span></code> represents a basic predictive model. One may
+derive this class to create a new predictive model. Four methods need to be
+implemented in the derived class:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_train(data)</span></code>: Train the model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_predict(primary)</span></code>: Predict and return a secondary structure.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_save(directory)</span></code>: Write the model in files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_load(directory)</span></code>: Read the model from files.</p></li>
+</ul>
+<p>The class <code class="docutils literal notranslate"><span class="pre">diurnal.models.NN</span></code> is an example of a predictive model that
+is derived from the class <code class="docutils literal notranslate"><span class="pre">diurnal.models.Basic</span></code>. The <code class="docutils literal notranslate"><span class="pre">NN</span></code> class is used
+to represent predictive models based on neural networks.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
+<div class="docutils container" id="id12">
+<dl class="citation">
+<dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id7">1</a></span></dt>
+<dd><p>Mehdi Saman Booy, Alexander Ilin, and Pekka Orponen. Rna secondary structure prediction with convolutional neural networks. <em>BMC Bioinformatics</em>, 23(1):58, 2022. URL: <a class="reference external" href="https://doi.org/10.1186/s12859-021-04540-7">https://doi.org/10.1186/s12859-021-04540-7</a>, <a class="reference external" href="https://doi.org/10.1186/s12859-021-04540-7">doi:10.1186/s12859-021-04540-7</a>.</p>
+</dd>
+<dt class="label" id="id28"><span class="brackets">2</span></dt>
+<dd><p>Accessed: 2023-07-15. URL: <a class="reference external" href="http://rna.tbi.univie.ac.at/forna/">http://rna.tbi.univie.ac.at/forna/</a>.</p>
+</dd>
+<dt class="label" id="id26"><span class="brackets">3</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>)</span></dt>
+<dd><p>David Mathews. Mathews lab. Accessed: 2023-04-15. URL: <a class="reference external" href="https://rna.urmc.rochester.edu/">https://rna.urmc.rochester.edu/</a>.</p>
+</dd>
+<dt class="label" id="id27"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dd><p>Andronescu, Bereg, Hoos, and Condon. Rna strand v2.0 - the rna secondary structure and statistical analysis database. 2009. Accessed: 2023-04-15. URL: <a class="reference external" href="http://www.rnasoft.ca/strand/">http://www.rnasoft.ca/strand/</a>.</p>
+</dd>
+<dt class="label" id="id16"><span class="brackets">5</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>,<a href="#id8">3</a>)</span></dt>
+<dd><p>Kengo Sato, Manato Akiyama, and Yasubumi Sakakibara. Rna secondary structure prediction using deep learning with thermodynamic integration. <em>Nature Communications</em>, 12(1):941, 2021. URL: <a class="reference external" href="https://doi.org/10.1038/s41467-021-21194-4">https://doi.org/10.1038/s41467-021-21194-4</a>, <a class="reference external" href="https://doi.org/10.1038/s41467-021-21194-4">doi:10.1038/s41467-021-21194-4</a>.</p>
+</dd>
+<dt class="label" id="id21"><span class="brackets"><a class="fn-backref" href="#id9">6</a></span></dt>
+<dd><p>Yili Wang, Yuanning Liu, Shuo Wang, Zhen Liu, Yubing Gao, Hao Zhang, and Liyan Dong. Attfold: rna secondary structure prediction with pseudoknots based on attention mechanism. <em>Frontiers in Genetics</em>, 2020. URL: <a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fgene.2020.612086">https://www.frontiersin.org/articles/10.3389/fgene.2020.612086</a>, <a class="reference external" href="https://doi.org/10.3389/fgene.2020.612086">doi:10.3389/fgene.2020.612086</a>.</p>
+</dd>
+<dt class="label" id="id19"><span class="brackets"><a class="fn-backref" href="#id10">7</a></span></dt>
+<dd><p>Laiyi Fu, Yingxin Cao, Jie Wu, Qinke Peng, Qing Nie, and Xiaohui Xie. UFold: fast and accurate RNA secondary structure prediction with deep learning. <em>Nucleic Acids Research</em>, 50(3):e14–e14, 11 2021. URL: <a class="reference external" href="https://doi.org/10.1093/nar/gkab1074">https://doi.org/10.1093/nar/gkab1074</a>, <a class="reference external" href="https://arxiv.org/abs/https://academic.oup.com/nar/article-pdf/50/3/e14/42544496/gkab1074\_supplemental\_file.pdf">arXiv:https://academic.oup.com/nar/article-pdf/50/3/e14/42544496/gkab1074\_supplemental\_file.pdf</a>, <a class="reference external" href="https://doi.org/10.1093/nar/gkab1074">doi:10.1093/nar/gkab1074</a>.</p>
+</dd>
+<dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id11">8</a></span></dt>
+<dd><p>Hui Zhang, Cong Zhang, Zhe Li, Chunhua Li, Xiaopeng Wei, Baofeng Zhang, and Yunlong Liu. A new method of rna secondary structure prediction based on convolutional neural network and dynamic programming. <em>Frontiers in Genetics</em>, 10:467, 2019. <a class="reference external" href="https://doi.org/10.3389/fgene.2019.00467">doi:10.3389/fgene.2019.00467</a>.</p>
+</dd>
+<dt class="label" id="id20"><span class="brackets">9</span></dt>
+<dd><p><strong>missing author in redfold</strong></p>
+</dd>
+<dt class="label" id="id23"><span class="brackets">10</span></dt>
+<dd><p>Jaswinder Singh, Jack Hanson, Kuldip Paliwal, and Yaoqi Zhou. Rna secondary structure prediction using an ensemble of two-dimensional deep neural networks and transfer learning. <em>Nature Communications</em>, 10:2041–1723, 2019. <a class="reference external" href="https://doi.org/10.1038/s41467-019-13395-9">doi:10.1038/s41467-019-13395-9</a>.</p>
+</dd>
+<dt class="label" id="id24"><span class="brackets">11</span></dt>
+<dd><p>Marcell Szikszai, Michael Wise, Amitava Datta, Max Ward, and David H Mathews. Deep learning models for RNA secondary structure prediction (probably) do not generalize across families. <em>Bioinformatics</em>, 38(16):3892–3899, 06 2022. URL: <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac415">https://doi.org/10.1093/bioinformatics/btac415</a>, <a class="reference external" href="https://arxiv.org/abs/https://academic.oup.com/bioinformatics/article-pdf/38/16/3892/45300927/btac415\_supplementary\_data.pdf">arXiv:https://academic.oup.com/bioinformatics/article-pdf/38/16/3892/45300927/btac415\_supplementary\_data.pdf</a>, <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btac415">doi:10.1093/bioinformatics/btac415</a>.</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="diurnal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="source/modules.html" class="btn btn-neutral float-right" title="Source Code Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Vincent Therrien.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
