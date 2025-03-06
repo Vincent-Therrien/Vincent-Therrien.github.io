@@ -1,5 +1,7 @@
 # The Chaotic State of GPU Programming
 
+This is the script of the video available at https://www.youtube.com/watch?v=9-DiGrnz8l8.
+
 GPUs have accelerated advances in artificial intelligence [1], genomics research [2], computer
 vision [3], and many other fields by performing some calculations significantly faster than
 conventional hardware. And as we keep developing more powerful programs, the demand for GPUs will
