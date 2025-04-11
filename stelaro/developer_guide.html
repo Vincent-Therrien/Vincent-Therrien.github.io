@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Guide &mdash; stelaro 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Literature Review" href="literature_review.html" />
+    <link rel="prev" title="User Guide" href="user_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            stelaro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-analysis-pipeline">Data Analysis Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input">Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-processing">Data Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#organization">Organization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="literature_review.html">Literature Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks.html">Benchmarks</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">stelaro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Developer Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/developer_guide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="developer-guide">
+<h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Link to this heading"></a></h1>
+<p>Stelaro is a metagenomic software tool written in Rust that can be used through the command line and
+a Python binding.</p>
+<section id="data-analysis-pipeline">
+<h2>Data Analysis Pipeline<a class="headerlink" href="#data-analysis-pipeline" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This pipeline is subject to changes</p>
+</div>
+<p>The pipeline <strong>classifies contigs</strong> into taxonomic groups to profile metagenomic samples and
+<strong>identifies annotated sequences</strong> in metagenomic samples such as antimicrobial resistance genes.</p>
+<img alt="_images/pipeline.png" src="_images/pipeline.png" />
+<section id="input">
+<h3>Input<a class="headerlink" href="#input" title="Link to this heading"></a></h3>
+<ul>
+<li><dl class="simple">
+<dt><strong>Quality-controlled reads</strong> from a sequencing device.</dt><dd><ul class="simple">
+<li><p>The pipeline itself does not comprise facilities that can trim adapters and discard
+low-quality reads.</p></li>
+<li><p>External tools like Trimmomatic are to be used to pre-process raw reads.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>Synthetic reads</strong> generated from reference genomes. Used when training the models. The reference
+genomes are taken from the NCBI.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A <strong>read simulator</strong> generates data from taxonomic profiles <span id="id1">[<a class="reference internal" href="#id10" title="Alexander Fritz, Patrick Hofmann, Stefan Majda, Elisabeth Dahms, Helene Marie Draese, Till R Lesker, Peter Belmann, Matthew Z DeMaere, Aaron E Darling, Alexander Sczyrba, Andreas Bremges, and Alice C McHardy. Camisim: simulating metagenomes and microbial communities. Microbiome, 7(1):17, 2019. URL: https://doi.org/10.1186/s40168-019-0633-6, doi:10.1186/s40168-019-0633-6.">1</a>]</span>. This is more
+representative of real metagenomic samples than random sampling.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>A <strong>Taxonomy database</strong> to profile the reads such as GTDB or the one of the NCBI.</p></li>
+<li><p>A <strong>Sequence annotation database</strong> to identify elements of interest such as antimicrobial
+resistance genes. Retrieved from the CARD database <span id="id2">[<a class="reference internal" href="#id11" title="Dirk Hackenberger, Hamna Imtiaz, Amogelang R. Raphenya, Brian P. Alcock, Hendrik N. Poinar, Gerard D. Wright, and Andrew G. McArthur. Carpdm: cost-effective antibiotic resistome profiling of metagenomic samples using targeted enrichment. bioRxiv, 2024. URL: https://www.biorxiv.org/content/early/2024/03/30/2024.03.27.587061, arXiv:https://www.biorxiv.org/content/early/2024/03/30/2024.03.27.587061.full.pdf, doi:10.1101/2024.03.27.587061.">2</a>]</span>.</p></li>
+</ul>
+</section>
+<section id="data-processing">
+<h3>Data Processing<a class="headerlink" href="#data-processing" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>The <strong>sequence assembler</strong> creates contigs from pre-processed sequence reads.</dt><dd><ul>
+<li><p>This component uses either De Bruijn graphs or overlap-layout-consensus to assemble the reads.</p></li>
+<li><p>The assembler will be either hardware-accelerated on GPUs or performed by an external tool.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>The <strong>sequence processor</strong> converts the contigs into a compressed format.</dt><dd><ul>
+<li><p>Techniques used in natural language processing, such as tokenization (BERT), are to be used by
+this component.</p></li>
+<li><p>Conversion into tetra-mers are also considered.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>The <strong>taxonomic binning model</strong> uses processed contigs to assign them to taxonomic profiles.</dt><dd><ul>
+<li><p>This is currently envisioned as an attention-based neural network, but a rule-based program
+will be used if performances are disappointing.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>The <strong>element identifier</strong> finds relevant elements in the genomes, such as AMR genes.</dt><dd><ul>
+<li><p>This is envisioned as an attention-based neural network.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="output">
+<h3>Output<a class="headerlink" href="#output" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Taxonomic profiles</strong> ascribing taxonomic levels to reads.</p></li>
+<li><p><strong>Functional element predictions</strong> ascribing potential functions to reads.</p></li>
+</ul>
+</section>
+</section>
+<section id="organization">
+<h2>Organization<a class="headerlink" href="#organization" title="Link to this heading"></a></h2>
+<p>The source code is organized as follows:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>src</cite>: Rust source code.</dt><dd><ul>
+<li><p><cite>data</cite>: Download data.</p></li>
+<li><p><cite>io</cite>: Functions to read and write genome sequence files.</p></li>
+<li><p><cite>kernels</cite>: Hardware acceleration kernels.</p></li>
+<li><p><cite>utils</cite>: Utility modules (e.g. console output formatting).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading"></a></h3>
+<div class="docutils container" id="id3">
+<div role="list" class="citation-list">
+<div class="citation" id="id10" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Alexander Fritz, Patrick Hofmann, Stefan Majda, Elisabeth Dahms, Helene Marie Draese, Till R Lesker, Peter Belmann, Matthew Z DeMaere, Aaron E Darling, Alexander Sczyrba, Andreas Bremges, and Alice C McHardy. Camisim: simulating metagenomes and microbial communities. <em>Microbiome</em>, 7(1):17, 2019. URL: <a class="reference external" href="https://doi.org/10.1186/s40168-019-0633-6">https://doi.org/10.1186/s40168-019-0633-6</a>, <a class="reference external" href="https://doi.org/10.1186/s40168-019-0633-6">doi:10.1186/s40168-019-0633-6</a>.</p>
+</div>
+<div class="citation" id="id11" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Dirk Hackenberger, Hamna Imtiaz, Amogelang R. Raphenya, Brian P. Alcock, Hendrik N. Poinar, Gerard D. Wright, and Andrew G. McArthur. Carpdm: cost-effective antibiotic resistome profiling of metagenomic samples using targeted enrichment. <em>bioRxiv</em>, 2024. URL: <a class="reference external" href="https://www.biorxiv.org/content/early/2024/03/30/2024.03.27.587061">https://www.biorxiv.org/content/early/2024/03/30/2024.03.27.587061</a>, <a class="reference external" href="https://arxiv.org/abs/https://www.biorxiv.org/content/early/2024/03/30/2024.03.27.587061.full.pdf">arXiv:https://www.biorxiv.org/content/early/2024/03/30/2024.03.27.587061.full.pdf</a>, <a class="reference external" href="https://doi.org/10.1101/2024.03.27.587061">doi:10.1101/2024.03.27.587061</a>.</p>
+</div>
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p>Alison B.R. McIntyre, Rachid Ounit, Ebrahim Afshinnekoo, and others. Comprehensive benchmarking and ensemble approaches for metagenomic classifiers. <em>Genome Biology</em>, 18(1):182, 2017. URL: <a class="reference external" href="https://doi.org/10.1186/s13059-017-1299-7">https://doi.org/10.1186/s13059-017-1299-7</a>, <a class="reference external" href="https://doi.org/10.1186/s13059-017-1299-7">doi:10.1186/s13059-017-1299-7</a>.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_guide.html" class="btn btn-neutral float-left" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="literature_review.html" class="btn btn-neutral float-right" title="Literature Review" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Vincent Therrien.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

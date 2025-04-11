@@ -1,0 +1,17 @@
+﻿stelaro
+=======
+
+.. automodule:: stelaro
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      axb
+      install
+      install_genomes
+      read_fasta
+      read_fastq
+      sample_genomes
+   
