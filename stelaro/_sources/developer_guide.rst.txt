@@ -15,7 +15,32 @@ Data Analysis Pipeline
 The pipeline **classifies contigs** into taxonomic groups to profile metagenomic samples and
 **identifies annotated sequences** in metagenomic samples such as antimicrobial resistance genes.
 
-.. image:: images/pipeline.png
+.. image:: images/pipeline.svg
+
+
++-----------------------+---------------------------------------+----------------------------------+
+| Component             | Integration / Implementation          | Progress                         |
++=======================+=======================================+==================================+
+| Reference genome      | Rust interface of the NCBI database   | Completed                        |
+| database              |                                       |                                  |
++-----------------------+---------------------------------------+----------------------------------+
+| Metagenomic reads     | Domain-specific datasets              | Not tested                       |
++-----------------------+---------------------------------------+----------------------------------+
+| Taxonomic database    | Rust interface to GTDB                | Not done                         |
++-----------------------+---------------------------------------+----------------------------------+
+| Annotation database   | Rust interface to CARD                | Not done                         |
++-----------------------+---------------------------------------+----------------------------------+
+| Read simulator        | Rust program                          | Done                             |
++-----------------------+---------------------------------------+----------------------------------+
+| Quality control       | External tools (FastQC, Trimmomatic)  | Not integrated                   |
++-----------------------+---------------------------------------+----------------------------------+
+| Sequence assembler    | Rust program or external tool         | Not done                         |
++-----------------------+---------------------------------------+----------------------------------+
+| Taxonomic profiler    | Rust program or external tool         | Not done                         |
++-----------------------+---------------------------------------+----------------------------------+
+| Functional element    | Attention-based neural network        | Not done                         |
+| identifier            |                                       |                                  |
++-----------------------+---------------------------------------+----------------------------------+
 
 
 Input
@@ -47,7 +72,7 @@ Data Processing
 - The **taxonomic binning model** uses processed contigs to assign them to taxonomic profiles.
    - This is currently envisioned as an attention-based neural network, but a rule-based program
      will be used if performances are disappointing.
-- The **element identifier** finds relevant elements in the genomes, such as AMR genes.
+- The **functional element identifier** finds relevant elements in the genomes, such as AMR genes.
    - This is envisioned as an attention-based neural network.
 
 
