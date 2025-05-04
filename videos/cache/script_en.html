@@ -84,7 +84,7 @@ sorts data by relying on a tree structure to minimize cache misses. On average, 
 that funnelsort, but in some situations, like when there's a very high memory latency,<br>
 funnelsort can outperform quicksort. However, that's rarely the case in practice, so funnelsort is<br>
 not much used in the wild.</p>
-<h2>Data Types</h2>
+<h3>Data Types</h3>
 <p>There are other ways to optimize for the cache. One of them is to use smaller data types to reduce<br>
 accesses to main memory. For instance, let's compare the time required to sum a large amount of<br>
 integers in C++ using different types. Each type represents similar values but stores them with<br>
