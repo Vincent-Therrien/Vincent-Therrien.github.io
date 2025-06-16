@@ -348,7 +348,7 @@ up not using during editing.
   - Preprint available for free at https://arxiv.org/pdf/1811.10154
 - [18] Iñigo De Miguel Beriain. "Does the use of risk assessments in sentences respect the right to due process? A critical analysis of the Wisconsin v. Loomis ruling" (2018).  Law, Probability and Risk. https://academic.oup.com/lpr/article/17/1/45/4877957
 - [20] John Szmer et al. "Who Shapes the Law? Gender and Racial Bias in Judicial Citations" (2023). APSR. https://www.cambridge.org/core/journals/american-political-science-review/article/who-shapes-the-law-gender-and-racial-bias-in-judicial-citations/497727B157CB9C6C4C6E03A02B92145C#
-- [21] Konstantin Chatziathanasiou. "Beware the Lure of Narratives: “Hungry Judges” Should Not Motivate the Use of “Artificial Intelligence” in Law". (2022). German Law Journal. https://www.cambridge.org/core/journals/german-law-journal/article/beware-the-lure-of-narratives-hungry-judges-should-not-motivate-the-use-of-artificial-intelligence-in-law/734C6F05568636FE09A26D1C4D52D627
+- [21] Konstantin Chatziathanasiou. "Beware the Lure of Narratives: 'Hungry Judges' Should Not Motivate the Use of 'Artificial Intelligence' in Law". (2022). German Law Journal. https://www.cambridge.org/core/journals/german-law-journal/article/beware-the-lure-of-narratives-hungry-judges-should-not-motivate-the-use-of-artificial-intelligence-in-law/734C6F05568636FE09A26D1C4D52D627
 - [22] Moffatt v. Air Canada, 2024 BCCRT 149 https://decisions.civilresolutionbc.ca/crt/crtd/en/item/525448/index.do
 - [23] United States Patent and Trademark Office, Department of Commerce. "Inventorship Guidance for AI-Assisted Inventions" (2024). https://www.federalregister.gov/documents/2024/02/13/2024-02623/inventorship-guidance-for-ai-assisted-inventions
 - [24] THALER v. PERLMUTTER et al, No. 1:2022cv01564 - Document 24 (D.D.C. 2023). https://law.justia.com/cases/federal/district-courts/district-of-columbia/dcdce/1:2022cv01564/243956/24/
@@ -383,7 +383,7 @@ up not using during editing.
 - [52] https://www.technologyreview.com/2025/05/05/1116090/bryan-johnson-new-religion-body-is-god/
 - [53] Equivant. "Debunking Misconceptions About the COMPAS Core Instrument: What You Need to Know" (2024). https://equivant-supervision.com/debunking-misconceptions-about-the-compas-core-instrument-what-you-need-to-know/
 - [54] Conor Murray. "Why AI ‘Hallucinations’ Are Worse Than Ever" (6 May 2025). Forbes. https://www.forbes.com/sites/conormurray/2025/05/06/why-ai-hallucinations-are-worse-than-ever/
-- [55] Jessica Hamzelou. "Bryan Johnson wants to start a new religion in which “the body is God”" (May 5, 2025). MIT Technology Review. https://machinelearning.apple.com/research/illusion-of-thinking
+- [55] Jessica Hamzelou. "Bryan Johnson wants to start a new religion in which 'the body is God'" (May 5, 2025). MIT Technology Review. https://machinelearning.apple.com/research/illusion-of-thinking
 - [56] Gordon, Cindy. "ChatGPT And Generative AI Innovations Are Creating Sustainability Havoc". Forbes. https://www.forbes.com/sites/cindygordon/2024/03/12/chatgpt-and-generative-ai-innovations-are-creating-sustainability-havoc/
 - [57] Engel et al. "Code is law: how COMPAS affects the way the judiciary handles the risk of recidivism" (2024). Artificial Intelligence and Law. https://link.springer.com/article/10.1007/s10506-024-09389-8
 - [58] Hacker News forum thread "Hallucination is inevitable: An innate limitation of large language models". https://news.ycombinator.com/item?id=39499207
