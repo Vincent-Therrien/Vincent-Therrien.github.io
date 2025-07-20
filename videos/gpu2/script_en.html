@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Why GPU Programming Is Chaotic</title>
+		<style>@media (prefers-color-scheme:dark){.markdown-body,[data-theme=dark]{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#e6edf3;--color-fg-muted:#848d97;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#2f81f7;--color-accent-emphasis:#1f6feb;--color-success-fg:#3fb950;--color-success-emphasis:#238636;--color-attention-fg:#d29922;--color-attention-emphasis:#9e6a03;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149;--color-danger-emphasis:#da3633;--color-done-fg:#a371f7;--color-done-emphasis:#8957e5}}@media (prefers-color-scheme:light){.markdown-body,[data-theme=light]{color-scheme:light;--color-prettylights-syntax-comment:#57606a;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#6639ba;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#1F2328;--color-fg-muted:#656d76;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-success-fg:#1a7f37;--color-success-emphasis:#1f883d;--color-attention-fg:#9a6700;--color-attention-emphasis:#9a6700;--color-attention-subtle:#fff8c5;--color-danger-fg:#d1242f;--color-danger-emphasis:#cf222e;--color-done-fg:#8250df;--color-done-emphasis:#8250df}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button;appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none;appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body .mr-2{margin-right:var(--base-size-8,8px)!important}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type="a s"]{list-style-type:lower-alpha}.markdown-body ol[type="A s"]{list-style-type:upper-alpha}.markdown-body ol[type="i s"]{list-style-type:lower-roman}.markdown-body ol[type="I s"]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table td>:last-child{margin-bottom:0}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;color:var(--color-fg-default);background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}.markdown-body .markdown-alert{padding:var(--base-size-8) var(--base-size-16);margin-bottom:16px;color:inherit;border-left:.25em solid var(--color-border-default)}.markdown-body .markdown-alert>:first-child{margin-top:0}.markdown-body .markdown-alert>:last-child{margin-bottom:0}.markdown-body .markdown-alert .markdown-alert-title{display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1}.markdown-body .markdown-alert.markdown-alert-note{border-left-color:var(--color-accent-emphasis)}.markdown-body .markdown-alert.markdown-alert-note .markdown-alert-title{color:var(--color-accent-fg)}.markdown-body .markdown-alert.markdown-alert-important{border-left-color:var(--color-done-emphasis)}.markdown-body .markdown-alert.markdown-alert-important .markdown-alert-title{color:var(--color-done-fg)}.markdown-body .markdown-alert.markdown-alert-warning{border-left-color:var(--color-attention-emphasis)}.markdown-body .markdown-alert.markdown-alert-warning .markdown-alert-title{color:var(--color-attention-fg)}.markdown-body .markdown-alert.markdown-alert-tip{border-left-color:var(--color-success-emphasis)}.markdown-body .markdown-alert.markdown-alert-tip .markdown-alert-title{color:var(--color-success-fg)}.markdown-body .markdown-alert.markdown-alert-caution{border-left-color:var(--color-danger-emphasis)}.markdown-body .markdown-alert.markdown-alert-caution .markdown-alert-title{color:var(--color-danger-fg)}</style>
+		<style>
+			body {
+				margin: 0;
+			}
+
+			.markdown-body-content {
+				box-sizing: border-box;
+				min-width: 200px;
+				max-width: 980px;
+				margin: 0 auto;
+				padding: 45px;
+			}
+
+			@media (max-width: 767px) {
+				.markdown-body-content {
+					padding: 15px;
+				}
+			}
+
+			.markdown-body {
+				--base-size-8: 8px;
+				--base-size-16: 16px;
+			}
+		</style>
+	</head>
+	<body class="markdown-body">
+		<article class="markdown-body-content"><h1>Why GPU Programming Is Chaotic</h1>
+<p>GPU programming is a bit of a hassle. There are multiple frameworks to do it, but they only work on<br>
+some platforms, they use weird shading languages, or they don't support some features. In some<br>
+cases, you have to combine several frameworks in a single project. I made an entire video just to<br>
+complain about how impractical it gets.</p>
+<p>CPU programming, meanwhile, is much more convenient: an application written in a modern programming<br>
+language can run on almost any CPU on the market. It used to be much worse: developers would<br>
+manually translate programs to target different CPU architectures [1] and buy compiler toolchains to<br>
+build their applications [2]. But things improved a lot over time.</p>
+<p>So, why is there such a big difference between the two? Why is GPU programming so chaotic?</p>
+<h2>The CPU Market</h2>
+<p>To answer this question, we first need to look at how CPU programming evolved. I promise it's<br>
+important for the GPU section.</p>
+<p>A central processing unit, or <strong>CPU</strong>, is an electrical component in a computer that executes<br>
+instructions, like mathematical calculations or input/output operations [3]. It works by reading<br>
+machine code, a sequence of instructions that looks like this [4] [5]. Writing machine code by hand<br>
+is extremely tedious and error prone, so since the 1940s [6], people have been using assembly<br>
+languages. They map machine code instructions to simple mnemonics, which facilitates programming.<br>
+But they remain pretty hard to use and, since assemblers are tied to specific CPU architectures,<br>
+your code has to be adapted to different platforms [3].</p>
+<p>Another improvement came in the form of programming languages, like Fortran and C. They are more<br>
+high-level than assembly: instead of directly writing the instructions that a CPU will run, they use<br>
+an abstract syntax made of keywords and mathematical symbols to express computations in a more<br>
+intuitive way. This source code is then automatically converted into machine code by a compiler,<br>
+which can target multiple CPU architectures [4].</p>
+<p>Programming languages are very convenient, so you might imagine that at this point, CPU programming<br>
+entered a golden era of smooth, easy development. It did not. Back in the 70s, the computer<br>
+ecosystem was pretty fragmented and it was common for companies to control their products tightly.<br>
+IBM, for instance, manufactured most components of its mainframe computers and wrote most of the<br>
+software. Computers built with that kind of vertical integration were expensive, but IBM liked it<br>
+because it completely controlled the platform [7]. Consumers were stuck in a vendor lock-in and had<br>
+to rely on IBM for support. Apple had - still has - a similar strategy: it makes the hardware and<br>
+software of its devices, and that gives it a lot of power. It would sell documentation and<br>
+development tools back in the days [8]! However there are drawbacks to controlling your products too<br>
+much: it makes you slower at adapting to the market, more vulnerable to supply chain disruptions,<br>
+and it makes third-party development more difficult [9].</p>
+<p>IBM realized it. It wanted to enter the home computer market but developing a new product from<br>
+scratch would have taken too much time, so, instead, it decided to assemble components made by other<br>
+companies [10]. And it worked: the IBM personal computer became a commercial success [11]. It also<br>
+backfired. The PC was well documented to help other companies make its components, and competitors<br>
+used this open design to copy the PC and sell compatible clones. IBM was not happy, but it did<br>
+reduce prices for consumers and it did improve cross-compatibility.</p>
+<p>There's always a tradeoff between openness and secrecy. If you publicly document your product,<br>
+it's easier to develop it quickly and take over a market, but competitors can also free-ride it. If<br>
+you keep your product as secret as possible, you can have higher margins, but it's more difficult to<br>
+disrupt a market. We see the same thing with CPUs. When manufacturers document their chips well, it<br>
+makes it easier for programmers to write and optimize code [12], that's a selling point. But<br>
+manufacturers do not release the inner workings of their CPUs, they hide information and use legal<br>
+protection to make sure that they preserve trade secrets.</p>
+<p>So manufacturers used to control how computers were made and what software they could run,<br>
+but competition between companies somehow pushed for more openness, which made it easier for<br>
+developers to write compilers themselves instead of relying on manufacturers. Paid compilers still<br>
+exist [13] [14], but they have become less common, we have free, cross-compatible ones now [15]<br>
+[16]. Intel and IBM didn't publish documentation out of generosity, it was a business move to sell<br>
+more products than their competitors. These companies can actually get quite anti-competitive once<br>
+they begin dominating a market [8]. Another way to promote the interests of consumers is through<br>
+public architectures. For example, RISC-V is an open CPU standard originally developed by the<br>
+University of California, Berkeley. Anyone can make a RISC-V CPU without getting sued or having to<br>
+pay for a license, and that encourages innovation in this industry [19].</p>
+<p>Not all the time, but often, people prefer transparent technologies. Many popular programming<br>
+languages are managed by non-profit organizations that listen to their users and provide stable,<br>
+open documentation. Others are managed by companies and, while they can make good languages, they<br>
+can also monetized them and ignore the feedback of the community, which can make them less<br>
+attractive.</p>
+<p>CPU programming is not perfect, but without competition and open projects, it might have remained in<br>
+the dark age of vertical integration. Hey, I wonder if another segment of the tech industry is still<br>
+stuck in the same horrible business practices.</p>
+<h2>The GPU Market</h2>
+<p>A graphics processing unit, or <strong>GPU</strong>, is an electrical component that executes instructions in<br>
+parallel [20]. I know the name makes it seem like it's only for graphics, but practically any<br>
+computation that can be split in parallel may benefit from GPUs. That includes some physics<br>
+simulations [21] and DNA analyses [22], along with an obscure application called artificial<br>
+intelligence [23]. Nvidia was the first company to formally define GPUs in the modern sense in 1999<br>
+[24], but a lot of chips designed to manipulate images had been made before that [25].</p>
+<p>Initially, these chips were only intended to run graphics pipelines that would take vertices,<br>
+process them, and output images. This is called fixed-function programming: you can modify the<br>
+parameters of the pipeline, but you cannot execute arbitrary code [26]. Each manufacturer had its<br>
+own way of doing things, so you had to adapt your code to each GPU [27]. To address that, some<br>
+companies made cross-platform standards like OpenGL and Direct3D, and developers adopted them<br>
+because they improved productivity. Those are application programming <em>interfaces</em>, not compilers.<br>
+They don't generate machine code that GPUs can run directly, but rather create standard instructions<br>
+that GPU drivers convert into machine code [28]. And, a bit like at the beginning of the computer<br>
+market, most GPU manufacturers would protect their architecture by releasing little detail about<br>
+them. People couldn't write their own compilers, so the only way to use GPUs was through standard<br>
+APIs or vendor-specific tools [29].</p>
+<p>In the early 2000s, GPU APIs began supporting shaders, programs that let you run code at some stages<br>
+of the graphics pipeline to obtain more varied visual effects. And people realized that you<br>
+can also use them to accelerate other applications. But remember, you had to go through the graphics<br>
+pipeline. So people would put numbers in textures, write shaders to process the textures, launch the<br>
+pipeline, and then analyze the output images to obtain results [30]. That's a hideous hack, but they<br>
+were stuck with it. Some projects tried to simplify that mess, but they were not backed by<br>
+manufacturers and didn't really succeed [I]. Eventually, Nvidia caught glimpse of developers<br>
+struggling with general-purpose programs and decided to release a framework called CUDA, which<br>
+forgoes the graphics pipeline [32]. That is worlds more convenient and it became popular to train<br>
+neural networks, many ground-breaking discoveries in the field were made using programs written with<br>
+CUDA [33]. And it remains widely used. Nvidia is really dominant in the market, it controls around<br>
+90 % of discrete GPUs [34], with AMD taking the rest and Intel barely selling anything [35].<br>
+Discrete GPUs are the ones used for high-end graphics applications and training AI models. Another<br>
+type of GPUs are the integrated ones. They are more often used in applications that require less<br>
+computations, and Nvidia is not in that market [36].</p>
+<p>As we've seen with CPUs, a device manufacturer has an interest in making their products less<br>
+compatible to preserve a market advantage. Nvidia releases limited documentation of its GPUs, enough<br>
+to help developers optimize their programs, but not enough for other manufacturers to make<br>
+CUDA-compatible GPUs and free-ride its market [29]. IBM documented the PC because it was desperate<br>
+to take over home computers quickly, and that improved cross-compatibility. Nvidia is already at the<br>
+top, it doesn't need to disrupt the market by becoming more transparent. In an effort to win over<br>
+some shares of the discrete GPU market, AMD and Intel document their GPUs more thoroughly and their<br>
+frameworks are open-source [37] [38]. Not because they are freedom fighters, but to convince<br>
+consumers to buy their products. However their openness has not really paid off so far, Nvidia is<br>
+just too far ahead.</p>
+<p>Companies want to promote their own APIs to sell their own hardware, but they have to enable some<br>
+degree of cross-platform support, otherwise no one would buy their chips. And these two<br>
+interests often collide. For example, Apple developed OpenCL as a direct response to CUDA. It<br>
+enables general-purpose computing on GPUs, but it's designed to run everywhere [39]. Although<br>
+several manufacturers support the first version, they decided not to support newer features to<br>
+instead invest in their own APIs. OpenCL is a good API, but it stagnated over the years [40]. Vulkan<br>
+has similar issues. It was made to succeed OpenGL as a cross-platform graphics API, so it has a set<br>
+of mandatory features that GPU manufacturers agree to support. But some vendors wanted additional<br>
+features that they had implemented on their own devices, so there are also optional Vulkan<br>
+extensions that don't work everywhere [41]. A certain company decided not to support Vulkan at all,<br>
+you have to use a weird compatibility layer on its devices [42]. So we got another API to improve<br>
+cross-platform support [43], and this one also has some missing features [44]. I'm sure another<br>
+projects will address them [45]. It never stops! Even when all manufacturers get together to make a<br>
+common API, GPU programming always remains fragmented because of their competing interests.</p>
+<p>From what I've gathered, the lack of competition is the main problem that plagues GPU programming,<br>
+but it's not the only one. On a technical level, GPUs are massively parallel and have a lot of<br>
+variations [46]. This complexity makes them more challenging to document than CPUs, which<br>
+contributes to making the technology more opaque. And from a legal perspective, things have changed<br>
+a lot since the early 80s. Governments have made it easier to copyright chip designs [47] and<br>
+companies protect their intellectual property more aggressively: for example, Nvidia takes legal<br>
+precautions to discourage running CUDA on other devices, again, to make sure that their consumers<br>
+stay locked in the same ecosystem [48].</p>
+<p>Overall, GPU programming is chaotic mainly because Nvidia's dominance hinders competition, which<br>
+stalls cross-compatibility. Nvidia didn't use shadowy scheming, but rather built good GPUs, invested<br>
+early in a good API, and used legal magic to protect its IP. Nowadays, a lot of consumers are kind<br>
+of locked in its ecosystem. I don't think Jensen Huang is a Final Fantasy villain who wants to make<br>
+GPU programming more cumbersome for no reason, I think his company finds ways to maximize profit to<br>
+the detriment of everyone else, like all companies do. But, when they go too far, there can be<br>
+consequences.</p>
+<h2>Antitrust</h2>
+<p>In 1974, the US government filed an antitrust action against AT&amp;T for monopolizing the telephone<br>
+infrastructure [49]. Monopolies, by the way, are legal according to the federal trade commission, as<br>
+long as you don't use them to harm the market with predatory practices [50]. But since the forties,<br>
+AT&amp;T had been sued for abusing its market power. There were many points of contention, but a<br>
+particularly egregious one was its subsidiary Western Electric, which manufactured telephone<br>
+equipment. AT&amp;T controlled how a lot of phones were made and how they operated. It could dictate<br>
+prices, and this situation became increasingly problematic.</p>
+<p>The United States, and most other countries, have competition laws, also called antitrust laws [51].<br>
+They regulate monopolies, collusion, they supervise mergers and acquisition, they basically address<br>
+any market behavior that may lead to predatory practices. AT&amp;T was clearly going against antitrust<br>
+laws, but before the state can break a monopoly, it has to prove that it is harming the market, and<br>
+gathering enough evidence for that takes time. It took around 8 years to reach a settlement, and<br>
+AT&amp;T got split up in multiple companies [52]. There have been more recent antitrust cases, Apple has<br>
+some experience in that field [53], as well as Amazon [54], Google [55], Microsoft [56], Intel [57].<br>
+But they didn't get ripped apart à la AT&amp;T. Yet.</p>
+<p>The US Department of Justice started investigating Nvidia in 2024 because of its dominant market<br>
+position [58]. And like, yeah, it really looks like a monopoly [59]. I would be the first one to<br>
+cheer if CUDA was forced to become more transparent or if architectures were made more open, then<br>
+GPUs would become way more convenient to program. But that is highly unlikely and it would take at<br>
+least several years, so let's not look forward to that.</p>
+<p>There are some arguments in favor of monopolies. For instance, you might argue that large companies<br>
+are more productive than smaller ones and splitting monopolies too aggressively could hinder<br>
+progress [60]. Or that the state is ran by incompetents and we should just let the market regulate<br>
+itself [61]. The worst argument is that once a company establishes a monopoly and extorts money, it<br>
+creates a business opportunity: another company can propose a cheaper product, which breaks the<br>
+monopoly [62]. But that almost never happens, large companies have so much resources that they can<br>
+easily put barriers to entry that prevent competition. NO ONE could have competed with AT&amp;T at the<br>
+time, and I don't see how anyone could dislodge Nvidia now.</p>
+<p>The reality is that the invisible hand only works in a world of small shop owners. Large companies<br>
+are too powerful for small competitors and they only work in their own interest. They are unaligned,<br>
+if you will. The state has the responsibility to maintain a healthy economic environment and ensure<br>
+that the rights of consumers are respected, at the same time, it is bound to follow judicial<br>
+procedures, so we may remain stuck with monopolies or quasi-monopolies for years.</p>
+<h2>Can It Get Better</h2>
+<p>Rather than waiting for big government to do everything for us, we can ask ourselves if GPU<br>
+programming might get better without antitrust miracles, and, there are a few possibilities.</p>
+<p>The first one is to just hope for competition to get more intense. AMD and Intel are, hum, doing<br>
+their best I'm sure, but they are not serious competitors. In China, 摩尔线程 (Moore Thread) is<br>
+a relatively new GPU manufacturer that could stir competition up [63]. Maybe these companies will<br>
+get better and push for more transparency. There are also projects to make open architectures, a bit<br>
+like RISC-V but for GPUs, and they could encourage innovation and cross-compatibility [64] [65].</p>
+<p>Another possibility is for consumers to put pressure on Nvidia. Zum Beispiel, if developers start<br>
+using open frameworks instead of CUDA, Nvidia might decide to improve support for these projects.<br>
+But we have no way of forcing Nvidia to react positively to open-source projects. I would definitely<br>
+not favor more direct forms of pressure like boycotts because Nvidia is so large that there's no way<br>
+consumers could significantly alter its market presence. To be clear, boycotts are not useless, in<br>
+many cases, they have successfully forced companies to fix problematic behaviors [66] [67] [68]. But<br>
+there's a limit to what boycotts can accomplish, and trying to make CUDA open-source by canceling<br>
+Nvidia on Twitter is not gonna work. I think that the market is in a disastrous state and the only<br>
+thing we can do is live with it. Whether GPU programming will get better is out of our control, but<br>
+we can slightly push for more transparency in that field with open-source projects and by electing<br>
+people who favor stricter antitrust regulations.</p>
+<p>Some of you might be sitting in disbelief at how much of a non-issue this whole situation is. "GPU<br>
+programming works. The applications you write in Vulkan or OpenCL or a game engine will function<br>
+on almost any GPU on the market, there's no need to freak out!" And, fair, it's not <em>that</em> bad, we<br>
+don't have to pay for GPU compilers at least. But it could be so much better. The CPU programming<br>
+ecosystem is convenient enough that hobbyists can easily share their projects with people who don't<br>
+necessarily have the same hardware. Python was started by one guy [69], it's now one of the most<br>
+widely used programming languages and anyone can contribute to it [70]. This is the strength of<br>
+openness: when you let people freely collaborate, the best ideas rise to the top and meliorate<br>
+technology to the benefit of everyone. It's never perfect, but it's much better than when companies<br>
+make their products incompatible on purpose.</p>
+<p>Another beef I have with GPU programming is that, in most cases, you have to keep the CPU and GPU<br>
+source codes separate. There are projects, like Rust-GPU [71], OpenMP [72], and SYCL [73], that let<br>
+you integrate GPU code within CPU code, which is more convenient to write but in practice that code<br>
+is compiled in pretty convoluted ways because GPUs are not built for compatibility [74]. With more<br>
+open architectures, we could develop open-source, cross-platform compilers more easily. That would<br>
+not impact graphics applications much I think, but for general-purpose computing, it would be really<br>
+practical. Heterogeneous computing might become more widely used and enhance informatics as a whole.<br>
+So I'm not exactly mad at the current GPU programming scene, well, a little. I am disheartened<br>
+because it has the potential to get much better but we might never see that happen.</p>
+<p>Ok I made my point. If you want more information on GPU programming, you can look up the Github<br>
+repository I made to compare frameworks. I've added links to other interesting projects since last<br>
+time. You can also check my other video on the topic, but I made some errors in it so make sure to<br>
+read my pinned comment for the errata. I hope I wasn't too discouraging, GPU programming is really<br>
+fun and useful despite what the market has done to it. I should do a video to prove that.</p>
+<h2>References</h2>
+<ul>
+<li>[1] Juris Reinfelds. "The First Port of Unix" (1977). University of Wollongong. <a href="https://documents.uow.edu.au/content/groups/public/@web/@inf/@scsse/documents/doc/uow103747.pdf" rel="nofollow">https://documents.uow.edu.au/content/groups/public/@web/@inf/@scsse/documents/doc/uow103747.pdf</a>
+<ul>
+<li>The seventh paragraph on the second page explains how a compiler had to be partially rewritten<br>
+to compile to a target architecture. The end of the paragraph is unintentional comedy.</li>
+</ul>
+</li>
+<li>[2] Tech Monitor. "MICROSOFT UNVEILS VISUAL STUDIO 97" (1997). <a href="https://www.techmonitor.ai/technology/microsoft_unveils_visual_studio_97/" rel="nofollow">https://www.techmonitor.ai/technology/microsoft_unveils_visual_studio_97/</a>
+<ul>
+<li>There was no free / community version at the time.</li>
+<li>The image of the CD used in the video is from <a href="https://archive.org/details/MSDN_VisualStudio_97_Disc_2_March_1997" rel="nofollow">https://archive.org/details/MSDN_VisualStudio_97_Disc_2_March_1997</a></li>
+</ul>
+</li>
+<li>[3] Nagpal, D. P. "Computer Fundamentals" (2008). S. Chand Publishing. p. 33. ISBN 978-81-219-2388-0. <a href="https://books.google.ca/books?id=LAsbEAAAQBAJ" rel="nofollow">https://books.google.ca/books?id=LAsbEAAAQBAJ</a>.</li>
+<li>[4] Stephen Marz. "Example RISC-V Assembly Programs" (2025). <a href="https://marz.utk.edu/my-courses/cosc230/book/example-risc-v-assembly-programs/" rel="nofollow">https://marz.utk.edu/my-courses/cosc230/book/example-risc-v-assembly-programs/</a>
+<ul>
+<li>This page comprises example programs written in C and their equivalent in RISC-V assembly.</li>
+</ul>
+</li>
+<li>[5] Joël Porquet-Lupine. "RISC-V Instruction Encoder/Decoder" (2025). <a href="https://luplab.gitlab.io/rvcodecjs/" rel="nofollow">https://luplab.gitlab.io/rvcodecjs/</a>
+<ul>
+<li>This page converts RISC-V assembly instructions into machine code.</li>
+</ul>
+</li>
+<li>[6] Chris Putnam. "Remembering a USask computing pioneer" (2022).University of Saskatchewan. <a href="https://artsandscience.usask.ca/news/articles/8087/Remembering_a_USask_computing_pioneer" rel="nofollow">https://artsandscience.usask.ca/news/articles/8087/Remembering_a_USask_computing_pioneer</a></li>
+<li>[7] Guido A. Krickx. "Vertical integration in the computer mainframe industry: A transaction cost interpretation" (1995). Journal of Economic Behavior and Organization. <a href="https://www.sciencedirect.com/science/article/pii/016726819400010C" rel="nofollow">https://www.sciencedirect.com/science/article/pii/016726819400010C</a></li>
+<li>[8] Dan Allen. "THE MACINTOSH PROGRAMMER'S WORKSHOP". Dr. Dobb's Journal. <a href="https://jacobfilipp.com/DrDobbs/articles/DDJ/1988/8814/8814b/8814b.htm" rel="nofollow">https://jacobfilipp.com/DrDobbs/articles/DDJ/1988/8814/8814b/8814b.htm</a></li>
+<li>[9] Indeed. "Vertical Integration and Its Effects on Companies and Employees" (2025). <a href="https://www.indeed.com/hire/c/info/vertical-integration-and-its-effects-on-companies-and-employees" rel="nofollow">https://www.indeed.com/hire/c/info/vertical-integration-and-its-effects-on-companies-and-employees</a></li>
+<li>[10] Zir Blazer. "History of the evolution of the x86 platform, from the IBM PC to the modern era" (2021). <a href="https://zirblazer.github.io/htmlfiles/pc_evolution.html?ver=123" rel="nofollow">https://zirblazer.github.io/htmlfiles/pc_evolution.html?ver=123</a></li>
+<li>[11] Tom Hormby. "Origin of the IBM PC" (2006). Low End Mac. <a href="https://lowendmac.com/2006/origin-of-the-ibm-pc/" rel="nofollow">https://lowendmac.com/2006/origin-of-the-ibm-pc/</a></li>
+<li>[12] Intel. "Intel 64 and IA-32 Architectures Software Developer Manuals" (2025). <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html" rel="nofollow">https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html</a></li>
+<li>[13] Microsoft. "Buy Visual Studio" (2025). <a href="https://visualstudio.microsoft.com/fr/vs/pricing/?tab=business" rel="nofollow">https://visualstudio.microsoft.com/fr/vs/pricing/?tab=business</a></li>
+<li>[14] JetBrains. "Subscription Plans" (2025). <a href="https://www.jetbrains.com/clion/buy/?section=personal&amp;billing=monthly" rel="nofollow">https://www.jetbrains.com/clion/buy/?section=personal&amp;billing=monthly</a></li>
+<li>[15] GCC Team. "GCC, the GNU Compiler Collection" (2025). <a href="https://gcc.gnu.org/" rel="nofollow">https://gcc.gnu.org/</a></li>
+<li>[16] llvm-admin team. "The LLVM Compiler Infrastructure" (2025). <a href="https://llvm.org/" rel="nofollow">https://llvm.org/</a></li>
+<li>[17] Foo Yun Chee and Bart H. Meijer. "Intel hit with $400 million EU antitrust fine in decades-old case" (2023). Reuters. <a href="https://www.reuters.com/technology/eu-re-imposes-400-mln-fine-intel-abuse-market-power-2023-09-22/" rel="nofollow">https://www.reuters.com/technology/eu-re-imposes-400-mln-fine-intel-abuse-market-power-2023-09-22/</a></li>
+<li>[18] Telex Corp. v. International Business MacHines Corp., 367 F. Supp. 258 (N.D. Okla. 1973). <a href="https://law.justia.com/cases/federal/district-courts/FSupp/367/258/1425543/" rel="nofollow">https://law.justia.com/cases/federal/district-courts/FSupp/367/258/1425543/</a></li>
+<li>[19] "About RISC-V International" (2025). RISC-V. <a href="https://riscv.org/about/" rel="nofollow">https://riscv.org/about/</a></li>
+<li>[20] Intel. "What Is a GPU?" (2025). <a href="https://www.intel.com/content/www/us/en/products/docs/processors/what-is-a-gpu.html" rel="nofollow">https://www.intel.com/content/www/us/en/products/docs/processors/what-is-a-gpu.html</a></li>
+<li>[21] Moritz Lehmann. "FluidX3D" (2025). <a href="https://github.com/ProjectPhysX/FluidX3D">https://github.com/ProjectPhysX/FluidX3D</a></li>
+<li>[22] H. Zhong et al. "GPU acceleration for DNA sequence alignment algorithm and its application" (2025). <a href="https://link.springer.com/article/10.1007/s42514-024-00203-0" rel="nofollow">https://link.springer.com/article/10.1007/s42514-024-00203-0</a></li>
+<li>[23] Kirsty Paterson's Instagram page: @scottishoompaloompa</li>
+<li>[24] Vivek Singh. "Game-Changer: How the World’s First GPU Leveled Up Gaming and Ignited the AI Era" (2024). <a href="https://blogs.nvidia.com/blog/first-gpu-gaming-ai/" rel="nofollow">https://blogs.nvidia.com/blog/first-gpu-gaming-ai/</a></li>
+<li>[25] Jon Peddie. "Is it Time to Rename the GPU?" (2018). <a href="https://www.computer.org/publications/tech-news/chasing-pixels/is-it-time-to-rename-the-gpu" rel="nofollow">https://www.computer.org/publications/tech-news/chasing-pixels/is-it-time-to-rename-the-gpu</a></li>
+<li>[26] Wikipedia. "Fixed-function (computer graphics)" (2025). <a href="https://en.wikipedia.org/wiki/Fixed-function_(computer_graphics)" rel="nofollow">https://en.wikipedia.org/wiki/Fixed-function_(computer_graphics)</a>
+<ul>
+<li>The other pages I've found defining this term are paywalled or AI-generated to I'm using<br>
+Wikipedia I'm sorry.</li>
+</ul>
+</li>
+<li>[27] Learn WebGL. "1.3 - Computer Graphics - A Brief History". <a href="https://learnwebgl.brown37.net/the_big_picture/webgl_history.html" rel="nofollow">https://learnwebgl.brown37.net/the_big_picture/webgl_history.html</a></li>
+<li>[28] OpenGL. "Shader Compilation". <a href="https://www.khronos.org/opengl/wiki/Shader_Compilation" rel="nofollow">https://www.khronos.org/opengl/wiki/Shader_Compilation</a></li>
+<li>[29] André Machado. "Nouveau vs. NVIDIA: The Battle Between Open-Source Ideals and Proprietary Performance on Linux" (2024). <a href="https://machaddr.substack.com/p/nouveau-vs-nvidia-the-battle-between" rel="nofollow">https://machaddr.substack.com/p/nouveau-vs-nvidia-the-battle-between</a></li>
+<li>[30] Jens Kr¨uger and R¨udiger Westermann. "Linear Algebra Operators for GPU Implementation of Numerical Algorithms" (2003). ACM Transactions on Graphics. <a href="https://dl.acm.org/doi/10.1145/882262.882363" rel="nofollow">https://dl.acm.org/doi/10.1145/882262.882363</a></li>
+<li>[31] BrookGPU. <a href="https://graphics.stanford.edu/projects/brookgpu/" rel="nofollow">https://graphics.stanford.edu/projects/brookgpu/</a></li>
+<li>[32] GamesIndustry.biz. "NVIDIA UNVEILS CUDA™ – THE GPU COMPUTING REVOLUTION BEGINS" (2006). <a href="https://www.gamesindustry.biz/nvidia-unveils-cuda-the-gpu-computing-revolution-begins" rel="nofollow">https://www.gamesindustry.biz/nvidia-unveils-cuda-the-gpu-computing-revolution-begins</a></li>
+<li>[33] Helen Peterson et al. "Exclusive: the most-cited papers of the twenty-first century" (2025). Nature. <a href="https://www.nature.com/articles/d41586-025-01125-9" rel="nofollow">https://www.nature.com/articles/d41586-025-01125-9</a></li>
+<li>[34] Michael Crider. "Nvidia extends desktop GPU market share lead beyond 90%" (2025). PCWorld. <a href="https://www.pcworld.com/article/2806604/nvidia-extends-desktop-gpu-market-share-beyond-90-percent.html" rel="nofollow">https://www.pcworld.com/article/2806604/nvidia-extends-desktop-gpu-market-share-beyond-90-percent.html</a></li>
+<li>[35] Anton Shilov. "Intel's share of the discrete GPU market drops to 0% as sales in the overall market increase" (2025). Tom's Hardware. <a href="https://www.tomshardware.com/pc-components/gpus/discrete-gpu-sales-increase-as-intels-share-drops-to-0" rel="nofollow">https://www.tomshardware.com/pc-components/gpus/discrete-gpu-sales-increase-as-intels-share-drops-to-0</a></li>
+<li>[36] Intel. "What Is the Difference Between Integrated Graphics and Discrete Graphics?" (2025). <a href="https://www.intel.com/content/www/us/en/support/articles/000057824/graphics.html" rel="nofollow">https://www.intel.com/content/www/us/en/support/articles/000057824/graphics.html</a></li>
+<li>[37] ROCm project on Github. <a href="https://github.com/ROCm/ROCm">https://github.com/ROCm/ROCm</a></li>
+<li>[38] OneAPI. "oneAPI Open Source". <a href="https://oneapi.io/open-source/" rel="nofollow">https://oneapi.io/open-source/</a></li>
+<li>[39] Khronos Group. "Khronos Launches Heterogeneous Computing Initiative" (2008). <a href="https://web.archive.org/web/20080620123431/http://www.khronos.org/news/press/releases/khronos_launches_heterogeneous_computing_initiative/" rel="nofollow">https://web.archive.org/web/20080620123431/http://www.khronos.org/news/press/releases/khronos_launches_heterogeneous_computing_initiative/</a></li>
+<li>[40] Tim Anderson. "Less is more with OpenCL 3.0: Implementing the 2.x spec was tricky – so now everything beyond 1.2 is optional" (2020). The Register. <a href="https://www.theregister.com/2020/04/27/opencl_30/" rel="nofollow">https://www.theregister.com/2020/04/27/opencl_30/</a></li>
+<li>[41] Khronos Group. "Khronos Vulkan Registry". <a href="https://registry.khronos.org/vulkan/#repo-docs" rel="nofollow">https://registry.khronos.org/vulkan/#repo-docs</a></li>
+<li>[42] The Brenwill Workshop Ltd. "MoltenVK Runtime User Guide". <a href="https://github.com/KhronosGroup/MoltenVK/blob/main/Docs/MoltenVK_Runtime_UserGuide.md">https://github.com/KhronosGroup/MoltenVK/blob/main/Docs/MoltenVK_Runtime_UserGuide.md</a></li>
+<li>[43] World Wide Web Consortium. "WebGPU, W3C Candidate Recommendation Draft" (11 July 2025). <a href="https://www.w3.org/TR/webgpu/" rel="nofollow">https://www.w3.org/TR/webgpu/</a></li>
+<li>[44] "WebRTS, WebGPU Ray Tracing eXtension". <a href="https://github.com/codedhead/webrtx">https://github.com/codedhead/webrtx</a></li>
+<li>[45] Randall Patrick. "Standards". <a href="https://xkcd.com/927/" rel="nofollow">https://xkcd.com/927/</a></li>
+<li>[46] Nvidia. "Compare GeForce Graphics Cards". <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/compare/" rel="nofollow">https://www.nvidia.com/en-us/geforce/graphics-cards/compare/</a></li>
+<li>[47] Wikipedia. "Semiconductor Chip Protection Act of 1984". <a href="https://en.wikipedia.org/wiki/Semiconductor_Chip_Protection_Act_of_1984" rel="nofollow">https://en.wikipedia.org/wiki/Semiconductor_Chip_Protection_Act_of_1984</a>
+<ul>
+<li>The law is available at <a href="https://www.govinfo.gov/content/pkg/STATUTE-98/pdf/STATUTE-98-Pg3335.pdf" rel="nofollow">https://www.govinfo.gov/content/pkg/STATUTE-98/pdf/STATUTE-98-Pg3335.pdf</a> but I put the<br>
+Wikipedia header in the video because it's more legible.</li>
+</ul>
+</li>
+<li>[48] Anton Shilov. "Nvidia bans using translation layers for CUDA software — previously the prohibition was only listed in the online EULA, now included in installed files (Updated)" (2024). Tom's Hardware. <a href="https://www.tomshardware.com/pc-components/gpus/nvidia-bans-using-translation-layers-for-cuda-software-to-run-on-other-chips-new-restriction-apparently-targets-zluda-and-some-chinese-gpu-makers" rel="nofollow">https://www.tomshardware.com/pc-components/gpus/nvidia-bans-using-translation-layers-for-cuda-software-to-run-on-other-chips-new-restriction-apparently-targets-zluda-and-some-chinese-gpu-makers</a></li>
+<li>[49] United States v. American Tel. and Tel. Co., 552 F. Supp. 131 (D.D.C. 1983). <a href="https://law.justia.com/cases/federal/district-courts/FSupp/552/131/1525975/" rel="nofollow">https://law.justia.com/cases/federal/district-courts/FSupp/552/131/1525975/</a></li>
+<li>[50] Federal trade Commission. "Monopolization Defined". <a href="https://www.ftc.gov/advice-guidance/competition-guidance/guide-antitrust-laws/single-firm-conduct/monopolization-defined" rel="nofollow">https://www.ftc.gov/advice-guidance/competition-guidance/guide-antitrust-laws/single-firm-conduct/monopolization-defined</a></li>
+<li>[51] Alexandra Twin. "Antitrust Laws: What They Are, How They Work, Major Examples" (2025). Investopedia. <a href="https://www.investopedia.com/terms/a/antitrust.asp" rel="nofollow">https://www.investopedia.com/terms/a/antitrust.asp</a></li>
+<li>[52] Wikipedia. "Breakup of the Bell System". <a href="https://en.wikipedia.org/wiki/Breakup_of_the_Bell_System" rel="nofollow">https://en.wikipedia.org/wiki/Breakup_of_the_Bell_System</a></li>
+<li>[53] US Department of Justice. "U.S and Plaintiff States v. Apple Inc." (2024). <a href="https://www.justice.gov/atr/case/us-and-plaintiff-states-v-apple-inc" rel="nofollow">https://www.justice.gov/atr/case/us-and-plaintiff-states-v-apple-inc</a></li>
+<li>[54] US Federal Trade Commission. "FTC Sues Amazon for Illegally Maintaining Monopoly Power" (2023). <a href="https://www.ftc.gov/news-events/news/press-releases/2023/09/ftc-sues-amazon-illegally-maintaining-monopoly-power" rel="nofollow">https://www.ftc.gov/news-events/news/press-releases/2023/09/ftc-sues-amazon-illegally-maintaining-monopoly-power</a></li>
+<li>[55] US Department of Justice. "U.S. and Plaintiff States v. Google LLC (2020)". <a href="https://www.justice.gov/atr/case/us-and-plaintiff-states-v-google-llc" rel="nofollow">https://www.justice.gov/atr/case/us-and-plaintiff-states-v-google-llc</a></li>
+<li>[56] U.S. v. Microsoft Corp., 253 F.3d 34 (D.C. Cir. 2001). <a href="https://law.justia.com/cases/federal/appellate-courts/F3/253/34/576095/" rel="nofollow">https://law.justia.com/cases/federal/appellate-courts/F3/253/34/576095/</a></li>
+<li>[57] Intel Corp. v. Advanced Micro Devices, Inc., 542 U.S. 241 (2004). <a href="https://supreme.justia.com/cases/federal/us/542/241/" rel="nofollow">https://supreme.justia.com/cases/federal/us/542/241/</a></li>
+<li>[58] Patrick Moorhead. "Antitrust Probes Into Nvidia: What Are The Implications?" (2024). Forbes. <a href="https://www.forbes.com/sites/patrickmoorhead/2024/09/12/antitrust-probes-into-nvidia-what-are-the-implications/" rel="nofollow">https://www.forbes.com/sites/patrickmoorhead/2024/09/12/antitrust-probes-into-nvidia-what-are-the-implications/</a></li>
+<li>[59] Daniel Sims. "Nvidia reaches historic 92% GPU market share, leaves AMD and Intel far behind" (2025). Tech Spot. <a href="https://www.techspot.com/news/108225-nvidia-reaches-historic-92-gpu-market-share-leaves.html" rel="nofollow">https://www.techspot.com/news/108225-nvidia-reaches-historic-92-gpu-market-share-leaves.html</a></li>
+<li>[60] McKinsey &amp; Company. "Small enterprises, big productivity gaps" (2024). <a href="https://www.mckinsey.com/featured-insights/sustainable-inclusive-growth/charts/small-enterprises-big-productivity-gaps" rel="nofollow">https://www.mckinsey.com/featured-insights/sustainable-inclusive-growth/charts/small-enterprises-big-productivity-gaps</a></li>
+<li>[61] CTV News. "$270M investment in Northvolt’s parent company now worthless, says Quebec government" (2025). <a href="https://www.ctvnews.ca/montreal/article/270m-investment-in-northvolts-parent-company-now-worthless-says-quebec-government/" rel="nofollow">https://www.ctvnews.ca/montreal/article/270m-investment-in-northvolts-parent-company-now-worthless-says-quebec-government/</a></li>
+<li>[62] Harvard Business Manager. "Der kreative Zerstörer" (2013). <a href="https://www.manager-magazin.de/hbm/management/joseph-schumpeter-innovation-und-schoepferische-zerstoerung-a-00000000-0002-0001-0000-000091405742" rel="nofollow">https://www.manager-magazin.de/hbm/management/joseph-schumpeter-innovation-und-schoepferische-zerstoerung-a-00000000-0002-0001-0000-000091405742</a></li>
+<li>[63] Moore's Thread. "Accelerate Computing for the Future". <a href="https://en.mthreads.com/about" rel="nofollow">https://en.mthreads.com/about</a></li>
+<li>[64] Vertical Research Group. "miaow". <a href="https://github.com/VerticalResearchGroup/miaow">https://github.com/VerticalResearchGroup/miaow</a></li>
+<li>[65] LibreSOC. "Hybrid 3D GPU / CPU / VPU". <a href="https://libre-soc.org/3d_gpu/" rel="nofollow">https://libre-soc.org/3d_gpu/</a></li>
+<li>[66] Lily Hay Newman. "Apple Kills Its Plan to Scan Your Photos for CSAM. Here’s What’s Next" (2022). Wired. <a href="https://www.wired.com/story/apple-photo-scanning-csam-communication-safety-messages/" rel="nofollow">https://www.wired.com/story/apple-photo-scanning-csam-communication-safety-messages/</a></li>
+<li>[67] Afdhel Aziz. "Facebook Ad Boycott Campaign ‘Stop Hate For Profit’ Gathers Momentum And Scale: Inside The Movement For Change" (2020). Forbes. <a href="https://www.forbes.com/sites/afdhelaziz/2020/06/24/facebook-ad-boycott-campaign-stop-hate-for-profit-gathers-momentum-and-scale-inside-the-movement-for-change/" rel="nofollow">https://www.forbes.com/sites/afdhelaziz/2020/06/24/facebook-ad-boycott-campaign-stop-hate-for-profit-gathers-momentum-and-scale-inside-the-movement-for-change/</a></li>
+<li>[68] Sophia Brown Harrods. "Uber’s #DeleteUber Movement: How Travis Kalanick’s Culture of Chaos Backfired" (2024). <a href="https://medium.com/@sophia-brown-harrods/ubers-deleteuber-movement-how-travis-kalanick-s-culture-of-chaos-backfired-56e01c0e6cf0" rel="nofollow">https://medium.com/@sophia-brown-harrods/ubers-deleteuber-movement-how-travis-kalanick-s-culture-of-chaos-backfired-56e01c0e6cf0</a></li>
+<li>[69] Python Documentation. "History and License". <a href="https://docs.python.org/3/license.html" rel="nofollow">https://docs.python.org/3/license.html</a></li>
+<li>[70] CPython. "Contributing to Python". <a href="https://github.com/python/cpython/blob/main/.github/CONTRIBUTING.rst">https://github.com/python/cpython/blob/main/.github/CONTRIBUTING.rst</a></li>
+<li>[71] rust-gpu. <a href="https://github.com/Rust-GPU/rust-gpu">https://github.com/Rust-GPU/rust-gpu</a></li>
+<li>[72] OpenMP. <a href="https://www.openmp.org/" rel="nofollow">https://www.openmp.org/</a></li>
+<li>[73] Khronos Group. "SYCL". <a href="https://www.khronos.org/sycl/" rel="nofollow">https://www.khronos.org/sycl/</a></li>
+<li>[74] Rust-GPU Development Guide. "Platform Support". <a href="https://rust-gpu.github.io/rust-gpu/book/platform-support.html#platform-support" rel="nofollow">https://rust-gpu.github.io/rust-gpu/book/platform-support.html#platform-support</a></li>
+</ul>
+<h2>Additional Notes</h2>
+<ul>
+<li>The thesis of the video is that competition somehow forces company to become transparent, which<br>
+leads to open-source compilers and operating systems. I think that competition is required because<br>
+a vertically integrated technology can more easily be protected by its manufacturer. However,<br>
+competition is not the only thing require to have open-source projects, you also need:
+<ul>
+<li>A community of developers working on open-source projects. Research institutes can also<br>
+contribute (e.g. UC Berkeley for RISC-V).</li>
+<li>Public organizations (e.g. ISO, W3C, IETF) that make standards like programming languages or<br>
+protocol specifications.</li>
+<li>A well-regulated market - technology would be barely usable without antitrust laws.</li>
+</ul>
+</li>
+<li>Intel and AMD have a very weird history, you cna read it at<br>
+<a href="https://www.cnbc.com/2022/11/22/how-amd-became-a-chip-giant-leapfrogged-intel-after-playing-catch-up.html" rel="nofollow">https://www.cnbc.com/2022/11/22/how-amd-became-a-chip-giant-leapfrogged-intel-after-playing-catch-up.html</a></li>
+<li>I focused on Intel in the CPU section, but ARM is also very widely used, especially in phones. ARM<br>
+has a different business model compared to Intel. Instead of designing and manufacturing CPUs, it<br>
+licenses its CPU designs to other companies. You have to pay to access ARM CPU designs, but the<br>
+instruction set architecture (i.e. the interface of the CPU) is public, like x86.</li>
+</ul></article>
+	</body>
+</html>
