@@ -69,7 +69,7 @@ funnelsort can outperform quicksort. However, that's rarely the case in practice
 not much used in the wild.
 
 
-## Data Types
+### Data Types
 
 There are other ways to optimize for the cache. One of them is to use smaller data types to reduce
 accesses to main memory. For instance, let's compare the time required to sum a large amount of

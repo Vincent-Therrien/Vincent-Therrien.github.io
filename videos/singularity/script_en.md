@@ -9,7 +9,7 @@ You probably know what I'm talking about:
 - And my favorite: "The singularity is almost here"
 
 Most people are prone to exaggeration when they talk about the future. It's easy to predict that
-cars will be self=driving by 2018 [1]. That Amazon will fully automate grocery stores [2] [3].
+cars will be self-driving by 2018 [1]. That Amazon will fully automate grocery stores [2] [3].
 That programmers will get replaced [4] [5]. Not that these technologies are useless, they *are*
 impressive, but they end up being less transformative than expected. The wildest exaggeration out
 there is artificial general intelligence, the idea that an AI could outperform humans in any context
