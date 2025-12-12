@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Feux de forêt et limites informatiques</title>
+		<style>@media (prefers-color-scheme:dark){.markdown-body,[data-theme=dark]{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#e6edf3;--color-fg-muted:#848d97;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#2f81f7;--color-accent-emphasis:#1f6feb;--color-success-fg:#3fb950;--color-success-emphasis:#238636;--color-attention-fg:#d29922;--color-attention-emphasis:#9e6a03;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149;--color-danger-emphasis:#da3633;--color-done-fg:#a371f7;--color-done-emphasis:#8957e5}}@media (prefers-color-scheme:light){.markdown-body,[data-theme=light]{color-scheme:light;--color-prettylights-syntax-comment:#57606a;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#6639ba;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#1F2328;--color-fg-muted:#656d76;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-success-fg:#1a7f37;--color-success-emphasis:#1f883d;--color-attention-fg:#9a6700;--color-attention-emphasis:#9a6700;--color-attention-subtle:#fff8c5;--color-danger-fg:#d1242f;--color-danger-emphasis:#cf222e;--color-done-fg:#8250df;--color-done-emphasis:#8250df}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button;appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none;appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body .mr-2{margin-right:var(--base-size-8,8px)!important}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type="a s"]{list-style-type:lower-alpha}.markdown-body ol[type="A s"]{list-style-type:upper-alpha}.markdown-body ol[type="i s"]{list-style-type:lower-roman}.markdown-body ol[type="I s"]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table td>:last-child{margin-bottom:0}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;color:var(--color-fg-default);background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}.markdown-body .markdown-alert{padding:var(--base-size-8) var(--base-size-16);margin-bottom:16px;color:inherit;border-left:.25em solid var(--color-border-default)}.markdown-body .markdown-alert>:first-child{margin-top:0}.markdown-body .markdown-alert>:last-child{margin-bottom:0}.markdown-body .markdown-alert .markdown-alert-title{display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1}.markdown-body .markdown-alert.markdown-alert-note{border-left-color:var(--color-accent-emphasis)}.markdown-body .markdown-alert.markdown-alert-note .markdown-alert-title{color:var(--color-accent-fg)}.markdown-body .markdown-alert.markdown-alert-important{border-left-color:var(--color-done-emphasis)}.markdown-body .markdown-alert.markdown-alert-important .markdown-alert-title{color:var(--color-done-fg)}.markdown-body .markdown-alert.markdown-alert-warning{border-left-color:var(--color-attention-emphasis)}.markdown-body .markdown-alert.markdown-alert-warning .markdown-alert-title{color:var(--color-attention-fg)}.markdown-body .markdown-alert.markdown-alert-tip{border-left-color:var(--color-success-emphasis)}.markdown-body .markdown-alert.markdown-alert-tip .markdown-alert-title{color:var(--color-success-fg)}.markdown-body .markdown-alert.markdown-alert-caution{border-left-color:var(--color-danger-emphasis)}.markdown-body .markdown-alert.markdown-alert-caution .markdown-alert-title{color:var(--color-danger-fg)}</style>
+		<style>
+			body {
+				margin: 0;
+			}
+
+			.markdown-body-content {
+				box-sizing: border-box;
+				min-width: 200px;
+				max-width: 980px;
+				margin: 0 auto;
+				padding: 45px;
+			}
+
+			@media (max-width: 767px) {
+				.markdown-body-content {
+					padding: 15px;
+				}
+			}
+
+			.markdown-body {
+				--base-size-8: 8px;
+				--base-size-16: 16px;
+			}
+		</style>
+	</head>
+	<body class="markdown-body">
+		<article class="markdown-body-content"><h1>Feux de forêt et limites informatiques</h1>
+<p>Cette page est le script de la vidéo disponible à <a href="https://youtu.be/3mawXsPqdbs" rel="nofollow">https://youtu.be/3mawXsPqdbs</a></p>
+<p>J'ai beaucoup pensé aux feux de forêt cet été. Ces dernières années, plusieurs d'entre eux ont été<br>
+catastrophiques. Ils ne brûlent pas seulement les forêts, ils forcent aussi des évacuations [1], ont<br>
+un impact sur notre santé [2] et détruisent des infrastructures [3]. Avec les changements<br>
+climatiques, les chercheurs anticipent une ampleur et une imprévisibilité accrues des feux de forêt<br>
+[4].</p>
+<p>Je me suis intéressé à la façon dont les programmes informatiques aident les services de lutte<br>
+contre les incendies. Ils utilisent toutes sortes de technologies, comme des cartes interactives [5]<br>
+et des drones [6] pour visualiser la propagation des incendies, et des applications mobiles pour<br>
+informer le public [7] [8]. Mais je veux me concentrer sur les <strong>programmes de modélisation des incendies</strong>,<br>
+qui aident les professionnels à comprendre le comportement des feux de forêt [9](page<br>
+3), et on va apprendre leur fonctionnement.</p>
+<h2>I. Simulation numériques</h2>
+<p>Le premier type de programmes que nous verrons sont les simulations numériques. Elles fonctionnent<br>
+en exécutant des modèles de propagation des incendies dans des environnements virtuels pour prédire<br>
+l'évolution d'un incendie réel. Comme vous pouvez l'imaginer, les simulations doivent trouver le<br>
+juste équilibre entre précision et rapidité de calcul. Ce serait génial de pouvoir simuler chaque<br>
+branche et chaque feuille dans une forêt pour prédire les feux avec la plus grande précision<br>
+possible, mais ce serait beaucoup trop lent. À la place, on utilise des modèles simplifiés qui se<br>
+rapprochent de la réalité, et de nombreux modèles de ce type ont été proposés.</p>
+<p>En 1972, Richard Rothermel [9], un scientifique du service forestier de l'USDA, a mis au point un<br>
+modèle de propagation des feux de surface. Ce modèle simplifie les feux de forêt en un lit de<br>
+combustible uniforme. Dans ce contexte, « combustible » signifie simplement « matière inflammable »,<br>
+ça peut être de l'herbe ou du bois. Le feu brûle du combustible, ce qui libère de l'énergie qui<br>
+chauffe le combustible voisin jusqu'à ce qu'il atteigne sa température d'inflammation. À ce<br>
+moment-là, il commence à brûler et le feu se propage. Notre objectif est de calculer la vitesse de<br>
+propagation du feu. Pour ce faire, nous prenons le flux thermique, c'est-à-dire la vitesse à<br>
+laquelle le feu transmet la chaleur au combustible, et nous le divisons par la quantité de chaleur<br>
+nécessaire pour amener le combustible à son point d'inflammation, ce qui nous donne la vitesse de<br>
+progression du feu. Pour résoudre cette équation, on doit déterminer ces deux termes.</p>
+<p>Premièrement, le flux thermique indique la quantité d'énergie absorbée par le combustible. La<br>
+chaleur peut être transférée de trois manières principales : la conduction, lorsque deux corps en<br>
+contact direct échangent de la chaleur ; la convection, lorsqu’un fluide comme l’air assure les<br>
+transferts de chaleur entre les corps ; et le rayonnement, quand la chaleur est émise par des ondes<br>
+électromagnétiques [10]. Ces mécanismes interagissent avec le combustible de manière complexe. La<br>
+composition du combustible détermine l'intensité et la hauteur du feu. Le vent et les pentes<br>
+inclinent les flammes [9](page 11), ce qui favorise les transferts de chaleur convectifs et<br>
+radiatifs, ainsi que les contacts directs entre les flammes. On <em>peut</em> utiliser des équations de<br>
+dynamique des fluides pour calculer le flux de chaleur à partir de ces paramètres, mais cela<br>
+représente une charge de calcul importante, surtout dans les années 70. Rothermel et son équipe ont<br>
+plutôt déterminé le flux de chaleur à partir d’expériences en laboratoire. Ils ont fabriqué des lits<br>
+de combustible à petite échelle et mesuré leur vitesse de combustion pour différents types de<br>
+combustibles, vitesses du vent et angles d'inclinaison, et ont obtenu une équation de flux de<br>
+chaleur paramétrée.</p>
+<p>L’autre terme à déterminer est la chaleur de pré-allumage, c’est-à-dire la quantité d’énergie que le<br>
+feu doit transmettre au combustible avant de s’enflammer. On peut la calculer en prenant la<br>
+différence entre le point d'inflammation d'un combustible et la température ambiante, puis en<br>
+multipliant cette différence par la capacité thermique massique combustible, c'est-à-dire l'énergie<br>
+nécessaire à son élévation de température. Mais il faut aussi tenir compte de la teneur en humidité<br>
+du combustible. On obtient alors une équation de chaleur de préinflammation comprenant certains<br>
+paramètres [9](page 11). On peut se rendre sur place pour prélever des échantillons de combustible<br>
+et déterminer ces variables, mais on peut aussi utiliser des graphiques les répertoriant pour des<br>
+types de combustibles connus [9](page 43).</p>
+<p>L'équation complète donne la vitesse de propagation, ce qui permet d'estimer la vitesse de<br>
+propagation d'un incendie. Cependant, comme on l'a vu, ce modèle simplifie considérablement les<br>
+choses. Il suppose une répartition uniforme du combustible, ce qui est le cas en laboratoire, mais<br>
+pas en zone sauvage. Il est également limité aux feux de surface ; il ne permet pas de prédire les<br>
+feux de cimes, qui se produisent lorsque les flammes atteignent les branches des arbres. De l'avis<br>
+même de Rothermel, ce modèle n'est pas adapté à la prévision d'un incendie en cours, car il manque<br>
+de fiabilité. Mais sa simplicité permet de le calculer facilement à la main ou avec une calculatrice<br>
+programmable TI-59 de pointe, Ce qui a facilité son adoption [11]. Le modèle a été perfectionné par<br>
+des chercheurs ultérieurs afin de combler ses lacunes et il est toujours utilisé par des programmes<br>
+modernes et plus précis de modélisation des incendies comme FlamMap [12], FARSITE [12] ou BehavePlus<br>
+[13].</p>
+<p>Pour utiliser ces programmes, il faut d'abord obtenir des données décrivant un terrain réel. Une<br>
+base de données contenant les données nécessaires est LANDFIRE, gérée par le Service forestier des<br>
+États-Unis et le ministère de l'Intérieur. Elle fournit une topologie du territoire américain, ainsi<br>
+que des modèles de combustibles et des informations sur la canopée, c'est-à-dire la hauteur et la<br>
+densité du feuillage des arbres [14]. LANDFIRE a été initialement conçu pour étudier les feux de<br>
+forêt, mais l'ensemble de données est devenu si complet qu'il est également utilisé pour des projets<br>
+de restauration écologique et des études de bilan carbone. Le gouvernement canadien gère des bases<br>
+de données similaires pour son propre territoire [15], ainsi que le gouvernement australien [16] et<br>
+d'autres pays. L'entretien d'ensembles de données représente un effort considérable, mais les feux<br>
+de forêt causent des milliards de dollars de dommages chaque année [17]; leur surveillance est donc<br>
+un bon investissement.</p>
+<p>Ici, j'ai utilisé les données LANDIFRE pour réaliser une simulation FARSITE qui prédit la<br>
+propagation d'un feu en fonction du point d'inflammation initial et des conditions météorologiques.<br>
+Le modèle de Rothermel permet de calculer la vitesse de propagation, mais ce n'est qu'un élément<br>
+parmi d'autres. Le principe de Huygens-Fresnel simule la propagation 2D en traitant chaque point du<br>
+périmètre de l'incendie comme une source de chaleur [18]. D’autres équations simulent les feux de<br>
+cimes [19] [20] et d’autres phénomènes. De nombreuses équations sont en jeu, mais il s'agit d'une<br>
+approximation qui n'est pas toujours valable dans certains contextes, comme la simulation des<br>
+interactions entre des feux [21]. D’autres programmes, comme Prometheus, développé au Canada,<br>
+utilisent des approximations similaires, mais s’appuient sur des modèles différents [22](page 14).<br>
+Les chercheurs continuent d'améliorer ces programmes informatiques pour les rendre plus précis et<br>
+plus faciles à maintenir [23].</p>
+<p>Je me suis concentré sur les modèles empiriques, qui dérivent des équations à partir d'observations.<br>
+Nous pouvons également utiliser des modèles basés sur la physique comme FDS [24] ou FIRETEC [25],<br>
+qui utilisent la dynamique des fluides numérique pour simuler la propagation d'un incendie dans un<br>
+espace 3D. Encore une fois, ces simulations ne sont pas parfaites ; elles font des approximations,<br>
+mais elles permettent de modéliser les phénomènes avec plus de précision et d'obtenir de meilleurs<br>
+résultats. Parallèlement , elles sont plus coûteuses en calcul et plus longues à exécuter. Tous les<br>
+programmes de modélisation des incendies sont limités par la vitesse de calcul ; il y a toujours un<br>
+compromis entre le réalisme et la rapidité d'obtention des résultats. Au lieu de viser des<br>
+simulations parfaites, les services de lutte contre les incendies développent des modèles pratiques<br>
+qui se rapprochent de la réalité à un niveau approprié, en fonction de leurs objectifs.</p>
+<h2>II. Apprentissage automatique</h2>
+<p>Outre les simulations numériques, un II. Apprentissage automatique type plus récent d'outils de<br>
+modélisation des feux de forêt est celui des modèles d'apprentissage automatique. Je sais qu'on est<br>
+tous tannés de l'entendre, mais un modèle d'apprentissage automatique apprend à faire une tâche en<br>
+analysant une grande quantité de données au cours d'un processus appelé entraînement [26]. Par<br>
+exemple, un modèle peut ingérer des images satellite et apprendre à prévoir les feux de forêt.<br>
+Lorsqu'on lui présente une image satellite qu'il n'a jamais vue auparavant, le modèle prédit les<br>
+feux potentiels. Bien sûr, il n'est pas garanti qu'il obtienne toujours les résultats escomptés,<br>
+mais un apprentissage adéquat peut donner de bons résultats.</p>
+<p>L'apprentissage automatique est particulièrement efficace lorsque nous disposons d'une grande<br>
+quantité de données de haute qualité, et c'est le cas ici. Par exemple, l'ensemble de données ERA5<br>
+contient des observations météorologiques des années 1940 à aujourd'hui [27] et la Base de données<br>
+nationale sur les feux de forêt du Canada [28] recense les feux de forêt survenus depuis les années<br>
+1970.</p>
+<p>Les modèles entraînés avec ces données peuvent surpasser les techniques de prévision plus anciennes.<br>
+Pour illustrer cela, je vais parler de GraphCast [29], un modèle d'apprentissage automatique de<br>
+prévision météorologique. GraphCast représente la météo sous la forme d'une grille<br>
+latitude-longitude de 0,25, ce qui donne environ 1 million de points pour l'ensemble de la planète.<br>
+Chaque point correspond à plusieurs variables, comme la température ou la pression, ce qui nous<br>
+permet d'obtenir environ 236 millions de valeurs au total. Cela représente la météo mondiale à un<br>
+instant T. Cette représentation est transmise à un réseau neuronal graphique [30] organisé selon une<br>
+configuration encodeur-processeur-décodeur. Cela signifie que le modèle mappe d'abord l'entrée à une<br>
+représentation interne qui est traitée de manière itérative, puis décodée par la couche finale dans<br>
+son format d'origine. Ça Donne une prévision météorologique pour 6 heures. Pour prédire plus loin<br>
+dans le temps, on peut renvoyer cette prévision au modèle et obtenir une autre prévision pour 6<br>
+heures; c'est ce qu'on appelle l'autorégression. Techniquement, on peut répéter cette opération<br>
+autant de fois qu'on veut pour prédire la météo à un horizon arbitraire, mais les prévisions<br>
+deviennent de moins en moins précises.</p>
+<p>C'est parce que la météo est très sensible aux petits effets. De minuscules différences de vitesse<br>
+du vent ou de température peuvent sembler peu susceptibles d'influencer la météo au départ, mais<br>
+leur impact s'amplifie avec le temps. Une façon simple de visualiser ce phénomène est le double<br>
+pendule. Il s'agit d'un appareil constitué de deux tiges pouvant tourner indépendamment. Prenons<br>
+maintenant deux pendules identiques, faisons en sorte que l'angle initial de leur tige extérieure<br>
+diffère d'un degré, puis relâchons-les. Au début, les deux pendules se déplacent pratiquement de la<br>
+même manière, mais la faible différence de configuration initiale s'amplifie progressivement. Si on<br>
+attend assez longtemps, leurs mouvements deviennent complètement différents, non pas à cause du<br>
+hasard ou de facteurs externes, mais à cause de configurations initiales légèrement différentes.<br>
+C'est ce qu'on appelle le chaos [31], et c'est un domaine de recherche à part entière. Certains<br>
+systèmes, comme les pendules doubles ou l'atmosphère, sont extrêmement sensibles aux conditions<br>
+initiales, ce qui les rend difficiles à prévoir. Même avec des mesures très détaillées, de petites<br>
+perturbations locales peuvent affecter le système de manière imprévisible, ce qui limite la<br>
+fiabilité de nos prévisions à long terme [29].</p>
+<p>GraphCast demeure néanmoins performant, comparable au Système intégré de prévision (SIP), LA<br>
+référence pour les prévisions météorologiques à moyen terme. L'IFS fonctionne essentiellement comme<br>
+un modèle physique. Il doit résoudre de nombreuses équations complexes, ce qui rend ses prévisions<br>
+coûteuses en calculs. GraphCast, quant à lui, est long à entraîner, mais il apprend à extraire les<br>
+caractéristiques pertinentes des données pour établir des prévisions, ce qui accélère<br>
+considérablement ses prédictions. GraphCast présente quelques inconvénients : sa gestion de<br>
+l'incertitude est moins bonne que celle de l'IFS et sa résolution spatiale est inférieure, mais il<br>
+s'améliorera certainement avec le temps [29].</p>
+<p>Les modèles mondiaux de prévision météorologique comme GraphCast sont utiles aux services de lutte<br>
+contre les incendies. Ils permettent par exemple d'anticiper les foyers d'incendie potentiels, mais<br>
+l'apprentissage automatique a également été appliqué spécifiquement à la prévision des feux de<br>
+forêt. Et, tout comme la météo, les feux de forêt sont chaotiques. Les braises peuvent s'envoler et<br>
+déclencher des incendies ailleurs, le vent peut changer de direction, la pluie peut se pointer; ces<br>
+événements ont un impact imprévisible sur les incendies.</p>
+<p>Il existe des modèles de prévision des feux de forêt de code source ouvert [32] [33] [34]. Au lieu<br>
+d'utiliser des données globales comme GraphCast, ils utilisent des données locales, car ils se<br>
+concentrent sur les phénomènes à petite échelle. Les données d'entrée peuvent être une grille dont<br>
+les cellules correspondent à une zone spécifique et contiennent des mesures telles que la présence<br>
+ou l'absence d'incendie, l'humidité du sol ou la température moyenne. Une façon d'analyser ce type<br>
+de données est d' utiliser un réseau neuronal avec des couches convolutives qui extraient les<br>
+caractéristiques des cellules voisines et des couches denses qui traitent ensuite les données pour<br>
+obtenir des prédictions.</p>
+<p>Un des problèmes avec l'apprentissage automatique est que, dans la plupart des cas, on ne comprend<br>
+pas vraiment ce qui se passe en coulisses. Dans les simulations numériques comme FARSITE, la<br>
+documentation permet de voir précisément quelles équations sont utilisées pour déterminer l'effet de<br>
+variables comme la pente sur la propagation du feu. Avec l'apprentissage automatique, on n'a pas<br>
+vraiment accès à ces informations : les modèles dérivent implicitement des équations en analysant de<br>
+nombreux exemples, mais on ne sait pas exactement comment ils y sont parvenus. Ils apprennent<br>
+probablement que la pente affecte la propagation du feu d'une manière ou d'une autre, mais<br>
+l'influence précise de cette variable ne nous est pas accessible sous forme d'équation claire.<br>
+Certains modèles [35] sont conçus spécifiquement pour être explicables, mais l'interprétation de<br>
+leurs prédictions demeure complexe. Un autre défi réside dans le manque de transparence des<br>
+entreprises privées qui développent des modèles de prévision des incendies [37] [38] [39] : elles ne<br>
+divulguent ni leurs architectures ni les données utilisées pour l'entraînement. Et, oui, je sais,<br>
+elles doivent payer leurs employés, c'est normal qu'elles préservent certains secrets commerciaux,<br>
+c'est juste que ça rend leurs modèles plus difficiles à valider.</p>
+<p>L'apprentissage automatique est très prometteur, mais son application à la prévision des feux de forêt<br>
+est encore relativement récente et pose des problèmes d'interprétation.</p>
+<h2>III. Gestion du territoire</h2>
+<p>Je me suis concentré sur la façon dont les programmes informatiques peuvent prédire les incendies;<br>
+maintenant je veux parler de ce qu'on peut faire avec. Les cas d'utilisation les plus<br>
+évidents sont la préparation des plans de lutte contre les incendies et les évacuations, mais ils<br>
+sont également utiles pour la gestion du territoire.</p>
+<p>Tout d'abord, le feu fait partie intégrante de l'écologie de la planète et en fait partie depuis des<br>
+millions d'années [40]. Quand un feu ravage une zone, il augmente la quantité de lumière solaire<br>
+disponible au sol et libère des nutriments. Des espèces pionnières adaptées à ce type<br>
+d'environnement aride le colonisent et le restaurent [41]. Certaines de ces espèces, comme les<br>
+séquoias géants [42] et les bouleaux blancs [43], dépendent du feu pour se reproduire : elles ne<br>
+poussent qu'en plein soleil, ce qui nécessite qu'une forêt mature brûle pour qu'elles prospèrent.<br>
+Les eucalyptus ont une stratégie encore plus mesquine : ils produisent une huile inflammable qui<br>
+intensifie les feux de forêt. Grâce à leurs mécanismes de résistance au feu, ils ont plus de chances<br>
+de survivre que les autres arbres lors d'un incendie, les surpassant ainsi [44]. De plus, en<br>
+l'absence de feu pendant une période prolongée, les arbres peuvent devenir trop nombreux et les<br>
+matières inflammables s'accumuler, causant des incendies potentiellement plus importants et<br>
+incontrôlables [45]. L'élimination excessive du feu nuit à de nombreuses espèces et rend les<br>
+catastrophes plus dangereuses.</p>
+<p>Les peuples autochtones ont compris l'importance du feu et ont développé les brûlages dirigés : ils<br>
+allumaient intentionnellement de petits feux, ce qui présentait de multiples avantages : par<br>
+exemple, cela favorisait la croissance de plantes utiles [46] [52] et réduisait la probabilité de<br>
+grands incendies [47]. Je tiens à souligner que les écosystèmes sont variés et ne bénéficient pas<br>
+des mêmes types de feux. Certains sont adaptés aux incendies moins fréquents, et les brûlages<br>
+dirigés peuvent leur être nocifs [66]. Les peuples autochtones n'utilisaient pas les brûlages<br>
+dirigés partout; leur utilisation du feu était diversifiée et adaptée à des régions et à des besoins<br>
+spécifiques [67].</p>
+<p>Les lois coloniales ont rendu les brûlages dirigés illégaux, ce qui a entraîné des feux de forêt<br>
+plus graves [53]. Cependant, les mentalités ont évolué au fil du temps : les organismes de lutte<br>
+contre les incendies, initialement concentrés sur la lutte contre les incendies à tout prix, ont<br>
+fini par reconnaître le feu comme nécessaire à la protection de l’environnement. Maintenant, ils<br>
+peuvent laisser brûler certains feux de forêt non dangereux sans intervention et déclencher des<br>
+brûlages dirigés [48], même si cette idée a d'abord suscité un certain scepticisme [11] [53]. Il<br>
+existe également des initiatives modernes menées par des communautés autochtones pour effectuer des<br>
+brûlages dirigés sur leurs terres [49].</p>
+<p>Notez que je continue de les appeler des brûlages dirigés. Tous les feux ne sont pas bons, surtout<br>
+lorsqu'ils sont déclenchés à proximité de propriétés humaines par des personnes inexpérimentées et<br>
+laissées sans surveillance, ce qui peut entraîner des catastrophes et des évacuations. Environ 85 %<br>
+des feux de forêt sont d'origine humaine aux États-Unis [50]. Cette proportion est plus basse au<br>
+Canada [51] en raison de la densité de population plus faible, mais elle reste non négligeable.<br>
+Réduire le nombre d’incendies déclenchés involontairement par l’homme fait partie d'une gestion<br>
+responsable des terres.</p>
+<p>Les brûlages dirigés font également partie de la gestion des terres, mais ils ne constituent pas une<br>
+solution parfaite et universelle. Ils n'éliminent pas complètement le risque d' incendies majeurs;<br>
+dans de rares cas, ils peuvent même devenir incontrôlables [54] et ne conviennent pas à certaines<br>
+zones, comme celles proches des villes. Les services de lutte contre les incendies peuvent alors<br>
+recourir à des méthodes alternatives, comme le traitement mécanique [45]. En coupant des branches ou<br>
+en défrichant des sections de forêt, ils peuvent rendre le combustible plus difficile à brûler et<br>
+créer des barrières protectrices, réduisant ainsi le risque d'incendies de forêt. Dans de nombreuses<br>
+régions éloignées, les brûlages dirigés ne sont même pas nécessaires; on peut simplement laisser les<br>
+feux brûler naturellement tout en les surveillant pour s'assurer qu'ils ne mettent personne en<br>
+danger. Choisir les bonnes techniques de gestion des terres est complexe, dépend de multiples<br>
+facteurs et deviendra encore plus difficile avec le changement climatique. Revenons maintenant au<br>
+sujet principal : les modèles informatiques sont utiles à cet effet. Ils peuvent aider les<br>
+chercheurs à identifier les régions les plus exposées aux incendies majeurs et à identifier les<br>
+zones qui bénéficieraient le plus des brûlages dirigés. Certains modèles informatiques [56] sont<br>
+conçus spécifiquement pour étudier ce sujet. Les programmes ne le font pas. Les outils de<br>
+modélisation des incendies ne remplacent pas la recherche sur le terrain, mais peuvent la compléter.</p>
+<p>Je soulignerai également la dimension sociale de la gestion des terres : certains pourraient ne pas<br>
+comprendre l’ objectif des brûlages dirigés et décider de faire pression sur les organismes pour<br>
+qu’ils éteignent tous les incendies, même lorsque cela va à l’encontre du consensus scientifique<br>
+[55]. Et je ne les blâmerai pas : les feux de forêt peuvent être terrifiants, c'est normal de les<br>
+craindre. Plutôt que de traiter le public avec condescendance, on devrait partager des informations<br>
+claires et établir la confiance afin que les communautés et les organismes de lutte contre les<br>
+incendies puissent s'entendre sur les stratégies de gestion des terres les plus sûres et les plus<br>
+efficaces.</p>
+<p>Et ça, les ordinateurs seuls ne peuvent pas y arriver seuls. On a vu que les outils de modélisation<br>
+des feux de forêt sont limités par la vitesse de calcul, les difficultés d'interprétation et la<br>
+nature chaotique de la réalité. Ils continueront de s'améliorer, mais au final, nous aurons toujours<br>
+besoin de professionnels qualifiés, non seulement pour sélectionner et calibrer les modèles en<br>
+fonction de leur expertise, mais aussi pour informer le public et décider des actions à<br>
+entreprendre.</p>
+<h1 id="references">Références</h1>
+<ul>
+<li>[1] Global News. "Massive wildfire in Fort McMurray prompts largest fire evacuation in Alberta’s history" (4 May 2016). <a href="https://globalnews.ca/video/2679286/massive-wildfire-in-fort-mcmurray-prompts-largest-evacuation-in-alberta-history/" rel="nofollow">https://globalnews.ca/video/2679286/massive-wildfire-in-fort-mcmurray-prompts-largest-evacuation-in-alberta-history/</a></li>
+<li>[2] Zhang et al. "Long-range PM2.5 pollution and health impacts from the 2023 Canadian wildfires" (10 September 2025). Nature. <a href="https://www.nature.com/articles/s41586-025-09482-1" rel="nofollow">https://www.nature.com/articles/s41586-025-09482-1</a></li>
+<li>[3] Frew and Snowdon. "Jasper officials release map, list of all structures destroyed by wildfire" (27 July 2024). CBC. <a href="https://www.cbc.ca/news/canada/edmonton/jasper-alberta-wildfire-1.7277680" rel="nofollow">https://www.cbc.ca/news/canada/edmonton/jasper-alberta-wildfire-1.7277680</a></li>
+<li>[4] Canadian Climate Institute. "FACT SHEET: Climate change and wildfires" (23 July 2024). <a href="https://climateinstitute.ca/news/fact-sheet-wildfires/" rel="nofollow">https://climateinstitute.ca/news/fact-sheet-wildfires/</a></li>
+<li>[5] Natural Resources Canada. "Interactive map". Consulted 18 September 2025. <a href="https://cwfis.cfs.nrcan.gc.ca/interactive-map" rel="nofollow">https://cwfis.cfs.nrcan.gc.ca/interactive-map</a></li>
+<li>[6] Claire McArthur. "Wildfire watch: Forest fuel mapping and drones represent the next wave of firefighting" (16 September 2023). Sierra Sun. <a href="https://www.sierrasun.com/news/wildfire-watch-forest-fuel-mapping-and-drones-represent-the-next-wave-of-firefighting/" rel="nofollow">https://www.sierrasun.com/news/wildfire-watch-forest-fuel-mapping-and-drones-represent-the-next-wave-of-firefighting/</a></li>
+<li>[7] Province of British Columbia. "BC Wildfire Service". Consulted 18 September 2025. <a href="https://play.google.com/store/apps/details?id=ca.bc.gov.WildfireInformation" rel="nofollow">https://play.google.com/store/apps/details?id=ca.bc.gov.WildfireInformation</a></li>
+<li>[8] SOPFEU. "SOPFEU". Consulted 18 September 2025. <a href="https://play.google.com/store/apps/details?id=ca.qc.sopfeu.app" rel="nofollow">https://play.google.com/store/apps/details?id=ca.qc.sopfeu.app</a></li>
+<li>[9] Richard C. Rothermel. "A Mathematical Model for Predicting Fire Spread in Wildland Fuels" (1972). USDA Forest Service. <a href="https://www.fs.usda.gov/rm/pubs_int/int_rp115.pdf" rel="nofollow">https://www.fs.usda.gov/rm/pubs_int/int_rp115.pdf</a></li>
+<li>[10] "Mechanisms of Heat Transfer". LibreTexts Physics. Consulted 18 September 2025. <a href="https://phys.libretexts.org/Bookshelves/University_Physics/University_Physics_(OpenStax)/University_Physics_II_-_Thermodynamics_Electricity_and_Magnetism_(OpenStax)/01%3A_Temperature_and_Heat/1.07%3A_Mechanisms_of_Heat_Transfer" rel="nofollow">https://phys.libretexts.org/Bookshelves/University_Physics/University_Physics_(OpenStax)/University_Physics_II_-_Thermodynamics_Electricity_and_Magnetism_(OpenStax)/01%3A_Temperature_and_Heat/1.07%3A_Mechanisms_of_Heat_Transfer</a>. CC BY 4.0</li>
+<li>[11] Gail Wells. "The Rothermel Fire-Spread Model: Still running Like a champ" (March 2008). Fire Science Digest. <a href="https://www.firescience.gov/ords/prd/jf_jfsp/file/getfile/DIGEST/2" rel="nofollow">https://www.firescience.gov/ords/prd/jf_jfsp/file/getfile/DIGEST/2</a></li>
+<li>[12] Missoula Fire Sciences Laboratory. "FlamMap". Consulted 18 September 2025. <a href="https://research.fs.usda.gov/firelab/products/dataandtools/flammap" rel="nofollow">https://research.fs.usda.gov/firelab/products/dataandtools/flammap</a></li>
+<li>[13] Missoula Fire Sciences Laboratory. "BehavePlus". Consulted 18 September 2025. <a href="https://research.fs.usda.gov/firelab/products/dataandtools/behaveplus" rel="nofollow">https://research.fs.usda.gov/firelab/products/dataandtools/behaveplus</a></li>
+<li>[14] "About LANDFIRE". <a href="https://www.landfire.gov/about-landfire" rel="nofollow">https://www.landfire.gov/about-landfire</a></li>
+<li>[15] Government of Canada. "Canadian Forest Fire Danger Rating System (CFFDRS) Fire Behaviour Prediction (FBP) Fuel Types 2024, 30 M". <a href="https://ouvert.canada.ca/data/dataset/4e66dd2f-5cd0-42fd-b82c-a430044b31de" rel="nofollow">https://ouvert.canada.ca/data/dataset/4e66dd2f-5cd0-42fd-b82c-a430044b31de</a></li>
+<li>[16] National Bushfire Intelligence Capability. "National fuel types map". <a href="https://research.csiro.au/nbic/national-bushfire-fuel-map/" rel="nofollow">https://research.csiro.au/nbic/national-bushfire-fuel-map/</a></li>
+<li>[17] Western Fire CHiefs Association. "What is the Financial Cost of a Wildfire?" (6 December 2022). <a href="https://wfca.com/wildfire-articles/cost-of-wildfires/" rel="nofollow">https://wfca.com/wildfire-articles/cost-of-wildfires/</a></li>
+<li>[18] FlamMap62. "Huygens' Principle (technical documentation)". <a href="https://owfflammaphelp62.firenet.gov/index.htm#t=LegacyFARSITE%2FTech_Huygens_Principle.htm" rel="nofollow">https://owfflammaphelp62.firenet.gov/index.htm#t=LegacyFARSITE%2FTech_Huygens_Principle.htm</a></li>
+<li>[19] FlamMap62. "Crown Fire (technical documentation)". <a href="https://owfflammaphelp62.firenet.gov/index.htm#t=LegacyFARSITE%2FTech_Crown_Fire.htm" rel="nofollow">https://owfflammaphelp62.firenet.gov/index.htm#t=LegacyFARSITE%2FTech_Crown_Fire.htm</a></li>
+<li>[20] Butler et al. "A radiation-driven model for crown fire spread" (2004). <a href="https://www.frames.gov/documents/catalog/spa/butler_finney_andrews_albini_2004.pdf" rel="nofollow">https://www.frames.gov/documents/catalog/spa/butler_finney_andrews_albini_2004.pdf</a></li>
+<li>[21] FlamMap62. "Limitations and Assumptions (technical documentation)". <a href="https://owfflammaphelp62.firenet.gov/index.htm#t=LegacyFARSITE%2FTech_Limitations_and_Assumptions.htm" rel="nofollow">https://owfflammaphelp62.firenet.gov/index.htm#t=LegacyFARSITE%2FTech_Limitations_and_Assumptions.htm</a></li>
+<li>[22] Tymstra et al. "Development and Structure of Prometheus: the Canadian Wildland Fire Growth Simulation Model" (2010). Natural Resources Canada. <a href="https://publications.gc.ca/collections/collection_2010/nrcan/Fo133-1-417-eng.pdf" rel="nofollow">https://publications.gc.ca/collections/collection_2010/nrcan/Fo133-1-417-eng.pdf</a></li>
+<li>[23] Fire Growth Model. "W.I.S.E. Overview" (2025). <a href="https://firegrowthmodel.ca/#/wise_overview" rel="nofollow">https://firegrowthmodel.ca/#/wise_overview</a></li>
+<li>[24] Hayajneh and Naser. "Wind and Slope Influence on Wildland Fire Spread, a Numerical Study" (2025). MDPI. <a href="https://www.mdpi.com/2571-6255/8/6/217" rel="nofollow">https://www.mdpi.com/2571-6255/8/6/217</a></li>
+<li>[25] Canada Wildfire. "Alberta Fire Risk Analysis using FIRETEC". <a href="https://www.canadawildfire.org/firetec" rel="nofollow">https://www.canadawildfire.org/firetec</a></li>
+<li>[26] IBM. "What is machine learning ?". <a href="https://www.ibm.com/think/topics/machine-learning" rel="nofollow">https://www.ibm.com/think/topics/machine-learning</a></li>
+<li>[27] Climate Data Store. "ERA5 hourly data on pressure levels from 1940 to present". <a href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-pressure-levels?tab=overview" rel="nofollow">https://cds.climate.copernicus.eu/datasets/reanalysis-era5-pressure-levels?tab=overview</a></li>
+<li>[28] Natural Resources Canada. "Canadian National Fire Database (CNFDB)". <a href="https://cwfis.cfs.nrcan.gc.ca/ha/nfdb" rel="nofollow">https://cwfis.cfs.nrcan.gc.ca/ha/nfdb</a></li>
+<li>[29] Lam et al. "Learning skillful medium-range global weather forecasting" (14 November 2023). Science. <a href="https://www.science.org/stoken/author-tokens/ST-1550/full" rel="nofollow">https://www.science.org/stoken/author-tokens/ST-1550/full</a></li>
+<li>[30] Scarselli et al. "The Graph Neural Network Model" (2009). IEEE Transactions on Neural Networks. <a href="https://ieeexplore.ieee.org/document/4700287" rel="nofollow">https://ieeexplore.ieee.org/document/4700287</a></li>
+<li>[31] Britannica. "chaos theory". <a href="https://www.britannica.com/science/chaos-theory" rel="nofollow">https://www.britannica.com/science/chaos-theory</a></li>
+<li>[32] Finney et al. "Deep Learning for High-Resolution Wildfire Modeling" (1 December 2022). Missoula Fire Sciences Laboratory. <a href="https://research.fs.usda.gov/firelab/understory/deep-learning-high-resolution-wildfire-modeling" rel="nofollow">https://research.fs.usda.gov/firelab/understory/deep-learning-high-resolution-wildfire-modeling</a></li>
+<li>[33] Zhang et al. "Deep neural networks for global wildfire susceptibility modelling" (August 2021). Ecological Indicators. <a href="https://www.sciencedirect.com/science/article/pii/S1470160X21004003" rel="nofollow">https://www.sciencedirect.com/science/article/pii/S1470160X21004003</a></li>
+<li>[34] Alexandre Brown. "WildfirePrediction". <a href="https://github.com/AlexandreBrown/WildfirePrediction">https://github.com/AlexandreBrown/WildfirePrediction</a></li>
+<li>[35] Cilli et al. "Explainable artificial intelligence (XAI) detects wildfire occurrence in the Mediterranean countries of Southern Europe" (29 Semptember 2022). Scientific Reports. <a href="https://www.nature.com/articles/s41598-022-20347-9" rel="nofollow">https://www.nature.com/articles/s41598-022-20347-9</a></li>
+<li>[36] Cynthia Rudin. "Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead" (2019). Nature Machine Intelligence. <a href="https://www.nature.com/articles/s42256-019-0048-x" rel="nofollow">https://www.nature.com/articles/s42256-019-0048-x</a></li>
+<li>[37] Angelica Marie Sanchez. "Firebird forecasts and models wildfire spread" (20 August 2025). Waterloo News. <a href="https://uwaterloo.ca/news/firebird-forecasts-and-models-wildfire-spread" rel="nofollow">https://uwaterloo.ca/news/firebird-forecasts-and-models-wildfire-spread</a></li>
+<li>[38] Alex Antoneshyn. "How Alberta uses artificial intelligence for wildland firefighting" (4 October 2024). CTV News. <a href="https://www.ctvnews.ca/edmonton/article/how-alberta-uses-artificial-intelligence-for-wildland-firefighting/" rel="nofollow">https://www.ctvnews.ca/edmonton/article/how-alberta-uses-artificial-intelligence-for-wildland-firefighting/</a></li>
+<li>[39] SKYTL. <a href="https://www.skytl.com/" rel="nofollow">https://www.skytl.com/</a></li>
+<li>[40] Sid Perkins. "Earth’s oldest known wildfires raged 430 million years ago" (24 June 2022). Science News. <a href="https://www.sciencenews.org/article/earth-oldest-wildfire-430-million-years-ago-fossil-charcoal" rel="nofollow">https://www.sciencenews.org/article/earth-oldest-wildfire-430-million-years-ago-fossil-charcoal</a></li>
+<li>[41] Poorter et al. "Successional theories" (16 July 2023). Wiley Online Library. <a href="https://onlinelibrary.wiley.com/doi/10.1111/brv.12995" rel="nofollow">https://onlinelibrary.wiley.com/doi/10.1111/brv.12995</a></li>
+<li>[42] National Park Service. "Giant Sequoias and Fire". <a href="https://www.nps.gov/seki/learn/nature/giant-sequoias-and-fire.htm" rel="nofollow">https://www.nps.gov/seki/learn/nature/giant-sequoias-and-fire.htm</a></li>
+<li>[43] Government of Canada. "Fire ecology". <a href="https://natural-resources.canada.ca/forest-forestry/wildland-fires/fire-ecology" rel="nofollow">https://natural-resources.canada.ca/forest-forestry/wildland-fires/fire-ecology</a></li>
+<li>[44] Tumino et al. "Plant traits linked to field-scale flammability metrics in prescribed burns in Eucalyptus forest" (26 August 2019). PLOS One. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0221403" rel="nofollow">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0221403</a></li>
+<li>[45] Forest Service. "Mechanical Treatment". <a href="https://www.fs.usda.gov/managing-land/fire/mechanical-treatment" rel="nofollow">https://www.fs.usda.gov/managing-land/fire/mechanical-treatment</a></li>
+<li>[46] Delcourt et al. "Prehistoric Human Use of Fire, the Eastern Agricultural Complex, and Appalachian Oak-Chestnut Forests: Paleoecology of Cliff Palace Pond, Kentucky" (20 January 2017). American Antiquity. <a href="https://www.cambridge.org/core/journals/american-antiquity/article/abs/prehistoric-human-use-of-fire-the-eastern-agricultural-complex-and-appalachian-oakchestnut-forests-paleoecology-of-cliff-palace-pond-kentucky/28A3FE26094893D4889FE50C1FAD6AF1" rel="nofollow">https://www.cambridge.org/core/journals/american-antiquity/article/abs/prehistoric-human-use-of-fire-the-eastern-agricultural-complex-and-appalachian-oakchestnut-forests-paleoecology-of-cliff-palace-pond-kentucky/28A3FE26094893D4889FE50C1FAD6AF1</a></li>
+<li>[47] Roos et al. "Native American fire management at an ancient wildland–urban interface in the Southwest United States" (22 September 2020). PNAS. <a href="https://www.pnas.org/doi/full/10.1073/pnas.2018733118" rel="nofollow">https://www.pnas.org/doi/full/10.1073/pnas.2018733118</a></li>
+<li>[48] Forest Service. "Prescribed Fire". <a href="https://www.fs.usda.gov/managing-land/prescribed-fire" rel="nofollow">https://www.fs.usda.gov/managing-land/prescribed-fire</a></li>
+<li>[49] Government of British Columbia. "Cultural and prescribed fire". <a href="https://www2.gov.bc.ca/gov/content/safety/wildfire-status/prevention/prescribed-burning" rel="nofollow">https://www2.gov.bc.ca/gov/content/safety/wildfire-status/prevention/prescribed-burning</a></li>
+<li>[50] National Park Service. "Wildfire Causes and Evaluations". <a href="https://www.nps.gov/articles/wildfire-causes-and-evaluation.htm" rel="nofollow">https://www.nps.gov/articles/wildfire-causes-and-evaluation.htm</a></li>
+<li>[51] Benjamin Shingler. "Lightning-caused wildfires burn the most area in Canada, and could be more common as the climate warms" (31 May 2024). CBC. <a href="https://www.cbc.ca/news/climate/canada-wildfire-starts-1.7219681" rel="nofollow">https://www.cbc.ca/news/climate/canada-wildfire-starts-1.7219681</a></li>
+<li>[52] Long et al. "The importance of Indigenous cultural burning in forested regions of the Pacific West, USA" (15 November 2021). Forest Ecology and Management. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0378112721006873?via%3Dihub" rel="nofollow">https://www.sciencedirect.com/science/article/abs/pii/S0378112721006873?via%3Dihub</a></li>
+<li>[53] Susie Cagle. "'Fire is medicine': the tribes burning California forests to save them" (21 November 2019). The Guardian. <a href="https://www.theguardian.com/us-news/2019/nov/21/wildfire-prescribed-burns-california-native-americans" rel="nofollow">https://www.theguardian.com/us-news/2019/nov/21/wildfire-prescribed-burns-california-native-americans</a></li>
+<li>[54] Lauren Sommer. "Let It Burn: The Forest Service Wants to Stop Putting Out Some Fires" (10 January 2024). KQED. <a href="https://www.kqed.org/science/1134217/let-it-burn-the-forest-service-wants-to-stop-putting-out-some-fires" rel="nofollow">https://www.kqed.org/science/1134217/let-it-burn-the-forest-service-wants-to-stop-putting-out-some-fires</a></li>
+<li>[55] Lauren Sommer. "With Extreme Fires Burning, Forest Service Stops 'Good Fires' Too" (10 August 2021). NPR. <a href="https://www.npr.org/2021/08/09/1026137249/with-extreme-fires-burning-forest-service-stops-good-fires-too" rel="nofollow">https://www.npr.org/2021/08/09/1026137249/with-extreme-fires-burning-forest-service-stops-good-fires-too</a></li>
+<li>[56] Joint Fire Science program. "The Reburn Project". <a href="https://depts.washington.edu/nwfire/reburn/index.html" rel="nofollow">https://depts.washington.edu/nwfire/reburn/index.html</a></li>
+<li>[60] Government of Canada. "Forest fires and lightning". <a href="https://www.canada.ca/en/environment-climate-change/services/lightning/forest-fires.html" rel="nofollow">https://www.canada.ca/en/environment-climate-change/services/lightning/forest-fires.html</a></li>
+<li>[66] California Chaparral Institute v. Board of Forestry &amp; Fire Protection (2025). Super. Ct. No. 37-2020-00005203-CU-TT-CTL. <a href="https://climatecasechart.com/case/california-chaparral-institute-v-board-of-forestry-fire-protection/" rel="nofollow">https://climatecasechart.com/case/california-chaparral-institute-v-board-of-forestry-fire-protection/</a></li>
+<li>[67] California Chaparral Institute. "Native Californian Fire Use". <a href="https://www.californiachaparral.org/fire/native-americans/" rel="nofollow">https://www.californiachaparral.org/fire/native-americans/</a></li>
+</ul>
+<h2>Images utilisées dans la vidéo</h2>
+<ul>
+<li>[57] NASA. "Earth Data". Data from 21 August 2025. Generated 20 September 2025. <a href="https://www.earthdata.nasa.gov/news/worldview-image-archive/smoke-from-fires-washington-state-u-s-british-columbia-canada" rel="nofollow">https://www.earthdata.nasa.gov/news/worldview-image-archive/smoke-from-fires-washington-state-u-s-british-columbia-canada</a></li>
+<li>[58] Province of Ontario. "Wildland fire behaviour". <a href="https://www.ontario.ca/page/wildland-fire-behaviour" rel="nofollow">https://www.ontario.ca/page/wildland-fire-behaviour</a></li>
+<li>[59] Fractint. "A solution in the Lorenz attractor plotted at high resolution in the xz plane". Wikipedia. <a href="https://en.wikipedia.org/wiki/Lorenz_system#/media/File:Lorenz_system_r28_s10_b2-6666.png" rel="nofollow">https://en.wikipedia.org/wiki/Lorenz_system#/media/File:Lorenz_system_r28_s10_b2-6666.png</a></li>
+<li>[61] Manzello1 amd Suzuki. "The world is burning: What exactly are firebrands and why should anyone care?" (2022). Frontiers in Mechanical Engineering. <a href="https://www.frontiersin.org/journals/mechanical-engineering/articles/10.3389/fmech.2022.1072214/full" rel="nofollow">https://www.frontiersin.org/journals/mechanical-engineering/articles/10.3389/fmech.2022.1072214/full</a></li>
+<li>[62] Laurentius. "Wood ash". <a href="https://en.wikipedia.org/wiki/Ash#/media/File:Wood_ash.jpg" rel="nofollow">https://en.wikipedia.org/wiki/Ash#/media/File:Wood_ash.jpg</a>. CC BY-SA 3.0 (no modifications).</li>
+<li>[63] "Two giant sequoias" (public domain). <a href="https://en.wikipedia.org/wiki/File:Sequoia_trees.JPG" rel="nofollow">https://en.wikipedia.org/wiki/File:Sequoia_trees.JPG</a></li>
+<li>[64] "Paper birch at Acadia National Park in Maine". CC BY 3.0 (no modifications). <a href="https://en.wikipedia.org/wiki/Betula_papyrifera#/media/File:White_birch_at_Acadia_National_Park,_ME_IMG_2177.JPG" rel="nofollow">https://en.wikipedia.org/wiki/Betula_papyrifera#/media/File:White_birch_at_Acadia_National_Park,_ME_IMG_2177.JPG</a></li>
+<li>[65] Fir0002. "Eucalyptus Forest". CC BY 3.0 (no modifications). <a href="https://commons.wikimedia.org/wiki/File:Eucalyptus_forest2.jpg" rel="nofollow">https://commons.wikimedia.org/wiki/File:Eucalyptus_forest2.jpg</a></li>
+<li>[68] Jacob Serebrin. "Quebec man who blamed 2023 wildfires on government pleads guilty to setting 14 fires" (15 January 2024). CBC. <a href="https://www.cbc.ca/news/canada/montreal/brian-pare-pleads-guilty-to-setting-quebec-wildfires-1.7084669" rel="nofollow">https://www.cbc.ca/news/canada/montreal/brian-pare-pleads-guilty-to-setting-quebec-wildfires-1.7084669</a></li>
+</ul>
+<h2>Autres références</h2>
+<ul>
+<li>Glossaire trilingue de termes techniques : <a href="https://glossary.ciffc.ca/" rel="nofollow">https://glossary.ciffc.ca/</a></li>
+<li>Entrevue avec Richard Rothermel : <a href="https://www.mtmemory.org/nodes/view/115416" rel="nofollow">https://www.mtmemory.org/nodes/view/115416</a></li>
+<li>Explication détaillée du modèle de Rothermel : <a href="https://www.fs.usda.gov/rm/pubs_series/rmrs/gtr/rmrs_gtr371.pdf" rel="nofollow">https://www.fs.usda.gov/rm/pubs_series/rmrs/gtr/rmrs_gtr371.pdf</a></li>
+</ul></article>
+	</body>
+</html>
