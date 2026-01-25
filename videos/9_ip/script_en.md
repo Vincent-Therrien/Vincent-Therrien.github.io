@@ -12,8 +12,8 @@ eliminated some types of patents, which lifted monopolies and allowed Indian com
 affordable medicine [3]. A bit too affordable to some tastes.
 
 Is it legitimate to own ideas in the same way that we can own objects, even when human lives are at
-stake? One could say *yes*: ideas can be expensive to come up with and rewarding creators can boost
-innovation. One could also say *no*: gatekeeping ideas aggravates inequalities and can hinder
+stake? You could say *yes*: ideas can be expensive to come up with and rewarding creators can boost
+innovation. You could also say *no*: gatekeeping ideas aggravates inequalities and can hinder
 innovation. Depending on whom you ask, you will get vastly different answers, and with an
 increasinly connected global economy and technological progress, I want to assess if intellectual
 property, IP for short, is actually a positive thing. To make sense out of all this, I'll present a
@@ -101,9 +101,9 @@ Organization requires all its member states to sign the TRIPS agreement, which e
 regulations [35].
 
 IP has become stronger over time, and there is more than what we've seen. Industrial designs protect
-the appearance of products [36]. Controlled appelations protect products tied to recognized cultural
-practices [37]. Plant varieties can also be protected [38]. There's this general agreement that IP
-is a good thing; it's even part of the Universal Declaration of Human Rights [39].
+the appearance of products [36]. Controlled appellations protect products tied to recognized
+cultural practices [37]. Plant varieties can also be protected [38]. There's this general agreement
+that IP is a good thing; it's even part of the Universal Declaration of Human Rights [39].
 
 
 ## II. Alternatives
@@ -238,9 +238,9 @@ been approved by the FDA in 1953 and the patents have long expired, but no gener
 because, long story short, that market is small and competitors didn't think it would be profitable
 to get generics approved by the FDA. It was not an IP problem; regulations inadvertently favored a
 monopoly [86]. So yeah, regulation loopholes do harm consumers and we absolutely have to patch them,
-but having no regulation is much worse. We'd still have asbestos [84] [85], ozone layer depletion
-[89], DDT [90], lead paint [91]. Companies don't care if they kill people and markets have never
-been quick enough to fix those issues. Time for another alternative.
+but without regulations we'd still have asbestos [84] [85], ozone layer depletion [89], DDT [90],
+lead paint [91]. Markets were not quick enough to address those and companies don't care if they
+kill people; time for another alternative.
 
 
 ### II.III. Anarchism
@@ -248,7 +248,7 @@ been quick enough to fix those issues. Time for another alternative.
 Anarchism is a political movement that aims at abolishing hierarchies [92]. That means no state and
 no regulated markets, just people voluntarily self-organizing. People started proposing that in the
 19th century [93] [94] [122] and have been... successively crushed [95] [96] [97]. There are some
-exceptions, the Zapatista rebel movement in Chiaspas, Mexico is de facto autonomous and managed
+exceptions, the Zapatista rebel movement in Chiapas, Mexico is de facto autonomous and managed
 through direct democracy [98], but its economy is fairly small, it struggles to repress organized
 violence [99], and this model has not been transposed to larger societies. It's pretty hard to
 imagine how global supply chains and high technology could work without markets or regulations
@@ -276,303 +276,174 @@ of the Linux kernel, have more compromising views and are willing to use proprie
 While open source projects have become increasingly impactful, the subcultures that created them
 have been appropriated by tech giants, who rely on unpaid labor [115] and use hacker imagery for
 marketing [116]. At the same time, they contribute to open source, paying their employees to
-maintain it [117] [118]. This tension is especially obvious with OpenAPI, which claims from the
-beginning that it wants to create transparent AI to the benefit of all humankind and makes some
-results available to the public, but it keeps its models secret [119].
+maintain it [117] [118]. The idealistic view is that people just freely collaborate on wonderful
+projects, but everyone has to confront the reality that we need to eat. They either work on open
+source for free and have other sources of income, or receive donations, or monetize documentation or
+other add-ons, or accept contributions from tech giants. This tension is especially obvious with
+OpenAPI, which was set up to create transparent AI but keeps its models secret [119].
 
 Anarchism has trouble gaining power because it opposes power in the first place, but there will
-always be people who reject social norms and experiment alternatives [120]. Anarchists have
-contributed to other more mainstream issues: they were active in worker's unions for instance [121].
-But some people with similar views prefer to make more compromises; to reform authority from within.
+always be people who reject social norms and create alternatives [120]. Anarchists have contributed
+to other more mainstream issues: they were active in worker's unions for instance [121]. So far,
+they have been better at experimenting solutions that replacing political systems, but some people
+with similar views want to do just that: change the system from within.
 
 
 ### II.IV. Pirate Parties
 
-Pirate parties are political parties active in multiple countries that defend digital rights. They
-started in Sweden - of course -
+Pirate parties are political parties active in multiple countries that defend digital rights. The
+first one started in January 2006. In Sweden, of course [123]. It got a boost in popularity later
+that year when the Swedish police raided The Pirate Bay [124], an unaffiliated website that
+facilitates torrenting. Which is illegal! The guys who ran that site were eventually sent on trial
+and then sent to prison after being found guilty of copyright infringement [125]. Political figures
+and the media agreed with that decision [126] [127], but a lot of people who oppose copyright
+disagreed and ralied around the pirate party, which did get some people elected in the European
+parliament [128]. Other similar parties were created in elsewhere, and tend, likewise, to focus on
+decreasing copyright and patent terms, reducing sentences for infringement, advocating for more
+freedom of expression and government transparency. They often address what they perceive as
+excessive authority from the state, but they also target mass surveillance and power concentration
+from private companies [129].
 
-Cory Doctorow, a guy mainly known for coining the word of the decade, has argued in favor of
-decreasing copyright protection. [ADD-EXAMPLES].
+Pirate parties have to reconcile ideology with reality. A lot of their members point out that ideas
+are non-rivalrous [130]; that copying them does not prevent their creators from continuing to use
+them and argue that infringement should therefore not be seen as morally bad. Others argue that,
+without IP, there would be fewer ideas to copy because people would have less incentive to create
+them. That is, a lot of these non-rivalrous ideas exist *because* of IP. That's difficult to measure
+empirically because the whole planet has been operating under a pretty uniform IP framework for
+decades. We can do before-and-after comparisons and come to the conclusion that IP increases
+research investment [131] or does not affect it much [132] depending on how you analyze the data.
+You could also say that people would create without financial incentive anyways and that IP is thus
+superfluous [133], but a lot of great work has been created precisely because their authors had the
+means to commit full time to it [134]. The WTO will also watch closely if any change in IP law is
+attempted, so that can complicate reforms.
 
-- DNA, immortal cell lines
-- Non-profit organizations (open-source communities, governments, scientific publications)
-- Inconsistencies in IP systems: business patents (one-click buys), ...
-- Inequalities between countries
-
+The original program of the Swedish pirate party called for the abolition of all pharmaceutical
+patents and proposed instead to drive research with government funding, id est, taxes [135]. The
+current version is different, saying that IP should be granted when it has "well-documented positive
+effects" [129]. But this idea that work traditionally rewarded with IP should be, instead, paid by
+the government, is pretty popular in pirate parties. They often defend universal basic income, or
+UBI, you know, when the government gives a baseline salary to everyone [136]. It's getting more and
+more talked about with automation, and if it ever becomes widespread, it would probably erode the
+concept of copyright because creators would no longer depend on owning their work to earn money.
+They would still want to be recognized as authors and not plagiarized though, so IP would not
+disappear entirely I think. But UBI has never been tried on a large scale. We don't know how to do
+it and how it would impact consumption habits or productivity and it would require changing the
+economy somewhat [137]. In Ireland, some artists are getting paid by the government in a kind of
+limited UBI [138]. This is not an initiative of a pirate party, but, by advocating for similar
+moves, we might have a better idea of the impact of UBI and IP reduction.
 
 
 ## III. The Future
 
-// Click heels thrice
+With all that said, it's time to wonder how intellectual property will change in the future.
 
-- Would innovation stop
-  - Wright brothers
-  - AMD
-  - trademarks (Tylenol)
-- Could monopolies still exist
-  - Martin Shkreli (regulations)
-  - Lina Khan
-- Freerider's problem (paying tickets, not totally comparable to non-rivalrous goods)
-- Misallocation of resources
-  - time spent on lawsuits by Wright brothers could have been better spent
-- Redefin ownership itself (brain implants, biopiracy)
 
-// Non-rivalrous goods, Freerider's problem
+### III.I. The Same IP Mechanisms Will Remain
 
-- Trademark (luxury goods -> reasons to buy)
+Kurzum, there a three main ways to handle intellectual property. The first is ownership, we give
+monopolies to creators. The second is collectivization, we pay creators through taxes but the ideas
+remain free. The third, I'll call 无为 (wúwéi), we don't enforce any IP and don't give any reward.
+The dominant IP regime of our time is ownership, but the other two are also relevant; public
+research and open source projects are more important than ever. Pirate parties have been trying to
+reduce ownership in favor of the other two, but more than twenty years later, they have... failed to
+do this. A big reason why people don't rally behind them is that most people support IP to some
+extend, and believe creators should be rewarded instead of letting everyone free-ride their work, I
+know a ton of people disagree, but this is the mainstream view. Another reason for that failure is
+that reforming IP is incredibly hard. It's a framework that spans the entire planet. Before changing
+things up, a majority of countries would have to agree on a ton of stuff. Given all that, I really
+don't think intellectual property will go away, but alternative models will continue to exist in the
+margins and challenge this dominant regime.
 
-copyleft
 
-AIDS medication in Africa
+### III.II. Monopolies Would Exist Even Without IP
 
-I've already talked about it before: technological progress is not decreasing the time we spend
-working, it encourages people to consume more goods and services. We could work much less if we
-wasted less resources and addressed inefficiencies, but that will not happen because people are
-way more motivated by the prospect of owning multiple cars than the idea of spending more time with
-their family. Unless some massive cultural shift or technological leap occurs, the idea of a
-post-scarcity economy is a pipedream, and any discussion about copyright involving that kind of
-utopian society is too unrealistic to be worthy of my interest.
+A point I wanna discuss is monopolization. In the pharmaceutical industry especially, patents do
+empower companies to hike prices [139]. But monopolies emerge through other processes. Amazon
+undersells competitors by dynamically adjusting its prices until they go bankrupt. Short term, this
+is good for consumers; competition drives prices down, but once the competitor goes under, the
+prices go back up. The power imbalance between small companies the biggest online selling platform
+is so big that it makes real competition impossible [140]. Apple has often tried to force its users
+and third-party developers to use its own technology by inconveniencing them when they try
+alternatives; it has faved antitrust cases because of that [141]. Marketing manipulates consumers.
+For instance, paracetamol, also called acetaminophen, was discovered in the 19th century and was
+applied to medicine in the mid 20th century. It's inexpensive to make and its basic form is free of
+patent, so you can find it on shelves for cheap. But pharmaceutical companies have realized they can
+sell it for more money if they bombard consumers with advertisement. Most people don't know Tylenol
+is mostly just paracetamol, but they buy it because of brand recognition. The market is not reaching
+maximum efficieny; companies use information asymetry, betting on consumers not knowing things to
+make money [142]. Likewise, retails companies and airlines [143] are using, or planning to use,
+surveillance to charge as much as possible. So, would monopolies evaporate if IP was abolished?
+Absolutely not, this is how the system is intended to work.
 
-I think there are three main points that complicate debates about IP laws. First, left/right, private/public, no point of comparison
 
-Preemptive actions, e.g.: games requiring online registration, Nvidia locking CUDA to chips
+### III.III. Scientific Progress and Concerns for Justice Will Make Property Evolve
 
-patents are public, encourage publication
-Copyright protects ideas because, otherwise, they would not exist in the first place
-Public research can lose funding if the research does not generate immediate results or is not perceived as useful by the public
+One thing I can predict is that our definition of property will continue to evolve with scientific
+progress. For instance, some experimental brain implants are used to manage epilepsy. The
+manufacturer owns the device, so when it went bankrupt, the implant has to get removed, even if the
+patient didn't want. Some people have pointed out that the implant should be considered part of the
+patient's body, and that their body autonomy should prime over ownership laws [144], so new
+technology will challenge our existing laws. Also, the World Trade Organization *can* be reformed to
+some extent to decrease injustices. It took time, but after the initial TRIPS agreement, the WIPO
+has ackowledged that medicine should be affordable [145], that copyrighted material more easily
+accessible to disabled people [146], and that traditional knowledge cannot be protected as IP [147].
+Lightyears away from perfect, but better than nothing.
 
-Anyways, I'll leave my opinions on libertarians for the last section because otherwise people will
-say I'm not objectivist enough.
 
-Nvidia controlling drivers through signing
-Apple establishing a monopoly on App store without patent
-Airline surveillance pricing
-Patents are only used by large companies
-- Tylenol
+### III.IV. AI Changes IP But Does Not Make It Obsolete
 
-- UBI
-  - https://en.wikipedia.org/wiki/From_each_according_to_his_ability,_to_each_according_to_his_needs#Criticism
-  - But this is not the case and probably never will be, because "man's wants tend always to outstrip
-    his ability to supply them.... [Therefore] it will be necessary to have an agency for determining
-    relative amounts of men's needs
-  - https://en.wikipedia.org/wiki/Social_parasitism_(offense)
-
-tailwind -> open-source business models don't make sense when AI can understand it without paying
-to access the documentation
-
-A lot of people become weirdly emotional when you fail to display religious adoration for AI.
-
-Information asymetry
-
-It's not always a hive mind
+We've now arrived at the inevitable AI segment. There are two opposing views on generative models.
+A: the model creates new data in a process similar to how humans are inspired by artworks. B: the
+model simply reshuffles data; its training dataset is so large that it just gives the impression of
+novelty. We need more research into interpretability to understand what's going on; we already have
+some results that support either view [148] [149] and you can choose which one you prefer depending
+on your biases. But even if this is genuine creativity, AI model outputs will remain
+non-copyrightable because, as the US copyright office puts it, IP is meant to reward *human*
+creativity [150], that's why this image will remain in public domain [151]. Another argument is that
+humans themselves are not truly creative and just reshuffle previously seen data... you're free to
+believe that but artificial neural networks they don't work like human brains, they don't have
+subjective experiences. At least the current ones don't. And they don't have *interests*. I think
+this argument is often brought up because online platforms tend to promote controversial opinions,
+but I have yet to hear about a judge or policymaker taking it seriously. Another issue is that tech
+companies are making money with models trained on unpaid material. This is far from over, but we can
+already see that while tech companies try to erode copyright for users, they want to reinforce their
+own copyright [152], and we can only hope governments won't make fools of themselves.
 
 
 ## IV. What I Think of This
 
-Brain implant software copyright
+What I think of this: I think the problems are with power more than ownership.
 
-I could stop there and pretend that I am a completely neutral observer, but I have an opinion on
-this topic and I think it's more honest to state it so that you're aware of my biases and can look
-at the video more critically.
+Governments have often sided with companies, like when drafting the semiconductor act and giving
+more power to Intel. Tech companies rely on secrecy, surveillance, and evergreening to extract as
+much wealth as they can from the working class. The US Supreme Court has made some sketchy ruling,
+deciding that, while *genes* cannot be patented, *complementary DNA* can be [153], which many
+biologists have described as scientifically inconsistent [154]. You know who delivered the opinion
+of the court? Clarence Thomas [155]. You know what's one of his favorite book? Atlas Shrugged by Ayn
+Rand [156]. These examples annoy me because they are breaches of the social contract. The idea is
+that the state gives temporary monopolies to reward ingenuity, but when people hack the system
+through lobbying, or companies abuse their power over consumers, or incompetent government officials
+misinterpret science, ingenuity gets rewarded less than trickery and luck. I think addressing that
+is urgent: we should make government decisions more accountable and democratic, counter evergreening
+and surveillance capitalism, demand policymakers to listen more seriously to scientists. This is
+more realistic than throwing IP away.
 
-I think that technical intellectual property, like patents, circuit designs, and algorithms, should
-be weakened because they have a tendency to reinforce monopolies, but artistic copyrights should not
-be modified because they do not cause negative impacts.
+Another point I noticed is how IP is closely tied to cultural identity. In Europe, appellations
+d'origine contrôlées label products made according to specific traditions, like Champagne wine and
+feta cheese. Using these words for other products is illegal [157], which sounds pretty weird to
+North Americans because most products over yonder are not really tied to traditions. People have
+different opinions on what is fair to use as training for AI models, on how much money artists
+deserve to get, on what qualifies as art. Because we all have different experiences and interests. I
+now see a lot of debates around IP not as problem-solving, but more as people with different
+perspectives not understanding the other's positions and clashing over instead. If we are to have
+*discussions* about making IP more fair, we need to acknowledge those differences.
 
-disco balls were patented
-
-I mean, that's a bit like saying "by not paying for a subway ticket, I don't steal the wagons.
-They would keep running regardless of whether I pay not not, so that's not theft!". But you're
-benefitting from that service. The operator has to get money somehow, either by demanding fares or
-getting paid from taxes. So when people say "I'm not stealing a game, the creator still keeps their
-copy so it's not theft!", they are benefitting from someone's work without compensation. And pirates
-themselves recognize that, asking people to pay for games from small developpers that rely on that
-income. But how small exactly do you have to be to deserve money? It's very arbitrary, instead of
-being based on agreed-upon rules, the amount of money that a creator can expect is based on
-anonymous opinions, that seems pretty unfair.
-
-It's pretty common in pirate communities to ask people to pay for a game after they've obtained it
-for free to reward creators, we've seen it with Silksong. But how many of these people actually paid
-the game after playing it instead of just virtue-signaling on image boards? We don't have official
-statistics but I would wager it's not much. People who disagree with that stance get pushed away
-because they give pirates a bad name and those who paid the game will go out of their way to tell
-everyone. That probably gives us a distorded view.
-
-Pirate parties
-Like who works on their PR team? Who thought that normies would like to vote for people brandishing
-Jolly Rogers and stupid takes about CSAM? I know, from their own perspective, they are cool and
-edgy frihetskämpar, but most people find them weird, and that's not a good thing if you want them to
-vote for you.
-
-- open access / open source / ...
-
-And, is the state really that bad?  Every year, the Cato and Fraser Institutes, two right-wing
-libertarian think tanks, rank countries based on how free their citizens are. They've consistently
-ranked social-democratic countries as more free than the US. Behold Switzerland, the libertarian
-terre promise with high taxes, free healthcare and free college.
-
-People are not knowledgeable on all topics and often disinterested, but if you can sit them down and
-explain an issue well enough, they'd probably also reach the same conclusion that collective action
-is necessary
-
-// Invisible hand -> recreate government-like structures -> same as libertarianism last paragraph
-
-[X] argued that government-like structures would re-emerge after its abolition though a process
-managed by the invisible hand. I find that statement fascinating: he'd get rid of a functionning
-state instead of improving it, and then wait until the same services would naturally reappear in a
-more effective form. Why would they? Why would all these complex rules re-emerge magically in the
-same way? I think this is a sign of excessively introverted people doing politics. They don't
-realize that political viewpoints are vastly more varied than they imagine, so they end up imposing
-their own beliefs onto everyone and think that we'd build the idea of a perfect society like a hive
-mind.
-
-These actions have proven to work, and they are getting more and more popular. Meanwhile, copyright
-laws have been getting stronger and stronger, and I don't see that trend changing course. I don't
-think the work of pirate parties is completely useless, but let's be realistic: they will never
-repeal TRIPS.
-
-Personal interest / common good + ideas are private property / ideas are not (disagreement on priorities + definitions)
-
-A philosophical argument I've often heard against IP laws is that they are "legal fictions", id est
-social constructs we collectively agree upon but which have no basis in reality. When you copy
-someone else's idea, you are not preventing them from continuing to use it, you're not stealing
-anything, so assimilating ideas to private property is illogical, per that argument. You're not
-stealing, but you are benefiting from their work without compensating them, and even anti-copyright
-folks are quick to call that unfair [sky]. Yes, IP law is a legal fiction. yes, it is imperfect, but
-so are a ton of other things in modern life. Some people argue that taxation shouldn't exist
-because it is a form of coercion to which we do not consent. But we kind of need taxes. The courts
-and roads are not gonna pay themselves, so the government has to get money somehow, not necessarily
-from revenue, but it needs to find money to function. Yes, taxation is a social construct, yes, no
-one likes it, but modern societies need it. So we shouldn't rule out laws on philosophical grounds,
-especially when they have tangible benefits.
-
-Overall, I just don't believe in all-encompassing solutions. I don't believe a state can ever be
-competent enough to plan an entire economy because it will always grow into an inefficient,
-unaccountable bureaucracy. I don't believe that removing commercial regulations will lead to more
-prosperity because free markets are often incapable of addressing collective problems. Libertarian
-parties regularly deny climate change, and they have to, their ideology is too inflexible to account
-for it. And I don't believe that getting rid of intellectual property will somehow lead to more
-innovation and equality. People who already have power would just consolidate it. At the same time,
-keeping IP laws as they are also harms the economy, and I absolutely think they should be reformed.
-
-To own ideas is not an end it itself, what matters is that creators get rewarded for their work, but
-we all benefit from passing ideas around as much as possible.
-
-Creators deserved to be rewarded fairly, but to own ideas is not and end in itself; in fact we all
-benefit when ideas get passed around as much as possible, and constraining them prevents new ideas
-from emerging.
-
-I'm not emotionally or ideologically attached to copyright per se; I care about creators getting
-fairly rewarded for their work
-
-Monopolies naturally emerge for the simple reason that having capital makes it easier to amass more
-capital. This is the most unterly unsurprising result of our system.
-
-// To Drink a Lava Lamp: Libertarianism & Molten Wax
-
-Exploitation des pays en développement
-
-- But this most extreme view of copyright abolition is promoted basically only by hardcore
-  libertarians and communists. The most level-headed people in the world!
-- A worrying trend is how copyright laws are decided by non-elected people held at watergun point
-  by private companies, not very democratic.
-
-Amazon ultimately owns the wizard of Oz
-
-Some people say that you cannot own ideas because because they are not tangible, and therefore
-replicating them is not theft, in other words, IP is just a legal fiction. But a lot of things are
-legal fictions. Land ownership is one, sure, land is a physical thing and you can defend it with
-fences, but the land itself is not separated. You could even say that land ownership encroaches on
-the rights of others by preventing them from traversing it. If I plant a tent on someone else's
-property, I'm not stealing the land.
-
-I'm not saying that ownership doesn't exist; my point is that all forms of ownership are social
-contracts. I own the money in my credit union account because all the parties involved agree that
-it's my property, but I don't have physical access to it. So, sure, IP is a legal ficton, but so are
-most forms of property. Instead of looking at laws through axiomatic lenses and deciding what counts
-as valid property based on ideological grounds, we should spend more mental effort thinknig about
-their concrete effects.
-
-Axiomatic libertarians
-
-I guess this is what happens when you center a political project around an ideology instead of human
-lives.
-
-Clarence Thomas read Atlas Shrugged
-
-Anarchocapitalism was coined in Playboy
-
-CW: Earth-vitrifying hot take - I guess my conclusion is that Les Misérables is better than Wicked.
-
-The pirate parties are really giving "redditors breached containment"
-
-Patents don't stop innovation because you have to publish all details, so they discourage trade
-secrets (incomplete CRISPR patent).
-
-It's also good to pause and ask if a political project is realistic. Like, I dream of displacing the
-132 highway away from the Saint-Lawrence and restoring the original litoral ecosystem, but I know
-it's not gonna happen and I don't spend my time talking about it, except when I've had too many
-edibles.
-
-Ok so that was my take. If you got mad or if you want my full review of Wicked for Good leave a
-comment.
-
-And to people who say that I've drunk the Kool-aid and just agree with mainstream opinions, that I'm
-a centrist who's afraid of change, I say: we cannot remain teenagers forever. At one point you have
-to accept that the world is imperfect and does not bent our personal preferences.
-
-And that might be controversial, but I think fairness matters more than the speed of innovation.
-Like, if there had been no patents to motivate people to invent airplanes and steam machines, maybe
-increased competition would have stimulated inventiveness more and these technologies would have
-been invented a few years earlier. In the grand scheme of things, is that really valuable compared
-to rewarding inventors fairly? Also, patents are public, you are free to read them and get inspired
-to invent new stuff, so they don't really prevent innovation, they just create temporary monopolies.
-
-For example, libertarian think tanks have repeatedly denied scientific evidence when they contradict
-libertarian orthodoxy. Instead of modifying their ideology, they decide to ignore objective reality
-and lie to people their stance is incompatible with reality. An ideology should be at the service of
-human flourishing, if the goal of the ideology is to reaffirm itself to the detriment of our
-wellbeing, then it's as trash an ideology as manufacturing an infinite supply of paperclips for the
-sake of making more papaerclips.
-
-Competition is the father on invention
-
-Stability: a political system needs to accomodate diverse perspective
-- La belle verte: conflicts arises from differences; in perspective or interests. A society without
-  conflict can only exist if there are no differences.
-- kumbaya circlejerking
-
-By imposing a narrow and culture-specific definition of freedom onto everyone, are libertarians not
-stripping others people of their freedom of opinion?
-
-Actually, I would add a tier worse than entertainment: art made for propaganda, which I find akin to
-advertisement. [Apple superbowl ad VS armya moya], choose your poison.
-
-When an idea is impopular for several years, it's not because there's a sinister conspiracy
-censoring it, it's because it's an impopular idea. Most people believe that intellectual property is
-a good thing.
-
-And I know that any comment about AI that is not religious adoration is regarded as some horrible
-sin by a lot of people
-
-Libertarian economic arguments are fossilized in pre-WWII rethoric
-
-Consent: Scarlett Johnson voice, Altman rape allegations, Groq CSAM
-
-Assistive AI / generative AI
-Unconscious consumption / Intentful consumption
-
-I feel like I'll get a lot of questions if I don't state my opinion on piracy. I think it's fairly
-obvious just how low I think of tech companies and how inconsequential I find pirating them, but for
-small creators I do think it is unethical, as acknowledged by members of that community.
-
-Another point is that empathy is in our nature. Nathaniel Branden, a psychologist and *associate* of
-Ayn Rand, eventually recognized that her ideas of virtuous selfishness are *wrong*, that they harm
-people who put them in practice, and this observation has been validated numerous times.
-Intellectual property is kind of based on empathy, we give monopolies to creators because we can
-imagine what it feels like not to be rewarded for hard work. I mean, you can also make the point
-that IP is in our selfish interest because it drives innovation, which benefits us, but that's not
-the entire story.
+Lastly, freedom is a word I often encountered while making the video. Yes, governments prevent us
+from using certain ideas, you can see this as overreach, but those monopolies, imperfect as they
+get, are often someone's livelihood. Maximum freedom for everyone is not realistic, as libertarians
+admit themselves. I prefer to live in a society that lets people live are many different lives as
+possible, to make as many *choices* as they can. And some IP restrictions do their part in that
+because they give *some* power to creators.
 
 
 # References
@@ -891,11 +762,71 @@ the entire story.
 - [121] Workers' Solidarity Federation. "History of the Anarchist-Syndicalist Trade Union Movement" (consulted January 23, 2026).
   https://theanarchistlibrary.org/library/workers-solidarity-federation-history-of-the-anarchist-syndicalist-trade-union-movement
 - [122] https://en.wikipedia.org/wiki/Leo_Tolstoy
-
-
-- [doctorow] https://en.wikipedia.org/wiki/Cory_Doctorow#Intellectual_property
-- Lina Khan: https://yalelawjournal.org/pdf/e.710.Khan.805_zuvfyyeh.pdf, pages 63
-- Vasak, positive and negative rights: https://en.wikipedia.org/wiki/Three_generations_of_human_rights
-- TRIPS boosted investments in India: https://onlinelibrary.wiley.com/doi/abs/10.1111/jphs.12050
-- [open-science]
-  - https://www.science.org/content/article/open-science-delivering-benefits-major-study-finds-proof-sparse
+- [123] https://piratpartiet.se/en/about-us/
+- [124] https://web.archive.org/web/20090420024204/http://www.blogpirate.org/2009/04/17/result-of-verdict-for-the-pirate-party/
+- [125] https://web.archive.org/web/20090421031814/http://www.blogpirate.org/2009/04/17/the-spectrial-verdict-is-in/
+- [126] https://www.economist.com/business/2009/04/17/online-pirates-at-bay
+- [127] https://web.archive.org/web/20090529080944/http://nyheter24.se/nyheter/inrikes/232341-kulturministern-gjorde-utfall-mot-pirate-bay
+  - "Det här kanske inte uppskattas av vissa, men jag var en av dem som gladdes över domen i Pirate
+    Bay-målet, sa kulturministern, och mötte publikens jubel samtidigt som vissa skruvade på sig
+    förvånat."
+  - This means: "This may not be appreciated by some, but I was one of those who was delighted with
+    the verdict in the Pirate Bay case, said the Minister of Culture, and met the audience's cheers
+    while some turned around in surprise."
+- [128] https://en.wikipedia.org/wiki/Pirate_Party#Elected_representatives
+- [129] https://piratpartiet.se/principprogram/
+- [130] https://quickonomics.com/different-types-of-goods/
+- [131] https://onlinelibrary.wiley.com/doi/abs/10.1111/jphs.12050
+- [132] Bhaven N. Sampat. "A SURVEY OF EMPIRICAL EVIDENCE ON PATENTS AND INNOVATION" (2018). NATIONAL BUREAU OF ECONOMIC RESEARCH. Page 21.
+  https://www.nber.org/system/files/working_papers/w25383/w25383.pdf
+- [133] Lawrence Liang. "Copyright/Copyleft: Myths About Copyright" (2005).
+  https://www.countercurrents.org/hr-suresh010205.htm
+- [134] Megan Willett-Wei. "How a thoughtful Christmas present helped Harper Lee write 'To Kill a Mockingbird'" (2015). Business Insider.
+  https://www.businessinsider.com/harper-lees-1956-christmas-present-2015-2
+- [135] https://web.archive.org/web/20090218112433/http://www.piratpartiet.se/politik/medicinpatent
+- [136] Siegfried Mortkowitz. "Czech Pirates, ahoy!" (2019). Politico.
+  https://www.politico.eu/article/czech-pirate-party-anti-establishment-ivan-bartos-ahoy/
+- [137] Mariano Torras. "Rethinking Universal Basic Income: Economic Productivity, Quality of Life and the Sustainable Development Goals" (2024). United Nations.
+  https://www.un.org/en/un-chronicle/rethinking-universal-basic-income-economic-productivity-quality-life-and-sustainable
+- [138] Citizens Information. "Basic Income for the Arts (BIA)" (consulted January 24, 2026).
+  https://www.citizensinformation.ie/en/employment/unemployment-and-redundancy/employment-support-schemes/basic-income-arts/
+- [139] Kristi Martin. "How Drugmakers Use the Patent Process to Keep Prices High" (2025). The Commonwealth Fund.
+  https://www.commonwealthfund.org/publications/explainer/2025/nov/how-drugmakers-use-patent-process-keep-prices-high
+- [140] Lina Khan: https://yalelawjournal.org/pdf/e.710.Khan.805_zuvfyyeh.pdf, pages 63
+- [141] United States Department of Justice, Antitrust Division. "U.S and Plaintiff States v. Apple Inc." (consulted January 24, 2026).
+  https://www.justice.gov/atr/case/us-and-plaintiff-states-v-apple-inc (refer to the "Complaint" document)
+- [142] Joe Schwarcz. "The History of Acetaminophen" (2025).
+  https://www.mcgill.ca/oss/article/medical-pseudoscience/tylenol-and-presidential-scientific-illiteracy
+- [143] Jay Stanley. "“Surveillance Pricing” Hurts Consumers, Incentivizes More Corporate Spying on Them" (2025). American Civil Liberty Union.
+  https://www.aclu.org/news/privacy-technology/surveillance-pricing
+- [144] Jessica Hamzelou. "A brain implant changed her life. Then it was removed against her will." (2023). MIT Technology Review.
+  https://www.technologyreview.com/2023/05/25/1073634/brain-implant-removed-against-her-will/
+- [145] Henk ten Have and Maria do Céu Patrão Neves. "Doha Declaration" (2021). Springer Nature Link.
+  https://link.springer.com/chapter/10.1007/978-3-030-54161-3_20
+- [146] World Intellectual Property Organization. "Celebrating 10 years since the Adoption of the Marrakesh Treaty!" (consulted January 24, 2026).
+  https://www.wipo.int/en/web/marrakesh-treaty
+- [147] Wend Wendland. "The new WIPO Treaty 25 years in the making: what does it mean and what happens next?" (2024). WIPO Magazine.
+  https://www.wipo.int/en/web/wipo-magazine/articles/the-new-wipo-treaty-25-years-in-the-making-what-does-it-mean-and-what-happens-next-68223
+- [148] Parshin Shojaee et al. "The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models via the Lens of Problem Complexity" (2025). Apple Research.
+  https://machinelearning.apple.com/research/illusion-of-thinking
+- [149] Anthropic. "The Illusion of the Illusion of Thinking A Comment on Shojaee et al. (2025)" (2025).
+  https://arxiv.org/html/2506.09250v1
+- [150] U.S. Copyright Office. "Copyright and Artificial Intelligence" (consulted January 24, 2026).
+  https://www.copyright.gov/ai/
+- [151] Copyright Review Board. "Second Request for Reconsideration for Refusal to Register Théâtre D’opéra Spatial (SR # 1-11743923581; Correspondence ID: 1-5T5320R)" (2023).
+  https://www.copyright.gov/rulings-filings/review-board/docs/Theatre-Dopera-Spatial.pdf
+- [152] Alistair Barr. "OpenAI executive sees a Rubik's Cube of future revenue sources" (2026). Business Insider.
+  https://www.businessinsider.com/openai-cfo-sarah-friar-future-revenue-sources-2026-1
+- [153] National Human Genome Research Institute. "Intellectual Property in Genomics" (consulted January 24, 2026).
+  https://www.genome.gov/about-genomics/policy-issues/Intellectual-
+- [154] Jeremy A. Cubert. "Has the Sun Set for Life Science Patents?" (2020). ACS Symposium Series.
+  https://pubs.acs.org/doi/abs/10.1021/bk-2020-1363.ch004
+  - "It is inconsistent to conclude that isolated DNA and naturally occurring DNA are not markedly
+    different because their information content is the same, and at the same time find that cDNA is
+    patent eligible despite having virtually identical information content to naturally occurring
+    mRNA."
+- [155] Jess Bravin. "Justices Strike Down Gene Patents" (2013). The Wall Street Journal.
+  https://www.wsj.com/articles/SB10001424127887324049504578543250466974398#
+- [156] Clarence Thomas. "My Grandfather's Son: A Memoir. New York: Harper Perennial" (2007).
+- [157] World Intellectual Property Organization. "Defining a Name's Origin: The Case of Feta" (2015).
+  https://www.wipo.int/en/web/ip-advantage/w/stories/defining-a-name-s-origin-the-case-of-feta
