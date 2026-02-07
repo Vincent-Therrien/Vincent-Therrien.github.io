@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>To Own Ideas</title>
+		<style>.markdown-body{--base-size-4:0.25rem;--base-size-8:0.5rem;--base-size-16:1rem;--base-size-24:1.5rem;--base-size-40:2.5rem;--base-text-weight-normal:400;--base-text-weight-medium:500;--base-text-weight-semibold:600;--fontStack-monospace:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;--fgColor-accent:Highlight}@media (prefers-color-scheme:dark){.markdown-body,[data-theme=dark]{color-scheme:dark;--focus-outlineColor:#1f6feb;--fgColor-default:#f0f6fc;--fgColor-muted:#9198a1;--fgColor-accent:#4493f8;--fgColor-success:#3fb950;--fgColor-attention:#d29922;--fgColor-danger:#f85149;--fgColor-done:#ab7df8;--bgColor-default:#0d1117;--bgColor-muted:#151b23;--bgColor-neutral-muted:#656c7633;--bgColor-attention-muted:#bb800926;--borderColor-default:#3d444d;--borderColor-muted:#3d444db3;--borderColor-neutral-muted:#3d444db3;--borderColor-accent-emphasis:#1f6feb;--borderColor-success-emphasis:#238636;--borderColor-attention-emphasis:#9e6a03;--borderColor-danger-emphasis:#da3633;--borderColor-done-emphasis:#8957e5;--color-prettylights-syntax-comment:#9198a1;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#f0f6fc;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-brackethighlighter-angle:#9198a1;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#f0f6fc;--color-prettylights-syntax-markup-bold:#f0f6fc;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#f0f6fc;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-sublimelinter-gutter-mark:#3d444d}}@media (prefers-color-scheme:light){.markdown-body,[data-theme=light]{color-scheme:light;--focus-outlineColor:#0969da;--fgColor-default:#1f2328;--fgColor-muted:#59636e;--fgColor-accent:#0969da;--fgColor-success:#1a7f37;--fgColor-attention:#9a6700;--fgColor-danger:#d1242f;--fgColor-done:#8250df;--bgColor-default:#ffffff;--bgColor-muted:#f6f8fa;--bgColor-neutral-muted:#818b981f;--bgColor-attention-muted:#fff8c5;--borderColor-default:#d1d9e0;--borderColor-muted:#d1d9e0b3;--borderColor-neutral-muted:#d1d9e0b3;--borderColor-accent-emphasis:#0969da;--borderColor-success-emphasis:#1a7f37;--borderColor-attention-emphasis:#9a6700;--borderColor-danger-emphasis:#cf222e;--borderColor-done-emphasis:#8250df;--color-prettylights-syntax-comment:#59636e;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-prettylights-syntax-entity:#6639ba;--color-prettylights-syntax-storage-modifier-import:#1f2328;--color-prettylights-syntax-entity-tag:#0550ae;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-brackethighlighter-angle:#59636e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#1f2328;--color-prettylights-syntax-markup-bold:#1f2328;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#d1d9e0;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-sublimelinter-gutter-mark:#818b98}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--fgColor-default);background-color:var(--bgColor-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--fgColor-accent);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--borderColor-muted)}.markdown-body mark{background-color:var(--bgColor-attention-muted);color:var(--fgColor-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em var(--base-size-40)}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--borderColor-muted);height:.25em;padding:0;margin:var(--base-size-24) 0;background-color:var(--borderColor-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button;appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none;appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--fgColor-muted);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto;font-variant:tabular-nums}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--focus-outlineColor);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--focus-outlineColor);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:var(--base-size-4);font:11px var(--fontStack-monospace,ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace);line-height:10px;color:var(--fgColor-default);vertical-align:middle;background-color:var(--bgColor-muted);border:solid 1px var(--borderColor-neutral-muted);border-bottom-color:var(--borderColor-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--borderColor-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:var(--base-size-24);margin-bottom:var(--base-size-16);font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--borderColor-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--fgColor-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--fgColor-muted);border-left:.25em solid var(--borderColor-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:var(--fontStack-monospace,ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace);font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:var(--fontStack-monospace,ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace);font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;appearance:none}.markdown-body .mr-2{margin-right:var(--base-size-8,8px)!important}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--fgColor-danger)}.markdown-body .anchor{float:left;padding-right:var(--base-size-4);margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:var(--base-size-16)}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--fgColor-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type="a s"]{list-style-type:lower-alpha}.markdown-body ol[type="A s"]{list-style-type:upper-alpha}.markdown-body ol[type="i s"]{list-style-type:lower-roman}.markdown-body ol[type="I s"]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:var(--base-size-16)}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:var(--base-size-16);font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 var(--base-size-16);margin-bottom:var(--base-size-16)}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--borderColor-default)}.markdown-body table td>:last-child{margin-bottom:0}.markdown-body table tr{background-color:var(--bgColor-default);border-top:1px solid var(--borderColor-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--bgColor-muted)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--borderColor-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--fgColor-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--bgColor-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:var(--base-size-16)}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:var(--base-size-16);overflow:auto;font-size:85%;line-height:1.45;color:var(--fgColor-default);background-color:var(--bgColor-muted);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px var(--base-size-8) 9px;text-align:right;background:var(--bgColor-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--bgColor-muted);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--fgColor-muted);border-top:1px solid var(--borderColor-default)}.markdown-body .footnotes ol{padding-left:var(--base-size-16)}.markdown-body .footnotes ol ul{display:inline-block;padding-left:var(--base-size-16);margin-top:var(--base-size-16)}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:calc(var(--base-size-8)*-1);right:calc(var(--base-size-8)*-1);bottom:calc(var(--base-size-8)*-1);left:calc(var(--base-size-24)*-1);pointer-events:none;content:"";border:2px solid var(--borderColor-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--fgColor-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body body:has(:modal){padding-right:var(--dialog-scrollgutter)!important}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body [role=tabpanel][tabindex="0"]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body button:focus:not(:focus-visible),.markdown-body summary:focus:not(:focus-visible){outline:0;box-shadow:none}.markdown-body [tabindex="0"]:focus:not(:focus-visible),.markdown-body details-dialog:focus:not(:focus-visible){outline:0}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:var(--base-size-4)}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body ul:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body ol:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}.markdown-body .markdown-alert{padding:var(--base-size-8) var(--base-size-16);margin-bottom:var(--base-size-16);color:inherit;border-left:.25em solid var(--borderColor-default)}.markdown-body .markdown-alert>:first-child{margin-top:0}.markdown-body .markdown-alert>:last-child{margin-bottom:0}.markdown-body .markdown-alert .markdown-alert-title{display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1}.markdown-body .markdown-alert.markdown-alert-note{border-left-color:var(--borderColor-accent-emphasis)}.markdown-body .markdown-alert.markdown-alert-note .markdown-alert-title{color:var(--fgColor-accent)}.markdown-body .markdown-alert.markdown-alert-important{border-left-color:var(--borderColor-done-emphasis)}.markdown-body .markdown-alert.markdown-alert-important .markdown-alert-title{color:var(--fgColor-done)}.markdown-body .markdown-alert.markdown-alert-warning{border-left-color:var(--borderColor-attention-emphasis)}.markdown-body .markdown-alert.markdown-alert-warning .markdown-alert-title{color:var(--fgColor-attention)}.markdown-body .markdown-alert.markdown-alert-tip{border-left-color:var(--borderColor-success-emphasis)}.markdown-body .markdown-alert.markdown-alert-tip .markdown-alert-title{color:var(--fgColor-success)}.markdown-body .markdown-alert.markdown-alert-caution{border-left-color:var(--borderColor-danger-emphasis)}.markdown-body .markdown-alert.markdown-alert-caution .markdown-alert-title{color:var(--fgColor-danger)}.markdown-body>:first-child>.heading-element:first-child{margin-top:0!important}.markdown-body .highlight pre:has(+.zeroclipboard-container){min-height:52px}</style>
+		<style>
+			body {
+				margin: 0;
+			}
+
+			.markdown-body-content {
+				box-sizing: border-box;
+				min-width: 200px;
+				max-width: 980px;
+				margin: 0 auto;
+				padding: 45px;
+			}
+
+			@media (max-width: 767px) {
+				.markdown-body-content {
+					padding: 15px;
+				}
+			}
+
+			.markdown-body {
+				--base-size-8: 8px;
+				--base-size-16: 16px;
+			}
+		</style>
+	</head>
+	<body class="markdown-body">
+		<article class="markdown-body-content"><h1>To Own Ideas</h1>
+<p>This is the script of the video available at <a href="https://youtu.be/yDlKxVjzYvU" rel="nofollow">https://youtu.be/yDlKxVjzYvU</a></p>
+<p>In 1989, the US government accused multiple countries of infringing on intellectual property.<br>
+Americans wanted them to crack down on piracy and recognize more patents, claiming that infringement<br>
+is not only harmful to the US, it undermines creativity itself [1].</p>
+<p>But these countries were not just greedily copying foreign technology, they had very good reasons to<br>
+reject patents. In India, domestic manufacturers had less resources to dedicate to<br>
+research and couldn't file as many patent applications as foreign companies; its market became<br>
+dominated by foreign firms and India had to buy medicine at high prices [2]. In 1970, the Indian<br>
+government eliminated some types of patents, which lifted monopolies and allowed Indian companies to<br>
+make more affordable medicine [3]. A bit too affordable to some tastes.</p>
+<p>Is it legitimate to own ideas in the same way that we can own objects, even when human lives are at<br>
+stake? You could say <em>yes</em>: ideas can be expensive to come up with and rewarding creators can boost<br>
+innovation. You could also say <em>no</em>: gatekeeping ideas aggravates inequalities and can hinder<br>
+innovation. Depending on whom you ask, you will get vastly different answers, and with an<br>
+increasingly connected global economy and technological progress, I want to assess if intellectual<br>
+property, IP for short, is actually a positive thing. To make sense out of all this, I'll present<br>
+its history, its alternatives, and its possible future. And if I do a good job, maybe I'll make up<br>
+my own mind.</p>
+<h2>I. History</h2>
+<p>But first, history. People have tried to protect their ideas for a long time, and two main<br>
+strategies have emerged for that.</p>
+<p>The oldest one is <em>secrecy</em>: if you keep ideas within a group, other people have no way of copying<br>
+them. For example, Polynesian navigators knew how to travel safely between islands in the Pacific<br>
+Ocean by observing stars, birds, waves, and clouds [4]. These techniques are taught openly now, but<br>
+back in the days, navigators kept that expertise for themselves because it gave them control over<br>
+travel [5]. Other secrets are more difficult to contain. Miserere Mei Deus is a piece of music<br>
+composed in 1638 that the Church kept exclusive for more than a century by running after anyone who<br>
+tried to leak and publish the sheet music, until 14 year-old Mozart heard it in the Vatican and<br>
+transcribed it from memory, essentially pirating 15 minutes of music from the Pope [6]. Secrets are<br>
+sensitive to leaks and often impractical.</p>
+<p>The other solution to protect ideas is <em>regulation</em>: you disclose your ideas to the public, but a<br>
+central authority grants a monopoly on the use of those ideas. That's pretty old; inventors in<br>
+medieval Venice would obtain monopolies on their inventions through letters patent [7], derived from<br>
+a Latin word for "open" [8]. Letters patent were literally "open" legal documents that granted<br>
+specific rights or monopolies [9] and their biggest weakness was that they were regional. Venicians<br>
+made the best mirrors in the 17th century through a very toxic process that often killed craftsmen<br>
+within 10 years of work. They could command high prices because no other country knew how to make<br>
+good mirrors at that time, but they had no way to enforce monopolies in other countries if their<br>
+techniques leaked. That's why Venice would threaten workers with the death penalty if they wanted<br>
+leave the republic [10]. Another problem with letters patent is that they were somewhat arbitrary.<br>
+Chocolate had been known in America for millenia and was introduced in Europe by the Spanish, but a<br>
+Parisian royal officer was given a 29-year monopoly on it in France even though he hadn't invented<br>
+anything [11]. Eventually, patents spread out to most countries and governments set up patent<br>
+offices to formalize the registration of inventions [12] [13]. They have to meet certain criteria,<br>
+like novelty and usefulness, they are evaluated by professionals, and inventors have to pay fees; if<br>
+everything's good, they get a temporary monopoly on that idea in the country of registration [14].</p>
+<p><em>Copyright</em> is another type of IP regulation that covers creative work. That concept didn't exist in<br>
+ancient times; people could copy and resell books without compensating authors [15]. Books were<br>
+copied manually and expensive, but printing made them way more affordable. Ideas started propagating<br>
+much faster and authorities in China [16] and Europe reacted by creating censorship laws to control<br>
+books they considered dangerous; the Catholic Church even maintained a list of prohibited books<br>
+until 1966 [17]. These laws evolved into copyright, gradually giving more rights to authors; for<br>
+example the Statute of Anne in Great Britain gave explicit copyright to authors as opposed to<br>
+publishers [18]. Contrarily to patents, you don't have to register for copyright, work is protected<br>
+the moment it is created and lasts your lifetime plus multiple decades [19]. That's great for<br>
+creators but it makes it easier to hike prices. For example, books were much less expensive in<br>
+Germany than Great Britain in 19th century because Germans didn't bother with copyright laws at that<br>
+time [20].</p>
+<p><em>Trademark</em> is another form of IP that protects the identity of a brand with reserved names or<br>
+images that others cannot to use without authorization. Similar systems have existed since ancient<br>
+times in multiple civilizations [158], but modern trademarks and registration offices got set up in<br>
+the 19th century. A trademark cannot be purely descriptive [23], and they cannot be generic;<br>
+"trampoline" used to be a valid trademark but it was so often used that it became a generic word<br>
+[24]. If you hold a valid trademark, no one else is allowed to use it and impersonate your brand.<br>
+For example, the word "ping-pong" is a registered trademark [22], so high-profile events use "table<br>
+tennis" instead to avoid getting sued.</p>
+<p><em>Trade secrets</em> protect confidential information. They are legally recognized, so employers are<br>
+allowed to make their employees sign non-disclosure agreements [27]. My favorite trade secret is<br>
+from KFC, which stores its original recipe in a vault and hires two contractors to mix half the<br>
+ingredients and make sure that no one has the full recipe at any time [28]. But secrets are brittle,<br>
+and no matter how carefully you conceal them, there's always a risk that some guy from Appalachia<br>
+reveals the recipe to the whole world [29]. Trade secrets are used a lot by tech companies: search<br>
+engine algorithms and AI models are often hidden from public view [30].</p>
+<p>There are two big trends in the history of intellectual property. First, creators were gradually<br>
+given more rights because it is seen as a way to reward their work. Copyright [32] and patent terms<br>
+[33] were extended over time and new types of IP emerged. For example, electronic circuits used not<br>
+to be covered by intellectual property, but Intel complained to the US government that it could<br>
+spend millions of dollars developing new chips and, once they hit the market, competitors could copy<br>
+and undersell them [31]. So the government created a new form of IP to protect their chips [166].<br>
+The other big historical trend is homogenization. If different countries use different IP<br>
+frameworks, people can just go to the most permissive legislation to circumvent monopolies, so<br>
+creators demand their rights to be harmonized across countries. Multiple international agreements,<br>
+like the Berne convention on copyright [34] and the Paris convention on patents [87] have done that.<br>
+Nowadays, the World Trade Organization requires its member states to sign the TRIPS agreement, which<br>
+enforces strict, uniform IP regulations [35].</p>
+<p>IP has become stronger over time, and there is more than what we've seen. Industrial designs protect<br>
+the appearance of products [36]. Appellations of origin protect products tied to recognized cultural<br>
+practices [37]. Plant varieties can also be protected [38]. There's this general agreement that IP<br>
+is a good thing; it's even part of the Universal Declaration of Human Rights [39]. But just because<br>
+something is popular doesn't mean we cannot question it. After all, patents paywall life-saving<br>
+medicine. You could also say that research for life-saving medicine would not have been funded in<br>
+the first place without patents. I could make an entire list of pros and cons, but I don't find that<br>
+useful because we cannot change IP without rethinking how creators get paid. Instead of asking "is<br>
+IP good or bad", I wanna ask: "are there viable alternatives to our current IP framework and do they<br>
+have concrete advantages over what we have now". Several political movements have thought of such<br>
+alternatives, so let's talk about them. Now REMEMBER, I'm not defending these political movements or<br>
+trying to brainwash you, I'm just explaining how they handle IP.</p>
+<h2>II. Alternatives</h2>
+<h3>II.I. Communism</h3>
+<p>The first movement we'll see is communism, now bear with me, it's not a model on how to run the<br>
+economy, but it did implement pretty big changes in IP laws, so it's an interesting point of<br>
+comparison. Communists want to abolish private property. Factories, railways, ports, any<br>
+asset used for production would be collectively owned because, according to Marx, inequalities<br>
+amplify to untenable levels if only rich people control them. But communists don't to abolish<br>
+personal property, items for individual use [40]. Intellectual property is incompatible with<br>
+communism because it's a form of private property: it turns knowledge into monopolies that people<br>
+are charged money for using. However, copyright, in art for instance, was often seen as less<br>
+exploitative, so it was more commonly accepted during transition to communism [41].</p>
+<p>Soon after the Bolsheviks took power in 1917, they abolished patents. On ideological grounds, but<br>
+also for practical reasons: they had devised a centrally planned economy. Handing out temporary<br>
+monopolies to inventors doesn't make sense when the government manages the economy, like who are<br>
+they going to protect their inventions from? There were no competitors. But the government did care<br>
+about rewarding inventors, so it introduced a new mechanism called avtorskiye svidetel'stva,<br>
+author's certificates. People would register their inventions at government offices and the state<br>
+would use them without restriction. Rather than getting monopolies, inventors would get paid,<br>
+receive better housing, or promotions at their jobs [41]. Soviet companies could also hold<br>
+trademarks, but individuals could not apply for them [42]. Copyright was handled differently:<br>
+authors preserved ownership of their creations, but they could not freely sell them because the<br>
+economy was centrally planned. The government decided what would be printed and the value of, say, a<br>
+text, was determined by its length and genre rather than how much money people were willing to pay<br>
+for it. Copyright was also more permissive than in the West, it was legal to translate books without<br>
+asking permission from right holders [41]. Communists believed states would eventually dissolve into<br>
+a stateless, egalitarian society, and IP would have also faded away during that transition [161],<br>
+but things went the other way.</p>
+<p>First, the soviets reintroduced patents in 1924 to facilitate trade with other countries [43]. This<br>
+is not a unique case, the Netherlands, which have never been communist, also got rid of patents and<br>
+brought 'em back after caving in to the pressure of their trading partners [44]. Copyright and<br>
+trademark protections also got stronger over time: as the USSR joined international partnerships, it<br>
+had to adopt stricter IP regulations as part of the deals and they became more and more similar to<br>
+their Western counterpart [41] [42]. And on a more fundamental level, centrally planned economies<br>
+were not a success. They did pull off very impressive feats [45] [46] [47] [48], but they lagged<br>
+behind in fields neglected by government planners, like electronics [49] and consumer goods [50].<br>
+Communist countries shifted their focus on productivity [51] [52] and transitioned to markets or<br>
+dropped out of communism entirely [53]. They also integrated into the global economy; that means<br>
+signing intellectual property agreements. China used to have an IP regime comparable to that of the<br>
+USSR; as it began trading with Western countries, it adopted stricter IP laws and it now protects IP<br>
+efficiently [54].</p>
+<p>Another problem with centrally planned economies is that progress is difficult to plan ahead.<br>
+Ozempic was developed thanks to lizard venom research [55]. GPUs that power AI models were<br>
+originally developed for gaming [56]. Bureaucrats managing the economy from ivory towers have a hard<br>
+time predicting how apparently unrelated fields combine into new innovations; decentralized decision<br>
+making, in a market let's say, is better at this. BUT even in capitalist countries, collective<br>
+actions coordinated by governments have contributed to innovation, especially for large-scale<br>
+projects that don't have immediate commercial applications, like the Internet [57], geopositioning<br>
+[58], genomics [59]. Since public organizations are not motivated by profit, they generally care<br>
+less about copyright. NASA [61] lets us use most of their images for free. The fully annotated human<br>
+genome has been publicly available for years [62]. Competition AND collaboration have mutually<br>
+contributed to technological progress; some shortcomings of the soviet economy can be attributed to<br>
+its lack of competition. Now let's see what happens when we go exactly the other way.</p>
+<h3>II.II. Libertarians</h3>
+<p>Libertarianism is a political movement that holds freedom as the most important value [63]. Not<br>
+unlimited freedom because we would end up in the Purge; libertarians think it must be limited by the<br>
+non-aggression principle [63]: don't "harm another in life, health, liberty, or possessions" [64].<br>
+This is not a novel idea. It's in the Bible [65] and it has been rephrased to no end [64]. The<br>
+distinguishing feature of libertarianism is that it opposes coercion. No one likes to pay taxes, but<br>
+most people see it as necessary to have public schools and fire departments. Libertarians argue that<br>
+those things should be voluntarily funded, that we should not be forced into paying for them. They<br>
+argue against non-essential state interventions; that means legalizing drugs, making immigration<br>
+highly permissive, letting people carry, ending welfare, opposing military interventions [63] [162].<br>
+It's this meme, essentially [66]. Most libertarians want to transition from a strong state to a<br>
+minimal state responsable to enforce the non-aggression principle with courts and police; that's<br>
+called minarchism [67]. A minority wants to abolish the state entirely and let markets do<br>
+everything; that's called anarcho-capitalism [68].</p>
+<p>With that said you might guess that libertarians want to abolish big government-controlled offices<br>
+handing out patents and copyright, but it's not really the case because most libertarians regard IP<br>
+as a valid form of property that should be protected under the non-aggression principle [69] [70].<br>
+Ayn Rand, yes I know she didn't like libertarians, calling them a "monstrous, disgusting bunch of<br>
+people" [71], but her ideas have inspired libertarians [72] and continue to influence them to this<br>
+day [73] [74]; she said that creators should be given IP protections because mental efforts deserve<br>
+to be rewarded somehow. She emphasized those protections should be temporary, otherwise they would<br>
+paralyze the market [75]. That's true: there's a practice called patent evergreening often used in<br>
+the pharmaceutical industry. Patents are generally limited to 20 years, but companies can register<br>
+new related patents to artificially lengthen their monopolies. This is legal but it undermines<br>
+competition [76] [83]. Some libertarians do not even see IP as a valid form of property because they<br>
+point out it requires infringing on the freedom of consumers, by forbidding them to copy books for<br>
+instance [77]. Libertarians don't have a consensus on IP because they disagree on how big the state<br>
+should be and on what qualifies as property, but they generally agree that criminal sanctions for<br>
+piracy should be abolished because it's a victimless crime. Now let's see what libertarian<br>
+politicians do about this.</p>
+<p>Javier Milei, an "anarcocapitalista en la teoría y minarquista en la práctica" [78], adopted some<br>
+reforms to liberalize the Argentinian economy. In 2025, he deregulated the sociedades de gestión<br>
+colectiva, which are state-approved organizations acting as intermediaries between creators and<br>
+consumers of copyrighted material. Instead of having to go through them, creators now can sign deals<br>
+directly with clients, which is more similar to how things work in North America [79]. But Milei's<br>
+government has not signaled any intention of modifying copyright or patent laws themselves. Even if<br>
+he wanted to, he would have to convince the World Trade Organization not to retaliate, good luck<br>
+with that. Elsewhere, the Canadian Libertarian Party used to propose reviewing existing IP<br>
+regulation [80], but its current platform does not mention IP anymore [81]. The US Libertarian party<br>
+does not proposes any change to IP laws [82]. They either don't care or don't think it's realistic<br>
+to change them.</p>
+<p>A lot of people are misappropriating the word libertarian, but actual libertarianism is currently<br>
+not that popular. One explanation for that is most people think collective action is the best<br>
+solution to collective problems. Thalidomide is a medication used to treat cancer and other diseases<br>
+that causes birth defects when pregnant women take it. In the 1950s it got approved in most European<br>
+countries and caused complications on thousands of babies, but the US was largely exempt because the<br>
+FDA investigator assigned to it wanted proof that it was safe to fetal development and never<br>
+received any [88]. Governments reinforced their validation mechanisms to avoid similar cases in the<br>
+future, but libertarians argue those amplify the problem because they complicate competition and<br>
+prevent markets and civil lawsuits from resolving these issues. Here's one example: in 2015, Turing<br>
+Pharmaceuticals hiked the price of Daraprim from 13 dollars 50 cents to 750 dollars. That drug had<br>
+been approved by the FDA in 1953 and the patents have long expired, but no generic was available<br>
+because, long story short, competitors didn't think it would be profitable to get generics approved<br>
+by the FDA. It was not an IP problem; regulations favored that monopoly - inadvertently [86]. So<br>
+yeah, regulation loopholes do harm consumers and we have to patch them, but without regulations we'd<br>
+still have asbestos [84] [85], ozone layer depletion [89], DDT [90], lead paint [91]. Markets were<br>
+not quick enough to address those; time for another alternative.</p>
+<h3>II.III. Anarchism</h3>
+<p>Anarchism is a political movement that aims at abolishing unjust hierarchies [92]. That means no<br>
+state and no regulated markets, just people voluntarily self-organizing. People started proposing<br>
+that in the 19th century [93] [94] [122] and they have been... successively crushed [95] [96] [97].<br>
+There are some exceptions, the Zapatista rebel movement in Chiapas, Mexico, although it does not<br>
+label itself as anarchist, has some characteristics of that movement, like direct democracy,<br>
+collective services, promotion of indigenous rights [98], but its economy is fairly small and it<br>
+struggles to repress organized violence [99] [165]. This model has not been transposed to larger<br>
+societies and it's hard to imagine how global supply chains and high technology could work without<br>
+markets or regulations [100]. Anarchist positions have not become mainstream but they contributed to<br>
+worker's unions [121] and influenced subcultures a lot.</p>
+<p>Punk artists were anti-establishment. They created independent labels, organized their own concerts,<br>
+criticized power [101], made their own publications [102]. They relied on local communities, so they<br>
+didn't need or care about copyright protections. But as punk music became more popular and<br>
+commercially viable, some artists signed with mainstream labels, buying into the very system they<br>
+were criticizing [103]. Sellouts were met with harsh criticism, the band Crass going as far as<br>
+saying that punk was dead in 1979 [104]. Many such cases: ballroom culture [106] was appropriated by<br>
+rainbow capitalism [107]. Breaking [108] ended up at the Olympics [109]. This isn't all bad, I'm<br>
+sure a ton of stuck-up people began appreciating hip hop after seeing it alongside preppy stuff. But<br>
+the original meaning is often lost in the appropriation, and that can reinforce the power it<br>
+criticizes.</p>
+<p>This is especially relevant in technology. The open source community traces its origin to college<br>
+campuses and tech enthusiasts who created their own software instead of relying on companies [110].<br>
+Some had very strong positions against copyright and censorship: the Declaration of the Independence<br>
+of Cyberspace [111], written in 1996 by a guy who wrote lyrics for a punk singer [112], claims that<br>
+the Internet ought to remain free of any government interference. "Information wants to be free" was<br>
+the word of the day for many [113]. Others, like Linus Torvalds, developer of the Linux kernel, have<br>
+more compromising views and are willing to use proprietary software [114]. While open source<br>
+projects have become increasingly impactful, the subculture that created them has been appropriated<br>
+by tech giants that rely on unpaid labor [115] and use hacker imagery for marketing campaigns [116].<br>
+At the same time, companies contribute to open source, paying their employees to maintain it [117]<br>
+[118]. The idealistic view is that people just freely collaborate, but everyone has to get paid.<br>
+Open source contributors either work on open source for free and have a day job, or receive<br>
+donations, or monetize documentation and other add-ons, or accept contributions from tech giants.<br>
+This tension is especially obvious with OpenAPI, which was set up to create transparent AI to the<br>
+benefit of everyone but relies on increasingly shady business practices [119].</p>
+<p>Anarchists have trouble gaining power because they oppose power in the first place, but there will<br>
+always be people who create work without expecting to get paid [120] and who give money to creators<br>
+even if they are not forced to [168]. Although subcommunities can and do function without IP, that<br>
+doesn't necessarily mean it would work in large, diverse societies. But some people are willing to<br>
+give it a try.</p>
+<h3>II.IV. Pirate Parties</h3>
+<p>Pirate parties are political parties active in multiple countries that defend digital rights. The<br>
+first one started in January 2006, in Sweden, of course [123]. It got a boost in popularity later<br>
+that year when the Swedish police raided The Pirate Bay [124], an unaffiliated website that<br>
+facilitates torrenting. Which is illegal! The guys who ran that site were sent on trial and then<br>
+sent to prison after being found guilty of copyright infringement [125]. The media [126] and<br>
+political figures [127] agreed with that decision, but a lot of people disagreed and rallied around<br>
+the pirate party. Other pirate parties were set up elsewhere and even reached the European<br>
+parliament [128]. They tend focus on decreasing copyright and patent terms, reducing sentences for<br>
+infringement, advocating for more freedom of expression and government transparency. They address<br>
+excessive authority from the state <em>and</em> private companies [129].</p>
+<p>Pirate parties have to reconcile ideology with reality. A lot of their members point out that ideas<br>
+are non-rivalrous and non-scarce [130]. Copying them does not prevent their creators from continuing<br>
+to use these ideas, so they argue infringement should not be seen as morally bad. Others argue that,<br>
+without IP, there would be fewer ideas to copy because people would have less incentive to create<br>
+them. That is, a lot of these non-rivalrous ideas exist <em>because</em> of IP. That's difficult to prove<br>
+empirically because the whole planet operates under a pretty uniform IP framework. Some researchers<br>
+conclude that patents increase R&amp;D investment [131], others point out that strengthening patents<br>
+does not affect investment for some types of research [132]. You could also say that people would<br>
+create anyway without financial incentive and that IP is thus superfluous [133], but a lot of great<br>
+work has been created because their authors had the means to commit full time to it [134], and were<br>
+motivated by the prospect of success. The WTO will also watch closely if any pirate party tries to<br>
+change IP law in any way, so reforms would be difficult.</p>
+<p>The original program of the Swedish pirate party called for the abolition of all pharmaceutical<br>
+patents and proposed to drive research with government funding instead [135]. The current version is<br>
+different, saying that IP should be granted when it has "well-documented positive effects" [129],<br>
+and you can interpret it the way you want. This idea that work traditionally rewarded with IP should<br>
+be, instead, paid by the government, is quite popular among pirate parties. They often defend<br>
+universal basic income, or UBI, that's when the government gives a baseline salary to everyone<br>
+[136]. It's getting more and more talked about with automation, and if it ever becomes widespread,<br>
+it would probably change the concept of copyright because creators would no longer depend on it to<br>
+earn money. They would still want to be recognized as authors and not plagiarized though, so IP<br>
+would not disappear entirely I think. UBI has never been tried on a large scale. We don't know how<br>
+to do it and how it would impact consumption habits or productivity [137]. In Ireland, some artists<br>
+are getting paid by the government in a kind of limited UBI [138]. This is not an initiative of a<br>
+pirate party and it's not actually UBI, but it's the kind of thing they support.</p>
+<h2>III. The Future</h2>
+<p>With all that said, it's time to wonder how intellectual property will change in the future.</p>
+<h3>III.I. The Same IP Mechanisms Will Remain</h3>
+<p>Kurzum, there a three main ways to handle intellectual property. The first is private ownership, the<br>
+state gives monopolies to creators. The second is collective ownership, the state gives money to<br>
+creators through taxes and the ideas remain free. The third, I'll call 无为 (wúwéi), the state<br>
+doesn't intervene at all; ideas are created without people getting monopolies or money. The dominant<br>
+IP regime of our time is private ownership, but the other two are also relevant; think of public<br>
+research and open source. Pirate parties have been trying to reduce ownership in favor of the other<br>
+two, but more than twenty years later, they have... failed to do this. A big reason why people don't<br>
+rally behind them is that most people support IP to some extend, and believe creators deserve to be<br>
+rewarded instead of letting everyone free-ride their work. I know a ton of people disagree, but this<br>
+is the mainstream view. Another reason for that failure is reforming IP is incredibly hard. It's a<br>
+framework that spans the entire planet. Before changing things up, a majority of countries would<br>
+have to agree on how to change it. Given all that, intellectual property will probably not go away<br>
+in the next decades, but alternative models will continue to challenge this dominant regime.</p>
+<h3>III.II. Monopolies Would Exist Even Without IP</h3>
+<p>A point I wanna discuss is monopolization. In the pharmaceutical industry especially, patents do<br>
+empower companies to hike prices [139]. But monopolies emerge through other processes. Amazon<br>
+undersells competitors by dynamically adjusting its prices until they go bankrupt. Short term, this<br>
+is good for consumers; competition drives prices down, but once the competitor goes under, the<br>
+prices go back up, and if another competitor shows up, it will be defeated the same way. Tech<br>
+companies maintain an illusion of competition [140] and can also pressure consumers. Apple<br>
+inconveniences its users and third-party developers when they try alternatives to keep them locked<br>
+on its platform [141]. Nvidia uses vertical integration to reinforce its position on the market<br>
+[167]. Marketing manipulates consumers. Paracetamol, also called acetaminophen, was discovered in<br>
+the 19th century and was applied to medicine in the mid 20th century. It's inexpensive and its basic<br>
+form is free of patent, you can find it on shelves for cheap. But pharmaceutical companies have<br>
+realized they can sell it for more money if they bombard consumers with advertisement. Most people<br>
+don't know Tylenol is mostly just paracetamol, but they are willing to pay way more than its<br>
+manufacturing cost just because of brand recognition. This is information asymmetry. Consumers will<br>
+never be as knowledgeable as manufacturers, so they can bet on their ignorance and charge more than<br>
+a fair price [142]. Retail companies and airlines [143] are using, or plan to use, surveillance to<br>
+charge more money dynamically, which reduces transparency. So, would monopolies and crappy market<br>
+practices evaporate if IP is weakened or abolished? Absolutely not, this is how the system works.</p>
+<h3>III.III. Progress Will Make IP Evolve</h3>
+<p>One thing I can predict is that our definition of property will continue to evolve. Biopiracy is the<br>
+misappropriation of traditional knowledge, when pharmaceutical companies, for instance, create new<br>
+products from medicinal plants used by indigenous people. The World Intellectual Property<br>
+Organization adopted a treaty in 2024 to combat biopiracy by forcing companies to acknowledge<br>
+traditional knowledge. This had been proposed by Columbia in 1999 and indigenous groups had to fight<br>
+to have their rights recognized, but social progress eventually came around [147]. International<br>
+organizations also acknowledged that medicine should be affordable [145] and that copyrighted<br>
+material should be more easily accessible to disabled people [146]. This is all far from perfect,<br>
+but international treaties <em>can</em> be improved. If you have time. Scientific progress will also<br>
+challenge IP laws. For example, some experimental brain implants are used to manage epilepsy. The<br>
+manufacturer owns the device, so when it goes bankrupt, the implant has to get removed, even if the<br>
+patient wants to keep it. Some people have pointed out that the implant and its software should be<br>
+considered part of the patient's body, and that their body autonomy should prime over ownership laws<br>
+[144]. So implants and other new technologies could challenge our existing IP laws in the future.</p>
+<h3>III.IV. AI Changes IP But Does Not Make It Obsolete</h3>
+<p>We've now arrived at the inevitable AI segment. There are two opposing views on generative models.<br>
+A: models create new data in a process similar to how humans are inspired by artworks. B: models<br>
+simply reshuffles memorized data. We need more research into interpretability to understand what's<br>
+going on; we already have some results that support either view [148] [149] and you can select<br>
+whichever you prefer depending on your biases and business interests. But even if this is genuine<br>
+creativity, AI model outputs will remain non-copyrightable because IP is meant to reward <em>human</em><br>
+creativity [150], that's why this image will remain in public domain [151]. Another argument is that<br>
+humans themselves are not truly creative and just reshuffle previously seen data, like LLMs...<br>
+you're free to believe that but artificial neural networks do not work like human brains. They don't<br>
+have subjective experiences. At least the current ones don't. And they don't have <em>interests</em>,<br>
+unlike artists who kind of need copyright. Another issue is that most tech companies are making<br>
+money with models trained on unpaid material. In some cases, like open source software, developers<br>
+add licenses that explicitly allow using their projects to train AI models, so there's no concern<br>
+here. The problem is when companies use copyrighted images and books. The authors never consented to<br>
+this. You can argue it's fair use, but a lot of people disagree. Of course, no one expects tech<br>
+CEOs to care about consent. Also, code generation is actually useful whereas image generation is<br>
+not. Debates are far from over, but we can already say that tech companies will keep trying to erode<br>
+the rights of users and creators while reinforcing their own rights [152].</p>
+<h2>IV. What I Think of All This</h2>
+<p>What I think of all this: I think a lot of things.</p>
+<p>IP is not going away because most people think it's a good thing. Creators need to get paid, and in<br>
+capitalist economies, the public prefers giving them monopolies over tax money. Not rewarding<br>
+creators at all is seen as immoral by most people. Some say that IP is just a relic of a time whence<br>
+the economy was not free, that it's just a legal fiction, but IP keeps getting stronger. It's not a<br>
+cosmic accident, it's the natural consequence of an economic system based on private property: if<br>
+you work on something, you wanna get paid for it, even if the result is intangible. Of course, if we<br>
+set up another economic system in which creators are rewarded fairly without IP, then its abolition<br>
+would be a natural consequence. But it won't happen under this system. We've all seen theoretical<br>
+arguments on this topic for years, and public support to weaken IP has not changed. Things will stay<br>
+that way as long as no alternative is set up. That's why the proposals of pirate parties to fund<br>
+public research and UBI are more appealing than defending piracy, they are about replacing IP with<br>
+something else instead of scrapping it altogether. But would swapping patents for public research<br>
+really be an improvement? Is UBI truly viable? I think these ideas are worth trying out. Another<br>
+issue is that the international community would have to reach a consensus on loosening up IP<br>
+regulations, that sounds even more difficult.</p>
+<p>My main issue on this topic is not with IP itself, it's with <em>power</em>. Governments have often sided<br>
+with companies rather than consumers, like when drafting the semiconductor act. International<br>
+organizations take forever to make simple decisions. Tech companies rely on secrecy, surveillance,<br>
+and evergreening to extract as much wealth as they can from the working class. The US Supreme Court<br>
+has made sketchy rulings, deciding in 2013 that, while <em>genes</em> cannot be patented, <em>complementary<br>
+DNA</em> can be [153], which biologists have described as scientifically inconsistent [154]. You know<br>
+who delivered the opinion of the court? Clarence Thomas [155]. You know what's one of his favorite<br>
+book? Atlas Shrugged by Ayn Rand [156]. The idea behind IP is that the state gives temporary<br>
+monopolies to reward creativity, but when people hack the system through lobbying, or companies<br>
+exert excessive power over consumers, or incompetent government officials misinterpret science, that<br>
+social contract is breached and ingenuity gets rewarded less than trickery. The best we can do to<br>
+counter this is, I think, to decentralize power. That means more democratic representation, less<br>
+surveillance, rulers kept in check with effective counter-powers, laws that reflect the interests of<br>
+everyone. The way we can do that is by uniting over causes that benefit everyone, like supporting<br>
+other workers, using open source software, investing in public research, pressuring policymakers<br>
+against evergreening.</p>
+<p>When an idea is unpopular, it's not always because the public is ignorant or misguided, it's often<br>
+because it's just not a good idea. Reality is: intellectual property is the imperfect mechanism<br>
+we've developed over centuries to balance out the interests of creators with those of users. It is<br>
+flawed because our societies are inefficient and power is too centralized; <em>that</em> is what needs to<br>
+change first.</p>
+<h1>References</h1>
+<ul>
+<li>[1] Special 301 Report/1989. <a href="https://en.wikisource.org/wiki/Special_301_Report/1989" rel="nofollow">https://en.wikisource.org/wiki/Special_301_Report/1989</a>
+<ul>
+<li>PDF available at <a href="https://ustr.gov/sites/default/files/1989%20Special%20301%20Report.pdf" rel="nofollow">https://ustr.gov/sites/default/files/1989%20Special%20301%20Report.pdf</a></li>
+</ul>
+</li>
+<li>[2] N. Rajagopala Ayyangar. "Report on the Revision of the Patents Law" (1959).<br>
+<a href="https://ipindia.gov.in/writereaddata/Portal/Images/pdf/1959-_Justice_N_R_Ayyangar_committee_report.pdf" rel="nofollow">https://ipindia.gov.in/writereaddata/Portal/Images/pdf/1959-_Justice_N_R_Ayyangar_committee_report.pdf</a>
+<ul>
+<li>Paragraph 26 on page 14 explains how foreign companies dominated patents in India:<br>
+"The Patents Enquiry Committee have in their interim report [...] set out the figures of patents<br>
+granted in various countries during the period 1930—37 together with the proportion of grants to<br>
+its own nationals as compared with the number granted to foreigners. [...]. During this period<br>
+the proportion of grants to Indians and foreigners is stated to be roughly 1:9. Even with the<br>
+attainment of independence and rapid growth of scientific education by the opening of more<br>
+institutions for post-graduate training and the establishment of several national laboratories,<br>
+the proportion of Indian to foreign patents still remains substantially the same as during the<br>
+earlier period, and is roughly 1:2 [...]. This is, however, without taking into account the<br>
+economic or industrial or scientific importance of the inventions. If this factor were taken<br>
+into account [...], our nationals would appear to be at even less advantage"</li>
+<li>Paragraph 101 on page 39 explains the rationale behind removing product patents:<br>
+"The reason for this state of law is stated to be that the denial of product claims is necessary<br>
+in order that such important articles of daily use as medicine or food which are vital to<br>
+the health of the community should be made available to every one at reasonable prices and<br>
+that no monopoly should be granted in respect of such articles. It is considered that the refusal<br>
+of product patents would enlarge the area of competition and thus result in the production of<br>
+these articles in sufficient quantity and at the lowest possible cost to the public."</li>
+</ul>
+</li>
+<li>[3] Intellectual Property India. "History of Indian Patent System" (consulted on January 18, 2026).<br>
+<a href="https://ipindia.gov.in/patents/history_of_indian_patent_system" rel="nofollow">https://ipindia.gov.in/patents/history_of_indian_patent_system</a></li>
+<li>[4] Ben Finney. "Nautical Cartography and Traditional Navigation in Oceania" (1987).<br>
+<a href="https://press.uchicago.edu/books/hoc/HOC_V2_B3/HOC_VOLUME2_Book3_chapter13.pdf" rel="nofollow">https://press.uchicago.edu/books/hoc/HOC_V2_B3/HOC_VOLUME2_Book3_chapter13.pdf</a>
+<ul>
+<li>The other chapters of the book are available at<br>
+<a href="https://press.uchicago.edu/books/HOC/HOC_V2_B3/Volume2_Book3.html" rel="nofollow">https://press.uchicago.edu/books/HOC/HOC_V2_B3/Volume2_Book3.html</a></li>
+</ul>
+</li>
+<li>[5] David Lewis. "We, the Navigators, The Ancient Art of Landfinding in the Pacific" (1972).
+<ul>
+<li>This paragraph on page 17 talks about how secretive navigators were:<br>
+"Not that men fully trained in these important arts<br>
+would necessarily have revealed their knowledge even if<br>
+asked. We have evidence from widely separated parts of<br>
+Oceania that navigational lore was usually restricted to a<br>
+few and often considered secret, so that in the Marshalls<br>
+it was 'strongly and religiously forbidden to divulge any-<br>
+thing concerning this art to the people' (Winkler, 1901:<br>
+505), and in the Tahitian area there were 'few men who<br>
+preserve the national traditions' (Forster, G., 1777: vol.<br>
+II, 148). It is questionable whether Tupaia himself would<br>
+have been so co-operative had he not been in exile and<br>
+deprived of his proper position."<br>
+Tupaia was a Polynesian navigator who assisted Lewis in writing the book.</li>
+<li>For Polynesian perspectives on navigation, you can visit<br>
+<a href="https://worldwidevoyage.hokulea.com/education-at-sea/polynesian-navigation/polynesian-non-instrument-wayfinding/" rel="nofollow">https://worldwidevoyage.hokulea.com/education-at-sea/polynesian-navigation/polynesian-non-instrument-wayfinding/</a> (English)<br>
+and <a href="https://www.pacific-pirates-media.com/tout-savoir-sur-la-navigation-ancestrale-polynesienne-partie-1-le-peuplement-du-pacifique-grace-a-la-navigation-traditionnelle/" rel="nofollow">https://www.pacific-pirates-media.com/tout-savoir-sur-la-navigation-ancestrale-polynesienne-partie-1-le-peuplement-du-pacifique-grace-a-la-navigation-traditionnelle/</a><br>
+(French).</li>
+</ul>
+</li>
+<li>[6] Jared H. "Mozart &amp; Music Piracy in 1770: The Vatican’s Miserere" (2021).<br>
+<a href="https://ledgernote.com/blog/interesting/mozart-music-piracy/" rel="nofollow">https://ledgernote.com/blog/interesting/mozart-music-piracy/</a>
+<ul>
+<li>After Mozart transcribed the piece, hit father published the sheet music. The Pope was so<br>
+impressed that he let them get away with that, so they didn't face consequences.</li>
+</ul>
+</li>
+<li>[7] Comune di Venezia. "Venezia tra invenzioni e ingegno: dalle origini allo sviluppo del brevetto" (2022).<br>
+<a href="https://www.veneziaserenissima.it/it/articolo/venezia-invenzioni-ingegno-dalle-origini-allo-sviluppo-del-brevetto" rel="nofollow">https://www.veneziaserenissima.it/it/articolo/venezia-invenzioni-ingegno-dalle-origini-allo-sviluppo-del-brevetto</a>
+<ul>
+<li>Several other sources, like <a href="https://historywalksvenice.com/article/the-republic-of-venice/venetian-patent-law-1474/" rel="nofollow">https://historywalksvenice.com/article/the-republic-of-venice/venetian-patent-law-1474/</a>,<br>
+agree that the Venician patent system is the oldest patent system in the world.</li>
+</ul>
+</li>
+<li>[8] Meriam-Webster Dictionary. "patent" (consulted January 19, 2026).<br>
+<a href="https://www.merriam-webster.com/dictionary/patent#word-history" rel="nofollow">https://www.merriam-webster.com/dictionary/patent#word-history</a></li>
+<li>[9] Britannica. "letters patent" (consulted January 19, 2026).<br>
+<a href="https://www.britannica.com/topic/letters-patent" rel="nofollow">https://www.britannica.com/topic/letters-patent</a></li>
+<li>[10] Véronique Prat. "La galerie des Glaces : Versailles revisité" (2007).<br>
+<a href="https://www.lefigaro.fr/lefigaromagazine/2007/06/15/01006-20070615ARTMAG90464-versailles_revisite.php" rel="nofollow">https://www.lefigaro.fr/lefigaromagazine/2007/06/15/01006-20070615ARTMAG90464-versailles_revisite.php</a></li>
+<li>[11] Guitard Eugène-Humbert. "Le chocolat médicament" (1930). Le courrier médical.<br>
+<a href="https://www.persee.fr/doc/pharm_0035-2349_1930_num_18_70_9890_t1_0183_0000_2" rel="nofollow">https://www.persee.fr/doc/pharm_0035-2349_1930_num_18_70_9890_t1_0183_0000_2</a>
+<ul>
+<li>This document <a href="http://club.amis.vin.free.fr/Chocolat.pdf" rel="nofollow">http://club.amis.vin.free.fr/Chocolat.pdf</a> explains that the monopoly was given for<br>
+29 years (!) to David Chaliou, an officer of the Queen.</li>
+</ul>
+</li>
+<li>[12] JJ Harbster and Nate Smith. "The Peripatetic U. S. Patent Office: Locations 1790 to Present" (2020)<br>
+<a href="https://blogs.loc.gov/inside_adams/2020/07/the-patent-office/" rel="nofollow">https://blogs.loc.gov/inside_adams/2020/07/the-patent-office/</a></li>
+<li>[13] Serge Lapointe. "L’histoire des brevets" (2000). Les cahiers de la propriété intellectuelle.<br>
+<a href="https://www.lescpi.ca/articles/v12/n3/lhistoire-des-brevets/" rel="nofollow">https://www.lescpi.ca/articles/v12/n3/lhistoire-des-brevets/</a></li>
+<li>[14] World Intellectual Property Organization. "Frequently Asked Questions: Patents"<br>
+(consulted on January 19, 2026). <a href="https://www.wipo.int/en/web/patents/faq_patents#accordion__collapse__04" rel="nofollow">https://www.wipo.int/en/web/patents/faq_patents#accordion__collapse__04</a></li>
+<li>[15] Katharina de la Durantaye. "THE ORIGINS OF THE PROTECTION OF LITERARY AUTHORSHIP IN ANCIENT ROME" (2007).<br>
+<a href="https://www.bu.edu/law/journals-archive/international/volume25n1/documents/37-112.pdf" rel="nofollow">https://www.bu.edu/law/journals-archive/international/volume25n1/documents/37-112.pdf</a>
+<ul>
+<li>Full copyright notice available at<br>
+<a href="https://www.semanticscholar.org/paper/Origins-of-the-Protection-of-Literary-Authorship-in-Durantaye/6780c58ed47474dbe70380d5ce41167b573118f7" rel="nofollow">https://www.semanticscholar.org/paper/Origins-of-the-Protection-of-Literary-Authorship-in-Durantaye/6780c58ed47474dbe70380d5ce41167b573118f7</a></li>
+</ul>
+</li>
+<li>[16] Nianhua Feng. "Copyright protection in song China (960-1279)" (2005). University of British Columbia.<br>
+<a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/831/items/1.0092032" rel="nofollow">https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/831/items/1.0092032</a></li>
+<li>[17] Harlan R. Johnson. "Printing and Censorship" (2023). EBSCO Knowledge Advantage.<br>
+<a href="https://www.ebsco.com/research-starters/literature-and-writing/printing-and-censorship" rel="nofollow">https://www.ebsco.com/research-starters/literature-and-writing/printing-and-censorship</a></li>
+<li>[18] "An Act for the Encouragement of Learning, by Vesting the Copies of<br>
+Printed Books in the Authors or Purchasers of such Copies, during the<br>
+Times therein mentioned." (The Statute of Anne) (1710, Consulted on January 19, 2026).<br>
+<a href="https://archive.org/stream/thestatuteofanne33333gut/33333.txt" rel="nofollow">https://archive.org/stream/thestatuteofanne33333gut/33333.txt</a></li>
+<li>[19] Government of Canada. "A guide to copyright" (Consulted on Januaru 19, 2026).<br>
+<a href="https://ised-isde.canada.ca/site/canadian-intellectual-property-office/en/guide-copyright" rel="nofollow">https://ised-isde.canada.ca/site/canadian-intellectual-property-office/en/guide-copyright</a></li>
+<li>[20] Frank Thadeusz. "The Real Reason for Germany's Industrial Expansion?" (2010). Spiegel International.<br>
+<a href="https://www.spiegel.de/international/zeitgeist/no-copyright-law-the-real-reason-for-germany-s-industrial-expansion-a-710976.html" rel="nofollow">https://www.spiegel.de/international/zeitgeist/no-copyright-law-the-real-reason-for-germany-s-industrial-expansion-a-710976.html</a></li>
+<li>[21] United States Patent and Trademark Office. "PING-PONG" (Consulted January 19, 2026).<br>
+<a href="https://uspto.report/TM/71564016" rel="nofollow">https://uspto.report/TM/71564016</a></li>
+<li>[22] Zeid Kaddoura. "Why Do They Call Table Tennis Ping Pong?" (2022).The Racket Life.<br>
+<a href="https://theracketlife.com/why-do-they-call-table-tennis-ping-pong/" rel="nofollow">https://theracketlife.com/why-do-they-call-table-tennis-ping-pong/</a></li>
+<li>[23] Justia Trademarks. "AIRFRYER - Trademark Details". <a href="https://trademarks.justia.com/791/26/airfryer-79126143.html" rel="nofollow">https://trademarks.justia.com/791/26/airfryer-79126143.html</a></li>
+<li>[24] Michael Jones. "Genericide: The Story of Trampoline" (2024).<br>
+<a href="https://www.jonesipl.com/article/genericide-the-story-of-trampoline/" rel="nofollow">https://www.jonesipl.com/article/genericide-the-story-of-trampoline/</a></li>
+<li>[25] LEGO. "Fair Play" (Consulted January 19, 2026). <a href="https://www.lego.com/en-us/legal/notices-and-policies/fair-play" rel="nofollow">https://www.lego.com/en-us/legal/notices-and-policies/fair-play</a></li>
+<li>[26] "VELCRO® Brand Trademark Guidelines" (Consulted January 19, 2026).<br>
+<a href="https://www.velcro.com/original-thinking/the-velcro-brand-trademark-guidelines/" rel="nofollow">https://www.velcro.com/original-thinking/the-velcro-brand-trademark-guidelines/</a></li>
+<li>[27] Government of Canada. "What is a trade secret?" (Consulted January 19, 2026).<br>
+<a href="https://ised-isde.canada.ca/site/canadian-intellectual-property-office/en/what-intellectual-property/what-trade-secret" rel="nofollow">https://ised-isde.canada.ca/site/canadian-intellectual-property-office/en/what-intellectual-property/what-trade-secret</a></li>
+<li>[28] Chris Harris. "The A to Z of fried chicken" (2012). The Times.<br>
+<a href="https://www.thetimes.com/travel/destinations/uk-travel/england/london-travel/the-a-to-z-of-fried-chicken-nrmm3qn0gg7" rel="nofollow">https://www.thetimes.com/travel/destinations/uk-travel/england/london-travel/the-a-to-z-of-fried-chicken-nrmm3qn0gg7</a></li>
+<li>[29] Jay Jones. "KFC recipe revealed? Tribune shown family scrapbook with 11 herbs and spices." (2016). Chicago Tribune.<br>
+<a href="https://www.chicagotribune.com/2016/08/19/kfc-recipe-revealed-tribune-shown-family-scrapbook-with-11-herbs-and-spices/" rel="nofollow">https://www.chicagotribune.com/2016/08/19/kfc-recipe-revealed-tribune-shown-family-scrapbook-with-11-herbs-and-spices/</a></li>
+<li>[30] Jonathan Stempel. "Ex-Google engineer faces new US charges he stole AI secrets for Chinese companies" (2025). Reuters.<br>
+<a href="https://www.reuters.com/legal/ex-google-engineer-faces-new-us-charges-he-stole-ai-secrets-chinese-companies-2025-02-05/" rel="nofollow">https://www.reuters.com/legal/ex-google-engineer-faces-new-us-charges-he-stole-ai-secrets-chinese-companies-2025-02-05/</a></li>
+<li>[31] COPYRIGHT PROTECTION FOR SEMICONDUCTOR CHIPS HEARINGS (1983).<br>
+<a href="https://ipmall.law.unh.edu/sites/default/files/hosted_resources/lipa/trademarks/Copyright%20Protection%20for%20Semiconductor%20Chips,%20Subcomm.%20%28Aug.%203%20AND%20Dec.%201,%201983%29.pdf" rel="nofollow">https://ipmall.law.unh.edu/sites/default/files/hosted_resources/lipa/trademarks/Copyright%20Protection%20for%20Semiconductor%20Chips,%20Subcomm.%20%28Aug.%203%20AND%20Dec.%201,%201983%29.pdf</a>
+<ul>
+<li>This section on page 38 explains Intel's main issue:<br>
+"Mr. KASTENMEIER. Obviously, it is easier to remove these layers,<br>
+these etched layers, than it is to design it. But it is still not easy for<br>
+a pirate to do an entire chip, is it?<br>
+Mr. DUNLAP (Intel representative). It's relatively straightforward. A chip—let's take<br>
+that chip there, which maybe would cost you $4 million to design,<br>
+the pirate can do it for $100,000."</li>
+</ul>
+</li>
+<li>[32] Legal Information Institute. "17 U.S. Code § 302 - Duration of copyright: Works created on or after January 1, 1978". Cornell University.<br>
+<a href="https://www.law.cornell.edu/uscode/text/17/302" rel="nofollow">https://www.law.cornell.edu/uscode/text/17/302</a>
+<ul>
+<li>Check <a href="https://en.wikipedia.org/wiki/Copyright_status_of_The_Wonderful_Wizard_of_Oz_and_related_works_in_the_United_States" rel="nofollow">https://en.wikipedia.org/wiki/Copyright_status_of_The_Wonderful_Wizard_of_Oz_and_related_works_in_the_United_States</a> for an example</li>
+</ul>
+</li>
+<li>[33] Wikipedia. "Term of patent in the United States" (Consulted January 20, 2026).<br>
+<a href="https://en.wikipedia.org/wiki/Term_of_patent_in_the_United_States#History" rel="nofollow">https://en.wikipedia.org/wiki/Term_of_patent_in_the_United_States#History</a></li>
+<li>[34] World Intellectual Property Organization. "Berne Convention for the Protection of Literary and Artistic Works" (Consulted January 20, 2026).<br>
+<a href="https://www.wipo.int/en/web/treaties/ip/berne/index" rel="nofollow">https://www.wipo.int/en/web/treaties/ip/berne/index</a></li>
+<li>[35] World Intellectual Property Organization. "Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS Agreement)"<br>
+(Consulted January 20, 2026). <a href="https://www.wipo.int/wipolex/en/treaties/details/231" rel="nofollow">https://www.wipo.int/wipolex/en/treaties/details/231</a></li>
+<li>[36] Government of Canada. "Industrial designs guide" (Consulted January 20, 2026).<br>
+<a href="https://ised-isde.canada.ca/site/canadian-intellectual-property-office/en/industrial-designs/industrial-designs-guide#Section1" rel="nofollow">https://ised-isde.canada.ca/site/canadian-intellectual-property-office/en/industrial-designs/industrial-designs-guide#Section1</a></li>
+<li>[37] WIPO Magazine. "Famous Appellations of Origin" (2008)<br>
+<a href="https://www.wipo.int/en/web/wipo-magazine/articles/famous-appellations-of-origin-36566" rel="nofollow">https://www.wipo.int/en/web/wipo-magazine/articles/famous-appellations-of-origin-36566</a></li>
+<li>[38] Government of Canada. "Plant Breeders' Rights Office" (Consulted January 20, 2026).<br>
+<a href="https://inspection.canada.ca/en/plant-varieties/plant-breeders-rights" rel="nofollow">https://inspection.canada.ca/en/plant-varieties/plant-breeders-rights</a></li>
+<li>[39] United Nations. "Universal Declaration of Human Rights" (Consulted January 20, 2026).<br>
+<a href="https://www.un.org/en/about-us/universal-declaration-of-human-rights" rel="nofollow">https://www.un.org/en/about-us/universal-declaration-of-human-rights</a>
+<ul>
+<li>I refer specifically to the second point of article 27: "Everyone has the right to the<br>
+protection of the moral and material interests resulting from any scientific, literary or<br>
+artistic production of which he is the author."</li>
+</ul>
+</li>
+<li>[40] Karl Marx and Friedrich Engels. "Manifesto of the Communist Party" (1848).
+<ul>
+<li>German version: <a href="https://www.marxists.org/deutsch/archiv/marx-engels/1848/manifest/index.htm" rel="nofollow">https://www.marxists.org/deutsch/archiv/marx-engels/1848/manifest/index.htm</a></li>
+<li>French version: <a href="https://www.marxists.org/francais/marx/works/1847/00/kmfe18470000.htm" rel="nofollow">https://www.marxists.org/francais/marx/works/1847/00/kmfe18470000.htm</a></li>
+<li>English version: <a href="https://www.marxists.org/archive/marx/works/1848/communist-manifesto/index.htm" rel="nofollow">https://www.marxists.org/archive/marx/works/1848/communist-manifesto/index.htm</a></li>
+</ul>
+</li>
+<li>[41] Svitlana Lebedenko. "Open innovation under authoritarianism: The case of the Soviet Union" (2024).<br>
+The Journal of World Intellectual Property. <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jwip.12318" rel="nofollow">https://onlinelibrary.wiley.com/doi/full/10.1111/jwip.12318</a>
+<ul>
+<li>Image of an author's certificate: <a href="https://ru.wikipedia.org/wiki/%D0%90%D0%B2%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B5_%D1%81%D0%B2%D0%B8%D0%B4%D0%B5%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%BE#/media/%D0%A4%D0%B0%D0%B9%D0%BB:Burba-a-a-avt-svid.jpg" rel="nofollow">https://ru.wikipedia.org/wiki/%D0%90%D0%B2%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B5_%D1%81%D0%B2%D0%B8%D0%B4%D0%B5%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%BE#/media/%D0%A4%D0%B0%D0%B9%D0%BB:Burba-a-a-avt-svid.jpg</a></li>
+</ul>
+</li>
+<li>[42] Cynthia Vuille Stewart. "TRADEMARKS IN RUSSIA: MAKING AND PROTECTING YOUR MARK" (1996).<br>
+Texas Intellectual Property Law Journal. <a href="https://tiplj.org/wp-content/uploads/Volumes/v5/v5p1.pdf" rel="nofollow">https://tiplj.org/wp-content/uploads/Volumes/v5/v5p1.pdf</a></li>
+<li>[43] Jocelyn Bosse and Johanna Dahlin. "Spectres of Intellectual Property in the Soviet Union: The Development and Recognition of the Inventor’s Certificate" (2023).<br>
+De Gruyter. <a href="https://www.degruyterbrill.com/document/doi/10.1515/pol-2023-2022/html" rel="nofollow">https://www.degruyterbrill.com/document/doi/10.1515/pol-2023-2022/html</a></li>
+<li>[44] Netherlands Enterprise Agency. "A Short History of Patents in the Netherlands and Europe" (2022).<br>
+<a href="https://english.rvo.nl/topics/octrooien-ofwel-patenten/over-ocnl/history" rel="nofollow">https://english.rvo.nl/topics/octrooien-ofwel-patenten/over-ocnl/history</a></li>
+<li>[45] NASA. "April 1961 – First Human Entered Space" (conuslted January 21, 2026). <a href="https://www.nasa.gov/image-article/april-1961-first-human-entered-space/" rel="nofollow">https://www.nasa.gov/image-article/april-1961-first-human-entered-space/</a></li>
+<li>[46] Wikipedia. "Lunokhod 1" (conuslted January 21, 2026). <a href="https://en.wikipedia.org/wiki/Lunokhod_1" rel="nofollow">https://en.wikipedia.org/wiki/Lunokhod_1</a></li>
+<li>[47] John Uri. "50 Years Ago: Launch of Salyut, the World’s First Space Station" (2021). NASA.<br>
+<a href="https://www.nasa.gov/missions/station/50-years-ago-launch-of-salyut-the-worlds-first-space-station/" rel="nofollow">https://www.nasa.gov/missions/station/50-years-ago-launch-of-salyut-the-worlds-first-space-station/</a></li>
+<li>[48] ITER. "L'avènement des tokamaks" (2018). <a href="https://www.iter.org/fr/mag/11/lavenement-tokamaks" rel="nofollow">https://www.iter.org/fr/mag/11/lavenement-tokamaks</a></li>
+<li>[49] Aram Ter-Ghazaryan. "Computers in the USSR: A story of missed opportunities" (2014). Russia Beyond.<br>
+<a href="https://www.rbth.com/science_and_tech/2014/09/24/computers_in_the_ussr_a_story_of_missed_opportunities_40073.html" rel="nofollow">https://www.rbth.com/science_and_tech/2014/09/24/computers_in_the_ussr_a_story_of_missed_opportunities_40073.html</a></li>
+<li>[50] Leonard Kukić. "Technical change and the postwar slowdown in Soviet economic growth in a long run perspective, 1885–2019" (2023).<br>
+The Economic History Review. <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ehr.13284" rel="nofollow">https://onlinelibrary.wiley.com/doi/full/10.1111/ehr.13284</a></li>
+<li>[51] <a href="https://en.prolewiki.org/wiki/Library:Vladimir_Lenin/The_New_Economic_Policy_and_the_tasks_of_the_political_education_departments" rel="nofollow">https://en.prolewiki.org/wiki/Library:Vladimir_Lenin/The_New_Economic_Policy_and_the_tasks_of_the_political_education_departments</a></li>
+<li>[52] <a href="https://baike.baidu.com/item/%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E9%A6%96%E5%85%88%E8%A6%81%E5%8F%91%E5%B1%95%E7%94%9F%E4%BA%A7%E5%8A%9B/65699315" rel="nofollow">https://baike.baidu.com/item/%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E9%A6%96%E5%85%88%E8%A6%81%E5%8F%91%E5%B1%95%E7%94%9F%E4%BA%A7%E5%8A%9B/65699315</a>
+<ul>
+<li>"第二，不管你搞什么，一定要有利于发展生产力。发展生产力要讲究经济效果。只有在发展生产力的基础上才能随之逐步增加人民的收入。" means<br>
+"Second, no matter what we do, we must increase productive forces. While increasing productive<br>
+forces, we must emphasize economic productivity. It is only by increasing the basis of<br>
+productive forces that we can gradually increase the income of the population."</li>
+</ul>
+</li>
+<li>[53] Wikipedia. "List of communist states" (consulted January 21, 2026). <a href="https://en.wikipedia.org/wiki/List_of_communist_states" rel="nofollow">https://en.wikipedia.org/wiki/List_of_communist_states</a></li>
+<li>[54] Peter K Yu. "When the Chinese intellectual property system hits 35" (2018). Elgar Online.<br>
+<a href="https://www.elgaronline.com/view/journals/qmjip/8-1/qmjip.2018.01.01.xml" rel="nofollow">https://www.elgaronline.com/view/journals/qmjip/8-1/qmjip.2018.01.01.xml</a></li>
+<li>[55] Sebastian Furness. "The rise of Ozempic: how surprise discoveries and lizard venom led to a new class of weight-loss drugs" (2024).<br>
+The University of Queensland, School of Biomedical Sciences.<br>
+<a href="https://biomedical-sciences.uq.edu.au/article/2024/04/rise-ozempic-how-surprise-discoveries-and-lizard-venom-led-new-class-weight-loss-drugs" rel="nofollow">https://biomedical-sciences.uq.edu.au/article/2024/04/rise-ozempic-how-surprise-discoveries-and-lizard-venom-led-new-class-weight-loss-drugs</a></li>
+<li>[56] Katie Tarasov. "Nvidia CEO Jensen Huang’s big bet on A.I. is paying off as his core technology powers ChatGPT" (2023). CNBC.<br>
+<a href="https://www.cnbc.com/2023/03/07/nvidia-grew-from-gaming-to-ai-giant-and-now-powering-chatgpt.html" rel="nofollow">https://www.cnbc.com/2023/03/07/nvidia-grew-from-gaming-to-ai-giant-and-now-powering-chatgpt.html</a></li>
+<li>[57] Barry M. Leiner et al. "A Brief History of the Internet" (1997). The Internet Society.<br>
+<a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/" rel="nofollow">https://www.internetsociety.org/internet/history-internet/brief-history-internet/</a></li>
+<li>[58] Sources for each global satellite navigation system:
+<ul>
+<li>GPS: <a href="https://en.wikipedia.org/wiki/Global_Positioning_System" rel="nofollow">https://en.wikipedia.org/wiki/Global_Positioning_System</a>, see also <a href="https://www.britannica.com/biography/Gladys-West" rel="nofollow">https://www.britannica.com/biography/Gladys-West</a></li>
+<li>GLONASS: <a href="https://en.wikipedia.org/wiki/GLONASS" rel="nofollow">https://en.wikipedia.org/wiki/GLONASS</a></li>
+<li>北斗 (BeiDou): <a href="https://en.wikipedia.org/wiki/BeiDou_Navigation_Satellite_System" rel="nofollow">https://en.wikipedia.org/wiki/BeiDou_Navigation_Satellite_System</a></li>
+<li>Galileo: <a href="https://en.wikipedia.org/wiki/Galileo_(satellite_navigation)" rel="nofollow">https://en.wikipedia.org/wiki/Galileo_(satellite_navigation)</a></li>
+</ul>
+</li>
+<li>[59] National Human Genome Research Institute. "Human Genome Project Timeline" (2022).<br>
+<a href="https://www.genome.gov/human-genome-project/timeline" rel="nofollow">https://www.genome.gov/human-genome-project/timeline</a></li>
+<li>[60] US Trade and Development Agency. "FACT SHEET: USTDA Civil Nuclear Energy Programming" (consulted January 21, 2026).<br>
+<a href="https://www.ustda.gov/fact-sheet-ustda-civil-nuclear-energy-programming/" rel="nofollow">https://www.ustda.gov/fact-sheet-ustda-civil-nuclear-energy-programming/</a></li>
+<li>[61] NASA. "Images and Media" (consulted January 21, 2026). <a href="https://www.nasa.gov/nasa-brand-center/images-and-media/" rel="nofollow">https://www.nasa.gov/nasa-brand-center/images-and-media/</a></li>
+<li>[62] National Center for Biotechnological Information. "Genome Data Viewer". <a href="https://www.ncbi.nlm.nih.gov/gdv/" rel="nofollow">https://www.ncbi.nlm.nih.gov/gdv/</a></li>
+<li>[63] Definitions of libertarianism I gathered, they all identify freedom / liberty as its central value.
+<ul>
+<li>Standford Encyclopedia of Philosophy uses "freedom": <a href="https://plato.stanford.edu/entries/libertarianism/" rel="nofollow">https://plato.stanford.edu/entries/libertarianism/</a></li>
+<li>Britannica uses "liberty": <a href="https://www.britannica.com/topic/libertarianism-politics" rel="nofollow">https://www.britannica.com/topic/libertarianism-politics</a></li>
+<li>Other languages use the equivalent of freedom <a href="https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/26561205/libertarianisme" rel="nofollow">https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/26561205/libertarianisme</a><br>
+(Francophone sources often identify libertarianism as a "political philosophy of American origin")</li>
+</ul>
+</li>
+<li>[64] The Mises Institute. "Principle of non-aggression" (consulted January 21, 2026).<br>
+<a href="https://wiki.mises.org/wiki/Principle_of_non-aggression#Historical_formulations_and_background" rel="nofollow">https://wiki.mises.org/wiki/Principle_of_non-aggression#Historical_formulations_and_background</a></li>
+<li>[65] Matthew 7:12 (can view at <a href="https://www.codexsinaiticus.org/en/" rel="nofollow">https://www.codexsinaiticus.org/en/</a>)
+<ul>
+<li>The original verse goes: "παντα οϲα εαν θεληται ϊνα ποιωϲι ϋμειν οι ανοι ουτωϲ και ϋμιϲ ποιειται αυτοιϲ ουτοϲ γαρ εϲτιν ο νομοϲ και οι προφηται"</li>
+<li>Translated as "Therefore all things whatsoever ye would that men should do to you, do ye even so to them: for this is the law and the prophets."<br>
+in King James Version. (<a href="https://www.biblegateway.com/passage/?search=Matthew%207:12&amp;version=KJV" rel="nofollow">https://www.biblegateway.com/passage/?search=Matthew%207:12&amp;version=KJV</a>)</li>
+</ul>
+</li>
+<li>[66] <a href="https://www.facciabuco.com/post/16557148j2/territories-where-legally-married-gay-couples-can-legally-buy-rifles-to-protect-their-legally-owned-marijuana-plants.html" rel="nofollow">https://www.facciabuco.com/post/16557148j2/territories-where-legally-married-gay-couples-can-legally-buy-rifles-to-protect-their-legally-owned-marijuana-plants.html</a></li>
+<li>[67] David S. D’Amato. "Minarchists and Anarchists in Libertarian History" (2018). Libertarianism.org.<br>
+<a href="https://www.libertarianism.org/columns/minarchists-anarchists-in-libertarian-history" rel="nofollow">https://www.libertarianism.org/columns/minarchists-anarchists-in-libertarian-history</a></li>
+<li>[68] Daniel Costa. "anarcho-capitalism" (consulted January 21, 2026). Britannica Money.<br>
+<a href="https://www.britannica.com/money/anarcho-capitalism" rel="nofollow">https://www.britannica.com/money/anarcho-capitalism</a></li>
+<li>[69] Cato Institute. "Intellectual Property and First Principles" (2016).<br>
+<a href="https://www.cato.org/events/intellectual-property-first-principles" rel="nofollow">https://www.cato.org/events/intellectual-property-first-principles</a></li>
+<li>[70] Jonathan M. Barnett. "The Perils of ‘Free’ Information" (2025). Cato Institute.<br>
+<a href="https://www.cato.org/regulation/spring-2025/perils-free-information" rel="nofollow">https://www.cato.org/regulation/spring-2025/perils-free-information</a></li>
+<li>[71] Jennifer Burns. "Ayn Rand's Long Journey to the Heart of American Politics" (2012). The New Republic.<br>
+<a href="https://newrepublic.com/article/106176/ayn-rands-long-journey-heart-american-politics" rel="nofollow">https://newrepublic.com/article/106176/ayn-rands-long-journey-heart-american-politics</a></li>
+<li>[72] Chris Matthew Sciabarra. "Rand, Ayn (1905-1982)" (2008). Libertarianism.org.<br>
+<a href="https://www.libertarianism.org/topics/rand-ayn-1905-1982" rel="nofollow">https://www.libertarianism.org/topics/rand-ayn-1905-1982</a></li>
+<li>[73] Clark Davis. "Ayn Rand Studies on Campus, Courtesy of BB&amp;T" (2008). NPR.<br>
+<a href="https://www.npr.org/2008/05/06/90104091/ayn-rand-studies-on-campus-courtesy-of-bb-t" rel="nofollow">https://www.npr.org/2008/05/06/90104091/ayn-rand-studies-on-campus-courtesy-of-bb-t</a></li>
+<li>[74] Cato Institute. "John A. Allison" (consulted January 21, 2026).<br>
+<a href="https://www.cato.org/people/john-allison" rel="nofollow">https://www.cato.org/people/john-allison</a></li>
+<li>[75] Ayn Rand. "Capitalism: The Unknown Ideal" (1966). New American Library.
+<ul>
+<li>You can read relevant excerpts at <a href="https://en.wikipedia.org/wiki/Libertarian_perspectives_on_intellectual_property#Ayn_Rand" rel="nofollow">https://en.wikipedia.org/wiki/Libertarian_perspectives_on_intellectual_property#Ayn_Rand</a></li>
+<li>Page 125: "Every type of productive work involves a combination of mental and of physical<br>
+effort: of thought and of physical action to translate that thought into a material form. The<br>
+proportion of these two elements varies in different types of work. At the lowest end of the<br>
+scale, the mental effort required to perform unskilled manual labor is minimal. At the other<br>
+end, what the patent and copyright laws acknowledge is the paramount role of mental effort in<br>
+the production of material values; these laws protect the mind's contribution in its purest form<br>
+the origination of an idea. The subject of patents and copyrights is intellectual property. ...<br>
+Thus the law establishes the property right of a mind to that which it has brought in existence"</li>
+<li>Page 127: "If it were held in perpetuity, it would lead to the opposite of the very principle on<br>
+which it is based: it would lead, not to the earned reward of achievement, but to the unearned<br>
+support of parasitism. It would become a cumulative lien on the production of unborn<br>
+generations, which would ultimately paralyze them."</li>
+</ul>
+</li>
+<li>[76] Michael A. Carrier and Steve D. Shadowen. "Product Hopping: A New Framework" (2017). Notre Dame Law Review.<br>
+<a href="https://scholarship.law.nd.edu/ndlr/vol92/iss1/4/" rel="nofollow">https://scholarship.law.nd.edu/ndlr/vol92/iss1/4/</a></li>
+<li>[77] N. Stephan Kinsella. "Against Intellectual Property" (2008). Mises Institute.<br>
+<a href="https://web.archive.org/web/20141216183703/http://library.freecapitalists.org/books/Stephan%20Kinsella/Against%20Intellectual%20Property.pdf" rel="nofollow">https://web.archive.org/web/20141216183703/http://library.freecapitalists.org/books/Stephan%20Kinsella/Against%20Intellectual%20Property.pdf</a></li>
+<li>[78] iProfesional. "Javier Milei, anarcocapitalista en la teoría y minarquista en la práctica" (2021).<br>
+<a href="https://www.iprofesional.com/politica/347905-milei-capitalista-en-la-teoria-y-minarquista-en-la-practica" rel="nofollow">https://www.iprofesional.com/politica/347905-milei-capitalista-en-la-teoria-y-minarquista-en-la-practica</a></li>
+<li>[79] Agencia EFE. "En Argentina: el Gobierno de Milei desregula el cobro de los derechos de autor" (2025). El Magazín Cultural.<br>
+<a href="https://www.elespectador.com/el-magazin-cultural/en-argentina-el-gobierno-de-milei-desregula-el-cobro-de-los-derechos-de-autor/" rel="nofollow">https://www.elespectador.com/el-magazin-cultural/en-argentina-el-gobierno-de-milei-desregula-el-cobro-de-los-derechos-de-autor/</a></li>
+<li>[80] Platform of the Libertarian Party of Canada (2012). <a href="https://web.archive.org/web/20140111131447/https://www.libertarian.ca/platform-libertarian-party-canada" rel="nofollow">https://web.archive.org/web/20140111131447/https://www.libertarian.ca/platform-libertarian-party-canada</a></li>
+<li>[81] Platform of the Libertarian Party of Canada (2026). <a href="https://www.libertarian.ca/lpoc_platform" rel="nofollow">https://www.libertarian.ca/lpoc_platform</a></li>
+<li>[82] Platform of the US Libertarian Party (2026). <a href="https://lp.org/platform-page/" rel="nofollow">https://lp.org/platform-page/</a></li>
+<li>[83] Drug Prices Team. "‘Evergreening’ Stunts Competition, Costs Consumers and Taxpayers" (2020). Arnold Ventures.<br>
+<a href="https://www.arnoldventures.org/stories/evergreening-stunts-competition-costs-consumers-and-taxpayers" rel="nofollow">https://www.arnoldventures.org/stories/evergreening-stunts-competition-costs-consumers-and-taxpayers</a>
+<ul>
+<li>This is a pro-consumer think tank, so keep in mind that it is not 100 % fair.</li>
+</ul>
+</li>
+<li>[84] Enrico Pira et al. "Exposure to asbestos: past, present and future" (2018). Journal of Thoracic Disease.<br>
+<a href="https://jtd.amegroups.org/article/view/17002/14600" rel="nofollow">https://jtd.amegroups.org/article/view/17002/14600</a></li>
+<li>[85] Early, Lucarelli, Sweeney &amp; Meisenkothen. "Asbestos Usage and Bans in the United States" (2023).<br>
+<a href="https://www.elslaw.com/news/when-did-asbestos-stop-being-used-banned/" rel="nofollow">https://www.elslaw.com/news/when-did-asbestos-stop-being-used-banned/</a></li>
+<li>[86] Andrew Pollack. "Drug Goes From $13.50 a Tablet to $750, Overnight" (2015). The New York Times.<br>
+<a href="https://www.nytimes.com/2015/09/21/business/a-huge-overnight-increase-in-a-drugs-price-raises-protests.html" rel="nofollow">https://www.nytimes.com/2015/09/21/business/a-huge-overnight-increase-in-a-drugs-price-raises-protests.html</a>
+<ul>
+<li>See also <a href="https://www.cnbc.com/2015/11/30/express-scripts-imprimis-to-offer-daraprim-alternative.html" rel="nofollow">https://www.cnbc.com/2015/11/30/express-scripts-imprimis-to-offer-daraprim-alternative.html</a></li>
+</ul>
+</li>
+<li>[87] Convention de Paris pour la protection de la propriété industrielle (1883).<br>
+<a href="https://www.wipo.int/edocs/pubdocs/fr/wipo_pub_201.pdf" rel="nofollow">https://www.wipo.int/edocs/pubdocs/fr/wipo_pub_201.pdf</a></li>
+<li>[88] Sana Loue and Martha Sajatovic. "Encyclopedia of Women's Health" (2004). Springer Science &amp; Business. page 644.<br>
+<a href="https://books.google.ca/books?id=LbHWgd-mDbsC&amp;pg=PA644&amp;redir_esc=y#v=onepage&amp;q&amp;f=false" rel="nofollow">https://books.google.ca/books?id=LbHWgd-mDbsC&amp;pg=PA644&amp;redir_esc=y#v=onepage&amp;q&amp;f=false</a></li>
+<li>[89] NASA. "Watching the Ozone Hole Before and After the Montreal Protocol" (2012).<br>
+<a href="https://science.nasa.gov/earth/earth-observatory/watching-the-ozone-hole-before-and-after-the-montreal-protocol-79198/" rel="nofollow">https://science.nasa.gov/earth/earth-observatory/watching-the-ozone-hole-before-and-after-the-montreal-protocol-79198/</a></li>
+<li>[90] James W. Grier. "Ban of DDT and Subsequent Recovery of Reproduction in Bald Eagles" (1983).<br>
+<a href="https://www.science.org/doi/10.1126/science.7146905" rel="nofollow">https://www.science.org/doi/10.1126/science.7146905</a></li>
+<li>[91] United States Environment Protection Agency. "Lead Laws and Regulations" (consulted January 22, 2026).<br>
+<a href="https://www.epa.gov/lead/lead-laws-and-regulations" rel="nofollow">https://www.epa.gov/lead/lead-laws-and-regulations</a></li>
+<li>[92] Stanford Encyclopedia of Philosophy. "Anarchism" (2017).<br>
+<a href="https://plato.stanford.edu/entries/anarchism/" rel="nofollow">https://plato.stanford.edu/entries/anarchism/</a></li>
+<li>[93] Olivier Chaïbi et Édouard Jourdain. "PROUDHON Pierre-Joseph [Dictionnaire des anarchistes]" (consulted January 23, 2026).<br>
+<a href="https://maitron.fr/proudhon-pierre-joseph-dictionnaire-des-anarchistes/" rel="nofollow">https://maitron.fr/proudhon-pierre-joseph-dictionnaire-des-anarchistes/</a></li>
+<li>[94] Pierre Joseph Proudhon. "La Guerre et la Paix : recherches sur le principe et la constitution du droit des gens" (1861).
+<ul>
+<li>Paragraph 2 on page 280 shows his support of slavery: <a href="https://books.google.ca/books?id=mr7K5V6A3iEC&amp;pg=PAPA280&amp;redir_esc=y#v=onepage&amp;q&amp;f=false" rel="nofollow">https://books.google.ca/books?id=mr7K5V6A3iEC&amp;pg=PAPA280&amp;redir_esc=y#v=onepage&amp;q&amp;f=false</a></li>
+</ul>
+</li>
+<li>[95] Assemblée nationale. "mars-avril 1871, La Commune de Paris" (consulted January 23, 2026).<br>
+<a href="https://www.assemblee-nationale.fr/dyn/histoire-et-patrimoine/troisieme-republique/la-commune-de-paris" rel="nofollow">https://www.assemblee-nationale.fr/dyn/histoire-et-patrimoine/troisieme-republique/la-commune-de-paris</a></li>
+<li>[96] Wikipedia. "Kronstadt rebellion" (consulted January 23, 2026).<br>
+<a href="https://en.wikipedia.org/wiki/Kronstadt_rebellion" rel="nofollow">https://en.wikipedia.org/wiki/Kronstadt_rebellion</a></li>
+<li>[97] Teresa Kiss. "Guerra Civil Española" (2025).<br>
+<a href="https://humanidades.com/guerra-civil-espanola/" rel="nofollow">https://humanidades.com/guerra-civil-espanola/</a></li>
+<li>[98] Adela Cedillo-Cedillo. "Análisis de la fundación del EZLN en Chiapas desde la perspectiva de la acción colectiva insurgente" (2012). LiminaR.<br>
+<a href="https://www.scielo.org.mx/scielo.php?script=sci_arttext&amp;pid=S1665-80272012000200002" rel="nofollow">https://www.scielo.org.mx/scielo.php?script=sci_arttext&amp;pid=S1665-80272012000200002</a></li>
+<li>[99] Enlace Zapatista. "CHIAPAS AL BORDE DE LA GUERRA CIVIL." (2021).<br>
+<a href="https://enlacezapatista.ezln.org.mx/2021/09/19/chiapas-al-borde-de-la-guerra-civil/" rel="nofollow">https://enlacezapatista.ezln.org.mx/2021/09/19/chiapas-al-borde-de-la-guerra-civil/</a></li>
+<li>[100] <a href="https://x.com/notkavi/status/1445455046448087042" rel="nofollow">https://x.com/notkavi/status/1445455046448087042</a></li>
+<li>[101] Jon Savage. "Punk" (2026). Britannica. <a href="https://www.britannica.com/art/punk" rel="nofollow">https://www.britannica.com/art/punk</a>
+<ul>
+<li>"As part of their fundamental disavowal of the corporate record industry, most hardcore bands<br>
+self-produced and self-released their albums, sometimes through small DIY labels. The music and<br>
+culture of hardcore was promoted through word of mouth and fanzines. As the genre grew in<br>
+popularity, its musical acts developed numerous sonic variations and included political messages<br>
+in their lyrics."</li>
+</ul>
+</li>
+<li>[102] Gozo Van Groovy. "From Xerox to Pixels: The Evolution of Zines from Punk Rock Rebellion to Digital Renaissance" (2025).<br>
+<a href="https://pastthemoon.net/post/zinehistory" rel="nofollow">https://pastthemoon.net/post/zinehistory</a></li>
+<li>[103] Michael Goldberg. "Punk Lives" (1985). Rolling Stone.<br>
+<a href="http://www.thirdav.com/zinestuff/rs452.html" rel="nofollow">http://www.thirdav.com/zinestuff/rs452.html</a></li>
+<li>[104] Crass. "Punk Is Dead" (1979). <a href="https://genius.com/Crass-punk-is-dead-lyrics" rel="nofollow">https://genius.com/Crass-punk-is-dead-lyrics</a></li>
+<li>[105] Teddy Carey. "What is Punk: A Case for the Authenticity of Music" (2018). The Georgetown Voice.
+<ul>
+<li><a href="https://georgetownvoice.com/2018/11/05/what-is-punk-a-case-for-the-authenticity-of-music/" rel="nofollow">https://georgetownvoice.com/2018/11/05/what-is-punk-a-case-for-the-authenticity-of-music/</a></li>
+</ul>
+</li>
+<li>[106] Jennie Livingston. "Paris Is Burning" (1990).</li>
+<li>[107] <a href="https://www.amazon.ca/-/en/RuPedagogies-Realness-Teaching-Learning-RuPauls/dp/147668183X" rel="nofollow">https://www.amazon.ca/-/en/RuPedagogies-Realness-Teaching-Learning-RuPauls/dp/147668183X</a></li>
+<li>[108] The Groove Guide. "The history of breakdance" (consulted January 23, 2026).<br>
+<a href="https://www.mygrooveguide.com/dance-info/breaking/history-of-breaking" rel="nofollow">https://www.mygrooveguide.com/dance-info/breaking/history-of-breaking</a></li>
+<li>[109] <a href="https://www.youtube.com/watch?v=PUrv2XNBY5s" rel="nofollow">https://www.youtube.com/watch?v=PUrv2XNBY5s</a> (she says yes queen right before 4:20) and <a href="https://www.youtube.com/watch?v=D6Wod_9o6GU" rel="nofollow">https://www.youtube.com/watch?v=D6Wod_9o6GU</a></li>
+<li>[110] The Law Institute. "The Evolutionary Journey of Open Source Software" (2024)<br>
+<a href="https://thelaw.institute/cyberspace-technology-and-social-issues/evolution-journey-open-source-software/" rel="nofollow">https://thelaw.institute/cyberspace-technology-and-social-issues/evolution-journey-open-source-software/</a></li>
+<li>[111] John Perry Barlow. "A Declaration of the Independence of Cyberspace" (1996).<br>
+<a href="https://www.eff.org/cyberspace-independence" rel="nofollow">https://www.eff.org/cyberspace-independence</a></li>
+<li>[112] Wikipedia. "John Perry Barlow" (consulted January 23, 2026).<br>
+<a href="https://en.wikipedia.org/wiki/John_Perry_Barlow#Grateful_Dead" rel="nofollow">https://en.wikipedia.org/wiki/John_Perry_Barlow#Grateful_Dead</a></li>
+<li>[113] R. Polk Wagner. "Information Wants to Be Free: Intellectual Property and the Mythologies of Control" (2010).<br>
+<a href="https://web.archive.org/web/20101226054908/http://www.law.upenn.edu/fac/pwagner/wagner.control.pdf" rel="nofollow">https://web.archive.org/web/20101226054908/http://www.law.upenn.edu/fac/pwagner/wagner.control.pdf</a></li>
+<li>[114] <a href="https://www.youtube.com/watch?v=4XpnKHJAok8" rel="nofollow">https://www.youtube.com/watch?v=4XpnKHJAok8</a>, 9:50–10:00</li>
+<li>[115] Amanda McPherson, Brian Proffitt, and Ron Hale-Evans. "Estimating the Total Cost of a Linux Distribution" (2008). The Linux Foundation.<br>
+<a href="https://www.linuxfoundation.jp/events/2008/10/estimating-the-total-cost-of-a-linux-distribution/" rel="nofollow">https://www.linuxfoundation.jp/events/2008/10/estimating-the-total-cost-of-a-linux-distribution/</a></li>
+<li>[116] <a href="https://www.youtube.com/watch?v=VtvjbmoDx-I" rel="nofollow">https://www.youtube.com/watch?v=VtvjbmoDx-I</a></li>
+<li>[117] Meng Li. "Microsoft Shuts Down Python Founder’s Core Team, CPython Team Disbanded" (2025). Medium.<br>
+<a href="https://medium.com/top-python-libraries/microsoft-shuts-down-python-founders-core-team-cpython-team-disbanded-0ae603862d68" rel="nofollow">https://medium.com/top-python-libraries/microsoft-shuts-down-python-founders-core-team-cpython-team-disbanded-0ae603862d68</a></li>
+<li>[118] Red Hat. "Communities we contribute to" (consulted January 23, 2026).<br>
+<a href="https://www.redhat.com/en/about/open-source-program-office/contributions" rel="nofollow">https://www.redhat.com/en/about/open-source-program-office/contributions</a></li>
+<li>[119] "An open letter to OpenAI". <a href="https://www.openai-transparency.org/" rel="nofollow">https://www.openai-transparency.org/</a></li>
+<li>[120] <a href="https://archiveofourown.org/works/29864373/chapters/73487853" rel="nofollow">https://archiveofourown.org/works/29864373/chapters/73487853</a>
+<ul>
+<li>The joke is that fanfiction can be seen as an anarchist-adjacent practice because it circumvents<br>
+copyright.</li>
+</ul>
+</li>
+<li>[121] Workers' Solidarity Federation. "History of the Anarchist-Syndicalist Trade Union Movement" (consulted January 23, 2026).<br>
+<a href="https://theanarchistlibrary.org/library/workers-solidarity-federation-history-of-the-anarchist-syndicalist-trade-union-movement" rel="nofollow">https://theanarchistlibrary.org/library/workers-solidarity-federation-history-of-the-anarchist-syndicalist-trade-union-movement</a></li>
+<li>[122] <a href="https://en.wikipedia.org/wiki/Leo_Tolstoy" rel="nofollow">https://en.wikipedia.org/wiki/Leo_Tolstoy</a></li>
+<li>[123] <a href="https://piratpartiet.se/en/about-us/" rel="nofollow">https://piratpartiet.se/en/about-us/</a></li>
+<li>[124] <a href="https://web.archive.org/web/20090420024204/http://www.blogpirate.org/2009/04/17/result-of-verdict-for-the-pirate-party/" rel="nofollow">https://web.archive.org/web/20090420024204/http://www.blogpirate.org/2009/04/17/result-of-verdict-for-the-pirate-party/</a></li>
+<li>[125] <a href="https://web.archive.org/web/20090421031814/http://www.blogpirate.org/2009/04/17/the-spectrial-verdict-is-in/" rel="nofollow">https://web.archive.org/web/20090421031814/http://www.blogpirate.org/2009/04/17/the-spectrial-verdict-is-in/</a></li>
+<li>[126] The Economist. "Online pirates at bay" (2009). <a href="https://www.economist.com/business/2009/04/17/online-pirates-at-bay" rel="nofollow">https://www.economist.com/business/2009/04/17/online-pirates-at-bay</a></li>
+<li>[127] <a href="https://web.archive.org/web/20090529080944/http://nyheter24.se/nyheter/inrikes/232341-kulturministern-gjorde-utfall-mot-pirate-bay" rel="nofollow">https://web.archive.org/web/20090529080944/http://nyheter24.se/nyheter/inrikes/232341-kulturministern-gjorde-utfall-mot-pirate-bay</a>
+<ul>
+<li>"Det här kanske inte uppskattas av vissa, men jag var en av dem som gladdes över domen i Pirate<br>
+Bay-målet, sa kulturministern, och mötte publikens jubel samtidigt som vissa skruvade på sig<br>
+förvånat."</li>
+<li>This means: "This may not be appreciated by some, but I was one of those who was delighted with<br>
+the verdict in the Pirate Bay case, said the Minister of Culture, and met the audience's cheers<br>
+while some turned around in surprise."</li>
+</ul>
+</li>
+<li>[128] <a href="https://en.wikipedia.org/wiki/Pirate_Party#Elected_representatives" rel="nofollow">https://en.wikipedia.org/wiki/Pirate_Party#Elected_representatives</a></li>
+<li>[129] Piratpartiet. "Principprogram" (consulted January 29, 2026). <a href="https://piratpartiet.se/principprogram/" rel="nofollow">https://piratpartiet.se/principprogram/</a></li>
+<li>[130] <a href="https://quickonomics.com/different-types-of-goods/" rel="nofollow">https://quickonomics.com/different-types-of-goods/</a></li>
+<li>[131] <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jphs.12050" rel="nofollow">https://onlinelibrary.wiley.com/doi/abs/10.1111/jphs.12050</a></li>
+<li>[132] Bhaven N. Sampat. "A SURVEY OF EMPIRICAL EVIDENCE ON PATENTS AND INNOVATION" (2018). NATIONAL BUREAU OF ECONOMIC RESEARCH. Page 22.<br>
+<a href="https://www.nber.org/system/files/working_papers/w25383/w25383.pdf" rel="nofollow">https://www.nber.org/system/files/working_papers/w25383/w25383.pdf</a></li>
+<li>[133] Lawrence Liang. "Copyright/Copyleft: Myths About Copyright" (2005).<br>
+<a href="https://www.countercurrents.org/hr-suresh010205.htm" rel="nofollow">https://www.countercurrents.org/hr-suresh010205.htm</a></li>
+<li>[134] Megan Willett-Wei. "How a thoughtful Christmas present helped Harper Lee write 'To Kill a Mockingbird'" (2015). Business Insider.<br>
+<a href="https://www.businessinsider.com/harper-lees-1956-christmas-present-2015-2" rel="nofollow">https://www.businessinsider.com/harper-lees-1956-christmas-present-2015-2</a></li>
+<li>[135] Piratpartiet. "Ett alternativ till medicinpatent" (2009). <a href="https://web.archive.org/web/20090218112433/http://www.piratpartiet.se/politik/medicinpatent" rel="nofollow">https://web.archive.org/web/20090218112433/http://www.piratpartiet.se/politik/medicinpatent</a></li>
+<li>[136] Siegfried Mortkowitz. "Czech Pirates, ahoy!" (2019). Politico.<br>
+<a href="https://www.politico.eu/article/czech-pirate-party-anti-establishment-ivan-bartos-ahoy/" rel="nofollow">https://www.politico.eu/article/czech-pirate-party-anti-establishment-ivan-bartos-ahoy/</a></li>
+<li>[137] Mariano Torras. "Rethinking Universal Basic Income: Economic Productivity, Quality of Life and the Sustainable Development Goals" (2024). United Nations.<br>
+<a href="https://www.un.org/en/un-chronicle/rethinking-universal-basic-income-economic-productivity-quality-life-and-sustainable" rel="nofollow">https://www.un.org/en/un-chronicle/rethinking-universal-basic-income-economic-productivity-quality-life-and-sustainable</a></li>
+<li>[138] Citizens Information. "Basic Income for the Arts (BIA)" (consulted January 24, 2026).<br>
+<a href="https://www.citizensinformation.ie/en/employment/unemployment-and-redundancy/employment-support-schemes/basic-income-arts/" rel="nofollow">https://www.citizensinformation.ie/en/employment/unemployment-and-redundancy/employment-support-schemes/basic-income-arts/</a></li>
+<li>[139] Kristi Martin. "How Drugmakers Use the Patent Process to Keep Prices High" (2025). The Commonwealth Fund.<br>
+<a href="https://www.commonwealthfund.org/publications/explainer/2025/nov/how-drugmakers-use-patent-process-keep-prices-high" rel="nofollow">https://www.commonwealthfund.org/publications/explainer/2025/nov/how-drugmakers-use-patent-process-keep-prices-high</a></li>
+<li>[140] Lina Khan. "Amazon’s Antitrust Paradox" (2017). The Yale Law Journal. <a href="https://yalelawjournal.org/pdf/e.710.Khan.805_zuvfyyeh.pdf" rel="nofollow">https://yalelawjournal.org/pdf/e.710.Khan.805_zuvfyyeh.pdf</a>, pages 60</li>
+<li>[141] United States Department of Justice, Antitrust Division. "U.S and Plaintiff States v. Apple Inc." (consulted January 24, 2026).<br>
+<a href="https://www.justice.gov/atr/case/us-and-plaintiff-states-v-apple-inc" rel="nofollow">https://www.justice.gov/atr/case/us-and-plaintiff-states-v-apple-inc</a> (refer to the "Complaint" document)</li>
+<li>[142] Joe Schwarcz. "The History of Acetaminophen" (2025).<br>
+<a href="https://www.mcgill.ca/oss/article/medical-pseudoscience/tylenol-and-presidential-scientific-illiteracy" rel="nofollow">https://www.mcgill.ca/oss/article/medical-pseudoscience/tylenol-and-presidential-scientific-illiteracy</a></li>
+<li>[143] Jay Stanley. "“Surveillance Pricing” Hurts Consumers, Incentivizes More Corporate Spying on Them" (2025). American Civil Liberty Union.<br>
+<a href="https://www.aclu.org/news/privacy-technology/surveillance-pricing" rel="nofollow">https://www.aclu.org/news/privacy-technology/surveillance-pricing</a></li>
+<li>[144] Jessica Hamzelou. "A brain implant changed her life. Then it was removed against her will." (2023). MIT Technology Review.<br>
+<a href="https://www.technologyreview.com/2023/05/25/1073634/brain-implant-removed-against-her-will/" rel="nofollow">https://www.technologyreview.com/2023/05/25/1073634/brain-implant-removed-against-her-will/</a></li>
+<li>[145] World Trade Organizatino. "DECLARATION ON THE TRIPS AGREEMENT AND PUBLIC HEALTH" (Doha declaration) (2001).<br>
+<a href="https://www.globalhealthrights.org/wp-content/uploads/2014/07/Doha-Declaration-on-the-Trips-Agreement-and-Public-Health.pdf" rel="nofollow">https://www.globalhealthrights.org/wp-content/uploads/2014/07/Doha-Declaration-on-the-Trips-Agreement-and-Public-Health.pdf</a></li>
+<li>[146] World Intellectual Property Organization. "Celebrating 10 years since the Adoption of the Marrakesh Treaty!" (consulted January 24, 2026).<br>
+<a href="https://www.wipo.int/en/web/marrakesh-treaty" rel="nofollow">https://www.wipo.int/en/web/marrakesh-treaty</a></li>
+<li>[147] Wend Wendland. "The new WIPO Treaty 25 years in the making: what does it mean and what happens next?" (2024). WIPO Magazine.<br>
+<a href="https://www.wipo.int/en/web/wipo-magazine/articles/the-new-wipo-treaty-25-years-in-the-making-what-does-it-mean-and-what-happens-next-68223" rel="nofollow">https://www.wipo.int/en/web/wipo-magazine/articles/the-new-wipo-treaty-25-years-in-the-making-what-does-it-mean-and-what-happens-next-68223</a></li>
+<li>[148] Parshin Shojaee et al.<br>
+"The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models via the Lens of Problem Complexity"<br>
+(2025). Apple Research. <a href="https://machinelearning.apple.com/research/illusion-of-thinking" rel="nofollow">https://machinelearning.apple.com/research/illusion-of-thinking</a></li>
+<li>[149] Anthropic. "The Illusion of the Illusion of Thinking A Comment on Shojaee et al. (2025)" (2025).<br>
+<a href="https://arxiv.org/html/2506.09250v1" rel="nofollow">https://arxiv.org/html/2506.09250v1</a></li>
+<li>[150] U.S. Copyright Office. "Copyright and Artificial Intelligence" (consulted January 24, 2026).<br>
+<a href="https://www.copyright.gov/ai/" rel="nofollow">https://www.copyright.gov/ai/</a></li>
+<li>[151] Copyright Review Board.<br>
+"Second Request for Reconsideration for Refusal to Register Théâtre D’opéra Spatial (SR # 1-11743923581; Correspondence ID: 1-5T5320R)" (2023).<br>
+<a href="https://www.copyright.gov/rulings-filings/review-board/docs/Theatre-Dopera-Spatial.pdf" rel="nofollow">https://www.copyright.gov/rulings-filings/review-board/docs/Theatre-Dopera-Spatial.pdf</a></li>
+<li>[152] Alistair Barr. "OpenAI executive sees a Rubik's Cube of future revenue sources" (2026). Business Insider.<br>
+<a href="https://www.businessinsider.com/openai-cfo-sarah-friar-future-revenue-sources-2026-1" rel="nofollow">https://www.businessinsider.com/openai-cfo-sarah-friar-future-revenue-sources-2026-1</a></li>
+<li>[153] National Human Genome Research Institute. "Intellectual Property in Genomics" (consulted January 24, 2026).<br>
+<a href="https://www.genome.gov/about-genomics/policy-issues/Intellectual-" rel="nofollow">https://www.genome.gov/about-genomics/policy-issues/Intellectual-</a></li>
+<li>[154] Jeremy A. Cubert. "Has the Sun Set for Life Science Patents?" (2020). ACS Symposium Series.<br>
+<a href="https://pubs.acs.org/doi/abs/10.1021/bk-2020-1363.ch004" rel="nofollow">https://pubs.acs.org/doi/abs/10.1021/bk-2020-1363.ch004</a>
+<ul>
+<li>"It is inconsistent to conclude that isolated DNA and naturally occurring DNA are not markedly<br>
+different because their information content is the same, and at the same time find that cDNA<br>
+[complementary DNA] is patent eligible despite having virtually identical information content to<br>
+naturally occurring mRNA."</li>
+</ul>
+</li>
+<li>[155] Jess Bravin. "Justices Strike Down Gene Patents" (2013). The Wall Street Journal.<br>
+<a href="https://www.wsj.com/articles/SB10001424127887324049504578543250466974398#" rel="nofollow">https://www.wsj.com/articles/SB10001424127887324049504578543250466974398#</a></li>
+<li>[156] Clarence Thomas. "My Grandfather's Son: A Memoir. New York: Harper Perennial" (2007).</li>
+<li>[157] World Intellectual Property Organization. "Defining a Name's Origin: The Case of Feta" (2015).<br>
+<a href="https://www.wipo.int/en/web/ip-advantage/w/stories/defining-a-name-s-origin-the-case-of-feta" rel="nofollow">https://www.wipo.int/en/web/ip-advantage/w/stories/defining-a-name-s-origin-the-case-of-feta</a></li>
+<li>[158] WIPO. "A History of Trademarks: From the Ancient World to the 19th Century" (consulted January 27, 2026).<br>
+<a href="https://www.wipo.int/en/web/podcasts/madrid/transcripts/international_trademark_system_talk_01" rel="nofollow">https://www.wipo.int/en/web/podcasts/madrid/transcripts/international_trademark_system_talk_01</a></li>
+<li>[159] Osborne Clarke. "„Dubai-Schokolade“ – geografische Herkunft, bloßes Marketing oder „Rezept“?" (2025).<br>
+<a href="https://www.osborneclarke.com/de/insights/dubai-schokolade-geografische-herkunft-blosses-marketing-oder-rezept" rel="nofollow">https://www.osborneclarke.com/de/insights/dubai-schokolade-geografische-herkunft-blosses-marketing-oder-rezept</a></li>
+<li>[160] <a href="https://www.theguardian.com/world/2017/nov/08/bolsheviks-seize-power-in-petrograd-archive-1917" rel="nofollow">https://www.theguardian.com/world/2017/nov/08/bolsheviks-seize-power-in-petrograd-archive-1917</a></li>
+<li>[161] Friedrich Engels. "Anti-Dühring" (1878):
+<ul>
+<li>"Der Staat wird nicht „abgeschafft“, er stirbt ab."</li>
+</ul>
+</li>
+<li>[162] USLP: The issues. <a href="https://lp.org/the-issues/" rel="nofollow">https://lp.org/the-issues/</a></li>
+<li>[163] Evergreen Grug Patent Search. "NDA #19430". College of the Law, University of California.<br>
+<a href="https://sites.uclawsf.edu/evergreensearch/patent-details/?nda=19430" rel="nofollow">https://sites.uclawsf.edu/evergreensearch/patent-details/?nda=19430</a></li>
+<li>[164] CIA. "Simple Sabotage Field Manual" (1944). <a href="https://www.cia.gov/static/5c875f3ec660e092cf893f60b4a288df/SimpleSabotage.pdf" rel="nofollow">https://www.cia.gov/static/5c875f3ec660e092cf893f60b4a288df/SimpleSabotage.pdf</a></li>
+<li>[165] Aristegui. "Organizaciones alertan de ‘escenario de guerra civil’ en Chiapas" (2024).<br>
+<a href="https://aristeguinoticias.com/2110/mexico/organizaciones-alertan-de-escenario-de-guerra-civil-en-chiapas/" rel="nofollow">https://aristeguinoticias.com/2110/mexico/organizaciones-alertan-de-escenario-de-guerra-civil-en-chiapas/</a></li>
+<li>[166] World Intellectual Property Organization. "Semiconductor Chip Protection Act of 1984, 17 U.S.C. §§ 901-914, United States of America".<br>
+<a href="https://www.wipo.int/wipolex/en/legislation/details/3927" rel="nofollow">https://www.wipo.int/wipolex/en/legislation/details/3927</a></li>
+<li>[167] Anton Shilov. "JP Morgan says Nvidia is gearing up to sell entire..." (2025). Tom's hardware.<br>
+<a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/jp-morgan-says-nvidia-is-gearing-up-to-sell-entire-ai-servers-instead-of-just-ai-gpus-and-componentry-jensens-master-plan-of-vertical-integration-will-boost-profits-purportedly-starting-with-vera-rubin" rel="nofollow">https://www.tomshardware.com/tech-industry/artificial-intelligence/jp-morgan-says-nvidia-is-gearing-up-to-sell-entire-ai-servers-instead-of-just-ai-gpus-and-componentry-jensens-master-plan-of-vertical-integration-will-boost-profits-purportedly-starting-with-vera-rubin</a></li>
+<li>[168] <a href="https://www.polygon.com/silksong-piracy-crack-hollow-knight-sales-release/" rel="nofollow">https://www.polygon.com/silksong-piracy-crack-hollow-knight-sales-release/</a></li>
+<li>[169] Galerie Marc Maison. "Mercury mirror" (consulted January 29, 2026).<br>
+<a href="https://www.marcmaison.com/architectural-antiques-resources/mercury-mirror" rel="nofollow">https://www.marcmaison.com/architectural-antiques-resources/mercury-mirror</a></li>
+<li>[170] Jack Lynch. "The Perfectly Acceptable Practice of Literary Theft: Plagiarism, Copyright, and the Eighteenth Century" (2006).<br>
+<a href="https://www.writing-world.com/rights/lynch.shtml" rel="nofollow">https://www.writing-world.com/rights/lynch.shtml</a></li>
+<li>[171] Meg Tirrell. "Express Scripts, Imprimis to offer $1 Daraprim alternative" (2015). CNBC.<br>
+<a href="https://www.cnbc.com/2015/11/30/express-scripts-imprimis-to-offer-daraprim-alternative.html" rel="nofollow">https://www.cnbc.com/2015/11/30/express-scripts-imprimis-to-offer-daraprim-alternative.html</a></li>
+<li>[172] Wikipedia. "Pirate Parties International". <a href="https://en.wikipedia.org/wiki/Pirate_Parties_International" rel="nofollow">https://en.wikipedia.org/wiki/Pirate_Parties_International</a></li>
+</ul>
+<h1>Image References</h1>
+<h2>II. Alternatives</h2>
+<h3>II.I. Communism</h3>
+<ul>
+<li>Simple Sabotage Field Manual: <a href="https://www.cia.gov/static/5c875f3ec660e092cf893f60b4a288df/SimpleSabotage.pdf" rel="nofollow">https://www.cia.gov/static/5c875f3ec660e092cf893f60b4a288df/SimpleSabotage.pdf</a></li>
+<li>Factory: <a href="https://pixabay.com/fr/vectors/plantes-industrie-usine-isom%c3%a9trique-5484848/" rel="nofollow">https://pixabay.com/fr/vectors/plantes-industrie-usine-isom%c3%a9trique-5484848/</a></li>
+<li>Railway: <a href="https://pixabay.com/fr/vectors/vecteur-train-chemin-de-fer-4866548/" rel="nofollow">https://pixabay.com/fr/vectors/vecteur-train-chemin-de-fer-4866548/</a></li>
+<li>Port: <a href="https://pixabay.com/fr/vectors/port-grues-silhouette-industriel-6349610/" rel="nofollow">https://pixabay.com/fr/vectors/port-grues-silhouette-industriel-6349610/</a></li>
+<li>Bolsheviks: <a href="https://www.theguardian.com/world/2017/nov/08/bolsheviks-seize-power-in-petrograd-archive-1917" rel="nofollow">https://www.theguardian.com/world/2017/nov/08/bolsheviks-seize-power-in-petrograd-archive-1917</a></li>
+</ul>
+<h3>II.II. Libertarianism</h3>
+<ul>
+<li>Advertisement on boats: <a href="https://www.reddit.com/r/Antiadvertising/comments/oq4129/one_of_the_more_disheartening_things_ive_seen_in/" rel="nofollow">https://www.reddit.com/r/Antiadvertising/comments/oq4129/one_of_the_more_disheartening_things_ive_seen_in/</a></li>
+<li>Passenger seats: <a href="https://www.instagram.com/p/DJxGm6izPt2/" rel="nofollow">https://www.instagram.com/p/DJxGm6izPt2/</a></li>
+<li>Thalidomide molecule: <a href="https://en.wikipedia.org/wiki/Thalidomide" rel="nofollow">https://en.wikipedia.org/wiki/Thalidomide</a></li>
+<li>Kermit the xenomorph: <a href="https://www.facebook.com/groups/marketplacememes/" rel="nofollow">https://www.facebook.com/groups/marketplacememes/</a></li>
+<li>Asbestos: <a href="https://www.northstarenvironmental.co.uk/unlikely-uses-of-asbestos-fake-snow-and-the-wizard-of-oz/" rel="nofollow">https://www.northstarenvironmental.co.uk/unlikely-uses-of-asbestos-fake-snow-and-the-wizard-of-oz/</a></li>
+<li>Ozone: <a href="https://science.nasa.gov/earth/earth-observatory/watching-the-ozone-hole-before-and-after-the-montreal-protocol-79198/" rel="nofollow">https://science.nasa.gov/earth/earth-observatory/watching-the-ozone-hole-before-and-after-the-montreal-protocol-79198/</a></li>
+</ul>
+<h3>II.III. Anarchism</h3>
+<ul>
+<li>Commune de Paris: <a href="https://en.wikipedia.org/wiki/Paris_Commune#/media/File:Barricade18March1871_(cropped).jpg" rel="nofollow">https://en.wikipedia.org/wiki/Paris_Commune#/media/File:Barricade18March1871_(cropped).jpg</a></li>
+<li>Kronstadt rebellion: <a href="https://en.wikipedia.org/wiki/Kronstadt_rebellion#/media/File:Kronstadt_attack.JPG" rel="nofollow">https://en.wikipedia.org/wiki/Kronstadt_rebellion#/media/File:Kronstadt_attack.JPG</a></li>
+<li>Spanish civil war: <a href="https://es.wikipedia.org/wiki/Anarcosindicalismo_en_Catalu%C3%B1a_durante_la_guerra_civil_espa%C3%B1ola#/media/Archivo:Columna-Ascaso.jpg" rel="nofollow">https://es.wikipedia.org/wiki/Anarcosindicalismo_en_Catalu%C3%B1a_durante_la_guerra_civil_espa%C3%B1ola#/media/Archivo:Columna-Ascaso.jpg</a></li>
+<li>Crass: <a href="https://en.wikipedia.org/wiki/Crass#/media/File:Crass_pete_steve_andy.png" rel="nofollow">https://en.wikipedia.org/wiki/Crass#/media/File:Crass_pete_steve_andy.png</a></li>
+</ul>
+<h3>II.IV. Pirate Parties</h3>
+<ul>
+<li>Takedown: <a href="https://www.fastcompany.com/3039688/pirate-bay-down" rel="nofollow">https://www.fastcompany.com/3039688/pirate-bay-down</a></li>
+</ul>
+<h2>IV.</h2>
+<ul>
+<li><a href="https://x.com/suchnerve/status/1943034474511339993" rel="nofollow">https://x.com/suchnerve/status/1943034474511339993</a></li>
+<li><a href="https://www.ledevoir.com/economie/consommation/950736/payer-plus-voisin-billet-avion-tout-monde-deteste?#Echobox=1769361359" rel="nofollow">https://www.ledevoir.com/economie/consommation/950736/payer-plus-voisin-billet-avion-tout-monde-deteste?#Echobox=1769361359</a></li>
+</ul>
+<h2>Thumbnail</h2>
+<ul>
+<li>By Didier Descouens - Own work, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=42078700" rel="nofollow">https://commons.wikimedia.org/w/index.php?curid=42078700</a></li>
+<li>By Dan Duriscoe, for the en:U.S. National Park Service. - <a href="http://antwrp.gsfc.nasa.gov/apod/ap070508.html" rel="nofollow">http://antwrp.gsfc.nasa.gov/apod/ap070508.html</a>, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=2296361" rel="nofollow">https://commons.wikimedia.org/w/index.php?curid=2296361</a></li>
+</ul>
+<h1>Another Thought</h1>
+<p>There are huge differences in how people define IP and in what regulations they consider fair. In<br>
+Germany, a court ruled last year that it's illegal to use "Dubai chocolate" for products that do not<br>
+come from Dubai because it could mislead consumers (the same logic applies to feta cheese and other<br>
+products), but in North America, most people believe freedom to call you products whatever you want<br>
+is more important than uplifting local traditions. Unsuccessful inventors are against patents until<br>
+they get lucky and create something new; then they seek IP rights. Authors are likely to defend<br>
+copyright; youtubers who criticize movies are more likely to be in favor of weakening it. Our<br>
+culture, values, and interests shape how we understand things like "ownership" and "freedom", we<br>
+will never have universal definitions for them.</p>
+<p>The alternative systems I've presented all come with their own definition of these words. A lot of<br>
+people agree with some observations made by Marx but strongly reject abolition private property<br>
+because it clashes with their idea that freedom depends on one's possessions. Libertarianism often<br>
+weirds people out because it is dismissive of non-priviledged people. <em>In theory</em>, people who cannot<br>
+work could live off charity only, but they would face more hardship than if a state supported them.<br>
+A lot of people consider a society to be civilized only if it has the capacity to care for everyone,<br>
+and pure individualism is not good at this in practice. I'm not a relativist. There are opinions<br>
+that we must all reject, particularly hateful ones. But a free society must accomodate a variety of<br>
+viewpoints; asking everyone to adopt the same definitions does not respect their individuality.<br>
+That's why I'm skeptical of perfect-in-theory systems.</p></article>
+	</body>
+</html>
