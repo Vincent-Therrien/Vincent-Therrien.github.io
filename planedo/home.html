@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h1 id="heading-title"></h1>
+      <div class="locale-row">
+        <span class="locale-icon" aria-hidden="true">&#127760;</span>
+        <select id="locale-select" aria-label="Language">
+          <option value="en">en - English</option>
+          <option value="fr">fr - Fran&ccedil;ais</option>
+        </select>
+      </div>
+
+      <div class="controls">
+        <div class="control">
+          <label id="label-distance-range" for="distance-range"></label>
+          <input id="distance-range" type="range" min="1" max="250" step="1" value="250" />
+          <p id="distance-summary" class="subtitle"></p>
+        </div>
+
+        <div class="control">
+          <label id="label-discovery-methods"></label>
+          <div id="discovery-methods" class="checklist"></div>
+        </div>
+
+        <div class="control axis-toggle">
+          <label id="label-show-axes" for="show-axes"></label>
+          <input id="show-axes" type="checkbox" />
+        </div>
+
+        <div class="control axis-toggle">
+          <label id="label-show-selection-guides" for="show-selection-guides"></label>
+          <input id="show-selection-guides" type="checkbox" />
+        </div>
+
+        <div class="control axis-toggle">
+          <label id="label-show-gc-arrow" for="show-gc-arrow"></label>
+          <input id="show-gc-arrow" type="checkbox" />
+        </div>
+
+        <div class="control axis-toggle">
+          <label id="label-show-ecliptic-disk" for="show-ecliptic-disk"></label>
+          <input id="show-ecliptic-disk" type="checkbox" />
+        </div>
+
+        <div class="control axis-toggle">
+          <label id="label-show-galactic-disk" for="show-galactic-disk"></label>
+          <input id="show-galactic-disk" type="checkbox" />
+        </div>
+
+        <div class="control">
+          <button id="reset-view" type="button"></button>
+        </div>
+
+        <div class="control">
+          <label id="label-pan-out-seconds" for="pan-out-seconds"></label>
+          <input id="pan-out-seconds" type="number" min="1" max="120" step="1" value="12" />
+          <button id="pan-out-start" type="button"></button>
+        </div>
+      </div>
+
+      <section class="planet-info" aria-live="polite">
+        <h2 id="selection-title"></h2>
+        <p id="selection-status"></p>
+        <p><strong id="label-name"></strong> <span id="planet-name"></span></p>
+        <p><strong id="label-type"></strong> <span id="planet-class"></span></p>
+        <p><strong id="label-ra"></strong> <span id="planet-ra"></span></p>
+        <p><strong id="label-dec"></strong> <span id="planet-dec"></span></p>
+        <p><strong id="label-distance"></strong> <span id="planet-distance"></span></p>
+        <p><strong id="label-planets"></strong></p>
+        <div id="system-planets" class="planet-list"></div>
+      </section>
+
+      <section class="legend-info" aria-live="polite">
+        <h2 id="legend-title"></h2>
+        <p><span class="legend-swatch legend-earth"></span> <span id="legend-earth"></span></p>
+        <p><span class="legend-swatch legend-inside"></span> <span id="legend-inside"></span></p>
+        <p><span class="legend-swatch legend-outside"></span> <span id="legend-outside"></span></p>
+        <p><span class="legend-swatch legend-selected"></span> <span id="legend-selected"></span></p>
+        <p><strong id="label-grid-radius"></strong> <span id="grid-radius-ly"></span></p>
+      </section>
+    </aside>
+
+    <main class="canvas-wrap">
+      <canvas id="scene-canvas"></canvas>
+    </main>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="./languages-data.js"></script>
+  <script src="./exoplanets-data.js"></script>
+
+  <script type="module">
+    import * as THREE from "three";
+    import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+    const FALLBACK_LOCALE = "en";
+
+    const canvas = document.getElementById("scene-canvas");
+    const nameEl = document.getElementById("planet-name");
+    const classEl = document.getElementById("planet-class");
+    const raEl = document.getElementById("planet-ra");
+    const decEl = document.getElementById("planet-dec");
+    const selectionDistanceEl = document.getElementById("planet-distance");
+    const systemPlanetsEl = document.getElementById("system-planets");
+    const distanceSummaryEl = document.getElementById("distance-summary");
+    const distanceRangeEl = document.getElementById("distance-range");
+    const discoveryMethodsEl = document.getElementById("discovery-methods");
+    const showAxesEl = document.getElementById("show-axes");
+    const showGalacticArrowEl = document.getElementById("show-gc-arrow");
+    const showEclipticDiskEl = document.getElementById("show-ecliptic-disk");
+    const showGalacticDiskEl = document.getElementById("show-galactic-disk");
+    const showSelectionGuidesEl = document.getElementById("show-selection-guides");
+    const gridRadiusEl = document.getElementById("grid-radius-ly");
+    const resetViewEl = document.getElementById("reset-view");
+    const panOutSecondsEl = document.getElementById("pan-out-seconds");
+    const panOutStartEl = document.getElementById("pan-out-start");
+    const localeSelectEl = document.getElementById("locale-select");
+
+    let strings = {};
+    let currentLocale = FALLBACK_LOCALE;
+
+    const pointRadius = 0.5;
+    const PLANET_MIN_SCREEN_RADIUS_PX = 1;
+    const PLANET_SCREEN_RADIUS_PX = 2;
+    const PARSEC_TO_LIGHTYEAR = 3.26156;
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+    const raLabelTextures = [];
+    const RA_BASE_RADIUS = 20;
+    const RA_TARGET_SCREEN_RADIUS_PX = 250;
+    const MAX_ZOOM_OUT_GRID_RADIUS_LY = 27000;
+    const COLOR_EARTH = 0x0000ff;
+    const COLOR_PLANET_INSIDE_GRID = 0x8fb8ff;
+    const COLOR_PLANET_OUTSIDE_GRID = 0xffffff;
+    const COLOR_SELECTED = 0xff0000;
+    const COLOR_GALACTIC_CENTER = 0xffa500;
+    const GALACTIC_CENTER_RA_DEG = (17 + (45 / 60) + (40.04 / 3600)) * 15;
+    const GALACTIC_CENTER_DEC_DEG = -29 - (28.1 / 3600);
+    const GALACTIC_CENTER_DISTANCE_LY = 27000;
+    const ECLIPTIC_OBLIQUITY_DEG = 23.439281;
+    const GALACTIC_NORTH_RA_DEG = 192.85948;
+    const GALACTIC_NORTH_DEC_DEG = 27.12825;
+    const PAN_OUT_DISTANCE_MULTIPLIER = 45;
+    const PAN_OUT_ROTATION_TURNS = 0.7;
+    const PAN_OUT_MIN_SECONDS = 1;
+    const PAN_OUT_MAX_SECONDS = 120;
+
+    let axisRange = 100;
+    let planets = [];
+    let availableDiscoveryMethods = [];
+    let selectedPlanet = null;
+    let pointerIsDown = false;
+    let pointerMoved = false;
+    let pointerDownX = 0;
+    let pointerDownY = 0;
+    let panOutAnimation = null;
+
+    function formatTemplate(template, vars = {}) {
+      return String(template).replace(/\{(\w+)\}/g, (_, key) => (key in vars ? String(vars[key]) : `{${key}}`));
+    }
+
+    function t(path, vars = {}) {
+      const value = path.split(".").reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : undefined), strings);
+      const template = value !== undefined ? value : path;
+      return formatTemplate(template, vars);
+    }
+
+    function formatLocaleDecimal(value, fractionDigits = 3) {
+      const numberLocale = currentLocale === "fr" ? "fr-FR" : "en-US";
+      return value.toLocaleString(numberLocale, {
+        minimumFractionDigits: fractionDigits,
+        maximumFractionDigits: fractionDigits,
+      });
+    }
+
+    function resolveLocaleFromBrowser() {
+      const browserLang = (navigator.language || FALLBACK_LOCALE).toLowerCase();
+      return browserLang.split("-")[0];
+    }
+
+    async function fetchLocale(locale) {
+      if (window.LOCALE_DATA && window.LOCALE_DATA[locale]) {
+        return window.LOCALE_DATA[locale];
+      }
+      const response = await fetch(`./languages/${locale}.json`, { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`Locale file not found (${locale})`);
+      }
+      return response.json();
+    }
+
+    async function loadLocaleStrings(locale = null) {
+      const requestedLocale = (locale || resolveLocaleFromBrowser()).toLowerCase();
+      currentLocale = requestedLocale;
+      try {
+        strings = await fetchLocale(requestedLocale);
+      } catch {
+        currentLocale = FALLBACK_LOCALE;
+        strings = await fetchLocale(FALLBACK_LOCALE);
+      }
+    }
+
+    function applyStaticTexts() {
+      document.title = t("meta.title");
+      canvas.setAttribute("aria-label", t("meta.canvasAriaLabel"));
+
+      document.getElementById("heading-title").textContent = t("header.title");
+      localeSelectEl.value = currentLocale;
+      document.documentElement.lang = currentLocale;
+
+      document.getElementById("label-distance-range").textContent = t("controls.maxDistance");
+      const discoveryMethodsLabel = t("controls.discoveryMethods");
+      document.getElementById("label-discovery-methods").textContent =
+        discoveryMethodsLabel === "controls.discoveryMethods"
+          ? "Discovery method"
+          : discoveryMethodsLabel;
+      document.getElementById("label-show-axes").textContent = t("controls.showAxes");
+      document.getElementById("label-show-gc-arrow").textContent = t("controls.showGcArrow");
+      const eclipticLabel = t("controls.showEclipticDisk");
+      document.getElementById("label-show-ecliptic-disk").textContent =
+        eclipticLabel === "controls.showEclipticDisk" ? "Show Ecliptic Plane Disk" : eclipticLabel;
+      const galacticDiskLabel = t("controls.showGalacticPlaneDisk");
+      document.getElementById("label-show-galactic-disk").textContent =
+        galacticDiskLabel === "controls.showGalacticPlaneDisk" ? "Show Galactic Plane Disk" : galacticDiskLabel;
+      const selectionGuidesLabel = t("controls.showSelectionGuides");
+      document.getElementById("label-show-selection-guides").textContent =
+        selectionGuidesLabel === "controls.showSelectionGuides"
+          ? "Show Selection Triangle"
+          : selectionGuidesLabel;
+      document.getElementById("reset-view").textContent = t("controls.resetView");
+      const panOutDurationLabel = t("controls.panOutSeconds");
+      document.getElementById("label-pan-out-seconds").textContent =
+        panOutDurationLabel === "controls.panOutSeconds" ? "Pan-out duration (s)" : panOutDurationLabel;
+      const panOutStartLabel = t("controls.panOutStart");
+      document.getElementById("pan-out-start").textContent =
+        panOutStartLabel === "controls.panOutStart" ? "Pan Out" : panOutStartLabel;
+
+      document.getElementById("legend-title").textContent = t("legend.title");
+      document.getElementById("legend-earth").textContent = t("legend.earth");
+      document.getElementById("legend-inside").textContent = t("legend.inside");
+      document.getElementById("legend-outside").textContent = t("legend.outside");
+      document.getElementById("legend-selected").textContent = t("legend.selected");
+      document.getElementById("label-grid-radius").textContent = t("legend.gridRadius");
+
+      document.getElementById("selection-title").textContent = t("selection.title");
+      document.getElementById("label-name").textContent = t("selection.name");
+      document.getElementById("label-type").textContent = t("selection.type");
+      document.getElementById("label-ra").textContent = t("selection.ra");
+      document.getElementById("label-dec").textContent = t("selection.dec");
+      document.getElementById("label-distance").textContent = t("selection.distance");
+      const planetsLabel = t("selection.planets");
+      document.getElementById("label-planets").textContent =
+        planetsLabel === "selection.planets" ? "Planets:" : planetsLabel;
+    }
+
+    function setLocalizedStaticObjects() {
+      earthMesh.userData.name = t("objects.earth");
+      earthMesh.userData.type = t("objects.reference");
+      galacticCenterMesh.userData.name = t("objects.sagittariusA");
+      galacticCenterMesh.userData.type = t("objects.galacticCenter");
+    }
+
+    function getSelectedDiscoveryMethods() {
+      const checked = discoveryMethodsEl.querySelectorAll('input[type="checkbox"]:checked');
+      return new Set(Array.from(checked, (el) => el.value));
+    }
+
+    function buildDiscoveryMethodsChecklist() {
+      discoveryMethodsEl.replaceChildren();
+      if (!availableDiscoveryMethods.length) {
+        return;
+      }
+      for (const method of availableDiscoveryMethods) {
+        const row = document.createElement("label");
+        row.className = "checklist-item";
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.value = method;
+        input.checked = true;
+        input.addEventListener("change", applyFilters);
+        const text = document.createElement("span");
+        text.textContent = method;
+        row.appendChild(input);
+        row.appendChild(text);
+        discoveryMethodsEl.appendChild(row);
+      }
+    }
+
+    function refreshLocalizedDynamicText() {
+      if (selectedPlanet) {
+        updateStatusForSelection(selectedPlanet.userData);
+        return;
+      }
+    }
+
+    async function switchLocale(locale) {
+      await loadLocaleStrings(locale);
+      applyStaticTexts();
+      setLocalizedStaticObjects();
+      refreshLocalizedDynamicText();
+      if (planets.length > 0) {
+        applyFilters();
+      }
+    }
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x000000);
+
+    const camera = new THREE.PerspectiveCamera(65, 1, 0.1, 10000);
+    camera.position.set(0, 120, 250);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.08;
+    controls.target.set(0, 0, 0);
+
+    const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambient);
+
+    const pointLight = new THREE.PointLight(0xffffff, 0.9);
+    pointLight.position.set(120, 120, 120);
+    scene.add(pointLight);
+
+    const earthGeometry = new THREE.SphereGeometry(pointRadius * 1.4, 16, 16);
+    const earthMaterial = new THREE.MeshBasicMaterial({ color: COLOR_EARTH });
+    const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
+    earthMesh.userData = {
+      name: "",
+      type: "",
+      distanceLy: 0,
+      isEarth: true
+    };
+    scene.add(earthMesh);
+
+    const gcRa = THREE.MathUtils.degToRad(GALACTIC_CENTER_RA_DEG);
+    const gcDec = THREE.MathUtils.degToRad(GALACTIC_CENTER_DEC_DEG);
+    const gcCosDec = Math.cos(gcDec);
+    const galacticCenterDirection = new THREE.Vector3(
+      gcCosDec * Math.cos(gcRa),
+      Math.sin(gcDec),
+      -gcCosDec * Math.sin(gcRa)
+    ).normalize();
+    const galacticCenterMesh = new THREE.Mesh(
+      new THREE.SphereGeometry(pointRadius * 1.8, 16, 16),
+      new THREE.MeshBasicMaterial({ color: COLOR_GALACTIC_CENTER })
+    );
+    galacticCenterMesh.position.copy(
+      galacticCenterDirection.clone().multiplyScalar(GALACTIC_CENTER_DISTANCE_LY)
+    );
+    galacticCenterMesh.userData = {
+      name: "",
+      type: "",
+      raDeg: GALACTIC_CENTER_RA_DEG,
+      decDeg: GALACTIC_CENTER_DEC_DEG,
+      distanceLy: GALACTIC_CENTER_DISTANCE_LY,
+      isEarth: false,
+      isGalacticCenter: true
+    };
+    scene.add(galacticCenterMesh);
+
+    const galacticCenterArrow = new THREE.ArrowHelper(
+      galacticCenterDirection,
+      earthMesh.position.clone(),
+      40,
+      0xffaa00,
+      6,
+      3
+    );
+    galacticCenterArrow.visible = false;
+    scene.add(galacticCenterArrow);
+
+    const planetGroup = new THREE.Group();
+    scene.add(planetGroup);
+    const raGroup = new THREE.Group();
+    raGroup.visible = false;
+    scene.add(raGroup);
+
+    const eclipticGroup = new THREE.Group();
+    eclipticGroup.visible = false;
+    scene.add(eclipticGroup);
+
+    const eclipticDisk = new THREE.Mesh(
+      new THREE.CircleGeometry(RA_BASE_RADIUS, 192),
+      new THREE.MeshBasicMaterial({
+        color: 0xf5d76e,
+        transparent: true,
+        opacity: 0.14,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+      })
+    );
+    eclipticDisk.rotation.x = -Math.PI / 2 + THREE.MathUtils.degToRad(ECLIPTIC_OBLIQUITY_DEG);
+    eclipticGroup.add(eclipticDisk);
+
+    const galacticDiskGroup = new THREE.Group();
+    galacticDiskGroup.visible = false;
+    scene.add(galacticDiskGroup);
+
+    const galacticDisk = new THREE.Mesh(
+      new THREE.CircleGeometry(RA_BASE_RADIUS, 192),
+      new THREE.MeshBasicMaterial({
+        color: 0x66b7ff,
+        transparent: true,
+        opacity: 0.14,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+      })
+    );
+    const galacticNorthRa = THREE.MathUtils.degToRad(GALACTIC_NORTH_RA_DEG);
+    const galacticNorthDec = THREE.MathUtils.degToRad(GALACTIC_NORTH_DEC_DEG);
+    const galacticNorthVector = new THREE.Vector3(
+      Math.cos(galacticNorthDec) * Math.cos(galacticNorthRa),
+      Math.sin(galacticNorthDec),
+      -Math.cos(galacticNorthDec) * Math.sin(galacticNorthRa)
+    ).normalize();
+    galacticDisk.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), galacticNorthVector);
+    galacticDiskGroup.add(galacticDisk);
+
+    const selectionGuideGroup = new THREE.Group();
+    selectionGuideGroup.visible = false;
+    scene.add(selectionGuideGroup);
+
+    function createGuideLine(colorHex) {
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute("position", new THREE.BufferAttribute(new Float32Array(6), 3));
+      const material = new THREE.LineBasicMaterial({
+        color: colorHex
+      });
+      const line = new THREE.Line(geometry, material);
+      line.renderOrder = 3;
+      return line;
+    }
+
+    function setLineEndpoints(line, start, end) {
+      const position = line.geometry.attributes.position.array;
+      position[0] = start.x;
+      position[1] = start.y;
+      position[2] = start.z;
+      position[3] = end.x;
+      position[4] = end.y;
+      position[5] = end.z;
+      line.geometry.attributes.position.needsUpdate = true;
+      line.geometry.computeBoundingSphere();
+    }
+
+    const horizontalGuideLine = createGuideLine(0x26ffd5);
+    const verticalGuideLine = createGuideLine(0xff6aa2);
+    const diagonalGuideLine = createGuideLine(0xffde59);
+    selectionGuideGroup.add(horizontalGuideLine);
+    selectionGuideGroup.add(verticalGuideLine);
+    selectionGuideGroup.add(diagonalGuideLine);
+
+    const ANGLE_ARC_SEGMENTS = 32;
+    const ANGLE_MARKER_RADIUS = 14;
+    const ANGLE_LABEL_SCREEN_WIDTH_PX = 110;
+    const ANGLE_LABEL_SCREEN_HEIGHT_PX = 42;
+    const angleArcGeometry = new THREE.BufferGeometry();
+    angleArcGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(new Float32Array((ANGLE_ARC_SEGMENTS + 1) * 3), 3)
+    );
+    const angleArcLine = new THREE.Line(
+      angleArcGeometry,
+      new THREE.LineBasicMaterial({
+        color: 0xffe680,
+        depthTest: false
+      })
+    );
+    angleArcLine.renderOrder = 3;
+    selectionGuideGroup.add(angleArcLine);
+
+    const angleLabelCanvas = document.createElement("canvas");
+    angleLabelCanvas.width = 192;
+    angleLabelCanvas.height = 72;
+    const angleLabelContext = angleLabelCanvas.getContext("2d");
+    const angleLabelTexture = new THREE.CanvasTexture(angleLabelCanvas);
+    const angleLabelSprite = new THREE.Sprite(
+      new THREE.SpriteMaterial({
+        map: angleLabelTexture,
+        transparent: true,
+        depthTest: false
+      })
+    );
+    angleLabelSprite.scale.set(1, 1, 1);
+    angleLabelSprite.renderOrder = 4;
+    selectionGuideGroup.add(angleLabelSprite);
+
+    function updateAngleLabelScreenSize() {
+      const viewportHeight = Math.max(1, canvas.clientHeight);
+      const fovRad = THREE.MathUtils.degToRad(camera.fov);
+      const distanceToCamera = camera.position.distanceTo(angleLabelSprite.position);
+      const frustumHeightAtLabel = 2 * distanceToCamera * Math.tan(fovRad * 0.5);
+      const worldPerPixel = frustumHeightAtLabel / viewportHeight;
+      angleLabelSprite.scale.set(
+        worldPerPixel * ANGLE_LABEL_SCREEN_WIDTH_PX,
+        worldPerPixel * ANGLE_LABEL_SCREEN_HEIGHT_PX,
+        1
+      );
+    }
+
+    function updateAngleLabel(text) {
+      angleLabelContext.clearRect(0, 0, angleLabelCanvas.width, angleLabelCanvas.height);
+      angleLabelContext.fillStyle = "rgba(6, 10, 18, 0.7)";
+      angleLabelContext.fillRect(8, 10, angleLabelCanvas.width - 16, angleLabelCanvas.height - 20);
+      angleLabelContext.strokeStyle = "rgba(255, 255, 255, 0.35)";
+      angleLabelContext.strokeRect(8, 10, angleLabelCanvas.width - 16, angleLabelCanvas.height - 20);
+      angleLabelContext.font = "26px monospace";
+      angleLabelContext.textAlign = "center";
+      angleLabelContext.textBaseline = "middle";
+      angleLabelContext.fillStyle = "#ffefab";
+      angleLabelContext.fillText(text, angleLabelCanvas.width / 2, angleLabelCanvas.height / 2);
+      angleLabelTexture.needsUpdate = true;
+    }
+
+    function updateSelectionGuides() {
+      const canShow =
+        showSelectionGuidesEl.checked &&
+        selectedPlanet &&
+        selectedPlanet !== earthMesh &&
+        selectedPlanet.visible;
+
+      if (!canShow) {
+        selectionGuideGroup.visible = false;
+        return;
+      }
+
+      const earthPos = earthMesh.position.clone();
+      const planetPos = selectedPlanet.position.clone();
+      const projectedPos = new THREE.Vector3(planetPos.x, earthPos.y, planetPos.z);
+      const horizontalVec = projectedPos.clone().sub(earthPos);
+      const diagonalVec = planetPos.clone().sub(earthPos);
+      const horizontalLen = horizontalVec.length();
+      const diagonalLen = diagonalVec.length();
+
+      selectionGuideGroup.visible = true;
+      setLineEndpoints(horizontalGuideLine, earthPos, projectedPos);
+      setLineEndpoints(verticalGuideLine, projectedPos, planetPos);
+      setLineEndpoints(diagonalGuideLine, earthPos, planetPos);
+
+      if (horizontalLen < 0.001 || diagonalLen < 0.001) {
+        angleArcLine.visible = false;
+        angleLabelSprite.visible = false;
+        return;
+      }
+
+      const angleRad = Math.acos(
+        THREE.MathUtils.clamp(
+          horizontalVec.clone().normalize().dot(diagonalVec.clone().normalize()),
+          -1,
+          1
+        )
+      );
+
+      if (angleRad < 0.001) {
+        angleArcLine.visible = false;
+        angleLabelSprite.visible = false;
+        return;
+      }
+
+      const horizontalDir = horizontalVec.clone().normalize();
+      const planeUp = diagonalVec
+        .clone()
+        .sub(horizontalDir.clone().multiplyScalar(diagonalVec.dot(horizontalDir)))
+        .normalize();
+      const arcRadius = Math.max(
+        1.5,
+        Math.min(ANGLE_MARKER_RADIUS, horizontalLen * 0.45, diagonalLen * 0.45)
+      );
+      const arcPositions = angleArcLine.geometry.attributes.position.array;
+
+      for (let i = 0; i <= ANGLE_ARC_SEGMENTS; i += 1) {
+        const t = (i / ANGLE_ARC_SEGMENTS) * angleRad;
+        const dir = horizontalDir
+          .clone()
+          .multiplyScalar(Math.cos(t))
+          .add(planeUp.clone().multiplyScalar(Math.sin(t)))
+          .normalize();
+        const point = earthPos.clone().add(dir.multiplyScalar(arcRadius));
+        const idx = i * 3;
+        arcPositions[idx] = point.x;
+        arcPositions[idx + 1] = point.y;
+        arcPositions[idx + 2] = point.z;
+      }
+      angleArcLine.geometry.attributes.position.needsUpdate = true;
+      angleArcLine.geometry.computeBoundingSphere();
+      angleArcLine.visible = true;
+
+      const labelAngle = angleRad * 0.5;
+      const labelDir = horizontalDir
+        .clone()
+        .multiplyScalar(Math.cos(labelAngle))
+        .add(planeUp.clone().multiplyScalar(Math.sin(labelAngle)))
+        .normalize();
+      angleLabelSprite.position.copy(
+        earthPos.clone().add(labelDir.multiplyScalar(Math.max(arcRadius * 1.25, 5)))
+      );
+      if (planetPos.y > 0) {
+        updateAngleLabel(`${THREE.MathUtils.radToDeg(angleRad).toFixed(1)}\u00b0`);
+      }
+      else {
+        updateAngleLabel(`${THREE.MathUtils.radToDeg(angleRad * -1.0).toFixed(1)}\u00b0`);
+      }
+      updateAngleLabelScreenSize();
+      angleLabelSprite.visible = true;
+      angleLabelSprite.quaternion.copy(camera.quaternion);
+    }
+
+    function createTextSprite(label, color, fontSize = 18) {
+      const canvasText = document.createElement("canvas");
+      const context = canvasText.getContext("2d");
+      const font = `${fontSize}px monospace`;
+      context.font = font;
+      const width = Math.ceil(context.measureText(label).width + 24);
+      const height = Math.ceil(fontSize * 1.8);
+      canvasText.width = width;
+      canvasText.height = height;
+
+      context.font = font;
+      context.textAlign = "center";
+      context.textBaseline = "middle";
+      context.fillStyle = color;
+      context.fillText(label, width / 2, height / 2);
+
+      const texture = new THREE.CanvasTexture(canvasText);
+      texture.needsUpdate = true;
+      raLabelTextures.push(texture);
+      const material = new THREE.SpriteMaterial({
+        map: texture,
+        transparent: true,
+        depthTest: false
+      });
+      const sprite = new THREE.Sprite(material);
+      sprite.userData.isOverlayLabel = true;
+      const scaleFactor = 0.06;
+      sprite.scale.set(canvasText.width * scaleFactor, canvasText.height * scaleFactor, 1);
+      return sprite;
+    }
+
+    function clearRaVisualizer() {
+      while (raGroup.children.length > 0) {
+        const obj = raGroup.children[0];
+        raGroup.remove(obj);
+        if (obj.geometry) {
+          obj.geometry.dispose();
+        }
+        if (obj.material) {
+          if (Array.isArray(obj.material)) {
+            obj.material.forEach((material) => material.dispose());
+          } else {
+            obj.material.dispose();
+          }
+        }
+      }
+      while (raLabelTextures.length > 0) {
+        const texture = raLabelTextures.pop();
+        texture.dispose();
+      }
+    }
+
+    function buildRaVisualizer() {
+      clearRaVisualizer();
+
+      const radius = RA_BASE_RADIUS;
+      const segments = 256;
+      const ringPoints = [];
+      for (let i = 0; i <= segments; i += 1) {
+        const angle = (i / segments) * Math.PI * 2;
+        ringPoints.push(new THREE.Vector3(Math.cos(angle) * radius, 0, Math.sin(angle) * radius));
+      }
+
+      const ringGeometry = new THREE.BufferGeometry().setFromPoints(ringPoints);
+      const ringMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
+      raGroup.add(new THREE.LineLoop(ringGeometry, ringMaterial));
+
+      const majorTickMaterial = new THREE.LineBasicMaterial({ color: 0x66ffff });
+      const minorTickMaterial = new THREE.LineBasicMaterial({ color: 0x2d9da4 });
+
+      for (let h = 0; h < 24; h += 1) {
+        const angle = -(h / 24) * Math.PI * 2;
+        const cosA = Math.cos(angle);
+        const sinA = Math.sin(angle);
+        const majorStart = new THREE.Vector3(cosA * (radius - 0.65), 0, sinA * (radius - 0.65));
+        const majorEnd = new THREE.Vector3(cosA * (radius + 0.65), 0, sinA * (radius + 0.65));
+        const tickGeometry = new THREE.BufferGeometry().setFromPoints([majorStart, majorEnd]);
+        raGroup.add(new THREE.Line(tickGeometry, majorTickMaterial.clone()));
+
+        const label = `${String(h)}h`;
+        const sprite = createTextSprite(label, h % 6 === 0 ? "#9fffff" : "#66ffff", h % 6 === 0 ? 18 : 15);
+        sprite.position.set(cosA * (radius + 2.6), 0, sinA * (radius + 2.6));
+        raGroup.add(sprite);
+      }
+
+      for (let m = 0; m < 96; m += 1) {
+        if (m % 4 === 0) {
+          continue;
+        }
+        const angle = -(m / 96) * Math.PI * 2;
+        const cosA = Math.cos(angle);
+        const sinA = Math.sin(angle);
+        const start = new THREE.Vector3(cosA * (radius - 0.4), 0, sinA * (radius - 0.4));
+        const end = new THREE.Vector3(cosA * (radius + 0.4), 0, sinA * (radius + 0.4));
+        const tickGeometry = new THREE.BufferGeometry().setFromPoints([start, end]);
+        raGroup.add(new THREE.Line(tickGeometry, minorTickMaterial.clone()));
+      }
+
+      const decGroup = new THREE.Group();
+      decGroup.rotation.y = Math.PI / 2;
+      raGroup.add(decGroup);
+
+      const decPoints = [];
+      for (let i = 0; i <= segments; i += 1) {
+        const angle = (i / segments) * Math.PI * 2;
+        decPoints.push(new THREE.Vector3(0, Math.sin(angle) * radius, Math.cos(angle) * radius));
+      }
+      const decGeometry = new THREE.BufferGeometry().setFromPoints(decPoints);
+      const decMaterial = new THREE.LineBasicMaterial({ color: 0x40e0d0 });
+      decGroup.add(new THREE.LineLoop(decGeometry, decMaterial));
+
+      const decTickMaterial = new THREE.LineBasicMaterial({ color: 0xffd98a });
+      for (let decDeg = -90; decDeg <= 90; decDeg += 10) {
+        const phi = THREE.MathUtils.degToRad(decDeg);
+        const y = Math.sin(phi) * radius;
+        const z = Math.cos(phi) * radius;
+
+        const tickStart = new THREE.Vector3(-0.35, y, z);
+        const tickEnd = new THREE.Vector3(0.35, y, z);
+        const tickGeometry = new THREE.BufferGeometry().setFromPoints([tickStart, tickEnd]);
+        decGroup.add(new THREE.Line(tickGeometry, decTickMaterial.clone()));
+
+        const labelText = `${decDeg}\u00b0`;
+        const labelColor = "#40e0d0";
+        const sprite = createTextSprite(labelText, labelColor, 14);
+        const radial = new THREE.Vector3(0, y, z).normalize().multiplyScalar(radius + 1.6);
+        sprite.position.copy(radial);
+        sprite.position.x += 1.0;
+        decGroup.add(sprite);
+      }
+    }
+
+
+    function parseExoplanetsJson(data) {
+      const parsed = [];
+      const stars = data && typeof data === "object" ? Object.entries(data) : [];
+
+      for (const [starName, star] of stars) {
+        const raDeg = Number(star?.["RA (deg)"]);
+        const decDeg = Number(star?.["Dec (deg)"]);
+        const distPc = Number(star?.["Distance (pc)"]);
+        if (!Number.isFinite(raDeg) || !Number.isFinite(decDeg) || !Number.isFinite(distPc)) {
+          continue;
+        }
+
+        const planetsByName = star?.Planets && typeof star.Planets === "object" ? star.Planets : null;
+        if (!planetsByName) {
+          continue;
+        }
+        const planetsInfo = Object.entries(planetsByName).map(([planetName, planetData]) => ({
+          name: planetName,
+          massEarth: String(planetData?.["Mass (Earth mass)"] ?? "Unknown"),
+          radiusEarth: String(planetData?.["Radius (Earth radius)"] ?? "Unknown"),
+          discoveryYear: String(planetData?.["Discovery year"] ?? "Unknown"),
+          discoveryMethod: String(planetData?.["Discovery method"] ?? "Unknown"),
+          catalogLink: String(planetData?.["Catalog link"] ?? "")
+        }));
+        if (!planetsInfo.length) {
+          continue;
+        }
+
+        const distanceLy = distPc * PARSEC_TO_LIGHTYEAR;
+        const ra = (raDeg * Math.PI) / 180;
+        const dec = (decDeg * Math.PI) / 180;
+        const cosDec = Math.cos(dec);
+        const position = new THREE.Vector3(
+          distanceLy * cosDec * Math.cos(ra),
+          distanceLy * Math.sin(dec),
+          -distanceLy * cosDec * Math.sin(ra)
+        );
+
+        const starSystemType = t("objects.starSystem");
+        parsed.push({
+          name: starName,
+          type: starSystemType === "objects.starSystem" ? "Star System" : starSystemType,
+          raDeg,
+          decDeg,
+          distanceLy,
+          position: position.clone(),
+          discoveryMethods: Array.from(
+            new Set(planetsInfo.map((planetInfo) => planetInfo.discoveryMethod || "Unknown"))
+          ),
+          planets: planetsInfo
+        });
+      }
+
+      return parsed;
+    }
+
+    function clearSystemPlanetsList() {
+      systemPlanetsEl.replaceChildren();
+    }
+
+    function renderSystemPlanetsList(planetsInfo) {
+      clearSystemPlanetsList();
+      if (!Array.isArray(planetsInfo) || planetsInfo.length === 0) {
+        const empty = document.createElement("p");
+        empty.className = "planet-item-muted";
+        const noDetailsText = t("selection.noPlanetDetails");
+        empty.textContent =
+          noDetailsText === "selection.noPlanetDetails" ? "No planet details." : noDetailsText;
+        systemPlanetsEl.appendChild(empty);
+        return;
+      }
+
+      for (const planet of planetsInfo) {
+        const item = document.createElement("article");
+        item.className = "planet-item";
+
+        const title = document.createElement("h3");
+        title.textContent = planet.name;
+        item.appendChild(title);
+
+        const details = document.createElement("p");
+        const earthMassesLabel = t("selection.earthMasses");
+        const earthRadiiLabel = t("selection.earthRadii");
+        const massValue = Number.parseFloat(planet.massEarth);
+        const radiusValue = Number.parseFloat(planet.radiusEarth);
+        const massDisplay = Number.isFinite(massValue)
+          ? formatLocaleDecimal(massValue, 3)
+          : (/^unk(n)?own$/i.test(String(planet.massEarth).trim()) ? "?" : planet.massEarth);
+        const radiusDisplay = Number.isFinite(radiusValue)
+          ? formatLocaleDecimal(radiusValue, 3)
+          : (/^unk(n)?own$/i.test(String(planet.radiusEarth).trim()) ? "?" : planet.radiusEarth);
+        details.textContent =
+          `Method: ${planet.discoveryMethod} | Year: ${planet.discoveryYear} | ` +
+          `Mass: ${massDisplay} ${earthMassesLabel} | Radius: ${radiusDisplay} ${earthRadiiLabel}`;
+        item.appendChild(details);
+
+        if (planet.catalogLink && planet.catalogLink !== "Unknown") {
+          const link = document.createElement("a");
+          link.href = planet.catalogLink;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = "NASA catalog";
+          item.appendChild(link);
+        }
+
+        systemPlanetsEl.appendChild(item);
+      }
+    }
+
+    function updateStatusForSelection(planet) {
+      if (!planet) {
+        nameEl.textContent = t("selection.none");
+        classEl.textContent = t("selection.placeholder");
+        raEl.textContent = t("selection.placeholder");
+        decEl.textContent = t("selection.placeholder");
+        selectionDistanceEl.textContent = t("selection.placeholder");
+        clearSystemPlanetsList();
+        return;
+      }
+
+      nameEl.textContent = planet.name;
+      classEl.textContent = planet.type || t("objects.unknown");
+      raEl.textContent = formatRaHms(planet.raDeg);
+      decEl.textContent = formatDecDms(planet.decDeg);
+      selectionDistanceEl.textContent = t("status.distanceValue", { value: planet.distanceLy.toFixed(2) });
+      renderSystemPlanetsList(planet.planets);
+    }
+
+    function formatRaHms(raDeg) {
+      if (!Number.isFinite(raDeg)) {
+        return t("selection.placeholder");
+      }
+      let totalSeconds = (raDeg / 15) * 3600;
+      totalSeconds = ((totalSeconds % 86400) + 86400) % 86400;
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = Math.floor(totalSeconds % 60);
+      return `${String(hours).padStart(2, "0")}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
+    }
+
+    function formatDecDms(decDeg) {
+      if (!Number.isFinite(decDeg)) {
+        return t("selection.placeholder");
+      }
+      const sign = decDeg >= 0 ? "+" : "-";
+      const abs = Math.abs(decDeg);
+      const degrees = Math.floor(abs);
+      const minutesFull = (abs - degrees) * 60;
+      const minutes = Math.floor(minutesFull);
+      const seconds = Math.floor((minutesFull - minutes) * 60);
+      return `${sign}${String(degrees).padStart(2, "0")}\u00b0 ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
+    }
+
+    function applyFilters() {
+      const maxDistanceLy = Number(distanceRangeEl.value);
+      const selectedMethods = getSelectedDiscoveryMethods();
+
+      let visibleCount = 1;
+
+      for (const mesh of planetGroup.children) {
+        const planet = mesh.userData;
+        const methodMatch =
+          selectedMethods.size > 0 &&
+          Array.isArray(planet.discoveryMethods) &&
+          planet.discoveryMethods.some((method) => selectedMethods.has(method));
+        const visible = planet.distanceLy <= maxDistanceLy && methodMatch;
+        mesh.visible = visible;
+        if (visible) {
+          visibleCount += 1;
+        }
+      }
+
+      earthMesh.visible = 0 <= maxDistanceLy;
+      galacticCenterMesh.visible = true;
+      raGroup.visible = showAxesEl.checked;
+      eclipticGroup.visible = showEclipticDiskEl.checked;
+      galacticDiskGroup.visible = showGalacticDiskEl.checked;
+      galacticCenterArrow.visible = showGalacticArrowEl.checked;
+      for (const obj of raGroup.children) {
+        if (obj.userData?.isOverlayLabel) {
+          obj.visible = true;
+        }
+      }
+      distanceSummaryEl.textContent = t("status.distanceSummary", {
+        maxDistance: maxDistanceLy,
+        visible: visibleCount,
+        total: planets.length + 1
+      });
+
+      if (selectedPlanet && selectedPlanet !== earthMesh && !selectedPlanet.visible) {
+        selectedPlanet = null;
+        updateStatusForSelection(null);
+      }
+      updatePlanetBaseColors(getCurrentGridWorldRadius());
+    }
+
+    function resetPlanetMeshes() {
+      while (planetGroup.children.length > 0) {
+        const mesh = planetGroup.children[0];
+        planetGroup.remove(mesh);
+        mesh.geometry.dispose();
+        mesh.material.dispose();
+      }
+    }
+
+    function buildPlanetMeshes(parsedPlanets) {
+      resetPlanetMeshes();
+
+      const planetGeometry = new THREE.SphereGeometry(pointRadius, 12, 12);
+      const defaultMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+
+      for (const planet of parsedPlanets) {
+        const mesh = new THREE.Mesh(planetGeometry.clone(), defaultMaterial.clone());
+        mesh.position.copy(planet.position);
+        mesh.userData = {
+          name: planet.name,
+          type: planet.type,
+          discoveryMethods: planet.discoveryMethods || [],
+          raDeg: planet.raDeg,
+          decDeg: planet.decDeg,
+          distanceLy: planet.distanceLy,
+          planets: planet.planets || [],
+          isEarth: false
+        };
+        planetGroup.add(mesh);
+      }
+    }
+
+    async function loadPlanets() {
+      try {
+        let jsonData = window.EXOPLANETS_DATA;
+        if (!jsonData) {
+          const response = await fetch("./exoplanets.json", { cache: "no-store" });
+          if (!response.ok) {
+            throw new Error(`Failed to load exoplanets.json (${response.status})`);
+          }
+          jsonData = await response.json();
+        }
+        planets = parseExoplanetsJson(jsonData);
+        if (!planets.length) {
+          throw new Error("exoplanets.json has no valid entries");
+        }
+        availableDiscoveryMethods = Array.from(
+          new Set(
+            planets.flatMap((system) =>
+              Array.isArray(system.discoveryMethods) ? system.discoveryMethods : []
+            )
+          )
+        ).sort((a, b) => a.localeCompare(b));
+        buildDiscoveryMethodsChecklist();
+        buildPlanetMeshes(planets);
+
+        const maxDistanceLy = planets.reduce((max, planet) => Math.max(max, planet.distanceLy), 0);
+        axisRange = Math.max(100, Math.ceil(maxDistanceLy / 50) * 50);
+        buildRaVisualizer();
+
+        distanceRangeEl.min = "1";
+        distanceRangeEl.max = String(Math.ceil(maxDistanceLy));
+        distanceRangeEl.step = "1";
+        distanceRangeEl.value = String(Math.max(1, Math.min(2000, Math.ceil(maxDistanceLy))));
+
+        updateZoomLimits();
+        controls.update();
+
+        applyFilters();
+      } catch (error) {
+        classEl.textContent = t("fallback.runLocalServer");
+        nameEl.textContent = t("fallback.localhost");
+        distanceSummaryEl.textContent = t("fallback.httpServerCommand");
+      }
+    }
+
+    function pickPlanet(event) {
+      const rect = renderer.domElement.getBoundingClientRect();
+      pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+      const candidates = [earthMesh, ...planetGroup.children.filter((mesh) => mesh.visible)];
+      candidates.push(galacticCenterMesh);
+      raycaster.setFromCamera(pointer, camera);
+      const hits = raycaster.intersectObjects(candidates, false);
+
+      if (!hits.length) {
+        selectedPlanet = null;
+        updateStatusForSelection(null);
+        updatePlanetBaseColors(getCurrentGridWorldRadius());
+        return;
+      }
+
+      const next = hits[0].object;
+      selectedPlanet = next;
+      updateStatusForSelection(selectedPlanet.userData);
+      updatePlanetBaseColors(getCurrentGridWorldRadius());
+    }
+
+    function resizeRendererToDisplaySize() {
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      if (canvas.width !== width || canvas.height !== height) {
+        renderer.setSize(width, height, false);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        updateZoomLimits();
+      }
+    }
+
+    function updateZoomLimits() {
+      const viewportHeight = Math.max(1, canvas.clientHeight);
+      const fovRad = THREE.MathUtils.degToRad(camera.fov);
+      const distanceForMaxGridRadius =
+        (MAX_ZOOM_OUT_GRID_RADIUS_LY * viewportHeight) /
+        (2 * Math.tan(fovRad * 0.5) * RA_TARGET_SCREEN_RADIUS_PX);
+
+      controls.maxDistance = Math.max(250, distanceForMaxGridRadius);
+      camera.far = Math.max(20000, controls.maxDistance * 2);
+      camera.updateProjectionMatrix();
+    }
+
+    function updatePlanetScreenSizes() {
+      const viewportHeight = Math.max(1, canvas.clientHeight);
+      const fovRad = THREE.MathUtils.degToRad(camera.fov);
+      const meshes = [earthMesh, galacticCenterMesh, ...planetGroup.children];
+
+      for (const mesh of meshes) {
+        const distanceToCamera = camera.position.distanceTo(mesh.position);
+        const frustumHeightAtMesh = 2 * distanceToCamera * Math.tan(fovRad * 0.5);
+        const worldPerPixel = frustumHeightAtMesh / viewportHeight;
+        const minWorldRadius = Math.max(0.0001, worldPerPixel * PLANET_MIN_SCREEN_RADIUS_PX);
+        const maxWorldRadius = Math.max(minWorldRadius, worldPerPixel * PLANET_SCREEN_RADIUS_PX);
+        const baseRadius = mesh.geometry?.parameters?.radius || pointRadius;
+        const clampedWorldRadius = Math.min(maxWorldRadius, Math.max(minWorldRadius, baseRadius));
+        mesh.scale.setScalar(clampedWorldRadius / baseRadius);
+      }
+    }
+
+    function getCurrentGridWorldRadius() {
+      const distanceToEarth = camera.position.distanceTo(earthMesh.position);
+      const frustumHeightAtEarth =
+        2 * distanceToEarth * Math.tan(THREE.MathUtils.degToRad(camera.fov * 0.5));
+      const worldPerPixel = frustumHeightAtEarth / Math.max(1, canvas.clientHeight);
+      return worldPerPixel * RA_TARGET_SCREEN_RADIUS_PX;
+    }
+
+    function updatePlanetBaseColors(gridWorldRadius) {
+      earthMesh.material.color.setHex(COLOR_EARTH);
+      galacticCenterMesh.material.color.setHex(
+        selectedPlanet === galacticCenterMesh ? COLOR_SELECTED : COLOR_GALACTIC_CENTER
+      );
+
+      for (const mesh of planetGroup.children) {
+        if (mesh === selectedPlanet) {
+          mesh.material.color.setHex(COLOR_SELECTED);
+          continue;
+        }
+
+        const distanceFromEarth = mesh.position.distanceTo(earthMesh.position);
+        const insideGrid = distanceFromEarth <= gridWorldRadius;
+        mesh.material.color.setHex(insideGrid ? COLOR_PLANET_INSIDE_GRID : COLOR_PLANET_OUTSIDE_GRID);
+      }
+    }
+
+    function animate() {
+      resizeRendererToDisplaySize();
+      updatePlanetScreenSizes();
+      const targetWorldRadius = getCurrentGridWorldRadius();
+      gridRadiusEl.textContent = t("status.gridRadiusValue", { value: targetWorldRadius.toFixed(2) });
+      const scale = Math.max(0.001, targetWorldRadius / RA_BASE_RADIUS);
+      raGroup.position.copy(earthMesh.position);
+      raGroup.scale.setScalar(scale);
+      eclipticGroup.position.copy(earthMesh.position);
+      eclipticGroup.scale.setScalar(scale);
+      galacticDiskGroup.position.copy(earthMesh.position);
+      galacticDiskGroup.scale.setScalar(scale);
+      galacticCenterArrow.position.copy(earthMesh.position);
+      galacticCenterArrow.setLength(
+        Math.max(12, targetWorldRadius * 0.85),
+        Math.max(2.5, targetWorldRadius * 0.1),
+        Math.max(1.2, targetWorldRadius * 0.05)
+      );
+      updatePlanetBaseColors(targetWorldRadius);
+      updateSelectionGuides();
+      updatePanOutAnimation(performance.now());
+      raGroup.children.forEach((obj) => {
+        if (obj.type === "Sprite") {
+          obj.quaternion.copy(camera.quaternion);
+        }
+      });
+      controls.update();
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+
+    function stopPanOutAnimation() {
+      if (!panOutAnimation) {
+        return;
+      }
+      panOutAnimation = null;
+      controls.enabled = true;
+      panOutStartEl.disabled = false;
+    }
+
+    function getPanOutDurationSeconds() {
+      const raw = Number.parseFloat(panOutSecondsEl.value);
+      const safe = Number.isFinite(raw) ? raw : 12;
+      const clamped = Math.min(PAN_OUT_MAX_SECONDS, Math.max(PAN_OUT_MIN_SECONDS, safe));
+      const rounded = Math.round(clamped);
+      panOutSecondsEl.value = String(rounded);
+      return rounded;
+    }
+
+    function startPanOutAnimation() {
+      stopPanOutAnimation();
+      controls.target.copy(earthMesh.position);
+      camera.position.set(0, 120, 250);
+      controls.update();
+
+      const durationSeconds = getPanOutDurationSeconds();
+      const center = earthMesh.position.clone();
+      const startOffset = camera.position.clone().sub(center);
+      const startSpherical = new THREE.Spherical().setFromVector3(startOffset);
+      panOutAnimation = {
+        startTimeMs: performance.now(),
+        durationMs: durationSeconds * 1000,
+        center,
+        startSpherical,
+        endRadius: startSpherical.radius * PAN_OUT_DISTANCE_MULTIPLIER,
+        thetaDelta: THREE.MathUtils.degToRad(360 * PAN_OUT_ROTATION_TURNS),
+      };
+
+      controls.enabled = false;
+      panOutStartEl.disabled = true;
+    }
+
+    function updatePanOutAnimation(nowMs) {
+      if (!panOutAnimation) {
+        return;
+      }
+
+      const elapsedMs = nowMs - panOutAnimation.startTimeMs;
+      const progress = Math.min(1, Math.max(0, elapsedMs / panOutAnimation.durationMs));
+      const finalSecondFraction = Math.min(1, 1000 / panOutAnimation.durationMs);
+      const finalPhaseStart = Math.max(0, 1 - finalSecondFraction);
+      let eased;
+      if (progress <= finalPhaseStart) {
+        eased = Math.pow(progress, 3);
+      } else {
+        const finalPhaseT = (progress - finalPhaseStart) / Math.max(1e-6, 1 - finalPhaseStart);
+        const startValue = Math.pow(finalPhaseStart, 3);
+        const startSlope = 3 * Math.pow(finalPhaseStart, 2);
+        const phaseDuration = Math.max(1e-6, 1 - finalPhaseStart);
+        const m0 = startSlope * phaseDuration;
+        const m1 = 0;
+
+        const t2 = finalPhaseT * finalPhaseT;
+        const t3 = t2 * finalPhaseT;
+        const h00 = (2 * t3) - (3 * t2) + 1;
+        const h10 = t3 - (2 * t2) + finalPhaseT;
+        const h01 = (-2 * t3) + (3 * t2);
+        const h11 = t3 - t2;
+        eased = (h00 * startValue) + (h10 * m0) + h01 + (h11 * m1);
+      }
+
+      const radius = THREE.MathUtils.lerp(
+        panOutAnimation.startSpherical.radius,
+        panOutAnimation.endRadius,
+        eased
+      );
+      const theta = panOutAnimation.startSpherical.theta + (panOutAnimation.thetaDelta * eased);
+      const phi = panOutAnimation.startSpherical.phi;
+      const offset = new THREE.Vector3().setFromSpherical(new THREE.Spherical(radius, phi, theta));
+
+      controls.target.copy(panOutAnimation.center);
+      camera.position.copy(panOutAnimation.center).add(offset);
+
+      if (progress >= 1) {
+        panOutAnimation = null;
+        controls.enabled = true;
+        panOutStartEl.disabled = false;
+      }
+    }
+
+    function resetViewToEarth() {
+      stopPanOutAnimation();
+      controls.target.copy(earthMesh.position);
+      camera.position.set(0, 120, 250);
+      controls.update();
+    }
+
+    distanceRangeEl.addEventListener("input", applyFilters);
+    showAxesEl.addEventListener("change", applyFilters);
+    showGalacticArrowEl.addEventListener("change", applyFilters);
+    showEclipticDiskEl.addEventListener("change", applyFilters);
+    showGalacticDiskEl.addEventListener("change", applyFilters);
+    showSelectionGuidesEl.addEventListener("change", applyFilters);
+    resetViewEl.addEventListener("click", resetViewToEarth);
+    panOutStartEl.addEventListener("click", startPanOutAnimation);
+    localeSelectEl.addEventListener("change", async () => {
+      await switchLocale(localeSelectEl.value);
+    });
+
+    renderer.domElement.addEventListener("mousedown", (event) => {
+      if (panOutAnimation) {
+        stopPanOutAnimation();
+      }
+      if (event.button !== 0) {
+        return;
+      }
+      pointerIsDown = true;
+      pointerMoved = false;
+      pointerDownX = event.clientX;
+      pointerDownY = event.clientY;
+    });
+    window.addEventListener("mousemove", (event) => {
+      if (!pointerIsDown || pointerMoved) {
+        return;
+      }
+      const dx = event.clientX - pointerDownX;
+      const dy = event.clientY - pointerDownY;
+      if ((dx * dx) + (dy * dy) > 16) {
+        pointerMoved = true;
+      }
+    });
+    window.addEventListener("mouseup", () => {
+      pointerIsDown = false;
+    });
+    renderer.domElement.addEventListener("click", (event) => {
+      if (pointerMoved) {
+        pointerMoved = false;
+        return;
+      }
+      pickPlanet(event);
+    });
+
+    async function init() {
+      try {
+        await loadLocaleStrings();
+      } catch {
+        strings = {};
+        currentLocale = FALLBACK_LOCALE;
+      }
+      applyStaticTexts();
+      setLocalizedStaticObjects();
+
+      showAxesEl.checked = true;
+      showGalacticArrowEl.checked = false;
+      showEclipticDiskEl.checked = false;
+      showGalacticDiskEl.checked = false;
+      showSelectionGuidesEl.checked = true;
+      nameEl.textContent = t("fallback.allPlanets");
+      classEl.textContent = "From exoplanets.json";
+      raEl.textContent = t("selection.placeholder");
+      decEl.textContent = t("selection.placeholder");
+      selectionDistanceEl.textContent = t("selection.placeholder");
+      distanceSummaryEl.textContent = t("selection.placeholder");
+
+      await loadPlanets();
+      animate();
+    }
+
+    init();
+  </script>
+</body>
+</html>
+
