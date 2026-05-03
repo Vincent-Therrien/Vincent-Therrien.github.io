@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>We Know Surprisingly Little About Exoplanets</title>
+		<style>.markdown-body{--base-size-4:0.25rem;--base-size-8:0.5rem;--base-size-16:1rem;--base-size-24:1.5rem;--base-size-40:2.5rem;--base-text-weight-normal:400;--base-text-weight-medium:500;--base-text-weight-semibold:600;--fontStack-monospace:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;--fgColor-accent:Highlight}@media (prefers-color-scheme:dark){.markdown-body,[data-theme=dark]{color-scheme:dark;--focus-outlineColor:#1f6feb;--fgColor-default:#f0f6fc;--fgColor-muted:#9198a1;--fgColor-accent:#4493f8;--fgColor-success:#3fb950;--fgColor-attention:#d29922;--fgColor-danger:#f85149;--fgColor-done:#ab7df8;--bgColor-default:#0d1117;--bgColor-muted:#151b23;--bgColor-neutral-muted:#656c7633;--bgColor-attention-muted:#bb800926;--borderColor-default:#3d444d;--borderColor-muted:#3d444db3;--borderColor-neutral-muted:#3d444db3;--borderColor-accent-emphasis:#1f6feb;--borderColor-success-emphasis:#238636;--borderColor-attention-emphasis:#9e6a03;--borderColor-danger-emphasis:#da3633;--borderColor-done-emphasis:#8957e5;--color-prettylights-syntax-comment:#9198a1;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#f0f6fc;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-brackethighlighter-angle:#9198a1;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#f0f6fc;--color-prettylights-syntax-markup-bold:#f0f6fc;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#f0f6fc;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-sublimelinter-gutter-mark:#3d444d}}@media (prefers-color-scheme:light){.markdown-body,[data-theme=light]{color-scheme:light;--focus-outlineColor:#0969da;--fgColor-default:#1f2328;--fgColor-muted:#59636e;--fgColor-accent:#0969da;--fgColor-success:#1a7f37;--fgColor-attention:#9a6700;--fgColor-danger:#d1242f;--fgColor-done:#8250df;--bgColor-default:#ffffff;--bgColor-muted:#f6f8fa;--bgColor-neutral-muted:#818b981f;--bgColor-attention-muted:#fff8c5;--borderColor-default:#d1d9e0;--borderColor-muted:#d1d9e0b3;--borderColor-neutral-muted:#d1d9e0b3;--borderColor-accent-emphasis:#0969da;--borderColor-success-emphasis:#1a7f37;--borderColor-attention-emphasis:#9a6700;--borderColor-danger-emphasis:#cf222e;--borderColor-done-emphasis:#8250df;--color-prettylights-syntax-comment:#59636e;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-prettylights-syntax-entity:#6639ba;--color-prettylights-syntax-storage-modifier-import:#1f2328;--color-prettylights-syntax-entity-tag:#0550ae;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-brackethighlighter-angle:#59636e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#1f2328;--color-prettylights-syntax-markup-bold:#1f2328;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#d1d9e0;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-sublimelinter-gutter-mark:#818b98}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--fgColor-default);background-color:var(--bgColor-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--fgColor-accent);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--borderColor-muted)}.markdown-body mark{background-color:var(--bgColor-attention-muted);color:var(--fgColor-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em var(--base-size-40)}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--borderColor-muted);height:.25em;padding:0;margin:var(--base-size-24) 0;background-color:var(--borderColor-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button;appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none;appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--fgColor-muted);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto;font-variant:tabular-nums}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--focus-outlineColor);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--focus-outlineColor);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:var(--base-size-4);font:11px var(--fontStack-monospace,ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace);line-height:10px;color:var(--fgColor-default);vertical-align:middle;background-color:var(--bgColor-muted);border:solid 1px var(--borderColor-neutral-muted);border-bottom-color:var(--borderColor-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--borderColor-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:var(--base-size-24);margin-bottom:var(--base-size-16);font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--borderColor-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--fgColor-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--fgColor-muted);border-left:.25em solid var(--borderColor-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:var(--fontStack-monospace,ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace);font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:var(--fontStack-monospace,ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace);font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;appearance:none}.markdown-body .mr-2{margin-right:var(--base-size-8,8px)!important}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--fgColor-danger)}.markdown-body .anchor{float:left;padding-right:var(--base-size-4);margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:var(--base-size-16)}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--fgColor-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type="a s"]{list-style-type:lower-alpha}.markdown-body ol[type="A s"]{list-style-type:upper-alpha}.markdown-body ol[type="i s"]{list-style-type:lower-roman}.markdown-body ol[type="I s"]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:var(--base-size-16)}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:var(--base-size-16);font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 var(--base-size-16);margin-bottom:var(--base-size-16)}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--borderColor-default)}.markdown-body table td>:last-child{margin-bottom:0}.markdown-body table tr{background-color:var(--bgColor-default);border-top:1px solid var(--borderColor-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--bgColor-muted)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--borderColor-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--fgColor-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--bgColor-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:var(--base-size-16)}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:var(--base-size-16);overflow:auto;font-size:85%;line-height:1.45;color:var(--fgColor-default);background-color:var(--bgColor-muted);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px var(--base-size-8) 9px;text-align:right;background:var(--bgColor-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--bgColor-muted);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--fgColor-muted);border-top:1px solid var(--borderColor-default)}.markdown-body .footnotes ol{padding-left:var(--base-size-16)}.markdown-body .footnotes ol ul{display:inline-block;padding-left:var(--base-size-16);margin-top:var(--base-size-16)}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:calc(var(--base-size-8)*-1);right:calc(var(--base-size-8)*-1);bottom:calc(var(--base-size-8)*-1);left:calc(var(--base-size-24)*-1);pointer-events:none;content:"";border:2px solid var(--borderColor-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--fgColor-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body body:has(:modal){padding-right:var(--dialog-scrollgutter)!important}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body [role=tabpanel][tabindex="0"]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body button:focus:not(:focus-visible),.markdown-body summary:focus:not(:focus-visible){outline:0;box-shadow:none}.markdown-body [tabindex="0"]:focus:not(:focus-visible),.markdown-body details-dialog:focus:not(:focus-visible){outline:0}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:var(--base-size-4)}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body ul:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body ol:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}.markdown-body .markdown-alert{padding:var(--base-size-8) var(--base-size-16);margin-bottom:var(--base-size-16);color:inherit;border-left:.25em solid var(--borderColor-default)}.markdown-body .markdown-alert>:first-child{margin-top:0}.markdown-body .markdown-alert>:last-child{margin-bottom:0}.markdown-body .markdown-alert .markdown-alert-title{display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1}.markdown-body .markdown-alert.markdown-alert-note{border-left-color:var(--borderColor-accent-emphasis)}.markdown-body .markdown-alert.markdown-alert-note .markdown-alert-title{color:var(--fgColor-accent)}.markdown-body .markdown-alert.markdown-alert-important{border-left-color:var(--borderColor-done-emphasis)}.markdown-body .markdown-alert.markdown-alert-important .markdown-alert-title{color:var(--fgColor-done)}.markdown-body .markdown-alert.markdown-alert-warning{border-left-color:var(--borderColor-attention-emphasis)}.markdown-body .markdown-alert.markdown-alert-warning .markdown-alert-title{color:var(--fgColor-attention)}.markdown-body .markdown-alert.markdown-alert-tip{border-left-color:var(--borderColor-success-emphasis)}.markdown-body .markdown-alert.markdown-alert-tip .markdown-alert-title{color:var(--fgColor-success)}.markdown-body .markdown-alert.markdown-alert-caution{border-left-color:var(--borderColor-danger-emphasis)}.markdown-body .markdown-alert.markdown-alert-caution .markdown-alert-title{color:var(--fgColor-danger)}.markdown-body>:first-child>.heading-element:first-child{margin-top:0!important}.markdown-body .highlight pre:has(+.zeroclipboard-container){min-height:52px}</style>
+		<style>
+			body {
+				margin: 0;
+			}
+
+			.markdown-body-content {
+				box-sizing: border-box;
+				min-width: 200px;
+				max-width: 980px;
+				margin: 0 auto;
+				padding: 45px;
+			}
+
+			@media (max-width: 767px) {
+				.markdown-body-content {
+					padding: 15px;
+				}
+			}
+
+			.markdown-body {
+				--base-size-8: 8px;
+				--base-size-16: 16px;
+			}
+		</style>
+	</head>
+	<body class="markdown-body">
+		<article class="markdown-body-content"><h1>We Know Surprisingly Little About Exoplanets</h1>
+<p>This is a map of all exoplanets we've discovered [1]. This whole region in space comprises billions<br>
+of stars, and yet, we've only found a few thousand exoplanets. Why so few? And why were so many of<br>
+them discovered inside of those two areas and not elsewhere?</p>
+<h2>I. Mysterious Region A</h2>
+<p>Part of the answer lies in interstellar distances. The closest star to the Sun is 4.2 light years<br>
+away. To get a sense of that scale, if we shrank the Sun down to the size of a tennis ball and<br>
+adjusted distances accordingly, then this other star would be 1900 km away, roughly the distance<br>
+between Beijing and Hong Kong [2].</p>
+<p>Those distances make exoplanets difficult to observe, but we can rely on indirect methods to detect<br>
+them, like transit. A planet passing in front of its star blocks a part of its light, making it look<br>
+periodically dimmer. Of course, this only works if the planet happens to orbit at the right angle.<br>
+It's a number's game: if you want to see transits, you gotta scan as many stars as possible [3].<br>
+Another disadvantage is that exoplanets block a very small amount of light, so it's hard to tell if<br>
+you're looking at an actual transit or random flickering [4]. Despite this, transit detection was so<br>
+promising NASA decided to launch a space telescope just for that. Its name was Kepler [5].</p>
+<p>It would stare at a single patch of stars for three and a half years looking out for transits; NASA<br>
+just had to decide where to stare at exactly. A logical choice would be toward the center of our<br>
+galaxy. The Milky Way is a barred spiral galaxy, meaning there's a high star density near the<br>
+central bulge and lower star density toward the edge. The Earth is in the middle. You would see a<br>
+lot of stars looking at the center, but it unfortunately lies in the ecliptic plane, that is, the<br>
+region in which planets orbit the Sun. Kepler would get blinded when looking in this direction, so<br>
+NASA ruled out any region within 55 degrees of the ecliptic. Kepler had to look elsewhere near the<br>
+galactic plane to get a decent star density, that leaves two regions. This one is observable from<br>
+the Northern hemisphere, where ground telescopes that supported the mission were located. This would<br>
+facilitate follow-up observations, and NASA selected this direction in particular [6]. The Kepler<br>
+mission started in 2009 and has found more than 2700 exoplanets [7]. That's why the map comprises<br>
+this cone: it's the planets found in the observational region of Kepler. Of course there are way<br>
+more planets there in reality, but only a few have the right orientation for transit detection to<br>
+work. Now, what about this other region?</p>
+<h2>II. Mysterious Region B</h2>
+<p>Well, there are other exoplanet detection methods, and perhaps the coolest one is gravitational<br>
+microlensing. Gravity bends the trajectory of light, and this can magnify objects. When the Earth, a<br>
+star system, and a background star happen to align, the light of the background star is deviated in<br>
+a particular way and astronomers look out for specific patterns to find exoplanets. This works even<br>
+for planets with a small mass and wide orbit, so microlensing isn't biased in favor of planets<br>
+orbiting close to their star like the transit method. Also, keep in mind that all these objects are<br>
+constantly moving across space, and when they are not longer aligned, it's impossible to repeat the<br>
+microlensing effect [8]. Astronomers constantly survey the sky to find microlensing alignments and<br>
+several hundreds have been found [9]. The center of the galaxy is particularly good microlensing<br>
+hunting ground because there are a lot of background stars, that explains why there's this other<br>
+cone in the map: most of these exoplanets were found through microlensing.</p>
+<p>But these two methods don't give out <em>that much</em> information about exoplanets. Microlensing tells us<br>
+their mass relative to their star, but not much else [10]. Transit gives us the planet's radius,<br>
+orbital period, and even some data about the composition of its atmosphere, if there is one. But not<br>
+the mass of the planet. Plus, it only works for a minority of star systems [11]. That's why<br>
+scientists often combine multiple detection methods to get more data.</p>
+<h2>III. More Detection Methods</h2>
+<p>Radial velocity consists in measuring the small motion of stars. They don't stay perfectly in place:<br>
+the gravity of their planets makes them move a bit. Because of the Doppler effect, when a star moves<br>
+toward us, its light look more blue. When it moves away from us, it looks more red. We can measure<br>
+this tiny shift to detect exoplanets, and unlike the transit method, the planets don't need to be<br>
+perfectly aligned. Radial velocity can also measure the mass of planets [12]. Direct imaging is<br>
+another method that works better with planets that have wide orbits. This is not an artistic<br>
+depiction, it's a direct observation of exoplanets [11]. You can also mess things up: this picture<br>
+[13] shows what appeared to be a planet orbiting a star more than 1000 lightyears away from Earth,<br>
+but further research showed that this spot is probably just a background star [14].</p>
+<p>There are even more detection methods, and they've been used to find thousands of exoplanets, but<br>
+they remain very hard to study. Let's take Alpha Centauri as an example, the nearest star system<br>
+from Earth. It comprises three stars. Proxima Centauri, the closest star to the Sun, has two<br>
+exoplanets, confirmed with radial velocity. The two big stars of that system, Rigil Kentaurus and<br>
+Toliman, are more difficult to investigate. We haven't confirmed any transit, so if there are<br>
+planets there, they probably don't have the right orientation for that method [15]. They are also<br>
+very difficult to observe with radial velocity because it's a binary system: when you observe one<br>
+star, the light from the other one contaminates your results [16]. They are very bright, which makes<br>
+direct imaging difficult [18]. And there are no object massive enough to use as a gravitational lens<br>
+to observe them. Or maybe there's one? More on that later. Alpha Centauri is <em>the</em> closest star<br>
+system to us, and we don't know that much about it because it doesn't have the right characteristics<br>
+for our observation methods. Star systems like TRAPPIST-1 are much farther away but have a better<br>
+orientation, so they are <em>better</em> studied in some ways [19].</p>
+<p>The most obvious way to learn more about exoplanets is to make better telescopes. Kepler went<br>
+offline a few years ago, but TESS is an ongoing mission that surveys the entire sky in search of<br>
+transiting exoplanets. Future missions will focus on studying the Alpha Centauri star system [20],<br>
+terrestrial exoplanets [21], or investigate broader study objectives [22] [23]. A more extravagant<br>
+idea is to <em>visit</em> exoplanets. Breakthrough Starshot is a projet that proposes sending probes to the<br>
+Alpha Centauri system with solar sails. The destination is so far away that if we want to reach it<br>
+within a human lifetime, rockets won't cut it. An alternative is to beam light onto a sail to<br>
+accelerate a small payload at 15% the speed of light and reach Alpha Centauri in less than 30 years<br>
+[24]. You'll guess that an extremely expensive, decade-spanning mission is difficult to fund, and it<br>
+has indeed been put indefinitely on hold in 2025 [26]. Here's another extravagant idea: we could use<br>
+the Sun as a gravitational lens. If we put a telescope 542 astronomical units away from it, the Sun<br>
+would theoretically focus light onto the telescope and allow taking pictures of exoplanets with a 25<br>
+kilometer resolution, enough to see surface features like continents and signs of habitability [27].<br>
+But that's, like, very far and there's no serious project to do this at the moment. So for the next,<br>
+let's say, 30 years, we will probably remain limited to more or less the same observation techniques<br>
+we have now, but of course scientists will make better telescopes and find better ways to analyze<br>
+data, which could accelerate discoveries.</p>
+<h2>IV. Life</h2>
+<p>A big point of interest with exoplanets is the search for life. NASA released an astrobiology guide<br>
+in 2015 that identifies <strong>water</strong> as a necessary condition for life as we know it [28,page143].<br>
+Other types of life that would not need water are plausible and we'll talk about them, but for now<br>
+let's focus on what we're familiar with.</p>
+<p>The habitable zone is the area around a star in which planets receive the right amount of<br>
+energy for water to exist in its liquid state on the surface of the planet. Just lying in that zone<br>
+is not enough though, you also need an atmosphere to provide some pressure, otherwise water would<br>
+just freeze or boil. And atmospheres, by themselves, tend to get stripped away by solar wind when<br>
+there's no magnetic field to shield them. On Earth, the movement of molten iron in the outer core<br>
+generates a magnetic field through a dynamo effect [28,page152]. Mars used to have a similar effect,<br>
+but it is so small that is internal heat dissipated and its dynamo weakened. On top of that, its<br>
+gravity is weak, so its atmosphere and water got knocked out [29]. There might also be such a thing<br>
+as too much water. Ocean worlds are hypothesized planets covered by water. If it's too deep, the<br>
+ocean might dissolve elements required for life, like phosphorus, at concentrations too low to make<br>
+life possible [30].</p>
+<p>Stars themselves also impact habitability. Most of them in our galaxy are red dwarves, small stars<br>
+that emit much less light than our Sun [31]. Their habitable zone is thus very close to them.<br>
+Planets located there tend to get tidally locked, meaning that one side of the planet constantly<br>
+faces the star. This could be nefarious for life: without a day-night cycle, you get extreme<br>
+differences in temperature. But a sufficiently thick atmosphere and oceans could redistribute heat<br>
+and make the climate habitable. Life could adapt to these conditions, especially near the terminator<br>
+[32]. Another possibility is for an exomoon to orbit a tidally locked planet. No exomoon has been<br>
+detected so far, but they would have a day-night cycle even if their planet is tidally locked. They<br>
+would also probably experience intense volcanism as a result of tidal activity, like Io in our solar<br>
+system [33]. But some volcanism could contribute to a dynamo effect, thus shielding the moon [33].<br>
+Natural satellites like Enceladus and Europa are strongly suspected to host subsurface oceans thanks<br>
+to moderate tidal effects, and it might be possible for life to exist there [34]. Red dwarves have<br>
+other problems: their luminosity is highly variable, with flares making them very luminous for short<br>
+bursts [35]. They also emit less energy in the visible spectrum, which complicates photosynthesis<br>
+[36]. On the other hand, planets orbiting stars larger than our Sun <em>could</em> also harbor life, but<br>
+big stars emit more ionizing radiation, which could harm living beings, and they have shorter lives,<br>
+which leaves less time for life to develop [45].</p>
+<p>Those were a few basic conditions for life as we know it. Some scientists have stated that the<br>
+specific way our solar system is organized is necessary for life. Jupiter supposedly shielded Earth<br>
+from large asteroid impacts by deviating their trajectories, but this idea has been challenged:<br>
+Jupiter might have caused more asteroid impacts than it prevented [37]. Another disputed point is<br>
+the Moon, which stabilizes the obliquity of the Earth. Without the Moon, climate would have<br>
+experienced more variations [38], but those would have occurred over millions of years, leaving<br>
+enough time for life to evolve adaptations [39]. Another idea is that our position in the Milky Way<br>
+matters. Too close to the center, and there is so much activity that it could disturb the solar<br>
+system are lead to more asteroid impacts; there's even a hypothesis that large scale extinction<br>
+events happened when the solar system was crossing areas of the galaxy that are denser in stars, but<br>
+this is not a proven fact [40]. Star systems too far away from the center of the galaxy, meanwhile,<br>
+might be too poor in heavy elements necessary for life, but again there's not enough evidence for<br>
+this [41].</p>
+<p>Many of these points are kind of anthropocentric because they define habitability as similarity to<br>
+Earth. It's our single data point after all, but life might be more varied than we think. Maybe a<br>
+civilization on the outer rim of the Milky Way thinks it's impossible for life to arise as close to<br>
+the center of the galaxy as we are. Maybe another one lives on a natural satellite and thinks it's<br>
+impossible for life to develop on a planet. Besides, maybe life could use other biochemistries: some<br>
+scientists have proposed that it could rely on ammonia instead of water [42]. Even weirder lifeforms<br>
+could exist. Now, I'll share a highly speculative hypothesis, but it's a cool example: nuclear<br>
+phenomena akin to DNA replication could evolve inside of stars and resemble biological processes<br>
+[43]. Again, this is just a hypothesis, and it would be pretty hard to verify, but life could exist<br>
+in forms that look nothing like what we are familiar with.</p>
+<p>NASA's astrobiology guide is not a manual on how to find life: it only raises questions to inspire<br>
+research [28,page9]. And the science has advanced a lot: NASA is working on releasing a new updated<br>
+guide to account for the progress they've made since [44]. But the search remains difficult: we<br>
+don't even know what's <em>actually</em> necessary for life and our observation techniques are limited by<br>
+the massive distances between stars.</p>
+<h1 id="references">References</h1>
+<ul>
+<li>[1] The exoplanet visualizer I made is available at <a href="https://github.com/Vincent-Therrien/planedo">https://github.com/Vincent-Therrien/planedo</a>.<br>
+It uses data taken from the "Nasa Exoplanet Archive", available at <a href="https://exoplanetarchive.ipac.caltech.edu/" rel="nofollow">https://exoplanetarchive.ipac.caltech.edu/</a></li>
+<li>[2] Okay let's compute this:
+<ul>
+<li>According to <a href="https://size-charts.com/topics/tennis-ball-size-guide-and-dimensions/" rel="nofollow">https://size-charts.com/topics/tennis-ball-size-guide-and-dimensions/</a>, the average<br>
+diameter of a tennis ball is 6.6 cm (0.066 m).</li>
+<li>According to <a href="https://www.jpl.nasa.gov/_edu/pdfs/scaless_reference.pdf" rel="nofollow">https://www.jpl.nasa.gov/_edu/pdfs/scaless_reference.pdf</a>, the Sun has a diameter of<br>
+1 391 400 km (1 391 400 000 m).</li>
+<li>According to <a href="https://en.wikipedia.org/wiki/Proxima_Centauri" rel="nofollow">https://en.wikipedia.org/wiki/Proxima_Centauri</a>, the distance to Proxima Centauri<br>
+is 4.2465 light years (4.017486e16 m, taking 1 ly = 9.4607e15 m, according to<br>
+<a href="https://en.wikipedia.org/wiki/Light-year" rel="nofollow">https://en.wikipedia.org/wiki/Light-year</a>).</li>
+<li>Let the Sun the be size of a tennis ball. The Sun-Proxima Centauri distance becomes:</li>
+<li>New distance = (diameter of the tennis ball) (real distance) / (diameter of the Sun)</li>
+<li>New distance = 0.066 m * 4.017486e16 m / 1.391e9 = 1 905 664 m ~ 1 906 km</li>
+<li>The distance from Beijing to Hong Kong is around 1950 km.</li>
+</ul>
+</li>
+<li>[3] Let's calculate how likely it would be for an alien civilization to detect Earth via transit:
+<ul>
+<li>The Sun has a diameter of 1 391 400 km [2].</li>
+<li>The Earth orbits the Sun at an average distance of 149 600 000 km, according to<br>
+<a href="https://www.jpl.nasa.gov/_edu/pdfs/scaless_reference.pdf" rel="nofollow">https://www.jpl.nasa.gov/_edu/pdfs/scaless_reference.pdf</a></li>
+<li>Let's suppose the alien civilization looks at us from a <em>very</em> far distance, like multiple<br>
+light years.</li>
+<li>Then we can approximate their perspective as if they are observing Earth from an infinite distance.</li>
+<li>Let's also approximate the orbit of the Earth as a perfect circle.</li>
+<li>Let an angle of 0 degree indicate that the Earth makes a perfect transit with the Sun (from<br>
+the perspective of the alien civilization). +90 degrees means that the orbit of the Earth is<br>
+perpendicular to their line of sight.</li>
+<li>Since they are looking at us from an "infinite" distance, the orbit of the Earth can rotate by<br>
+at most what would make the Earth travel the radius of the Sun from its perfect transit position.</li>
+<li>If the orbit is rotated less than that, the Earth transits. Otherwise, it does not.</li>
+<li>Therefore, we can calculate the probability of transit, P, as follows:</li>
+<li>P = (radius of the Sun) / (Earth-Sun distance)</li>
+<li>This holds for <strong>small</strong> angles, i.e. we assume that the radius of the Sun is small compared to<br>
+the Sun-Earth distance (it's the case here)</li>
+<li>P = (1 391 400 km / 2) / (149 600 000 km) = 0.00465 = 0.465 %</li>
+<li>This is equation (8) in "The Photometric Method of Detecting Other Planetary Systems" by<br>
+William J. Borucki AND Audrey L. Summers<br>
+<a href="https://ia600108.us.archive.org/view_archive.php?archive=/24/items/wikipedia-scholarly-sources-corpus/10.1016%252F0014-2999%252883%252990494-6.zip&amp;file=10.1016%252F0019-1035%252884%252990102-7.pdf" rel="nofollow">https://ia600108.us.archive.org/view_archive.php?archive=/24/items/wikipedia-scholarly-sources-corpus/10.1016%252F0014-2999%252883%252990494-6.zip&amp;file=10.1016%252F0019-1035%252884%252990102-7.pdf</a></li>
+</ul>
+</li>
+<li>[4] ETH Zürich. CHAPTER 3. TRANSITS OF PLANETS: MEAN DENSITIES (consulted March 24, 2026).<br>
+<a href="https://ethz.ch/content/dam/ethz/special-interest/phys/particle-physics/quanz-group-dam/documents-old-s-and-p/Courses/ExtrasolarPlanetsFS2016/exop2016_chapter3_part2.pdf" rel="nofollow">https://ethz.ch/content/dam/ethz/special-interest/phys/particle-physics/quanz-group-dam/documents-old-s-and-p/Courses/ExtrasolarPlanetsFS2016/exop2016_chapter3_part2.pdf</a></li>
+<li>[5] NASA. "Kepler / K2" (Consulted March 6, 2026). <a href="https://science.nasa.gov/mission/kepler/" rel="nofollow">https://science.nasa.gov/mission/kepler/</a></li>
+<li>[6] NASA. "The Kepler Mission Star Field" (2007). <a href="https://www.nasa.gov/wp-content/uploads/2009/07/189566main_kepler_mission.pdf?emrc=63e454" rel="nofollow">https://www.nasa.gov/wp-content/uploads/2009/07/189566main_kepler_mission.pdf?emrc=63e454</a></li>
+<li>[7] "Exoplanet and Candidate Statistics" (Consulted March 8, 2026) <a href="https://exoplanetarchive.ipac.caltech.edu/docs/counts_detail.html" rel="nofollow">https://exoplanetarchive.ipac.caltech.edu/docs/counts_detail.html</a></li>
+<li>[8] Matthew Williams. "What is the Gravitational Microlensing Method?" (2018). Universe Today.<br>
+<a href="https://www.universetoday.com/articles/gravitational-microlensing-method" rel="nofollow">https://www.universetoday.com/articles/gravitational-microlensing-method</a></li>
+<li>[9] Maja Jablonska et al. "Microlensing events over the galactic map as observed by GAIA from 2014 to 2018".<br>
+ESA/Gaia/DPAC. <a href="https://en.wikipedia.org/wiki/Gravitational_microlensing#/media/File:MicrolensingGAIA.gif" rel="nofollow">https://en.wikipedia.org/wiki/Gravitational_microlensing#/media/File:MicrolensingGAIA.gif</a></li>
+<li>[10] B. Scott Gaudi. "Microlensing Surveys for Exoplanets" (2012). Annual Review Astronomy and Astrophysics.<br>
+<a href="https://doi.org/10.1146/annurev-astro-081811-125518" rel="nofollow">https://doi.org/10.1146/annurev-astro-081811-125518</a></li>
+<li>[11] IREX. "Comment les trouver?" (Consulted March 6, 2026).<br>
+<a href="https://exoplanetes.umontreal.ca/exo-101/comment-les-trouver/" rel="nofollow">https://exoplanetes.umontreal.ca/exo-101/comment-les-trouver/</a></li>
+<li>[12] NASA Exoplanet Archive. "Radial Velocity Planet Resources in the Exoplanet Archive" (Consulted March 6, 2026).<br>
+<a href="https://exoplanetarchive.ipac.caltech.edu/docs/rv.html" rel="nofollow">https://exoplanetarchive.ipac.caltech.edu/docs/rv.html</a></li>
+<li>[13] European Southern Observatory. "VLT capta “el primero” a un exótico exoplaneta" (Consulted March 6, 2026).<br>
+<a href="https://www.eso.org/public/spain/images/potw1624a/" rel="nofollow">https://www.eso.org/public/spain/images/potw1624a/</a></li>
+<li>[14] Chien-Hsiu Lee and Po-Shih Chiang. "Evidence that the Planetary Candidate CVSO30c is a Background Star from Optical, Seeing-limited Data" (2018).<br>
+The Astrophysical Journal Letters. <a href="https://iopscience.iop.org/article/10.3847/2041-8213/aaa40b" rel="nofollow">https://iopscience.iop.org/article/10.3847/2041-8213/aaa40b</a></li>
+<li>[15] V. Rajpaul, S. Aigrain, S. Roberts. "Ghost in the time series: no planet for Alpha Cen B" (2015).<br>
+Monthly Notices of the Royal Astronomical Society: Letters.<br>
+<a href="https://academic.oup.com/mnrasl/article/456/1/L6/2589529?guestAccessKey=" rel="nofollow">https://academic.oup.com/mnrasl/article/456/1/L6/2589529?guestAccessKey=</a></li>
+<li>[16] Xavier Dumusque et al. "An Earth-mass planet orbiting a Centauri B" (2012). Nature.<br>
+<a href="https://www.nature.com/articles/nature11572" rel="nofollow">https://www.nature.com/articles/nature11572</a>
+<ul>
+<li>NOTE: The results presented in this paper were disproven by [15], but I'm using this paper<br>
+because it explains why radial velocity is difficult with this star system.</li>
+</ul>
+</li>
+<li>[17] NASA. "TESS (Transiting Exoplanet Survey Satellite)" (consulted March 10, 2026). <a href="https://science.nasa.gov/mission/tess/" rel="nofollow">https://science.nasa.gov/mission/tess/</a></li>
+<li>[18] Akshata Krishnamurthy et al. "Transit Search for Exoplanets around Alpha Centauri A and B with ASTERIA" (2021).<br>
+The Astronomical Journal. <a href="https://iopscience.iop.org/article/10.3847/1538-3881/abf2c0" rel="nofollow">https://iopscience.iop.org/article/10.3847/1538-3881/abf2c0</a></li>
+<li>[19] Two references:
+<ul>
+<li>NASA. "TRAPPIST-1 e" (Consulted March 7, 2026). <a href="https://science.nasa.gov/exoplanet-catalog/trappist-1-e/" rel="nofollow">https://science.nasa.gov/exoplanet-catalog/trappist-1-e/</a></li>
+<li>NASA. "James Webb Telescope Discovers TRAPPIST-1 e Lacks Primary Atmosphere" (Consulted March 7, 2026).<br>
+<a href="https://www.jameswebbdiscovery.com/discoveries/james-webb-telescope-discovers-trappist-1-e-lacks-primary-atmosphere" rel="nofollow">https://www.jameswebbdiscovery.com/discoveries/james-webb-telescope-discovers-trappist-1-e-lacks-primary-atmosphere</a></li>
+</ul>
+</li>
+<li>[20] "TOLIMAN Space Telescope" (Consulted March 7, 2026). <a href="https://en.wikipedia.org/wiki/TOLIMAN" rel="nofollow">https://en.wikipedia.org/wiki/TOLIMAN</a></li>
+<li>[21] European Space Agency. "Plato - Terrestrial planet hunter" (Consulted March 7, 2026).<br>
+<a href="https://www.esa.int/Science_Exploration/Space_Science/Plato" rel="nofollow">https://www.esa.int/Science_Exploration/Space_Science/Plato</a></li>
+<li>[22] NASA. "Roman" (Consulted March 7, 2026). <a href="https://science.nasa.gov/mission/roman-space-telescope/" rel="nofollow">https://science.nasa.gov/mission/roman-space-telescope/</a></li>
+<li>[23] NASA. "Habitable Worlds Observatory" (Consulted March 7, 2026).<br>
+<a href="https://science.nasa.gov/astrophysics/programs/habitable-worlds-observatory/" rel="nofollow">https://science.nasa.gov/astrophysics/programs/habitable-worlds-observatory/</a></li>
+<li>[24] Breakthrough Initiative. "Starshot" (Consulted March 7, 2026). <a href="https://breakthroughinitiatives.org/initiative/3" rel="nofollow">https://breakthroughinitiatives.org/initiative/3</a>
+<ul>
+<li>That website mentions a speed of "up to 100 million miles an hour", which corresponds to around 15 % the speed of light.</li>
+</ul>
+</li>
+<li>[25] Breakthrough Initiative. "Concept" (Consulted March 7, 2026). <a href="https://breakthroughinitiatives.org/concept/3" rel="nofollow">https://breakthroughinitiatives.org/concept/3</a></li>
+<li>[26] Sarah Scoles. "How a Billionaire’s Plan to Reach Another Star Fell Apart" (2025). Scientific American.<br>
+<a href="https://www.scientificamerican.com/article/the-quiet-demise-of-breakthrough-starshot-a-billionaires-interstellar/" rel="nofollow">https://www.scientificamerican.com/article/the-quiet-demise-of-breakthrough-starshot-a-billionaires-interstellar/</a></li>
+<li>[27] Slava Turyshev. "Direct Multipixel Imaging and Spectroscopy of an Exoplanet with a Solar Gravitational Lens Mission" (2020).<br>
+NASA Jet Propulsion Laboratory.<br>
+<a href="https://www.nasa.gov/general/direct-multipixel-imaging-and-spectroscopy-of-an-exoplanet-with-a-solar-gravitational-lens-mission/" rel="nofollow">https://www.nasa.gov/general/direct-multipixel-imaging-and-spectroscopy-of-an-exoplanet-with-a-solar-gravitational-lens-mission/</a></li>
+<li>[28] NASA. "NASA Astrobiology Strategy 2015" (2015).<br>
+<a href="https://astrobiology.nasa.gov/nai/media/medialibrary/2015/10/NASA_Astrobiology_Strategy_2015_151008.pdf" rel="nofollow">https://astrobiology.nasa.gov/nai/media/medialibrary/2015/10/NASA_Astrobiology_Strategy_2015_151008.pdf</a></li>
+<li>[29] Zack Savitsky. "Mars had long-lived magnetic field, extending chances for life" (2022). Science.<br>
+<a href="https://www.science.org/content/article/mars-had-long-lived-magnetic-field-extending-chances-life" rel="nofollow">https://www.science.org/content/article/mars-had-long-lived-magnetic-field-extending-chances-life</a></li>
+<li>[30] Alexandra Witze. "Exoplanet hunters rethink search for alien life" (2017). Nature. <a href="https://www.nature.com/articles/nature.2017.23023" rel="nofollow">https://www.nature.com/articles/nature.2017.23023</a></li>
+<li>[31] Erik Gregersen. "red dwarf star" (2026). Britannica. <a href="https://www.britannica.com/science/red-dwarf-star" rel="nofollow">https://www.britannica.com/science/red-dwarf-star</a></li>
+<li>[32] Charles Q. Choi. "Planets Orbiting Red Dwarfs May Stay Wet Enough for Life" (2015). Astrobiology.<br>
+<a href="https://web.archive.org/web/20150921050613/http://www.astrobio.net/news-exclusive/planets-orbiting-red-dwarfs-may-stay-wet-enough-life/" rel="nofollow">https://web.archive.org/web/20150921050613/http://www.astrobio.net/news-exclusive/planets-orbiting-red-dwarfs-may-stay-wet-enough-life/</a></li>
+<li>[33] Andrew J. LePage. "Habitable Moons" (2006). Sky and Telescope.<br>
+<a href="https://skyandtelescope.org/astronomy-news/habitable-moons/" rel="nofollow">https://skyandtelescope.org/astronomy-news/habitable-moons/</a></li>
+<li>[34] NASA. "Ocean Worlds: Water in the Solar System and Beyond" (2023).<br>
+<a href="https://science.nasa.gov/solar-system/ocean-worlds/" rel="nofollow">https://science.nasa.gov/solar-system/ocean-worlds/</a></li>
+<li>[35] Nicolás Lira et al. "ALMA Unveils New Details of the Flares of Proxima Centauri"<br>
+Atacama Large Millimeter/submillimeter Array.<br>
+<a href="https://www.almaobservatory.org/en/press-releases/alma-unveils-new-details-of-the-flares-of-proxima-centauri/" rel="nofollow">https://www.almaobservatory.org/en/press-releases/alma-unveils-new-details-of-the-flares-of-proxima-centauri/</a></li>
+<li>[36] Bruce Dorminey. "Photosynthesis May Limit Complex Life Around Red Dwarf Stars" (2025). Forbes.<br>
+<a href="https://www.forbes.com/sites/brucedorminey/2025/09/15/photosynthesis-may-limit-complex-life-around-red-dwarf-stars/" rel="nofollow">https://www.forbes.com/sites/brucedorminey/2025/09/15/photosynthesis-may-limit-complex-life-around-red-dwarf-stars/</a></li>
+<li>[37] J. Horner, B. W. Jones. "Jupiter - friend or foe? I: the asteroids" (2008). arXiv. <a href="https://arxiv.org/abs/0806.2795" rel="nofollow">https://arxiv.org/abs/0806.2795</a></li>
+<li>[38] J. Laskar, F. Joutel, P. Robutel. "Stabilization of the Earth's obliquity by the Moon" (1993). Nature. <a href="https://doi.org/10.1038/361615a0" rel="nofollow">https://doi.org/10.1038/361615a0</a></li>
+<li>[39] Govert Schilling. "Who Needs a Moon?" (2011). Science. <a href="https://www.science.org/content/article/who-needs-moon" rel="nofollow">https://www.science.org/content/article/who-needs-moon</a></li>
+<li>[40] M. Gillman, R. Zhang. "Generation of a galactic chronology with impact ages and spiral arm tangents" (2024).<br>
+Science Report. <a href="https://doi.org/10.1038/s41598-024-56397-4" rel="nofollow">https://doi.org/10.1038/s41598-024-56397-4</a></li>
+<li>[41] Guillermo Gonzalez, Donald Brownlee, Peter Ward. "The Galactic Habitable Zone I. Galactic Chemical Evolution" (2001).<br>
+arXiv. <a href="https://arxiv.org/abs/astro-ph/0103165" rel="nofollow">https://arxiv.org/abs/astro-ph/0103165</a></li>
+<li>[42] David Darling. "Ammonia-based Life" (2016). <a href="https://www.daviddarling.info/encyclopedia/A/ammonialife.html" rel="nofollow">https://www.daviddarling.info/encyclopedia/A/ammonialife.html</a></li>
+<li>[43] Luis A. Anchordoqui and Eugene M. Chudnovsky. "Can Self-Replicating Species Flourish in the Interior of a Star?"<br>
+(2020). Letters in High Energy Physics. <a href="https://www.researchgate.net/publication/343973117_Can_Self-Replicating_Species_Flourish_in_the_Interior_of_a_Star" rel="nofollow">https://www.researchgate.net/publication/343973117_Can_Self-Replicating_Species_Flourish_in_the_Interior_of_a_Star</a></li>
+<li>[44] NASA. "NASA Decadal Astrobiology Research and Exploration Strategy". <a href="https://science.nasa.gov/astrobiology/strategy/dares/" rel="nofollow">https://science.nasa.gov/astrobiology/strategy/dares/</a></li>
+<li>[45] Brian Koberlein. "Could Stars Hotter Than the Sun Still Support Life?" (2024). Universe Today.<br>
+<a href="https://www.universetoday.com/articles/could-stars-hotter-than-the-sun-still-support-life" rel="nofollow">https://www.universetoday.com/articles/could-stars-hotter-than-the-sun-still-support-life</a></li>
+</ul>
+<h1>Images</h1>
+<ul>
+<li>Planet textures: <a href="https://www.solarsystemscope.com/textures/" rel="nofollow">https://www.solarsystemscope.com/textures/</a></li>
+<li>Planet sizes and distances: <a href="https://www.jpl.nasa.gov/_edu/pdfs/scaless_reference.pdf" rel="nofollow">https://www.jpl.nasa.gov/_edu/pdfs/scaless_reference.pdf</a></li>
+<li>Radial velocity: <a href="https://nexsci.caltech.edu/workshop/2020/" rel="nofollow">https://nexsci.caltech.edu/workshop/2020/</a></li>
+<li>Direct imaging: <a href="https://en.wikipedia.org/wiki/Methods_of_detecting_exoplanets#/media/File:444226main_exoplanet20100414-a-full.jpg" rel="nofollow">https://en.wikipedia.org/wiki/Methods_of_detecting_exoplanets#/media/File:444226main_exoplanet20100414-a-full.jpg</a></li>
+<li>Launch of Kepler: <a href="https://www.youtube.com/watch?v=OVfyjqGphuc" rel="nofollow">https://www.youtube.com/watch?v=OVfyjqGphuc</a></li>
+<li>The Sun: <a href="https://images.nasa.gov/details/GSFC_20171208_Archive_e001435" rel="nofollow">https://images.nasa.gov/details/GSFC_20171208_Archive_e001435</a></li>
+<li>Tennis ball: <a href="https://pixabay.com/vectors/tennis-ball-yellow-sport-game-2025095/" rel="nofollow">https://pixabay.com/vectors/tennis-ball-yellow-sport-game-2025095/</a></li>
+<li>Night sky: <a href="https://www.pexels.com/video/time-lapse-of-a-starry-night-sky-8644731/" rel="nofollow">https://www.pexels.com/video/time-lapse-of-a-starry-night-sky-8644731/</a><br>
+by Bohdan Borovyk (<a href="https://www.pexels.com/@bohdan-borovyk-76947366/" rel="nofollow">https://www.pexels.com/@bohdan-borovyk-76947366/</a>)</li>
+<li>Artist's impression of the Milky Way: <a href="https://commons.wikimedia.org/wiki/File:Artist%E2%80%99s_impression_of_the_Milky_Way.jpg" rel="nofollow">https://commons.wikimedia.org/wiki/File:Artist%E2%80%99s_impression_of_the_Milky_Way.jpg</a></li>
+<li>Microlensing (galaxy + star): <a href="https://en.wikipedia.org/wiki/File:Artist%27s_impression_of_gravitational_lensing_of_a_distant_merger.ogv" rel="nofollow">https://en.wikipedia.org/wiki/File:Artist%27s_impression_of_gravitational_lensing_of_a_distant_merger.ogv</a></li>
+<li>Microlensing diagram for exoplanets: <a href="https://science.nasa.gov/mission/roman-space-telescope/microlensing/" rel="nofollow">https://science.nasa.gov/mission/roman-space-telescope/microlensing/</a></li>
+<li>Microlensing events in the galaxy: <a href="https://commons.wikimedia.org/wiki/File:MicrolensingGAIA.gif" rel="nofollow">https://commons.wikimedia.org/wiki/File:MicrolensingGAIA.gif</a></li>
+<li>Observation methods: <a href="https://www.esa.int/Science_Exploration/Space_Science/Exoplanets/How_to_find_an_exoplanet" rel="nofollow">https://www.esa.int/Science_Exploration/Space_Science/Exoplanets/How_to_find_an_exoplanet</a></li>
+<li>Solar sail: <a href="https://en.wikipedia.org/wiki/Solar_sail#/media/File:Advanced_Composite_Solar_Sail_System_deployment.gif" rel="nofollow">https://en.wikipedia.org/wiki/Solar_sail#/media/File:Advanced_Composite_Solar_Sail_System_deployment.gif</a></li>
+<li>Distance to ALpha Centauri chart:
+<ul>
+<li>Distance to Alpha Centauri: 4.017486e16 m, refer to [2]
+<ul>
+<li>This corresponds to 4.017486e16 m / 1.495979e11 = 268554 AU</li>
+</ul>
+</li>
+<li>Distance to Voyager 1 as of March 2026: 25.40 billion km = 25.40e9 km = 2..54e10 km = 2.54e13 m, refer to <a href="https://science.nasa.gov/mission/voyager/where-are-voyager-1-and-voyager-2-now/" rel="nofollow">https://science.nasa.gov/mission/voyager/where-are-voyager-1-and-voyager-2-now/</a>
+<ul>
+<li>2.54e13 m / 1.495979e11 = 169.79 AU</li>
+</ul>
+</li>
+<li>Neptune is at a distance of 30.06 AU</li>
+</ul>
+</li>
+<li>Earth`s atmosphere: <a href="https://images.nasa.gov/details/iss074e0089803" rel="nofollow">https://images.nasa.gov/details/iss074e0089803</a></li>
+<li>Earth`s magnetic field: <a href="https://images.nasa.gov/details/GSFC_20180509_MMS_m12901_Turbulent_Magnetosheath" rel="nofollow">https://images.nasa.gov/details/GSFC_20180509_MMS_m12901_Turbulent_Magnetosheath</a></li>
+<li>Earth / Mars atmosphere comparison: <a href="https://images.nasa.gov/details/PIA15953" rel="nofollow">https://images.nasa.gov/details/PIA15953</a></li>
+<li>Mars: <a href="https://images.nasa.gov/details/PIA22905" rel="nofollow">https://images.nasa.gov/details/PIA22905</a></li>
+<li>Kepler 22 b (artist's impression): <a href="https://eyes.nasa.gov/apps/exo/#/planet/Kepler-22_b" rel="nofollow">https://eyes.nasa.gov/apps/exo/#/planet/Kepler-22_b</a></li>
+<li>Proxima Centauri (artist's impression): <a href="https://eyes.nasa.gov/apps/exo/#/star/Proxima_Cen" rel="nofollow">https://eyes.nasa.gov/apps/exo/#/star/Proxima_Cen</a></li>
+<li>TRAPPIST-1 f: <a href="https://en.wikipedia.org/wiki/Eyeball_planet#/media/File:TRAPPIST-1f_Artist's_Impression.png" rel="nofollow">https://en.wikipedia.org/wiki/Eyeball_planet#/media/File:TRAPPIST-1f_Artist's_Impression.png</a></li>
+<li>Earth's terminator: <a href="https://en.wikipedia.org/wiki/Terminator_(solar)#/media/File:Apollo_11_Mission_Image_-_View_of_Earth_terminator_(5052744816).jpg" rel="nofollow">https://en.wikipedia.org/wiki/Terminator_(solar)#/media/File:Apollo_11_Mission_Image_-_View_of_Earth_terminator_(5052744816).jpg</a></li>
+<li>Exomoon animation: <a href="https://images.nasa.gov/details/JPL-20241009-EXOPLNf-0001-NASA_Detects_Possible_Volcanic_MoonCC" rel="nofollow">https://images.nasa.gov/details/JPL-20241009-EXOPLNf-0001-NASA_Detects_Possible_Volcanic_MoonCC</a></li>
+<li>Io: <a href="https://images.nasa.gov/details/PIA00738" rel="nofollow">https://images.nasa.gov/details/PIA00738</a></li>
+<li>Enceladus: <a href="https://images.nasa.gov/details/JPL-2015_10_28-PIA17202" rel="nofollow">https://images.nasa.gov/details/JPL-2015_10_28-PIA17202</a></li>
+<li>Europa: <a href="https://images.nasa.gov/details/PIA02528" rel="nofollow">https://images.nasa.gov/details/PIA02528</a></li>
+<li>Solar system: <a href="https://images-assets.nasa.gov/image/PIA22921/PIA22921~orig.jpg" rel="nofollow">https://images-assets.nasa.gov/image/PIA22921/PIA22921~orig.jpg</a></li>
+<li>The Moon: <a href="https://images.nasa.gov/details/GSFC_20171208_Archive_e001982" rel="nofollow">https://images.nasa.gov/details/GSFC_20171208_Archive_e001982</a></li>
+</ul></article>
+	</body>
+</html>
