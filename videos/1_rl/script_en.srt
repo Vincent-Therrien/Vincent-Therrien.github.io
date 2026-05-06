@@ -1,0 +1,1104 @@
+1
+00:00:01,500 --> 00:00:04,000
+This game is entirely controlled by a
+machine learning model.
+
+2
+00:00:04,500 --> 00:00:06,200
+I've let it play the game multiple times
+
+3
+00:00:06,500 --> 00:00:09,000
+and it ended up learning how to score
+points by itself.
+
+4
+00:00:09,000 --> 00:00:11,200
+We call this approach reinforcement
+learning, and
+
+5
+00:00:11,200 --> 00:00:13,200
+we'll go through all the steps to make
+
+6
+00:00:13,200 --> 00:00:16,000
+a model that can play this game, or
+even other games.
+
+7
+00:00:16,000 --> 00:00:19,000
+I'll first explain the problem that we
+will solve.
+
+8
+00:00:19,000 --> 00:00:22,000
+Reinforcement learning comprises two
+main components:
+
+9
+00:00:22,000 --> 00:00:24,000
+the *environment*, in this case a
+2D game,
+
+10
+00:00:24,000 --> 00:00:27,000
+and the *agent*, here, a spaceship in
+that game.
+
+11
+00:00:27,000 --> 00:00:31,000
+The agent interacts with the environment
+by moving around and firing projectiles.
+
+12
+00:00:31,000 --> 00:00:34,000
+It obtains rewards that indicate how
+good its actions are.
+
+13
+00:00:34,000 --> 00:00:39,000
+If the agent collects a point or hits
+an enemy, it obtains a positive reward.
+
+15
+00:00:39,000 --> 00:00:42,000
+If it gets blasted by an enemy, it
+obtains a negative reward.
+
+16
+00:00:42,000 --> 00:00:45,000
+Our goal is to maximize the rewards to
+make the agent
+
+17
+00:00:45,000 --> 00:00:46,000
+as good at playing as possible.
+
+18
+00:00:46,000 --> 00:00:49,000
+By the way, you can try that game out
+if you want.
+
+19
+00:00:49,000 --> 00:00:52,000
+Open up the project on Github, clone the
+repository on your machine,
+
+20
+00:00:52,000 --> 00:00:55,000
+install the dependencies, and run
+the game.
+
+21
+00:00:55,000 --> 00:00:57,500
+Let's now have a look a models that
+we can use.
+
+22
+00:00:57,500 --> 00:01:01,000
+A basic model for reinforcement learning
+is the Q-table.
+
+23
+00:01:01,000 --> 00:01:05,000
+"Q" stands for "quality", which is an
+estimation of the future rewards that
+
+24
+00:01:05,000 --> 00:01:07,000
+an agent can obtain for a given state
+and action.
+
+25
+00:01:07,000 --> 00:01:11,000
+A Q-table looks like this. The rows
+represent all possible states of
+
+26
+00:01:11,000 --> 00:01:14,500
+the environment, and the columns
+represent the possible actions that
+
+27
+00:01:14,500 --> 00:01:18,000
+an agent can perform. Each cell contains
+a Q-value.
+
+28
+00:01:18,000 --> 00:01:22,000
+Actions that are more likely to lead to
+rewards are given a higher Q-value.
+
+29
+00:01:22,000 --> 00:01:26,000
+For instance, in this state, moving
+towards the collectible is more likely
+
+30
+00:01:26,000 --> 00:01:29,000
+to result in a future reward than
+moving away from it,
+
+31
+00:01:29,000 --> 00:01:33,000
+so moving in this direction corresponds
+to a higher Q-value.
+
+32
+00:01:33,000 --> 00:01:36,000
+When playing the game, the agent can
+look up the Q-table to
+
+33
+00:01:36,000 --> 00:01:40,000
+perform the action with the best quality
+given some state of the environment.
+
+34
+00:01:40,000 --> 00:01:43,000
+Q-tables are easy to understand, but
+often impractical.
+
+35
+00:01:43,000 --> 00:01:47,000
+Before using them, they have to be
+filled by performing each action
+
+36
+00:01:47,000 --> 00:01:50,000
+in all possible states of the
+environment and determining
+
+37
+00:01:50,000 --> 00:01:51,500
+the corresponding Q-values.
+
+38
+00:01:51,500 --> 00:01:54,000
+That works for simple environments, but
+for more complex problems,
+
+39
+00:01:54,000 --> 00:01:58,000
+we may have to try millions of states
+and actions to fill a Q-table.
+
+40
+00:01:58,000 --> 00:02:01,000
+This approach would not work well in
+these cases,
+
+41
+00:02:01,000 --> 00:02:04,000
+but we can improve it. Instead of using
+a large table,
+
+42
+00:02:04,000 --> 00:02:07,000
+we can approximate it with a machine
+learning model.
+
+43
+00:02:07,000 --> 00:02:09,000
+This is called Deep Q-learning.
+
+44
+00:02:09,000 --> 00:02:13,000
+The model will not memorize all possible
+states and actions like a Q-table,
+
+45
+00:02:13,000 --> 00:02:16,000
+but will rather learn patterns from
+interactions with the game to estimate
+
+46
+00:02:16,000 --> 00:02:19,000
+which actions are more likely to result
+in rewards.
+
+47
+00:02:19,000 --> 00:02:21,000
+This is more scalable than a Q-Table
+because it can
+
+48
+00:02:21,000 --> 00:02:26,000
+generalize to unseen states, making it
+more suitable for complex environments.
+
+49
+00:02:26,000 --> 00:02:30,000
+We will use an artificial neural
+network for this approximation model.
+
+50
+00:02:30,000 --> 00:02:35,000
+As the name tells, neural networks are
+made individual neurons, like this one.
+
+51
+00:02:35,000 --> 00:02:39,000
+It's a mathematical model that takes
+one or multiple values as inputs,
+
+52
+00:02:39,000 --> 00:02:41,000
+multiplies each input by a weight,
+
+53
+00:02:41,000 --> 00:02:44,000
+sums the weighted inputs along with a
+bias term,
+
+54
+00:02:44,000 --> 00:02:47,000
+and applies a mathematical operation to
+the result.
+
+55
+00:02:47,000 --> 00:02:50,500
+This operation is called the activation
+function, and it's used
+
+56
+00:02:50,500 --> 00:02:53,000
+to make the neuron model more complex
+patterns.
+
+57
+00:02:53,000 --> 00:02:56,000
+An example of a simple but widely used
+activation function is
+
+58
+00:02:56,000 --> 00:03:00,000
+the rectified linear unit, which cancels
+negative values.
+
+59
+00:03:00,000 --> 00:03:03,000
+The training process modifies the
+parameters of the neuron -
+
+60
+00:03:03,000 --> 00:03:07,000
+that is, its weights and bias, to make
+it learn how to play the game.
+
+61
+00:03:07,000 --> 00:03:11,000
+A single neuron is pretty limited, but
+we can create more complex models by
+
+62
+00:03:11,000 --> 00:03:13,000
+connecting neurons into a neural
+network.
+
+63
+00:03:13,000 --> 00:03:16,500
+These networks are often organized into
+layers of neurons that
+
+64
+00:03:16,500 --> 00:03:20,500
+take the information from the previous
+layer and transmit it to the next layer.
+
+65
+00:03:20,500 --> 00:03:24,500
+In our case, the first layer of the
+network, the input layer, receives
+
+66
+00:03:24,500 --> 00:03:28,500
+footage of the game. The final layer,
+the output layer, decides
+
+67
+00:03:28,500 --> 00:03:32,500
+which button to push. This is used to
+control the agent on the screen.
+
+68
+00:03:32,500 --> 00:03:36,000
+Between these, we can add hidden layers,
+which help the network
+
+69
+00:03:36,000 --> 00:03:38,000
+learn complex patterns from the input.
+
+70
+00:03:38,000 --> 00:03:40,000
+We can change the number of hidden
+layers,
+
+71
+00:03:40,000 --> 00:03:42,000
+the number of neurons in each layer,
+
+72
+00:03:42,000 --> 00:03:44,000
+and the way that neurons are connected.
+
+73
+00:03:44,000 --> 00:03:47,000
+All of these changes are examples of
+hyperparameters,
+
+74
+00:03:47,000 --> 00:03:51,000
+which are settings that define the
+architecture of the model.
+
+75
+00:03:51,000 --> 00:03:55,000
+In theory, we could simply flatten the
+input image into a 1D vector
+
+76
+00:03:55,000 --> 00:03:57,000
+and feed it to a layer of neurons.
+
+77
+00:03:57,000 --> 00:04:00,000
+This model is called a multilayer
+perceptron.
+
+78
+00:04:00,000 --> 00:04:03,000
+It's a good approach for many problems,
+but multilayer perceptrons often
+
+79
+00:04:03,000 --> 00:04:07,000
+struggle with images because they lack
+spatial awareness.
+
+80
+00:04:07,000 --> 00:04:10,000
+They treat the pixels of the image as
+unrelated, separate entities,
+
+81
+00:04:10,000 --> 00:04:14,000
+which is not effective. In practice,
+if you want to understand an image,
+
+82
+00:04:14,000 --> 00:04:16,000
+you have to look at collections of
+pixels to
+
+83
+00:04:16,000 --> 00:04:20,000
+recognize particular features, like
+shapes or edges.
+
+84
+00:04:20,000 --> 00:04:23,000
+We can do that with convolution, a
+mathematical operation where
+
+85
+00:04:23,000 --> 00:04:27,000
+a small grid - the kernel - slides
+across the image to detect features.
+
+86
+00:04:27,000 --> 00:04:29,000
+For instance, a Sobel operator is
+
+87
+00:04:29,000 --> 00:04:32,000
+a type of convolution that
+highlights edges.
+
+88
+00:04:32,000 --> 00:04:37,000
+In our model, the convolutional layer
+will extract relevant features to
+
+89
+00:04:37,000 --> 00:04:41,000
+recognize collectibles and enemies from
+the input.
+
+90
+00:04:41,000 --> 00:04:43,000
+The next stage is a fully connected
+layer.
+
+91
+00:04:43,000 --> 00:04:47,000
+The features extracted by the
+convolutional layer are flattened
+
+92
+00:04:47,000 --> 00:04:51,000
+into a one-dimensional vector and fed
+to all neurons of that layer.
+
+93
+00:04:51,000 --> 00:04:55,000
+During training, the parameters of the
+neurons will be adjusted to decide
+
+94
+00:04:55,000 --> 00:04:58,000
+which actions must be performed
+depending on the detected features.
+
+95
+00:04:58,000 --> 00:05:01,000
+Finally, we can plug the fully
+connected layer to the output.
+
+96
+00:05:01,000 --> 00:05:05,000
+This neural network can be written with
+the following PyTorch code.
+
+97
+00:05:05,000 --> 00:05:08,000
+The network will probably not be good
+at playing because
+
+98
+00:05:08,000 --> 00:05:12,000
+it is pretty shallow - meaning that it
+doesn't have many layers.
+
+99
+00:05:12,000 --> 00:05:15,000
+Research has shown that increasing the
+depth of a neural network, that is,
+
+100
+00:05:15,000 --> 00:05:19,000
+increasing its number of layers, can
+improve its performances.
+
+101
+00:05:19,000 --> 00:05:22,000
+But we have to be careful not to add
+too many layers because
+
+102
+00:05:22,000 --> 00:05:26,000
+we then run the risk of overfitting the
+model, which means that it will
+
+103
+00:05:26,000 --> 00:05:29,000
+memorize specific examples seen during
+training instead of developing
+
+104
+00:05:29,000 --> 00:05:31,000
+a general understanding of the game.
+
+105
+00:05:31,000 --> 00:05:34,000
+Let's summarize: we want to train a
+reinforcement learning agent
+
+106
+00:05:34,000 --> 00:05:36,000
+that will learn to play the game.
+
+107
+00:05:36,000 --> 00:05:39,000
+We can do that by filling a Q-table and
+letting the agent look up
+
+108
+00:05:39,000 --> 00:05:41,000
+the best action to take for any state.
+
+109
+00:05:41,000 --> 00:05:44,000
+That table would be large and
+impractical, so we instead
+
+110
+00:05:44,000 --> 00:05:47,000
+approximate it. This approach is known
+as Deep Q-learning,
+
+111
+00:05:47,000 --> 00:05:51,000
+and the neural network that is used is
+called a Deep Q-Network.
+
+112
+00:05:51,000 --> 00:05:53,000
+The next step is to train this network.
+
+113
+00:05:53,000 --> 00:05:57,000
+For now, its parameters are left at
+their default values.
+
+114
+00:05:57,000 --> 00:06:00,000
+Here's what happens when we let the
+untrained model play.
+
+115
+00:06:00,000 --> 00:06:03,000
+As expected, it performs poorly because
+it still hasn't learned
+
+116
+00:06:03,000 --> 00:06:06,000
+the rules of the game. Here's how
+we'll train it:
+
+117
+00:06:06,000 --> 00:06:11,000
+We create an environment and make the
+agent play. This is called an episode.
+
+118
+00:06:11,000 --> 00:06:15,000
+Episodes are split in discrete steps,
+which are game frames.
+
+119
+00:06:15,000 --> 00:06:18,000
+On each step, the model observes a 2D
+image from the game and
+
+120
+00:06:18,000 --> 00:06:20,000
+predicts a Q-value for all actions.
+
+121
+00:06:20,000 --> 00:06:23,000
+In other words, it tries to guess the
+propensity of each action
+
+122
+00:06:23,000 --> 00:06:25,000
+to lead to rewards. The agent then
+
+123
+00:06:25,000 --> 00:06:28,000
+performs the action with the best
+Q-value, which
+
+124
+00:06:28,000 --> 00:06:30,000
+modifies the environment and may result
+in a reward, positive or negative.
+
+125
+00:06:30,000 --> 00:06:32,000
+The agent collects the reward
+
+126
+00:06:32,000 --> 00:06:34,000
+and observes the new state of the
+environment.
+
+127
+00:06:34,000 --> 00:06:38,000
+The model then predicts the Q-values
+for this new state and
+
+128
+00:06:38,000 --> 00:06:42,000
+selects the highest Q-value. This
+represents the future reward that the
+
+129
+00:06:42,000 --> 00:06:46,000
+agent expects to obtain by performing
+this action in a subsequent step.
+
+130
+00:06:46,000 --> 00:06:49,000
+We now add up the reward that the agent
+just collected with the future reward
+
+131
+00:06:49,000 --> 00:06:53,000
+that it expects to obtain. This is
+called the Bellman equation.
+
+132
+00:06:53,000 --> 00:06:56,000
+It estimates the quality of an action
+not just from the immediate reward,
+
+133
+00:06:56,000 --> 00:06:59,000
+but also from the future rewards that
+it expects to get.
+
+134
+00:06:59,000 --> 00:07:02,000
+Our goal is to make the model estimate
+the Bellman equation
+
+135
+00:07:02,000 --> 00:07:04,000
+as well as possible to identify the
+actions that lead to
+
+136
+00:07:04,000 --> 00:07:07,000
+the highest rewards.
+
+137
+00:07:07,000 --> 00:07:10,000
+To do that, we want to minimize the
+difference between
+
+138
+00:07:10,000 --> 00:07:13,000
+the Q-value predicted before the action,
+and the Q-value calculated
+
+139
+00:07:13,000 --> 00:07:17,000
+after performing the action and taking
+the reward into account.
+
+140
+00:07:17,000 --> 00:07:20,000
+We call this difference the loss.
+
+141
+00:07:20,000 --> 00:07:23,000
+The loss is propagated in the network
+in the inverse direction
+
+142
+00:07:23,000 --> 00:07:26,000
+to compute gradients, which are,
+roughly speaking,
+
+143
+00:07:26,000 --> 00:07:29,000
+values that indicate how the parameters
+need to be adjusted to minimize
+
+144
+00:07:29,000 --> 00:07:35,000
+the loss. The process that computes
+gradients is called backpropagation.
+
+145
+00:07:35,000 --> 00:07:37,000
+We then use the gradients retrieved
+during backpropagation
+
+146
+00:07:37,000 --> 00:07:42,000
+to adjust the parameters of the network
+with a process called gradient descent.
+
+147
+00:07:42,000 --> 00:07:46,000
+This makes the model slightly better at
+approximating the Bellman equation.
+
+148
+00:07:46,000 --> 00:07:49,000
+Steps are repeated until the episode
+ends, either by losing or reaching
+
+149
+00:07:49,000 --> 00:07:53,000
+the maximum number of steps. Once the
+episode ends, a new one begins,
+
+150
+00:07:53,000 --> 00:07:55,000
+and the process continues until the
+model approximates
+
+151
+00:07:55,000 --> 00:08:00,000
+the Bellman equation to our
+satisfaction.
+
+152
+00:08:00,000 --> 00:08:05,000
+This graph shows the performances of
+the model over its training.
+
+153
+00:08:05,000 --> 00:08:09,000
+The X-axis shows the number of episodes
+and the Y-axis shows the average score
+
+154
+00:08:09,000 --> 00:08:12,000
+obtained by the agent when we evaluate
+it between episodes.
+
+155
+00:08:12,000 --> 00:08:16,000
+The model gradually improves, but its
+performances are very unstable.
+
+156
+00:08:16,000 --> 00:08:19,000
+We can improve the training process to
+stabilize and enhance the performances
+
+157
+00:08:19,000 --> 00:08:23,000
+of the model. Here are the 5 main
+improvements I've added:
+
+158
+00:08:23,000 --> 00:08:26,000
+First improvement: Add randomness
+during training.
+
+159
+00:08:26,000 --> 00:08:31,000
+This is called exploration - we choose
+actions that the neural network
+
+160
+00:08:31,000 --> 00:08:33,000
+would not have otherwise selected on
+its own.
+
+161
+00:08:33,000 --> 00:08:36,000
+That way, the model experiments a wider
+variety of actions and it becomes
+
+162
+00:08:36,000 --> 00:08:39,000
+better at approximating the Q-table.
+
+163
+00:08:39,000 --> 00:08:42,000
+Exploration contrasts with exploitation,
+which is when we use the action
+
+164
+00:08:42,000 --> 00:08:46,000
+selected by the network instead of
+picking a random one.
+
+165
+00:08:46,000 --> 00:08:49,000
+We start by relying mostly on
+exploration, and as the network becomes
+
+166
+00:08:49,000 --> 00:08:52,000
+better at selecting the right actions,
+we gradually
+
+167
+00:08:52,000 --> 00:08:54,000
+use more and more exploitation.
+
+168
+00:08:54,000 --> 00:08:57,000
+Second improvement: Downsize the input.
+
+169
+00:08:57,000 --> 00:09:00,000
+Raw game footage looks pretty small for
+a human, but it still contains
+
+170
+00:09:00,000 --> 00:09:04,000
+more than 65 thousand pixels for each
+frame. The neural network needs
+
+171
+00:09:04,000 --> 00:09:08,000
+a lot of parameters to process them,
+so we can simply downsize the image.
+
+172
+00:09:08,000 --> 00:09:12,000
+The network now needs fewer parameters
+and becomes easier to train.
+
+173
+00:09:12,000 --> 00:09:16,000
+Third improvement: Combine frames. The
+current model looks at a single frame
+
+174
+00:09:16,000 --> 00:09:19,000
+to decide which action to perform, so
+it has a hard time understanding
+
+175
+00:09:19,000 --> 00:09:23,000
+the motion of objects. We can instead
+give it multiple frames.
+
+176
+00:09:23,000 --> 00:09:25,000
+That way, it will be able to figure out
+
+177
+00:09:25,000 --> 00:09:28,000
+the direction of projectiles and
+collectibles.
+
+178
+00:09:28,000 --> 00:09:32,000
+Fourth improvement: Increase depth. As
+we've seen, adding hidden layers
+
+179
+00:09:32,000 --> 00:09:35,000
+in the neural network makes it better
+at processing data -
+
+180
+00:09:35,000 --> 00:09:38,000
+provided that you don't add too many.
+
+181
+00:09:38,000 --> 00:09:41,000
+I've added two convolutional layers -
+that will improve performances
+
+182
+00:09:41,000 --> 00:09:43,000
+without leading to overfitting.
+
+183
+00:09:43,000 --> 00:09:46,000
+Fifth improvement: Experience replay.
+
+184
+00:09:46,000 --> 00:09:49,000
+Right now, the model is trained on
+consecutive steps,
+
+185
+00:09:49,000 --> 00:09:52,000
+which are highly correlated. This is
+not ideal because
+
+186
+00:09:52,000 --> 00:09:55,000
+the network might overfit to these
+observations.
+
+187
+00:09:55,000 --> 00:09:58,000
+Instead, we can store the observations
+in an experience buffer and
+
+188
+00:09:58,000 --> 00:10:01,000
+let the model sample random
+observations from the buffer
+
+189
+00:10:01,000 --> 00:10:04,000
+when performing backpropagation and
+gradient descent.
+
+190
+00:10:04,000 --> 00:10:07,000
+That way, it is exposed to a varied set
+of experiences,
+
+191
+00:10:07,000 --> 00:10:09,000
+which improves its ability to
+generalize.
+
+192
+00:10:09,000 --> 00:10:14,000
+Let's recap: we trained a reinforcement
+learning model to play a game by itself.
+
+193
+00:10:14,000 --> 00:10:17,000
+The model is a deep Q network that
+predicts which actions are more likely
+
+194
+00:10:17,000 --> 00:10:22,000
+to result in rewards, and the agent
+uses the predictions to score points.
+
+195
+00:10:22,000 --> 00:10:25,000
+We improved our initial model by using
+exploration,
+
+196
+00:10:25,000 --> 00:10:26,000
+modifying the input data,
+
+197
+00:10:26,000 --> 00:10:30,000
+increasing depth, and using experience
+replay.
+
+198
+00:10:30,000 --> 00:10:32,000
+These improvements stabilize the
+training process and
+
+199
+00:10:32,000 --> 00:10:34,000
+result in a more efficient model.
+
+200
+00:10:34,000 --> 00:10:38,000
+The training process is not perfect,
+though, and in some cases, the network
+
+201
+00:10:38,000 --> 00:10:40,000
+does not learn how to play well.
+
+202
+00:10:40,000 --> 00:10:44,000
+For instance, it may end up learning to
+just hide in a corner and spam
+
+203
+00:10:44,000 --> 00:10:48,000
+the fire button. This is called a local
+optimum. It's not the best
+
+204
+00:10:48,000 --> 00:10:52,000
+strategy overall, but if the network is
+not exposed to a varied set of
+
+205
+00:10:52,000 --> 00:10:56,000
+experiences during its training, it may
+learn this strategy at some point and
+
+206
+00:10:56,000 --> 00:11:00,000
+then stick to it instead of exploring
+other potentially better solutions.
+
+207
+00:11:00,000 --> 00:11:04,000
+To further improve the model and avoid
+local optima, we could, for instance:
+
+208
+00:11:04,000 --> 00:11:07,000
+Use a more advanced model, like a
+Dueling Q-Network or
+
+209
+00:11:07,000 --> 00:11:09,000
+recurrent neural network;
+
+210
+00:11:09,000 --> 00:11:13,000
+Optimize the rewards obtained by the
+agent to prioritize long-term goals and
+
+211
+00:11:13,000 --> 00:11:15,000
+penalize repetitive actions, or
+
+212
+00:11:15,000 --> 00:11:19,000
+Adjust the hyperparameters of the model
+to improve training.
+
+213
+00:11:19,000 --> 00:11:22,000
+There's a lot more to reinforcement
+learning than what I've laid out
+
+214
+00:11:22,000 --> 00:11:25,000
+in this video, so let me know if you'd
+like to see more.
+
+215
+00:11:25,000 --> 00:11:28,000
+Also, I encourage you to read these
+papers if you want more information
+
+216
+00:11:28,000 --> 00:11:30,000
+on reinforcement learning.
+
+217
+00:11:30,000 --> 00:11:32,000
+"Playing Atari with Deep Reinforcement
+Learning" covers the
+
+218
+00:11:32,000 --> 00:11:36,000
+architecture of deep Q networks and
+their training process.
+
+219
+00:11:36,000 --> 00:11:39,000
+"Deep Learning" goes over the
+fundamentals of neural networks,
+
+220
+00:11:39,000 --> 00:11:42,000
+including backpropagation and gradient
+descent.
+
+221
+00:11:42,000 --> 00:11:46,000
+"ImageNet Classification with Deep
+Convolutional Neural Networks" presents
+
+222
+00:11:46,000 --> 00:11:49,000
+a deep learning model for image
+classification and
+
+223
+00:11:49,000 --> 00:11:51,000
+explains convolutional layers.
+
+224
+00:11:51,000 --> 00:11:54,000
+Everything required to play the game
+and replicate the training is
+
+225
+00:11:54,000 --> 00:11:57,000
+in my Github repository. Training the
+model might take some time,
+
+226
+00:11:57,000 --> 00:12:00,000
+especially if you don't have a
+compatible GPU, but
+
+227
+00:12:00,000 --> 00:12:02,000
+I've also made a simpler game that
+takes much less time to train,
+
+228
+00:12:02,000 --> 00:12:05,000
+so you can try it even on less powerful
+systems.
+
+229
+00:12:05,000 --> 00:12:07,000
+Don't hesitate to check it out.
