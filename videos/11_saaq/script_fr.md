@@ -1,33 +1,77 @@
-# SAAQClic : Autopsie d'un désastre évitable
+# Les gouvernements sont encore incapables de faire des logiciels
+
+Présenter chaque chapitre comme une raison de l'échec d'un projet
 
 
-## I. Avant le désastre
+## I. La planification
 
-- Histoire
-- Mini SAAQclic / société d'assurance des chars du Québec
-
-
-## II. Le désastre
-
-- Pourquoi accorder de l'importance aux paroles d'un gars qui est allé à Bréboeuf
-- 500k paires de Louboutin
+- Types de solutions :
+  - Maintenir une technologie existante (IRS avec COBOL)
+  - PGI
+  - Logiciel sur mesure
+  - Solution interne
+- Travail en Inde pour les données personnelles non planifié1
 
 
-## III. Après le désastre
+## II. L'équipe
+
+- Infiltration des proches de Malenfant
+- Manque de connaissances de l'équipe
+- CA incompétent
+- Malenfant avait causé un fiasco chez Hydro-Québec mais n'a pas eu de vérification d'antécédents
+- Communications privilégiées avec LGS et lobbying
 
 
+## III. La réglementation
+
+- Trop lourde -> lenteur administrative
+- Trop légère -> raccourcis (ex. CASA demandes d'augmentation du prix)
+
+
+## IV. Les relations de travail
+
+- Force de négociation disproportionnée du soumissionnaire à cause de monopolisation
+- Attitude trop conciliante de la direction de la SAAQ par peur que le soumissionnaire s'en aille
+- Relations de travail toxiques aux bureaux de Québec
+- Divergences dans la compréhension des contrats
+
+
+## V. Les tests
+
+- Tests de la livraison 2 escamotés
+
+
+## VI. La gestion de crise
+
+- Abandon des dirigeants
+- Autre exemple : ministre responsable des passeports après la pandémie
+
+
+## VII. Pourquoi laisser les gouvernements faire quoi que ce soit?
+
+- Respect des droits, attitude de la gauche
+- Échec de marchés
+- Échec de gouvernements (Milton), attitude libertarienne
+  - 200 M$, ça ne va pas empêcher la Terre de tourner
+- Efficacité gouvernementale = point commun de la gauche et de la droite, au même titre que la
+  corruption
+
+
+## VIII. Quoi faire
+
+- Transparence, journalisme, plaintes (ex. la commission a commencé à cause de l'outrage public, il
+  n'y en a pas assez eu pour les projets fédéraux)
+- Centralisation de certaines opérations pour promouvoir l'expertise
+- IA
+- Militantisme informatique, code source libre
 
 
 # Références
 
-- Rapport Gallant: https://www.cesis.gouv.qc.ca/la-commission#c751
-- Guylaine Leclerc et al. "Rapport du Vérificateur général du Québec à l’Assemblée nationale pour l’année 2024-2025, février 2025"
-  (février 2025). Vérificateur général du Québec. https://www.vgq.qc.ca/fr/publications/212
+- [1] Denis Gallant et al. « Commission d’enquête sur la gestion de la modernisation des systèmes informatiques de la Société de l’assurance automobile du Québec - Rapport et recommandations » (Février 2026). Commission d'enquête sur la gestion de la modernisation des systèmes informatiques de la Société de l'assurance automobile, Gouvernement du Québec. https://www.cesis.gouv.qc.ca/la-commission#c751
+- [2]  Guylaine Leclerc et al. « Rapport du Vérificateur général du Québec à l’Assemblée nationale pour l’année 2024-2025, février 2025 » (février 2025). Vérificateur général du Québec. https://www.vgq.qc.ca/fr/publications/212
   - paragraphe 53: Au moment de confirmer la mise en service de la livraison 2, le 17 janvier 2023, près de 20 % des tests intégrés finaux n’avaient pas été réalisés.
-- Stéfanie Vallée et al. "Mémoire portant sur la transformation numérique de l'état québécois sous l'angle du programme CASA/SAAQCLIC"
-  (Déposé le 16 octobre 2025 – Mise à jour le 16 novembre 2025).
-  Chaire de recherche du Canada en technologie, durabilité et société, Université du Québec à Chicoutimi.
-  https://www.chairetds.ca/2493/
+- Stéfanie Vallée et al. « Mémoire portant sur la transformation numérique de l'état québécois sous l'angle du programme CASA/SAAQCLIC » (Déposé le 16 octobre 2025, mis à jour le 16 novembre 2025). Chaire de recherche du Canada en technologie, durabilité et société, Université du Québec à Chicoutimi. https://www.chairetds.ca/2493/
   - Page 14 : succession de cadres
   - Page 18 : types de transformation (numérisation, transformation numérique, TN durable)
   - Page 19 : styles de gestion (bureaucratique-taylorien, New Public Management, post-numérique ou capacitaire)
@@ -52,6 +96,9 @@
 - Le Québec a les plus anciennes traces de vie sur Terre, le plus grand camping gai au monde
 - Yo no te pido la luna
 - https://www.youtube.com/watch?v=bFDnll5dpYw, 12:40
+- Pourquoi accorder de l'importance aux paroles d'un gars qui est allé à Bréboeuf
+- 500k paires de Louboutin
+- Maison des fous dans Astérix
 
 
 # Sujets a creuser

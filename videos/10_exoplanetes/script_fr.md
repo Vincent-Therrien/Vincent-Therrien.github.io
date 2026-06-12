@@ -3,7 +3,7 @@
 Vidéo disponible à https://youtu.be/yarWar-8p8A
 
 Voici une carte de toutes les exoplanètes découvertes à ce jour [1]. Cette région de l'espace
-comprend des milliards d'étoiles, et pourtant, on n'a trouvé que quelques milliers d'exoplanètes.
+comprend des milliards d'étoiles, et pourtant, on n'y a trouvé que quelques milliers d'exoplanètes.
 Pourquoi si peu? Et pourquoi tant d'entre elles ont été découvertes à l'intérieur de ces deux zones
 et pas ailleurs?
 
@@ -41,7 +41,7 @@ observations de suivi. Pour ces trois raisons, la NASA a choisi cette direction 
 La mission Kepler, lancée en 2009, a découvert plus de 2 700 exoplanètes [7]. C'est pourquoi la
 carte présente ce cône : ce sont les planètes découvertes dans la zone d'observation de Kepler. Bien
 sûr, il y a en réalité beaucoup plus de planètes dans cette région, mais seulement quelques-unes ont
-l'orientation adéquate pour que la détection de transits soit possible. Maintenant, qu'en est-il de
+l'orientation adéquate pour que la détection par transits soit possible. Maintenant, qu'en est-il de
 l'autre région?
 
 
@@ -62,26 +62,25 @@ propice à la détection de microlentilles grâce à la forte concentration d'é
 qui explique la présence d'un autre cône sur la carte : la plupart de ces exoplanètes ont été
 découvertes grâce à la microlentille gravitationnelle.
 
-Par contre, ces deux méthodes fournissent peu d'informations sur les exoplanètes. La microlentille
-gravitationnelle nous renseigne sur leur masse relative par rapport à leur étoile, mais par vraiment
-plus [10]. La détection par transits nous renseigne sur le rayon de la planète, sa période orbitale
-et même certaines données sur la composition de son atmosphère, s'il y en a une. Mais elle ne donne
-pas la masse de la planète. En plus, elle ne fonctionne que pour une minorité de systèmes stellaires
-[11]. C'est pourquoi les scientifiques combinent souvent plusieurs méthodes de détection pour
-obtenir plus de données.
+Mais ces deux méthodes fournissent peu d'informations sur les exoplanètes. La microlentille
+gravitationnelle nous donne leur masse par rapport à leur étoile, mais par vraiment plus [10]. La
+détection par transits nous donne le rayon de la planète, sa période orbitale et même certaines
+données sur son atmosphère, s'il y en a une. Mais pas la masse de la planète. En plus, elle ne
+fonctionne que pour une minorité de systèmes stellaires [11]. C'est pourquoi les scientifiques
+combinent souvent plusieurs méthodes de détection pour obtenir plus de données.
 
 
 ## Autres méthodes de détection
 
-La vitesse radiale consiste à mesurer le faible mouvement des étoiles. Les planètes ne restent pas
-parfaitement immobiles : leur gravité les fait légèrement bouger. À cause de l'effet Doppler, quand
-une étoile s'approche de nous, sa lumière paraît davantage bleue. Quand elle s'éloigne, elle paraît
-davantage rouge. On peut mesurer ce léger décalage pour détecter les exoplanètes et, contrairement à
-la détection par transits, les planètes n'ont pas besoin d'être parfaitement alignées. La vitesse
-radiale permet aussi de mesurer la masse des planètes [12].
+La vitesse radiale consiste à mesurer le faible mouvement des étoiles. Elles ne restent pas
+parfaitement immobiles : la gravité de leur planète les fait légèrement bouger. À cause de l'effet
+Doppler, quand une étoile s'approche de nous, sa lumière paraît davantage bleue. Quand elle
+s'éloigne, elle paraît davantage rouge. On peut mesurer ce léger décalage pour détecter les
+exoplanètes et, contrairement à la détection par transits, les planètes n'ont pas besoin d'être
+parfaitement alignées. La vitesse radiale permet aussi de mesurer la masse des planètes [12].
 
 L'imagerie directe est une autre méthode qui fonctionne mieux avec les planètes ayant des orbites
-larges. Ceci n'est pas une représentation artistique d'exoplanètes, mais d’une observation directe
+larges. Ceci n'est pas une représentation artistique d'exoplanètes, mais une observation directe
 [11]. On peut aussi se tromper avec l'imagerie : cette image [13] montre ce qui semblait être une
 planète en orbite autour d’une étoile située à plus de 1 000 années-lumière de la Terre, mais des
 recherches ultérieures ont montré que ce point est probablement une étoile d’arrière-plan [14]. Il
@@ -90,7 +89,7 @@ elles restent très difficiles à étudier.
 
 Prenons Alpha Centauri comme exemple, le système stellaire le plus proche de la Terre. Il est
 composé de trois étoiles. Proxima Centauri, l'étoile la plus proche du Soleil, possède deux
-exoplanètes, confirmées par la méthode des vitesses radiales. Les deux principales étoiles de ce
+exoplanètes, confirmées par la méthode de vitesses radiales. Les deux principales étoiles de ce
 système, Rigil Kentaurus et Toliman, sont plus difficiles à étudier. Aucun transit n'a été confirmé;
 par conséquent, s'il y a des planètes en orbite autour de ces étoiles, leur orientation n'est
 probablement pas adaptée à cette méthode [15]. Elles sont également très difficiles à observer par
@@ -113,10 +112,10 @@ Alpha Centauri à l'aide de voiles solaires. La destination est tellement éloig
 l'atteindre de notre vivant, les fusées ne suffiront pas. Une alternative consiste à projeter de la
 lumière sur une voile solaire afin d' accélérer de petits satellites à 15 % de la vitesse de la
 lumière pour atteindre Alpha Centauri en moins de 30 ans [24]. Vous l'imaginez bien, une mission
-extrêmement coûteuse, s'étalant sur une décennie, est difficile à financer, et elle a d'ailleurs été
-suspendue sine die en 2025 [26]. Voici une autre idée audacieuse : utiliser le Soleil comme lentille
-gravitationnelle. Si on place un télescope à 542 unités astronomiques de celui-ci, le Soleil
-focaliserait théoriquement la lumière sur le télescope et permettrait de photographier des
+extrêmement coûteuse, s'étalant sur des décennies, est difficile à financer, et elle a d'ailleurs
+été suspendue sine die en 2025 [26]. Voici une autre idée audacieuse : utiliser le Soleil comme
+lentille gravitationnelle. Si on place un télescope à 542 unités astronomiques de celui-ci, le
+Soleil focaliserait théoriquement la lumière sur le télescope et permettrait de photographier des
 exoplanètes avec une résolution de 25 kilomètres, suffisante pour distinguer des continents et des
 signes d'habitabilité [27]. Mais c'est une très grande distance et aucun projet sérieux n'est
 actuellement en cours pour envoyer un tel télescope. Donc pour, on va dire, les 30 prochaines
@@ -183,7 +182,7 @@ systèmes stellaires trop éloignés du centre de la galaxie, quant à eux, pour
 en éléments lourds nécessaires à la vie, mais là encore, les preuves sont insuffisantes [41].
 
 Plusieurs de ces hypothèses sont quelque peu anthropocentriques parce qu'elles définissent
-l'habitabilité par sa similitude avec la Terre. C'est notre seul point de comparaison après tout,
+l'habitabilité comme la similitude avec la Terre. C'est notre seul point de comparaison après tout,
 mais la vie pourrait être plus diversifiée qu'on le pense. Une civilisation située à la périphérie
 de la Voie lactée pourrait penser qu'il est impossible que la vie apparaisse si près du centre de la
 galaxie. Une autre civilisation pourrait vivre sur un satellite naturel et penser qu'il est
