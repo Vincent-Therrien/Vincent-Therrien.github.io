@@ -1,6 +1,10 @@
-# Les gouvernements sont encore incapables de faire des logiciels
+# Le cirque de l'informatique gouvernementale
 
-Présenter chaque chapitre comme une raison de l'échec d'un projet
+S'il y a un domaine où le gouvernement gaspille trop d'argent, c'est en informatique.
+
+Les projets de transformation numérique, ceux qui nous permettent de faire de la paperasse et d'accéder à des services en ligne, coûte extrêmement cher, et c'est souvent pour des raisons faciles à éviter, comme une planification bâclée ou l'embauche d'incompétents de classe mondiale. Mais ces projets-là sont quand même nécessaires. En automatisant des services publics comme l'enregistrement d'entreprises ou les déclarations d'impôts, on sauve de l'argent et on obtient des services plus efficaces.
+
+Un exemple : la SAAQ, une société d'État qui délivre des permis de conduire et régit les véhicules au Québec, a réussi à faire gonfler le prix de sa transformation numérique par un demi milliard de dollars et à causer un capharnaüm dans ses centres de services en déployant son système. Au moins on n'a plus besoin d'attendre trois heures dans un centre d'achats pour vendre un char. Je vais utiliser ça comme une étude de cas des échecs gouvernementaux en informatique et montrer comment les mêmes erreurs se produisent ailleurs. Et on va peut-être découvrir comment faire des projets qui marchent pour de vrai!
 
 
 ## I. La planification
@@ -10,7 +14,6 @@ Présenter chaque chapitre comme une raison de l'échec d'un projet
   - PGI
   - Logiciel sur mesure
   - Solution interne
-- Travail en Inde pour les données personnelles non planifié1
 
 
 ## II. L'équipe
@@ -19,16 +22,17 @@ Présenter chaque chapitre comme une raison de l'échec d'un projet
 - Manque de connaissances de l'équipe
 - CA incompétent
 - Malenfant avait causé un fiasco chez Hydro-Québec mais n'a pas eu de vérification d'antécédents
-- Communications privilégiées avec LGS et lobbying
 
 
 ## III. La réglementation
 
 - Trop lourde -> lenteur administrative
 - Trop légère -> raccourcis (ex. CASA demandes d'augmentation du prix)
+- Travail en Inde pour les données personnelles non planifié
+- Communications privilégiées avec LGS et lobbying
 
 
-## IV. Les relations de travail
+## IV. Les monopoles
 
 - Force de négociation disproportionnée du soumissionnaire à cause de monopolisation
 - Attitude trop conciliante de la direction de la SAAQ par peur que le soumissionnaire s'en aille
@@ -36,7 +40,7 @@ Présenter chaque chapitre comme une raison de l'échec d'un projet
 - Divergences dans la compréhension des contrats
 
 
-## V. Les tests
+## V. La validation
 
 - Tests de la livraison 2 escamotés
 
