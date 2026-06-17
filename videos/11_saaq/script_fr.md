@@ -32,7 +32,7 @@ Un exemple : la SAAQ, une société d'État qui délivre des permis de conduire 
 - Communications privilégiées avec LGS et lobbying
 
 
-## IV. Les monopoles
+## IV. Les relations d'affaires
 
 - Force de négociation disproportionnée du soumissionnaire à cause de monopolisation
 - Attitude trop conciliante de la direction de la SAAQ par peur que le soumissionnaire s'en aille
