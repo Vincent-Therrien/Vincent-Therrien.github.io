@@ -1,10 +1,8 @@
 # Le cirque de l'informatique gouvernementale
 
-S'il y a un domaine où le gouvernement gaspille trop d'argent, c'est en informatique.
+S'il y a un domaine où le gouvernement gaspille trop d'argent, c'est en informatique. Les transformation numériques, les projets qui permettent d'accéder à des services gouvernementaux en ligne, coûtent anormalement cher.
 
-Les projets de transformation numérique, ceux qui nous permettent de faire de la paperasse et d'accéder à des services en ligne, coûte extrêmement cher, et c'est souvent pour des raisons faciles à éviter, comme une planification bâclée ou l'embauche d'incompétents de classe mondiale. Mais ces projets-là sont quand même nécessaires. En automatisant des services publics comme l'enregistrement d'entreprises ou les déclarations d'impôts, on sauve de l'argent et on obtient des services plus efficaces.
-
-Un exemple : la SAAQ, une société d'État qui délivre des permis de conduire et régit les véhicules au Québec, a réussi à faire gonfler le prix de sa transformation numérique par un demi milliard de dollars et à causer un capharnaüm dans ses centres de services en déployant son système. Au moins on n'a plus besoin d'attendre trois heures dans un centre d'achats pour vendre un char. Je vais utiliser ça comme une étude de cas des échecs gouvernementaux en informatique et montrer comment les mêmes erreurs se produisent ailleurs. Et on va peut-être découvrir comment faire des projets qui marchent pour de vrai!
+Un exemple : la SAAQ, une société d'État qui délivre des permis de conduire et régit les véhicules au Québec, a réussi à faire gonfler le prix de sa transformation numérique par un demi milliard de dollars et à causer un capharnaüm dans ses centres de services au moment en déployant son nouveau système. Tout ça pour des raisons tristement faciles à éviter : planification grossièrement indécente, recrutement d'incompétents de classe mondiale, stupidité au premier degré, tout y passe. Plusieurs projets d'envergure ont échoué ailleurs dans le monde, souvent pour des raisons similaires. Je vais utiliser le cas de la SAAQ comme une étude de cas pour comprendre pourquoi les gouvernements à travers le monde dépensent autant, et, si on est chanceux, comment c'est possible de faire des projets qui fonctionnent.
 
 
 ## I. La planification

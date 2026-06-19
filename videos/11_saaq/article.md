@@ -13,25 +13,29 @@ Dès 2009, la SAAQ considère la modernisation de ses systèmes informatiques co
 
 Les opérations de la SAAQ sont soutenues par des infrastructures qui datent des années 1980 [2.4]. Elles sont conçues avec le langage de programmation COBOL et une base de données IDMS, des technologies qui remontent aux années 1960 [3] [4] et sont de moins en moins utilisées dans l'industrie, ce qui complique la recrutement de développeurs familiers avec elles. Un autre problème est la dégradation du code. Au fil des années, les **règles métier** de la SAAQ, c'est-à-dire les spécifications du fonctionnement de la Société, ont été ajoutées de manière incrémentales. Par exemple, les règles pour délivrer un permis de conduire (âge, condition de santé, réussite d'un examen) ou immatriculer un véhicule (paiement des frais, infractions pénales, etc.) ont évolué avec le cadre législatif québécois et les activité des organismes gouvernementaux pendant plusieurs décennies. Des milliers de règles métiers complexes ont été directement intégrées dans le code source des systèmes de la SAAQ sans qu'elles soient documentées [2.5].
 
-Ce n'est pas une situation inédite. Aux États-Unis, dans les années 1960, l'Internal Revenue Service (IRS) a ouvert la voie aux services automatisés de paiement d'impôts avec un système développé en COBOL et en assembleur, un langage plus ancien encore [5]. L'IRS entreprend un ambitieux programme de modernisation à partir de 2012 pour récrire ses systèmes en Java, un langage de programmation plus moderne, ce qui lui donne accès à un plus grand bassin de candidats et facilite l'ajout de fonctionnalités plus modernes [6]. Mais ce ne sont pas toutes les organisations qui sont gérées comme l'IRS.
+Ce n'est pas une situation inédite. Aux États-Unis, dans les années 1960, l'Internal Revenue Service (IRS) a ouvert la voie aux services automatisés de paiement d'impôts avec un système développé en COBOL et en assembleur, un langage plus ancien encore [5]. L'IRS entreprend un ambitieux programme de modernisation à partir de 2012 pour récrire ses systèmes en Java, un langage de programmation plus moderne, ce qui lui donne accès à un plus grand bassin de candidats et facilite l'ajout de fonctionnalités plus modernes. Après plus de dix ans d'effort et d'investissement, l'IRS arrive désormais à desservir plus efficacement les contribuables tout en diminuant ses coûts internes [6]. Mais ce ne sont pas toutes les organisations qui sont gérées comme l'IRS.
 
 
-## 2. Mauvais départ
+## 2. Premier départ
 
-La SAAQ adopte donc en 2011 un **plan de pérennité** pour moderniser ses opérations, qui se déclinent en quatre domaines d'activité [2.6] :
+La SAAQ adopte en 2011 un **plan de pérennité** pour moderniser ses opérations, qui se déclinent en quatre domaines d'activité [2.6] :
 
 1. L'accès au réseau routier (délivrance des permis de conduire, immatriculation, etc.)
 2. L'indemnisation des victimes de la route (fond d'assurance des victimes)
 3. Le contrôle routier (conduite de véhicules lourds notamment)
 4. La promotion de la sécurité routière (campagnes publicitaires et autres initiatives)
 
-Le plan de pérennité comporte deux objectifs : la rénovation du système d'accès au réseau routier et la conversion des données du fond d'assurance, les deux autres domaines d'activité n'étant pas considérés prioritaires [2.7]. Doté d'un budget de 364 millions $, le plan de pérennité devait être réalisé de 2012 à 2022 [2.8].
+Le plan de pérennité vise deux objectifs : (1) la rénovation du système d'accès au réseau routier et (2) la conversion des données du fond d'assurance, les deux autres domaines d'activité n'étant pas considérés prioritaires [2.7]. La SAAQ décide de développer le projet par elle-même entre autres parce qu'elle a de la difficulté à évaluer ses besoins à l'avance, ce qui complexifie l'octroi de contrats à des partenaires externes. Suivant un rapport de PwC, la SAAQ décide de procéder à la conversion des données avant d'apporter tout changement majeur à ses applications [2.8] et décompose la réalisation en plusieurs blocs. Le plan de pérennité est finalement doté d'un budget de 364 millions $ et devait s'étaler de 2012 à 2022 [2.9].
+
+Il s'avérera toutefois que la division du travail en blocs favorise le travail en silo des équipes, ce qui ralentit la réalisation du projet étant donné la forte interconnexion entre ses composantes. Les retards s'accumulent et le plan de pérennité est finalement abandonné en 2014 sous l'influence, notamment, d'un certain Karl Malenfant [2.10].
 
 
 ## 3. Une équipe digne d'un cauchemar
 
 
-## 4. Quelques mots sur la réglementation
+
+
+## 4. La réglementation se ramollie
 
 
 ## 5. De multiples erreurs de gestions
@@ -61,7 +65,9 @@ Le plan de pérennité comporte deux objectifs : la rénovation du système d'ac
   - [2.5] page 285, section (ii)
   - [2.6] page 48, section A
   - [2.7] page 120, section B
-  - [2.8] page 122
+  - [2.8] page 123
+  - [2.9] page 122
+  - [2.10] page 124
 - [3] Chrystal R. China et Michael Goodwin. "Qu’est-ce que le COBOL ?" (8 mai 2025). IBM. https://www.ibm.com/fr-fr/think/topics/cobol
 - [4] Andrew L. Russell. "Oral-History:Charles Bachman" (9 avril 2011). IEEE Oral History Network. https://ethw.org/Oral-History:Charles_Bachman
 - [5] Andrew Leahey. "From COBOL And Assembly To Java—Modernizing The IRS" (6 septembre 2024). Forbes. https://www.forbes.com/sites/andrewleahey/2024/09/06/from-cobol-and-assembly-to-java-modernizing-the-irs/
