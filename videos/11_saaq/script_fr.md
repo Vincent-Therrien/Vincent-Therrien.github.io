@@ -106,3 +106,4 @@ Un exemple : la SAAQ, une société d'État qui délivre des permis de conduire 
 # Sujets a creuser
 
 - Implication d'Éric Caire
+- Contrats pour les smart board dans les écoles, entourage de Charest
