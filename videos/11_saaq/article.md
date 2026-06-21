@@ -4,18 +4,18 @@
 >
 > Guy Morneau, président du conseil d'administration de la Société de l'assurance automobile du Québec (SAAQ) de 2013 à 2016 [1]
 
-C'est plutôt une augmentation de **245 millions de dollars canadiens** qu'on observe entre le démarrage du programme informatique de la SAAQ en 2017 et la fin de son développement en 2023 [2.1], augmentation qu'on explique par une série d'affreuses décisions. Retraçons l'histoire du Carrefour des services d'affaires (CASA) de la SAAQ, un programme marqué par de multiples fiascos qui n'ont pas fini de nous servir d'apprentissage collectif.
+C'est plutôt une augmentation de **245 millions de dollars canadiens** qu'on observe entre le démarrage du programme informatique de la SAAQ en 2017 et la fin de son développement en 2023 [2.1], augmentation qu'on explique par une série de mauvaises décisions. Retraçons l'histoire du Carrefour des services d'affaires (CASA) de la SAAQ, un programme marqué par de multiples fiascos qui n'ont pas fini de nous servir d'apprentissage collectif.
 
 
 ## 1. La nécessité d'une transformation numérique
 
 Dès 2009, la SAAQ considère la modernisation de ses systèmes informatiques comme une urgence [2.2]. Ses infrastructures, qui datent des années 1980 [2.4], sont conçues avec le langage de programmation COBOL et une base de données IDMS, des technologies qui remontent aux années 1960 [3] [4]. Elles sont de moins en moins utilisées dans l'industrie, ce qui complique le recrutement de professionnels qui savent les utiliser.
 
-Un autre problème est la dégradation du code. Au fil des années, les **règles métier** de la SAAQ, c'est-à-dire les spécifications des opérations de la Société, ont été ajoutées de manière incrémentales. Par exemple, les règles pour délivrer un permis de conduire (âge, condition de santé, réussite d'un examen) ou immatriculer un véhicule (paiement des frais, infractions pénales, etc.) ont évolué avec le cadre législatif québécois et les activité des organismes gouvernementaux pendant plusieurs décennies. Des milliers de règles métiers complexes ont été directement intégrées dans le code source des systèmes de la SAAQ sans qu'elles soient documentées [2.5].
+Un autre problème est la dégradation du code. Au fil des années, les **règles métier** de la SAAQ, c'est-à-dire les spécifications des opérations de la Société, ont été ajoutées de manière incrémentales. Par exemple, les règles pour délivrer un permis de conduire (âge, condition de santé, réussite d'un examen) ou immatriculer un véhicule (paiement des frais, infractions pénales, etc.) ont évolué avec le cadre législatif québécois et les activité des organismes gouvernementaux pendant plusieurs décennies. Des milliers de règles métiers complexes ont été directement intégrées dans le code source des systèmes de la SAAQ sans qu'elles ne soient documentées [2.5].
 
 Par ailleurs, le déficit de la SAAQ augmente de 35 million $ par année en moyenne depuis le début des années 2000. La transformation numérique est perçue comme un passage obligé pour réduire ses coûts d'opération et à desservir la population plus efficacement [2.3].
 
-Ce n'est pas une situation inédite. Aux États-Unis, dans les années 1960, l'Internal Revenue Service (IRS) a ouvert la voie aux services automatisés de paiement d'impôts avec un système développé en COBOL et en assembleur, un langage plus ancien encore [5]. L'IRS entreprend un ambitieux programme de modernisation à partir de 2012 pour récrire ses systèmes en Java, un langage de programmation plus moderne, ce qui lui donne accès à un plus grand bassin de candidats et facilite l'ajout de fonctionnalités plus modernes. Après plus de dix ans d'effort et d'investissement, l'IRS arrive désormais à desservir plus efficacement les contribuables et diminuer ses dépenses [6]. Mais ce ne sont pas toutes les organisations qui sont gérées comme l'IRS.
+Ce n'est pas une situation inédite. Aux États-Unis, dans les années 1960, l'Internal Revenue Service (IRS) a ouvert la voie aux services automatisés de paiement d'impôts avec un système développé en COBOL et en assembleur, un langage plus ancien encore [5]. L'IRS entreprend un ambitieux programme de modernisation à partir de 2012 pour récrire ses systèmes en Java, un langage de programmation plus moderne, ce qui lui donne accès à un plus grand bassin de candidats et facilite l'ajout de fonctionnalités plus modernes. Après plus de dix ans d'effort et d'investissement, l'IRS arrive désormais à desservir plus efficacement les contribuables et à diminuer ses dépenses [6]. Mais ce ne sont pas toutes les organisations qui sont gérées comme l'IRS.
 
 
 ## 2. Faux départ
@@ -38,7 +38,7 @@ Il s'avérera toutefois que la division du travail en blocs ralentit la réalisa
 
 ## 3. Une équipe digne d'un cauchemar
 
-En 2013, la SAAQ cherche un nouveau vice-président aux technologies de l'information pour remplacer Michel Léveillé, parti à la retraite pour « aller jouer du piano chez lui » [7]. Une firme de chasseurs de têtes contacte Karl Malenfant, un gestionnaire en projets informatiques ayant travaillé 15 ans chez Hydro-Québec [8], mais la firme ne se rend visiblement pas compte que Malenfant a terminé son expérience là-bas « sur la pire note qui soit » après que les coûts d’un projet sous sa direction, le Système d'information client (SIC), développé avec l'entreprise SAP, passent de 320 à 474 millions $ [9].
+En 2013, la SAAQ cherche un nouveau vice-président aux technologies de l'information pour remplacer Michel Léveillé, parti à la retraite pour « aller jouer du piano chez lui » [7]. Une firme de chasseurs de têtes contacte Karl Malenfant, un gestionnaire en projets informatiques ayant travaillé 15 ans chez Hydro-Québec [8], mais la firme ne se rend visiblement pas compte que Malenfant y a dirigé un projet, le Système d'information client (SIC), dont les coûts passent de 320 à 474 millions $. Ce projet est effectué avec SAP, une multinationale allemande de logiciels de gestion [9].
 
 Plusieurs personnes ayant côtoyé Malenfant durant sa carrière se joignent mystérieusement à la SAAQ peu après son arrivée :
 
@@ -51,26 +51,35 @@ Plusieurs personnes ayant côtoyé Malenfant durant sa carrière se joignent mys
 
 Hormis la consanguinité de l'équipe, on note plusieurs autres irrégularités. Par exemple, les contrats de gré à gré pour certains employés dépassaient 100k $, soit le seuil d'appel d'offres. La direction de la SAAQ acceptait néanmoins les contrats [2.14]. Et lorsque le contrat de Louise Savoie prend fin en 2021, elle rejoint immédiatement l'entreprise LGS, qui travaille sur les projets informatiques de la SAAQ, même si cela contrevient aux règles encadrant les marchés publics [2.15].
 
-L'infiltration suscite peu de résistance. La Direction de la vérification interne et de l’évaluation des programmes de la SAAQ dénonce la situation à Yves Frenette, alors vice-président aux finances, ressources humaines et à la performance, en lui exposant un diagramme détaillant les liens entre Malenfant et les soumissionnaires [2.16]. Frenette communique ces informations à présidente-directrice générale de la SAAQ, Nathalie Tremblay, qui approuve néanmoins les contrats en toute connaissance de cause [2.17]. La transformation numérique de la SAAQ devient alors menée par un noyau dur.
+L'infiltration suscite peu de résistance. La Direction de la vérification interne et de l’évaluation des programmes de la SAAQ dénonce la situation à Yves Frenette, alors vice-président aux finances, ressources humaines et à la performance, en lui exposant un diagramme détaillant les liens entre Malenfant et les soumissionnaires [2.16]. Frenette communique ces informations à présidente-directrice générale de la SAAQ, Nathalie Tremblay, qui approuve néanmoins les contrats en toute connaissance de cause [2.17]. À partir de là, ce que Malenfant appelle un « noyau dur » mènera la transformation numérique de la SAAQ.
 
 // exemple :
 
 
 ## 4. Le PGI supplante le plan de pérennité
 
-Malenfant ne démantèle pas immédiatement le plan de pérennité à son arrivé à la SAAQ, bien qu'il s'en montre très critique. Un changement majeur s'amorce toutefois au moment de réaliser, en 2013, le « bloc H » du plan, soit les services d'arrière-guichet nécessaires à l'immatriculation et aux permis de conduire. La SAAQ décide d'élargir la portée du bloc pour y inclure le système comptable de la Société, le système d'alors étant considéré désuet [2.18]. À ce moment se concrétise l'idée d'utiliser, au lieu du développement maison, un progiciel de gestion intégrée, ou PGI [2.19].
+Malenfant ne démantèle pas immédiatement le plan de pérennité à son arrivé à la SAAQ, bien qu'il s'en montre très critique. Un changement majeur s'amorce toutefois au moment de réaliser, en 2013, le « bloc H » du plan, soit les services d'arrière-guichet nécessaires à l'immatriculation et aux permis de conduire. La SAAQ décide donc d'élargir la portée du bloc pour y inclure le système comptable de la Société, le système d'alors étant considéré désuet [2.18]. À ce moment se concrétise l'idée d'utiliser, au lieu du développement maison, un progiciel de gestion intégré (PGI) [2.19], c'est-à-dire un logiciel « qui permet de gérer les processus d'une entreprise en intégrant l'ensemble de ses fonctions » [10]. C'est une approche fondamentalement différente : au lieu de développer un système par elle-même à partir de zéro, la SAAQ achèterait un logiciel déjà conçu et l'adapterait à ses besoins.
+
+En principe, un PGI est moins dispendieux parce qu'il évite de développer une solution entière. En pratique, les modifications à apporter à un PGI pour intégrer toutes les règles métier de l'organisation représentent un effort considérable, ce qui les rend inappropriés dans certains cas.
+
+En 2014, la SAAQ décide de tenir des discussions sur l'achat de PGI avec une seule entreprise, SAP, par souci d'efficacité [2.20]. C'est une approche hasardeuse. Si la Société ne discute pas avec plusieurs fournisseurs, elle ne peut comparer leurs prix et leur capacité de répondre à ses besoins. Sans compétition, elle devient, en somme, incapable de sélectionner la meilleure solution sur le marché. Il y a aussi un risque que le soumissionnaire embellisse les coûts de ses produits et induise le client en erreur. La SAAQ est apparemment consciente de la délicatesse de cette situation et prépare même des suggestions de réponses aux questions que les journalistes pourraient poser au sujet de sa relation avec SAP si la situation devenait publique. La haute direction de la SAAQ entérine néanmoins cette décision en toute connaissance de cause [2.21].
+
+SAP et la SAAQ tiennent de nombreuses discussions en 2014 au sujet de l'achat d'un PGI et, en janvier 2015, le comité de direction donne son accord à l'acquisition d'un PGI, qui supplante le plan de pérennité [2.22].
 
 
 ## 5. La réglementation se ramollie
 
+Avant
 
 
-## 6. Les monopoles et leurs conséquences
+
+## 6. Les dérapages commencent et n'arrêtent pas
 
 // règles métier, ex. IRS avec toutes les lois américaines
 
 ## 7. N'oubliez pas les tests!
 
+// phoenix
 
 ## 8. La catastrophe
 
@@ -101,6 +110,9 @@ Malenfant ne démantèle pas immédiatement le plan de pérennité à son arriv�
   - [2.17] page 162
   - [2.18] page 133
   - [2.19] page 134
+  - [2.20] page 137
+  - [2.21] page 138
+  - [2.22] page 149
 - [3] Chrystal R. China et Michael Goodwin. "Qu’est-ce que le COBOL ?" (8 mai 2025). IBM. https://www.ibm.com/fr-fr/think/topics/cobol
 - [4] Andrew L. Russell. "Oral-History:Charles Bachman" (9 avril 2011). IEEE Oral History Network. https://ethw.org/Oral-History:Charles_Bachman
 - [5] Andrew Leahey. "From COBOL And Assembly To Java—Modernizing The IRS" (6 septembre 2024). Forbes. https://www.forbes.com/sites/andrewleahey/2024/09/06/from-cobol-and-assembly-to-java-modernizing-the-irs/
@@ -108,3 +120,4 @@ Malenfant ne démantèle pas immédiatement le plan de pérennité à son arriv�
 - [7] Témoignage d'Yves Frenette aux audiences de la CESIS (10 juin 2025), page 38. https://www.cesis.gouv.qc.ca/fileadmin/documents/24_2025-06-10_CESIS__JOUR_24_.pdf
 - [8] https://www.linkedin.com/in/karl-malenfant-b-sc-iro-mba-asc-01967337/
 - [9] Katia Gagnon, Ulysse Bergeron et Vincent Larin. "Karl Malenfant et SAAQclic - L’architecte du chaos" (14 septembre 2025). La Presse. https://www.lapresse.ca/actualites/karl-malenfant-et-saaqclic/l-architecte-du-chaos/2025-09-14/l-histoire-qui-se-repete.php
+- [10]  Office québécois de la langue française. "progiciel de gestion intégré
