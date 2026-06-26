@@ -96,7 +96,7 @@ Cette autonomie additionnelle était censée donner plus d'agilité à la SAAQ d
 De 2014 à 2018, soit l'année où le gouvernement recadre ses mécanismes de surveillance des organismes public, la SAAQ opère donc en marge des du contrôle gouvernemental grâce à de multiples allègements. Et même après qu'ils aient pris fin, la SAAQ poursuivra une reddition de compte déficiente [2.33]. C'est dans ce contexte que commence le programme CASA : les proches de Malenfant ont une influence disproportionnée, SAP est le seul fournisseur réellement dans la course, et la SAAQ est libérée d'importantes obligations de reddition de compte. La table est mise pour un fiasco.
 
 
-## 6. Acquisition de la suite PGI : les dérapages commencent
+## 6. Acquisition de la suite PGI : les dérapages s'annoncent
 
 L'acquisition d'une suite PGI s'étend de 2014 à 2017.
 
@@ -107,25 +107,50 @@ De 2015 à 2017, la SAAQ effectue trois appels d'offres afin de choisir un **éd
 > Exemple de trop d'ambition
 
 
-## 7. La réalisation de la suite PGI : les dérapages se poursuivent
+## 7. La livraison 1 : avant le déluge
 
-La réalisation du programme de la SAAQ s'amorce en mars 2017; c'est aussi à ce moment qu'il est baptisé « Carrefour des services d'affaires » ou CASA [2.47]. Elle prévoit quatre livraisons [2.48] :
+La réalisation du programme de la SAAQ s'amorce en mars 2017. C'est aussi à ce moment-là qu'il est baptisé « Carrefour des services d'affaires » ou CASA [2.47]. Quatre livraisons distinctes sont prévues, mais la dernière livraison (indemnisation des victimes d'accidents de la route) sera abandonnée en cours de route [2.48].
 
-- livraison 0 (2017) : planification et formation du personnel.
-- livraison 1 (2017 à 2019) : fonctions d'arrière-guichet (administration, comptabilité, approvisionnement, etc.).
-- livraison 2 (2017 à 2020) : immatriculation, permis de conduire, plateforme SAAQclic.
-- livraison 3 (2020 à 2021) : indemnisation des victimes d’accidents de la route et réadaptation.
+La livraison 0 (2017) vise à planifier le programme CASA et à former le personnel. Elle se déroule sans problème majeur [2.49].
 
-La livraison 0 se déroule bien, mais des frictions apparaissent dès de début de la livraison 1 [2.49].
+La livraison 1 (2.17 à 2019) vise à réaliser les fonctions d'arrière-guichet de la SAAQ, comme l'administration, la comptabilité, l'approvisionnement, etc. C'est à ce moment que les frictions commencent à survenir avec l'Alliance, pour plusieurs raisons :
+
+- LGS/IBM exagère les compétences de ses employés, allant jusqu'à présenter une personne sans connaissances d'un produit SAP comme un « spécialiste » en la matière. L’afflux d'employés cause par ailleurs des problèmes de cohésion [2.50].
+- Dans le contrat de services professionnels, la SAAQ exigeait que les travaux soit exécutés dans ses locaux à Québec, mais en mars 2017, elle apprend « avec une certaine stupéfaction » que plus de 60 % des ressources responsables de l'intégration technologique de LGS/IBM travailleraient principalement en Inde. Le décalage horaire et la barrière linguistique agravent les problèmes de cohésion [2.51].
+- LGS/IBM prévoyait effectuer les travaux de conversion de données sensibles en Inde, mais la SAAQ, pour des raisons qui ne sont pas totalement justifiées, insiste pour rapatrier ces travaux à Québec, ce qui implique des dépenses supplémentaires [2.52].
+- Le taux horaire facturé par LGS/IBM change de manière considérable, passant de 85 $ à 350 $ pour certaines ressources. Ces décisions sont prises par Karl Malenfant et un gestionnaire de l'équipe d'IBM, Nabil Aboutanos [2.53].
+
+Malgré tout, la livraison 1 se déroule assez bien, se concluant à l'intérieur du délai de réalisation et sans dépasser son budget de 122 millions $, bien que certaines composantes furent livrées en retard et que le paiement de certaines factures fut laborieux [2.54].
+
+
+## 8. La livraison 2 : le face-à-face
+
+La livraison 2 (2017 à 2020) vise à réaliser les fonctions principales de la SAAQ, comme l'immatriculation, les permis de conduire, et la plateforme SAAQclic. Elle s'annonce plus difficile que la livraison 1. Cette dernière se prêtait particulièrement bien à l'approche PGI parce que SAP disposait de logiciels qui répondaient bien aux besoins de la SAAQ et demandaient peu d'adaptations, mais ce cas de figure ne se répète pas lors de la livraison 2 [2.55]. L'Alliance retient un logiciel de gestion d'entrepôts [13] et doit l'adapter à la mission de la SAAQ en réalisant un ensemble d'unités de développement informatique qui correspondent aux règles métier. Au moment de la soumission, l'Alliance prévoit réaliser 1800 unités. Pour donner un ordre de grandeur, un projet de grande envergure au sein de la Défense du Canada avait nécessité 500 unités. La livraison 2 constituait du « jamais-vu » aux yeux d'une gestionnaire d'expérience chez IBM [2.56]. La SAAQ et l'Alliance découvrent en outre des règles métier *pendant le programme*, ce qui implique de nouvelles unités de développement et des retards [2.57].
+
+La SAAQ complique la situation en modifiant significativement la portée de la livraison 2 dès son amorce pour y intégrer le contrôle routier, ce qui n'était pas prévu au début du programme [2.58]. Il pourrait à première vue s'agir d'un trivial ajout de composante à la livraison. Mais à cause des interdépendances entre les composantes de systèmes informatiques, l'élargissement de la portée d'un projet technologique en fait plutôt augmenter la complexité de manière exponentielle [2.59]. Le coût de la livraison 2 augmente alors de 43 millions $ pour un budget initial de 114 millions $ [2.58].
+
+À ces écueils s'ajoutent d'autres frictions, comme des enjeux de conversion de données [2.60] et de recrutement [2.61]. Par ailleurs, la SAAQ cède facilement à certaines demandes de l'Alliance et autorise des augmentations budgétaires sans contester leur nécessité [2.62]. Le projet finit par dérailler fin 2018.
+
+> exemple de conflit avec soumissionnaires
+>
+>
 
 
 ## 8. N'oubliez pas les tests!
 
-// phoenix
+> exemple : phoenix
+>
+>
+
 
 ## 9. La catastrophe
 
 - [9] Apollo 13
+
+> exemple : gestion de crise
+>
+>
+
 
 ## 10. Les recommandations
 
@@ -184,6 +209,19 @@ La livraison 0 se déroule bien, mais des frictions apparaissent dès de début 
   - [2.47] page 256
   - [2.47] pages 257 et 258
   - [2.49] page 260
+  - [2.50] pages 261 et 262
+  - [2.51] pages 262 et 263
+  - [2.52] page 265
+  - [2.53] pages 267 et 268
+  - [2.54] pages 276 et 277
+  - [2.55] page 281
+  - [2.56] page 282
+  - [2.57] page 286
+  - [2.58] page 284
+  - [2.59] page 428
+  - [2.60] page 289
+  - [2.61] page 290
+  - [2.62] page 292
 - [3] Chrystal R. China et Michael Goodwin. "Qu’est-ce que le COBOL ?" (8 mai 2025). IBM. https://www.ibm.com/fr-fr/think/topics/cobol
 - [4] Andrew L. Russell. "Oral-History:Charles Bachman" (9 avril 2011). IEEE Oral History Network. https://ethw.org/Oral-History:Charles_Bachman
 - [5] Andrew Leahey. "From COBOL And Assembly To Java—Modernizing The IRS" (6 septembre 2024). Forbes. https://www.forbes.com/sites/andrewleahey/2024/09/06/from-cobol-and-assembly-to-java-modernizing-the-irs/
@@ -193,3 +231,5 @@ La livraison 0 se déroule bien, mais des frictions apparaissent dès de début 
 - [9] Katia Gagnon, Ulysse Bergeron et Vincent Larin. "Karl Malenfant et SAAQclic - L’architecte du chaos" (14 septembre 2025). La Presse. https://www.lapresse.ca/actualites/karl-malenfant-et-saaqclic/l-architecte-du-chaos/2025-09-14/l-histoire-qui-se-repete.php
 - [10]  Office québécois de la langue française. "progiciel de gestion intégré" (2020). https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/8874062/progiciel-de-gestion-integre
 - [11] Gouvernement du Québec. "Loi sur la gouvernance des sociétés d’État". RLRQ, c. G-1.02, art. 3 « société d’État ».
+- [12] Pierre-Paul Biron. "Risques de dérapage autour d’un mégaprojet informatique d’un demi-milliard de dollars à la SAAQ" (9 avril 2018). Le journal de Québec. https://www.journaldequebec.com/2018/04/09/risques-de-derapage-informatique-a-la-saaq
+- [13] Témoignage de Michel Dumas aux audiences de la CESIS (24 septembre 2025), page 281. https://www.cesis.gouv.qc.ca/fileadmin/documents/2025-09-24_CESIS_JOUR_55_KMalenfant_MDumas.pdf
