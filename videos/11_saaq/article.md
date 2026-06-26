@@ -100,16 +100,23 @@ De 2014 à 2018, soit l'année où le gouvernement recadre ses mécanismes de su
 
 L'acquisition d'une suite PGI s'étend de 2014 à 2017.
 
-De 2014 à 2015, la SAAQ ne fait que *concevoir une stratégie d'acquisition*. Elle commence par discuter avec le Secrétariat du Conseil du trésor pour demander une dérogation du cadre réglementaire à l'époque : la SAAQ souhaite modifier le processus d'évaluation des soumissions et prolonger la durée du contrat, par exemple [2.34]. La demande comprend une estimation de coûts de 200 millions $. Pourtant, à l'interne, la SAAQ prévoyait, au même moment, un coût minimum de 225 millions $ et un coût plausible de 269 millions $. Plusieurs membres de la SAAQ, dont Karl Malenfant, sont conscients de cet écart mais choisissent de ne pas le communiquer au gouvernement [2.35]. La stratégie d'acquisition prévoit en outre des modalités inédites, comme une clause de partage de risques assez complexe [2.36]. Le Conseil du trésor finit par accepter la stratégie en posant certaines conditions pour assurer la compétition entre les soumissionnaires, la qualité des évaluations, et la reddition de compte [2.37].
+De 2014 à 2015, la SAAQ ne fait que *concevoir une stratégie d'acquisition*. Elle commence par discuter avec le Secrétariat du Conseil du trésor pour demander une dérogation au cadre réglementaire à l'époque, la SAAQ souhaitant en effet modifier le processus d'évaluation des soumissions et prolonger les durées de contrats [2.34]. La demande comprend une estimation de coûts de 200 millions $. Pourtant, à l'interne, la SAAQ prévoyait, au même moment, un coût minimum de 225 millions $ et un coût plausible de 269 millions $. Plusieurs membres de la SAAQ, dont Karl Malenfant, sont conscients de cet écart mais choisissent de ne pas le communiquer au gouvernement [2.35]. La stratégie d'acquisition prévoit en outre des modalités inédites, comme une clause de partage de risques assez complexe [2.36]. Le Conseil du trésor finit par accepter la stratégie en posant certaines conditions pour assurer la compétition entre les soumissionnaires, la qualité des évaluations, et la reddition de compte [2.37].
 
-De 2015 à 2017, la SAAQ effectue trois appels d'offres afin de choisir un **éditeur de PGI** [2.38], un **intégrateur de PGI** [2.39], et une « **alliance** » formée d'un éditeur et d'un intégrateur qualifiés aux deux précédents appels d'offres pour réaliser la suite PGI [2.40]. Les conditions d'évaluation des soumissionnaires ne sont pas toujours optimales. Dans un groupe chargé de synthétiser les rapports de comités aviseurs, des membres d'un « noyau fort » constitué de proches de Karl Malenfant discutent souvent seuls et rendent l'ambiance si tendue qu'il est nécessaire de prendre des pauses [2.41]. Un seul éditeur, SAP [2.42], et deux intégrateurs, LGS/IDM et Deloitte [2.43], se qualifient. Lors de l'évaluation finale, SAP est donc l'unique éditeur, ce qui lui donne un pouvoir de négociation important. L'Alliance retenue est composée de SAP et LGS/IBM [2.44]. Selon la soumission finale, le coût d'acquisition de la suite PGI serait de 375 millions $, ce qui diffère grandement des évaluation précédentes [2.45]. Le coût d'exploitation projeté sur 10 ans est de 286 millions $, pour un total de 661 millions $. Le ministre responsable n'est pas informé de la signature du contrat avec l'Alliance [2.46].
+De 2015 à 2017, la SAAQ effectue trois appels d'offres afin de choisir un **éditeur de PGI** [2.38], un **intégrateur de PGI** [2.39], et une « **alliance** » formée d'un éditeur et d'un intégrateur qualifiés aux deux précédents appels d'offres pour réaliser la suite PGI [2.40]. Les conditions d'évaluation des soumissionnaires ne sont pas toujours optimales. Dans un groupe chargé de synthétiser les rapports de comités aviseurs, des membres d'un « noyau fort » constitué de proches de Karl Malenfant discutent souvent seuls et rendent l'ambiance si tendue qu'il est nécessaire de prendre des pauses [2.41]. Un seul éditeur, SAP [2.42], ainsi que deux intégrateurs, LGS/IDM et Deloitte [2.43], se qualifient. Lors de l'évaluation en vue de la sélection de l'Alliance, SAP est donc l'unique éditeur, ce qui lui donne un pouvoir de négociation important. La SAAQ retient l'Alliance composée de SAP et LGS/IBM [2.44]. Selon la soumission finale, le coût d'acquisition de la suite PGI serait de 375 millions $ [2.45]. Le coût d'exploitation projeté sur 10 ans est de 286 millions $, pour un total de 661 millions $. Le ministre responsable n'est pas informé de la signature du contrat avec l'Alliance [2.46].
 
 > Exemple de trop d'ambition
 
 
 ## 7. La réalisation de la suite PGI : les dérapages se poursuivent
 
+La réalisation du programme de la SAAQ s'amorce en mars 2017; c'est aussi à ce moment qu'il est baptisé « Carrefour des services d'affaires » ou CASA [2.47]. Elle prévoit quatre livraisons [2.48] :
 
+- livraison 0 (2017) : planification et formation du personnel.
+- livraison 1 (2017 à 2019) : fonctions d'arrière-guichet (administration, comptabilité, approvisionnement, etc.).
+- livraison 2 (2017 à 2020) : immatriculation, permis de conduire, plateforme SAAQclic.
+- livraison 3 (2020 à 2021) : indemnisation des victimes d’accidents de la route et réadaptation.
+
+La livraison 0 se déroule bien, mais des frictions apparaissent dès de début de la livraison 1 [2.49].
 
 
 ## 8. N'oubliez pas les tests!
@@ -120,7 +127,7 @@ De 2015 à 2017, la SAAQ effectue trois appels d'offres afin de choisir un **éd
 
 - [9] Apollo 13
 
-## 10. La suite
+## 10. Les recommandations
 
 
 # Références
@@ -171,9 +178,12 @@ De 2015 à 2017, la SAAQ effectue trois appels d'offres afin de choisir un **éd
   - [2.41] page 200
   - [2.42] page 206
   - [2.43] page 176
-  - [2.44] page
+  - [2.44] page 228
   - [2.45] page 222
   - [2.46] page 229
+  - [2.47] page 256
+  - [2.47] pages 257 et 258
+  - [2.49] page 260
 - [3] Chrystal R. China et Michael Goodwin. "Qu’est-ce que le COBOL ?" (8 mai 2025). IBM. https://www.ibm.com/fr-fr/think/topics/cobol
 - [4] Andrew L. Russell. "Oral-History:Charles Bachman" (9 avril 2011). IEEE Oral History Network. https://ethw.org/Oral-History:Charles_Bachman
 - [5] Andrew Leahey. "From COBOL And Assembly To Java—Modernizing The IRS" (6 septembre 2024). Forbes. https://www.forbes.com/sites/andrewleahey/2024/09/06/from-cobol-and-assembly-to-java-modernizing-the-irs/
