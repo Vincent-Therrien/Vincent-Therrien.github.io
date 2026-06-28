@@ -15,7 +15,7 @@ Un autre problème est la dégradation du code. Au fil des années, les **règle
 
 > Exemple : IRS
 >
-> Le cas de la SAAQ n'était pas une situation inédite. Aux États-Unis, dans les années 1960, l'Internal Revenue Service (IRS) a ouvert la voie aux services automatisés de paiement d'impôts avec un système développé en COBOL et aussi en assembleur, un langage de programmation plus ancien encore [5]. L'IRS entreprend un ambitieux programme de modernisation à partir de 2012 pour récrire ses systèmes en Java, un langage plus moderne, ce qui lui donne accès à un plus grand bassin de candidats et facilite l'ajout de fonctionnalités plus modernes. Après plus de dix ans d'effort et d'investissement, l'IRS arrive désormais à desservir plus efficacement les contribuables et à diminuer ses dépenses [6].
+> Le cas de la SAAQ est loin d'être une situation inédite. Aux États-Unis, dans les années 1960, l'Internal Revenue Service (IRS) a ouvert la voie aux services automatisés de paiement d'impôts avec un système développé en COBOL et aussi en assembleur, un langage de programmation plus ancien encore [5]. L'IRS entreprend un ambitieux programme de modernisation à partir de 2012 pour récrire ses systèmes en Java, un langage plus moderne, ce qui lui donne accès à un plus grand bassin de développeurs et facilite l'ajout de fonctionnalités plus modernes. Après plus de dix ans d'effort et d'investissement, l'IRS arrive désormais à desservir plus efficacement les contribuables et à diminuer ses dépenses [6].
 
 
 ## 2. Faux départ
@@ -40,7 +40,7 @@ Il s'avérera toutefois que la division du travail en blocs ralentit la réalisa
 
 ## 3. Une équipe digne d'un cauchemar
 
-En 2013, la SAAQ cherche un nouveau vice-président aux technologies de l'information pour remplacer Michel Léveillé, parti à la retraite pour « aller jouer du piano chez lui » [7]. Une firme de chasseurs de têtes contacte Karl Malenfant, un gestionnaire en projets informatiques ayant travaillé 15 ans chez Hydro-Québec [8] où il y a dirigé un programme, le Système d'information client (SIC), dont les coûts étaient passés de 320 à 474 millions $. Ce programme a été effectué avec SAP, une multinationale allemande de logiciels de gestion [9].
+En 2013, la SAAQ cherche un nouveau vice-président aux technologies de l'information pour remplacer Michel Léveillé, parti à la retraite pour « aller jouer du piano chez lui » [7]. Une firme de chasseurs de têtes contacte Karl Malenfant, un gestionnaire en projets informatiques ayant travaillé 15 ans chez Hydro-Québec [8] où il y a dirigé un programme, le Système d'information client (SIC), dont le coût était passé de 320 à 474 millions $. Ce programme a été effectué avec SAP, une multinationale allemande de logiciels de gestion [9].
 
 Plusieurs personnes ayant côtoyé Malenfant durant sa carrière se joignent mystérieusement à la SAAQ peu après son arrivée. Par exemple :
 
@@ -72,20 +72,20 @@ En principe, un PGI est moins dispendieux parce qu'il évite de développer une 
 
 En 2014, la SAAQ décide de tenir des discussions sur l'achat de PGI avec une seule entreprise, SAP, par souci d'efficacité [2.20]. C'est une approche hasardeuse. Si la Société ne discute pas avec plusieurs fournisseurs, elle ne peut comparer leurs prix et sélectionner la meilleure solution sur le marché. La SAAQ en est consciente et prépare même des suggestions de réponses aux questions que les journalistes pourraient poser au sujet de sa relation avec SAP si celle-ci devenait publique. La haute direction de la SAAQ entérine néanmoins la décision de discuter uniquement avec SAP [2.21].
 
-La SAAQ et SAP tiennent de nombreuses discussions en 2014, et, en janvier 2015, le comité de direction donne son accord à l'acquisition d'une suite PGI. Cette décision est prise sans analyse en profondeur des deux autres options [2.22] et sans vérification des informations fournies par SAP, lesquelles peuvent se montrer très inexactes. Par exemple, SAP prévoyait des coûts de 36 millions $ pour l'intégrateur du projet. En réalité, ces coûts s'élèveront à 360 millions $ [2.23]. Les membres issus de l'entourage de Malenfant agravent le problème. En situation de conflit d'intérêts, ils font tous partie de comités aviseurs chargés de conseiller la sélection de produits à acquérir. Plusieurs d'entre eux maîtrisent particulièrement bien les produits de SAP pour les avoir utilisés chez Hydro-Québec, ce qui favorise ce fournisseur, et certains font même partie du comité de sélection chargé de prendre les décisions [2.24].
+La SAAQ et SAP tiennent de nombreuses discussions en 2014, et, en janvier 2015, le comité de direction donne son accord à l'acquisition d'une suite PGI. Cette décision est prise sans analyse en profondeur des deux autres options [2.22] et sans vérification des informations fournies par SAP, lesquelles peuvent se montrer très inexactes. Par exemple, SAP prévoyait des coûts de 36 millions $ pour l'intégrateur du projet. En réalité, ces coûts s'élèveront à 360 millions $ [2.23]. Les membres issus de l'entourage de Malenfant agravent le problème. En situation de conflit d'intérêts, ils font tous partie de comités aviseurs chargés de conseiller la sélection de produits à acquérir. Plusieurs d'entre eux maîtrisent particulièrement bien les produits de SAP parce qu'ils les ont utilisés chez Hydro-Québec (ce qui favorise ce fournisseur) et certains font même aussi partie du comité chargé de la sélection du fournisseur [2.24].
 
 > exemple de collusion
 >
 >
 
-Ainsi, en 2015, la SAAQ est déterminée à acquérir une suite PGI. Le fournisseur n'est pas encore sélectionné, mais SAP, grâce à ses discussions privilégiées avec la SAAQ et au parti pris des proches de Malenfant pour lui, part avec une longueur d'avance. La SAAQ est néanmoins soumise à des lois et règlements qui visent à éviter ce genre d'écueil. À condition de les appliquer.
+En 2015, la SAAQ est déterminée à acquérir une suite PGI. Le fournisseur n'est pas encore sélectionné, mais SAP, grâce à ses discussions privilégiées avec la SAAQ et au parti pris des proches de Malenfant pour lui, part avec une longueur d'avance. La SAAQ est néanmoins soumise à des lois et règlements qui visent à éviter ce genre d'écueil. À condition de les appliquer.
 
 
 ## 5. Ramollissement réglementaire
 
 La SAAQ est une société d'État, une « personne morale administrée par un conseil d'administration dont le gouvernement nomme la majorité des membres » [11]. Le conseil d'administration fixe les orientations générales d'une société, nomme sa direction, et rend des comptes au ministre responsable; dans le cas de la SAAQ, au Ministère des Transports et de la Mobilité durable [2.25]. D'autres institutions contribuent à la gestion des sociétés d'État. Le Conseil du trésor procure un encadrement financier aux ministères et organismes [2.26]. Le Vérificateur général du Québec effectue des enquêtes se rapportant aux fonds publics [2.27]. Depuis 2022, le Ministère de la cybersécurité et du numérique coordonne les activités de l'État en informatique [2.28]. Plusieurs autres composantes de l'appareil étatique effectuent des tâches complémentaires.
 
-Dès 2011, la SAAQ se plaint à plusieurs reprises d'un dédoublement réglementaire : en plus de rendre des comptes au Conseil du trésor pendant la réalisation de ses projets technologiques, elle devait aussi en rendre à son directeur principal de l'information (DPI), un rôle interne à la SAAQ [2.29]. Elle dépose donc, en 2014, une demande d'allègement réglementaire pour se soustraire à certaines exigences du Conseil du trésor, demande à laquelle acquiesce le gouvernement [2.30]. La SAAQ ne reçoit dès lors plus d'encadrement de l'État pour l'**autorisation** de ses projets, mais demeure soumise aux mêmes obligations pour la planification [2.31].
+Dès 2011, la SAAQ se plaint à plusieurs reprises d'un dédoublement réglementaire : en plus de rendre des comptes au Conseil du trésor pour la réalisation de ses projets technologiques, elle devait aussi en rendre à son directeur principal de l'information (DPI), un rôle interne à la SAAQ [2.29]. Elle dépose donc, en 2014, une demande d'allègement réglementaire pour se soustraire à certaines exigences du Conseil du trésor, demande à laquelle acquiesce le gouvernement [2.30]. La SAAQ ne reçoit dès lors plus d'encadrement de l'État pour l'**autorisation** de ses projets, mais demeure soumise aux mêmes obligations pour la planification [2.31].
 
 Cette autonomie additionnelle était censée donner plus d'agilité à la SAAQ dans la réalisation de ses mandats, mais l'allègement va dangereusement loin : en plus de dispenser la SAAQ d'informer le Conseil du trésor en cas de dépassement de coûts, il la libère de l'obligation d'informer son DPI. À la place, la SAAQ doit informer son « dirigeant sectoriel de l'information ». Or, à l'époque, ce rôle est assumé par le vice-président des technologie de l'information, c'est-à-dire Karl Malenfant. Autrement dit, le chargé de projet a l'obligation de dénoncer *à lui-même* les dépassements de coûts [2.32].
 
@@ -127,11 +127,11 @@ La livraison 2 (prévue de 2017 à 2020) vise à réaliser les fonctions princip
 
 La SAAQ complique la situation en modifiant significativement la portée de la livraison 2 dès son amorce pour y intégrer le contrôle routier, ce qui n'était pas prévu au début du programme [2.58]. Il pourrait, à première vue, s'agir d'un banal ajout de composante à la livraison 2. Mais à cause des interdépendances entre les composantes de systèmes informatiques, l'élargissement de la portée d'un projet technologique en fait plutôt augmenter la complexité de manière exponentielle [2.59]. Le coût de la livraison 2 augmente alors de 43 millions $ pour un budget initial de 114 millions $ [2.58].
 
-À ces écueils s'ajoutent d'autres frictions, comme des enjeux de conversion de données [2.60] et de recrutement [2.61]. La SAAQ cède facilement à certaines demandes de l'Alliance et autorise des augmentations budgétaires pour régler ces problèmes sans en contester la nécessité [2.62]. Le projet déraille - « s'en va dans le mur » dixit Malenfant - fin 2018 à cause de ses trop nombreux retards [2.63]. Pour redresser la situation, IBM fait intervenir sa *Tiger Team*, qui constate que la rédaction des spécifications fonctionnelles prend environ trois fois plus de temps dans le programme CASA que dans les autres projets d'IBM à cause du manque de documentation des règles métier. Les tigres relèvent aussi que la SAAQ augmente sans cesse ses objectifs et banalise le respect des échéanciers [2.64]. Début 2019, la SAAQ et l'Alliance replanifient donc la livraison 2. Le coût du développement de CASA passe de 375 millions $ à 448 millions $. En incluant la récurrence sur 10 ans, son coût total passe de 661 millions $ à **734 millions $** [2.65]. Mais cette première replanification est estimée irréaliste dès le départ et supplantée plus tard en 2019 [2.66], entraînant une hausse d'environ 100 millions $. Une *troisième* replanification a lieu en juillet 2020, entraînant une autre hausse d'environ 100 millions $ [2.67]. La SAAQ et l'Alliance se jettent mutuellement le blâme du dérapage et ne s'entendent pas sur la manière de partager ces hausses.
+À ces écueils s'ajoutent d'autres frictions, comme des enjeux de conversion de données [2.60] et de recrutement [2.61]. La SAAQ cède facilement à certaines demandes de l'Alliance et autorise des augmentations budgétaires pour régler ces problèmes sans en contester la nécessité [2.62]. Le projet déraille - « s'en va dans le mur » dixit Malenfant - fin 2018 à cause de ses trop nombreux retards [2.63]. Pour redresser la situation, IBM fait intervenir sa *Tiger Team*, qui constate que la rédaction des spécifications fonctionnelles prend environ trois fois plus de temps dans le programme CASA que dans les autres projets d'IBM à cause du manque particulièrement criant de documentation de ses règles métier. Les tigres relèvent aussi que la SAAQ augmente sans cesse ses objectifs et banalise le respect des échéanciers [2.64]. Début 2019, la SAAQ et l'Alliance replanifient donc la livraison 2. Le coût du développement de CASA passe de 375 millions $ à 448 millions $. En incluant la récurrence sur 10 ans, son coût total passe de 661 millions $ à **734 millions $** [2.65]. Mais cette première replanification est estimée irréaliste dès le départ et supplantée plus tard en 2019 [2.66], entraînant une hausse d'environ 100 millions $. Une *troisième* replanification a lieu en juillet 2020, entraînant une autre hausse d'environ 100 millions $ [2.67]. La SAAQ et l'Alliance se jettent mutuellement le blâme du dérapage et ne s'entendent pas sur la manière de partager ces hausses.
 
 La Direction de la vérification interne de la SAAQ informe à plusieurs reprises la haute direction de la Société des différends avec l'Alliance, mais ses rapports ne sont pas pris en considération. Au contraire, la PDG de la SAAQ, Natalie Tremblay demande d'en *retirer des informations* pour garder la face [2.68] et se montre rassurante quand le gouvernement demande des comptes. Pire encore, la SAAQ ment au gouvernement en mai 2020 en lui indiquant qu'il n'y a rien à signaler sur le déroulement du projet, malgré les problèmes contractuels et une hausse de près de 200 millions $ (c'est-à-dire, avant la troisième replanification) [2.69].
 
-Les différends continuent d'empirer et certains employés de la SAAQ perçoivent la possibilité que l'Alliance décide d'abandonner le programme, ce qui motive la SAAQ à régler le litige [2.70]. En septembre 2020 se conclut un règlement à l'amiable : la SAAQ assumerait environ 75 % de l'augmentation des coûts de la livraison 2 [2.71]. Le programme CASA (développement et récurrence sur 10 ans) lui coûte alors **968 millions $** [2.72]. Cette autre augmentation passe aussi inaperçue aux yeux du gouvernement : la SAAQ contourne les règles de gestion de projets pour masquer ses hausses de coûts à l'administration publique. Par ailleurs, le gouvernement se montre indulgent et ne recadre pas la SAAQ en dépit de ses écarts [2.73].
+Les différends continuent d'empirer et certains employés de la SAAQ perçoivent la possibilité que l'Alliance décide d'abandonner le programme, ce qui motive la SAAQ à régler le litige [2.70]. En septembre 2020 se conclut un règlement à l'amiable : la SAAQ assumerait environ 75 % de l'augmentation des coûts de la livraison 2 [2.71]. Le programme CASA (développement et récurrence sur 10 ans) lui coûte alors **968 millions $** [2.72]. Cette autre augmentation passe aussi inaperçue aux yeux du gouvernement : la SAAQ contourne les règles de gestion de projets pour masquer ses hausses de coûts à l'administration publique. Par ailleurs, le gouvernement se montre indulgent et ne recadre pas la SAAQ en dépit de ses écarts de conduite [2.73].
 
 > exemple de conflit avec soumissionnaires
 >
@@ -142,12 +142,12 @@ Les différends continuent d'empirer et certains employés de la SAAQ perçoiven
 
 Le développement de la livraison 2 se poursuit jusqu'en 2022, année consacrée à des préparatifs pour son déploiement [2.74]. Il y a, en gros, deux manières de déployer une solution logicielle :
 
-- « big bang » : déploiement d'un coup, en débranchant l'ancien système et branchant le nouveau. Relativement simple, mais si le déploiement du nouveau système échoue, il est difficile de corriger la situation. De plus, dans le cas de CASA, il est nécessaire de mettre les systèmes de la SAAQ hors service durant plusieurs jours.
+- « Big bang » : déploiement d'un coup, en débranchant l'ancien système et branchant le nouveau. Relativement simple, mais si le déploiement du nouveau système échoue, il est difficile de corriger la situation. Dans le cas de CASA, il est nécessaire de mettre les systèmes de la SAAQ hors service durant plusieurs jours.
 - Graduelle : l'ancien système est peu à peu remplacé par un nouveau système. Plus complexe parce qu'il faut faire coexister des systèmes différents pendant un certain temps, mais permet de reculer plus facilement s'il y a des problèmes.
 
-L'Alliance préfère l'approche graduelle parce qu'elle est plus sécuritaire, mais la SAAQ insiste pour adopter l'approche « big bang » [2.75] sans avoir exploré d'autres avenues ni documenté les risques inhérents à cette approche [2.76]. Un autre défi vient du Service d'authentification gouvernementale (SAG), une initiative du gouvernement du Québec pour faciliter la connexion à ses services (le SAG remplace clicSÉQUR) [2.77]. La SAAQ est le premier organisme gouvernemental d'envergure à utiliser le SAG et son intégration à la livraison 2 entraîne des retards [2.78].
+L'Alliance préfère l'approche graduelle parce qu'elle est plus sûre, mais la SAAQ insiste pour adopter l'approche « big bang » [2.75] sans avoir exploré d'autres avenues ni documenté les risques inhérents à cette approche [2.76]. Un autre défi vient du Service d'authentification gouvernementale (SAG), une initiative du gouvernement du Québec pour faciliter la connexion à ses services (le SAG remplace clicSÉQUR) [2.77]. La SAAQ est le premier organisme gouvernemental d'envergure à utiliser le SAG et son intégration à la livraison 2 entraîne des retards [2.78].
 
-Les tests et la correction des bogues sont réalisés dans selon un calendrier compressé à cause des retards. Durant cette phase, des anomalies sont détectées plus vite que les équipes arrivent à les corriger. Plus de 1200 anomalies n'étaient pas encore réglées au moment de passer la livraison 2 en production [2.79]. La SAAQ prévoyait initialement fermer ses services du 21 décembre 2022 au 4 janvier 2023, mais elle doit repousser à deux reprises le déploiement jusqu'à février 2023 et raccourcir encore davantage ses tests [2.80]. Malgré les voyants rouges et une préparation clairement insuffisante, Karl Malenfant affirme que les préparatifs du déploiement de la livraison 2 sont « terminés » et la SAAQ va de l'avant avec le déploiement [2.81].
+Les tests et la correction des bogues sont réalisés selon un calendrier compressé à cause des retards. Durant cette phase, des anomalies sont détectées plus vite que les équipes arrivent à les corriger. Plus de 1200 anomalies n'étaient pas encore réglées au moment de passer la livraison 2 en production [2.79]. La SAAQ prévoyait initialement fermer ses services du 21 décembre 2022 au 4 janvier 2023, mais elle doit repousser à deux reprises le déploiement jusqu'à février 2023 et raccourcir encore davantage ses tests [2.80]. Malgré les voyants rouges et une préparation clairement insuffisante, Karl Malenfant affirme que les préparatifs du déploiement de la livraison 2 sont « terminés » et la SAAQ va de l'avant avec le déploiement [2.81].
 
 > exemple : phoenix
 >
@@ -156,18 +156,26 @@ Les tests et la correction des bogues sont réalisés dans selon un calendrier c
 
 ## 9. La catastrophe
 
-Le déploiement de la livraison 2 est un échec total dès le départ : les systèmes ne répondent pas et les employés dans les centres de services sont incapable d'effectuer des opérations simple [2.82]. Néanmoins, la population avait été avisée que des problèmes techniques pourraient survenir et les clients de la SAAQ se montrent compréhensifs [2.83].
+Le déploiement de la livraison 2 (lundi le 20 février 2023 après un arrêt de service de 21 jours) est un échec dès le départ : les systèmes fonctionnent très lentement ou sont indisponibles et les employés dans les centres de services peinent à desservir la clientèle [2.83]. La population avait au moins été avisée que des problèmes techniques pourraient survenir [2.82] et les clients de la SAAQ se montrent compréhensifs durant la première semaine, bien que la SAAQ soit parvenu à répondre à seulement 55 % du volume habituel des demandes. Les clients non desservis sont invités à revenir la semaine suivante [2.83].
 
-Les choses se corsent la semaine suivante. Les systèmes de la livraison 2 ne fonctionnent toujours pas et la population commence à s'impatienter.
+Les choses se corsent alors. Les systèmes de la livraison 2 en arrachent toujours tandis que les clients continuent de se présenter aux centres de services. Les commerçants, n'arrivant pas à effectuer certaines transactions avec SAAQclic, redirigent leurs clients vers les centres, ce qui contribue à la formation d'imposantes files d'attente [2.84]. Les corps policiers ne sont pas en reste et reçoivent des informations erronées des systèmes de la SAAQ, ce qui mène à des interventions injustifiées et détentions illégales [2.85]. L'une de ces histoires d'horreur concerne un garçon qui sortait de l'hôpital après un traitement contre le cancer et qui a été couché au sol pendant que le conducteur du véhicule était mis en joue. Les systèmes de la SAAQ avait identifié par erreur le véhicule comme volé [14].
 
-- [9] Apollo 13
+Karl Malenfant avait connu une situation semblable chez Hydro-Québec, où le déploiement du système qu'il avait dirigé (le SIC) connut des ratés importants. Malenfant avait alors convié 500 personnes travaillant sur le projet dans un auditorium pour leur montrer une capsule vidéo sur Apollo 13 et leur livrer un discours motivationnel [9]. Les techniques de gestion de crise de la SAAQ sont d'une inefficacité similaire, si bien que le gouvernement doit intervenir. La ministre des Transports, Geneviève Guilbault, écourte un séjour professionnel en Europe et prend le dossier en charge. Elle et son équipe mettent en place plusieurs mesures pour améliorer la situation, comme la suspension temporaire de certains articles du Code de la sécurité routière. La situation se rétablit progressivement [2.86].
+
+Le gouvernement limoge le président-directeur général de la SAAQ, Denis Marsolais, le 5 avril 2023 après avoir perdu confiance en lui [2.87]. Karl Malenfant, lui, reste en poste jusqu'en janvier 2024, où il prend sa retraite. Caroline Foldes-Busque, une de ses proches, lui succède, jusqu'à être elle-même remplacée en août 2025 [2.88]. Les redditions de compte et la transparence de la SAAQ s'améliorent à mesure que se renouvelle la direction [2.89].
 
 > exemple : gestion de crise
 >
 >
 
 
-## 10. Les recommandations
+## 10. Le bilan
+
+
+
+
+## 11. Les recommandations
+
 
 
 # Références
@@ -256,6 +264,14 @@ Les choses se corsent la semaine suivante. Les systèmes de la livraison 2 ne fo
   - [2.79] pages 372 et 373
   - [2.80] pages 379 et 380
   - [2.81] page 383
+  - [2.82] page 384
+  - [2.83] page 388
+  - [2.84] page 389
+  - [2.85] pages 389 et 390
+  - [2.86] pages 391 et 392
+  - [2.87] page 396
+  - [2.88] page 410
+  - [2.89] pages 398 et 399
 - [3] Chrystal R. China et Michael Goodwin. "Qu’est-ce que le COBOL ?" (8 mai 2025). IBM. https://www.ibm.com/fr-fr/think/topics/cobol
 - [4] Andrew L. Russell. "Oral-History:Charles Bachman" (9 avril 2011). IEEE Oral History Network. https://ethw.org/Oral-History:Charles_Bachman
 - [5] Andrew Leahey. "From COBOL And Assembly To Java—Modernizing The IRS" (6 septembre 2024). Forbes. https://www.forbes.com/sites/andrewleahey/2024/09/06/from-cobol-and-assembly-to-java-modernizing-the-irs/
@@ -267,3 +283,4 @@ Les choses se corsent la semaine suivante. Les systèmes de la livraison 2 ne fo
 - [11] Gouvernement du Québec. "Loi sur la gouvernance des sociétés d’État". RLRQ, c. G-1.02, art. 3 « société d’État ».
 - [12] Pierre-Paul Biron. "Risques de dérapage autour d’un mégaprojet informatique d’un demi-milliard de dollars à la SAAQ" (9 avril 2018). Le journal de Québec. https://www.journaldequebec.com/2018/04/09/risques-de-derapage-informatique-a-la-saaq
 - [13] Témoignage de Michel Dumas aux audiences de la CESIS (24 septembre 2025), page 281. https://www.cesis.gouv.qc.ca/fileadmin/documents/2025-09-24_CESIS_JOUR_55_KMalenfant_MDumas.pdf
+- [14] Nicolas Lachance. "Fiasco SAAQclic: des policiers mettent en joue par erreur la famille d’un garçon atteint du cancer" (5 septembre 2025). Le journal de Québec. https://www.journaldequebec.com/2025/09/05/fiasco-saaqclic--des-policiers-mettent-en-joue-par-erreur-la-famille-dun-garcon-atteint-du-cancer
