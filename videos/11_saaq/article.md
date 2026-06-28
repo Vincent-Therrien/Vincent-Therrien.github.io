@@ -102,7 +102,7 @@ L'acquisition d'une suite PGI s'étend de 2014 à 2017.
 
 De 2014 à 2015, la SAAQ ne fait que *concevoir une stratégie d'acquisition*. Elle commence par discuter avec le Secrétariat du Conseil du trésor pour demander une dérogation au cadre réglementaire à l'époque, la SAAQ souhaitant en effet modifier le processus d'évaluation des soumissions et prolonger les durées de contrats [2.34]. La demande comprend une estimation de coûts de 200 millions $. Pourtant, à l'interne, la SAAQ prévoyait, au même moment, un coût minimum de 225 millions $ et un coût plausible de 269 millions $. Plusieurs membres de la SAAQ, dont Karl Malenfant, sont conscients de cet écart mais choisissent de ne pas le communiquer au gouvernement [2.35]. La stratégie d'acquisition prévoit en outre des modalités inédites, comme une clause de partage de risques assez complexe [2.36]. Le Conseil du trésor finit par accepter la stratégie en posant certaines conditions pour assurer la compétition entre les soumissionnaires, la qualité des évaluations, et la reddition de compte [2.37].
 
-De 2015 à 2017, la SAAQ effectue trois appels d'offres afin de choisir un **éditeur de PGI** [2.38], un **intégrateur de PGI** [2.39], et une « **alliance** » formée d'un éditeur et d'un intégrateur qualifiés aux deux précédents appels d'offres pour réaliser la suite PGI [2.40]. Les conditions d'évaluation des soumissionnaires ne sont pas toujours optimales. Dans un groupe chargé de synthétiser les rapports de comités aviseurs, des membres d'un « noyau fort » constitué de proches de Karl Malenfant discutent souvent seuls et rendent l'ambiance si tendue qu'il est nécessaire de prendre des pauses [2.41]. Un seul éditeur, SAP [2.42], ainsi que deux intégrateurs, LGS/IDM et Deloitte [2.43], se qualifient. Lors de l'évaluation en vue de la sélection de l'Alliance, SAP est donc l'unique éditeur, ce qui lui donne un pouvoir de négociation important. La SAAQ retient l'Alliance composée de SAP et LGS/IBM [2.44]. Selon la soumission finale, le coût d'acquisition de la suite PGI serait de 375 millions $ [2.45]. Le coût d'exploitation projeté sur 10 ans est de 286 millions $, pour un total de 661 millions $. Le ministre responsable n'est pas informé de la signature du contrat avec l'Alliance [2.46].
+De 2015 à 2017, la SAAQ effectue trois appels d'offres afin de choisir un éditeur de PGI [2.38], un intégrateur de PGI [2.39], et une « alliance » formée d'un éditeur et d'un intégrateur qualifiés aux deux précédents appels d'offres pour réaliser la suite PGI [2.40]. Les conditions d'évaluation des soumissionnaires ne sont pas toujours optimales. Dans un groupe chargé de synthétiser les rapports de comités aviseurs, des membres d'un « noyau fort » constitué de proches de Karl Malenfant discutent souvent seuls et rendent l'ambiance si tendue qu'il est nécessaire de prendre des pauses [2.41]. Un seul éditeur, SAP [2.42], ainsi que deux intégrateurs, LGS/IDM et Deloitte [2.43], se qualifient. Lors de l'évaluation en vue de la sélection de l'Alliance, SAP est donc l'unique éditeur, ce qui lui donne un pouvoir de négociation important. La SAAQ retient l'Alliance composée de SAP et LGS/IBM [2.44]. Selon la soumission finale, le coût d'acquisition de la suite PGI serait de 375 millions $ [2.45]. Le coût d'exploitation projeté sur 10 ans est de 286 millions $, pour un total de **661 millions $**. Le ministre responsable n'est pas informé de la signature du contrat avec l'Alliance [2.46].
 
 > Exemple de trop d'ambition
 
@@ -111,9 +111,7 @@ De 2015 à 2017, la SAAQ effectue trois appels d'offres afin de choisir un **éd
 
 La réalisation du programme de la SAAQ s'amorce en mars 2017. C'est aussi à ce moment-là qu'il est baptisé « Carrefour des services d'affaires » ou CASA [2.47]. Quatre livraisons distinctes sont prévues, mais la dernière livraison (indemnisation des victimes d'accidents de la route) sera abandonnée en cours de route [2.48].
 
-La livraison 0 (2017) vise à planifier le programme CASA et à former le personnel. Elle se déroule sans problème majeur [2.49].
-
-La livraison 1 (2.17 à 2019) vise à réaliser les fonctions d'arrière-guichet de la SAAQ, comme l'administration, la comptabilité, l'approvisionnement, etc. C'est à ce moment que les frictions commencent à survenir avec l'Alliance, pour plusieurs raisons :
+La livraison 0 (2017) vise à planifier le programme CASA et à former le personnel. Elle se déroule sans problème majeur [2.49]. La livraison 1 (2.17 à 2019) vise à réaliser les fonctions d'arrière-guichet de la SAAQ, comme l'administration, la comptabilité, l'approvisionnement, etc. C'est à ce moment que les frictions commencent à survenir avec l'Alliance, pour plusieurs raisons :
 
 - LGS/IBM exagère les compétences de ses employés, allant jusqu'à présenter une personne sans connaissances d'un produit SAP comme un « spécialiste » en la matière. L’afflux d'employés cause par ailleurs des problèmes de cohésion [2.50].
 - Dans le contrat de services professionnels, la SAAQ exigeait que les travaux soit exécutés dans ses locaux à Québec, mais en mars 2017, elle apprend « avec une certaine stupéfaction » que plus de 60 % des ressources responsables de l'intégration technologique de LGS/IBM travailleraient principalement en Inde. Le décalage horaire et la barrière linguistique agravent les problèmes de cohésion [2.51].
@@ -125,11 +123,15 @@ Malgré tout, la livraison 1 se déroule assez bien, se concluant à l'intérieu
 
 ## 8. La livraison 2 : le face-à-face
 
-La livraison 2 (2017 à 2020) vise à réaliser les fonctions principales de la SAAQ, comme l'immatriculation, les permis de conduire, et la plateforme SAAQclic. Elle s'annonce plus difficile que la livraison 1. Cette dernière se prêtait particulièrement bien à l'approche PGI parce que SAP disposait de logiciels qui répondaient bien aux besoins de la SAAQ et demandaient peu d'adaptations, mais ce cas de figure ne se répète pas lors de la livraison 2 [2.55]. L'Alliance retient un logiciel de gestion d'entrepôts [13] et doit l'adapter à la mission de la SAAQ en réalisant un ensemble d'unités de développement informatique qui correspondent aux règles métier. Au moment de la soumission, l'Alliance prévoit réaliser 1800 unités. Pour donner un ordre de grandeur, un projet de grande envergure au sein de la Défense du Canada avait nécessité 500 unités. La livraison 2 constituait du « jamais-vu » aux yeux d'une gestionnaire d'expérience chez IBM [2.56]. La SAAQ et l'Alliance découvrent en outre des règles métier *pendant le programme*, ce qui implique de nouvelles unités de développement et des retards [2.57].
+La livraison 2 (prévue de 2017 à 2020) vise à réaliser les fonctions principales de la SAAQ, comme l'immatriculation, les permis de conduire, et la plateforme SAAQclic. Elle s'annonce plus difficile que la livraison 1. Cette dernière se prêtait particulièrement bien à l'approche PGI parce que SAP disposait de logiciels qui répondaient aux besoins de la SAAQ et demandaient peu d'adaptations, mais ce cas de figure ne se répète pas lors de la livraison 2 [2.55]. L'Alliance retient un logiciel de gestion d'entrepôts [13] et doit l'adapter à la mission de la SAAQ en réalisant un ensemble d'unités de développement informatique qui correspondent à ses règles métier. Au moment de la soumission, l'Alliance prévoit réaliser 1800 unités. Pour donner un ordre de grandeur, un projet de grande envergure au sein de la Défense du Canada avait nécessité 500 unités. La livraison 2 constituait du « jamais-vu » aux yeux d'une gestionnaire d'expérience chez IBM [2.56]. La SAAQ et l'Alliance découvrent en outre des règles métier *pendant le programme*, ce qui implique de nouvelles unités de développement et des retards [2.57].
 
-La SAAQ complique la situation en modifiant significativement la portée de la livraison 2 dès son amorce pour y intégrer le contrôle routier, ce qui n'était pas prévu au début du programme [2.58]. Il pourrait à première vue s'agir d'un trivial ajout de composante à la livraison. Mais à cause des interdépendances entre les composantes de systèmes informatiques, l'élargissement de la portée d'un projet technologique en fait plutôt augmenter la complexité de manière exponentielle [2.59]. Le coût de la livraison 2 augmente alors de 43 millions $ pour un budget initial de 114 millions $ [2.58].
+La SAAQ complique la situation en modifiant significativement la portée de la livraison 2 dès son amorce pour y intégrer le contrôle routier, ce qui n'était pas prévu au début du programme [2.58]. Il pourrait, à première vue, s'agir d'un banal ajout de composante à la livraison 2. Mais à cause des interdépendances entre les composantes de systèmes informatiques, l'élargissement de la portée d'un projet technologique en fait plutôt augmenter la complexité de manière exponentielle [2.59]. Le coût de la livraison 2 augmente alors de 43 millions $ pour un budget initial de 114 millions $ [2.58].
 
-À ces écueils s'ajoutent d'autres frictions, comme des enjeux de conversion de données [2.60] et de recrutement [2.61]. Par ailleurs, la SAAQ cède facilement à certaines demandes de l'Alliance et autorise des augmentations budgétaires sans contester leur nécessité [2.62]. Le projet finit par dérailler fin 2018.
+À ces écueils s'ajoutent d'autres frictions, comme des enjeux de conversion de données [2.60] et de recrutement [2.61]. La SAAQ cède facilement à certaines demandes de l'Alliance et autorise des augmentations budgétaires pour régler ces problèmes sans en contester la nécessité [2.62]. Le projet déraille - « s'en va dans le mur » dixit Malenfant - fin 2018 à cause de ses trop nombreux retards [2.63]. Pour redresser la situation, IBM fait intervenir sa *Tiger Team*, qui constate que la rédaction des spécifications fonctionnelles prend environ trois fois plus de temps dans le programme CASA que dans les autres projets d'IBM à cause du manque de documentation des règles métier. Les tigres relèvent aussi que la SAAQ augmente sans cesse ses objectifs et banalise le respect des échéanciers [2.64]. Début 2019, la SAAQ et l'Alliance replanifient donc la livraison 2. Le coût du développement de CASA passe de 375 millions $ à 448 millions $. En incluant la récurrence sur 10 ans, son coût total passe de 661 millions $ à **734 millions $** [2.65]. Mais cette première replanification est estimée irréaliste dès le départ et supplantée plus tard en 2019 [2.66], entraînant une hausse d'environ 100 millions $. Une *troisième* replanification a lieu en juillet 2020, entraînant une autre hausse d'environ 100 millions $ [2.67]. La SAAQ et l'Alliance se jettent mutuellement le blâme du dérapage et ne s'entendent pas sur la manière de partager ces hausses.
+
+La Direction de la vérification interne de la SAAQ informe à plusieurs reprises la haute direction de la Société des différends avec l'Alliance, mais ses rapports ne sont pas pris en considération. Au contraire, la PDG de la SAAQ, Natalie Tremblay demande d'en *retirer des informations* pour garder la face [2.68] et se montre rassurante quand le gouvernement demande des comptes. Pire encore, la SAAQ ment au gouvernement en mai 2020 en lui indiquant qu'il n'y a rien à signaler sur le déroulement du projet, malgré les problèmes contractuels et une hausse de près de 200 millions $ (c'est-à-dire, avant la troisième replanification) [2.69].
+
+Les différends continuent d'empirer et certains employés de la SAAQ perçoivent la possibilité que l'Alliance décide d'abandonner le programme, ce qui motive la SAAQ à régler le litige [2.70]. En septembre 2020 se conclut un règlement à l'amiable : la SAAQ assumerait environ 75 % de l'augmentation des coûts de la livraison 2 [2.71]. Le programme CASA (développement et récurrence sur 10 ans) lui coûte alors **968 millions $** [2.72]. Cette autre augmentation passe aussi inaperçue aux yeux du gouvernement : la SAAQ contourne les règles de gestion de projets pour masquer ses hausses de coûts à l'administration publique. Par ailleurs, le gouvernement se montre indulgent et ne recadre pas la SAAQ en dépit de ses écarts [2.73].
 
 > exemple de conflit avec soumissionnaires
 >
@@ -138,12 +140,25 @@ La SAAQ complique la situation en modifiant significativement la portée de la l
 
 ## 8. N'oubliez pas les tests!
 
+Le développement de la livraison 2 se poursuit jusqu'en 2022, année consacrée à des préparatifs pour son déploiement [2.74]. Il y a, en gros, deux manières de déployer une solution logicielle :
+
+- « big bang » : déploiement d'un coup, en débranchant l'ancien système et branchant le nouveau. Relativement simple, mais si le déploiement du nouveau système échoue, il est difficile de corriger la situation. De plus, dans le cas de CASA, il est nécessaire de mettre les systèmes de la SAAQ hors service durant plusieurs jours.
+- Graduelle : l'ancien système est peu à peu remplacé par un nouveau système. Plus complexe parce qu'il faut faire coexister des systèmes différents pendant un certain temps, mais permet de reculer plus facilement s'il y a des problèmes.
+
+L'Alliance préfère l'approche graduelle parce qu'elle est plus sécuritaire, mais la SAAQ insiste pour adopter l'approche « big bang » [2.75] sans avoir exploré d'autres avenues ni documenté les risques inhérents à cette approche [2.76]. Un autre défi vient du Service d'authentification gouvernementale (SAG), une initiative du gouvernement du Québec pour faciliter la connexion à ses services (le SAG remplace clicSÉQUR) [2.77]. La SAAQ est le premier organisme gouvernemental d'envergure à utiliser le SAG et son intégration à la livraison 2 entraîne des retards [2.78].
+
+Les tests et la correction des bogues sont réalisés dans selon un calendrier compressé à cause des retards. Durant cette phase, des anomalies sont détectées plus vite que les équipes arrivent à les corriger. Plus de 1200 anomalies n'étaient pas encore réglées au moment de passer la livraison 2 en production [2.79]. La SAAQ prévoyait initialement fermer ses services du 21 décembre 2022 au 4 janvier 2023, mais elle doit repousser à deux reprises le déploiement jusqu'à février 2023 et raccourcir encore davantage ses tests [2.80]. Malgré les voyants rouges et une préparation clairement insuffisante, Karl Malenfant affirme que les préparatifs du déploiement de la livraison 2 sont « terminés » et la SAAQ va de l'avant avec le déploiement [2.81].
+
 > exemple : phoenix
 >
 >
 
 
 ## 9. La catastrophe
+
+Le déploiement de la livraison 2 est un échec total dès le départ : les systèmes ne répondent pas et les employés dans les centres de services sont incapable d'effectuer des opérations simple [2.82]. Néanmoins, la population avait été avisée que des problèmes techniques pourraient survenir et les clients de la SAAQ se montrent compréhensifs [2.83].
+
+Les choses se corsent la semaine suivante. Les systèmes de la livraison 2 ne fonctionnent toujours pas et la population commence à s'impatienter.
 
 - [9] Apollo 13
 
@@ -222,6 +237,25 @@ La SAAQ complique la situation en modifiant significativement la portée de la l
   - [2.60] page 289
   - [2.61] page 290
   - [2.62] page 292
+  - [2.63] page 293
+  - [2.64] pages 294 et 295
+  - [2.65] page 296
+  - [2.66] page 297
+  - [2.67] page 302
+  - [2.68] page 299
+  - [2.69] page 306
+  - [2.70] page 310
+  - [2.71] page 315
+  - [2.72] page 317
+  - [2.73] page 331
+  - [2.74] page 360
+  - [2.75] pages 361 et 362
+  - [2.76] page 365
+  - [2.77] page 367
+  - [2.78] pages 368 et 369
+  - [2.79] pages 372 et 373
+  - [2.80] pages 379 et 380
+  - [2.81] page 383
 - [3] Chrystal R. China et Michael Goodwin. "Qu’est-ce que le COBOL ?" (8 mai 2025). IBM. https://www.ibm.com/fr-fr/think/topics/cobol
 - [4] Andrew L. Russell. "Oral-History:Charles Bachman" (9 avril 2011). IEEE Oral History Network. https://ethw.org/Oral-History:Charles_Bachman
 - [5] Andrew Leahey. "From COBOL And Assembly To Java—Modernizing The IRS" (6 septembre 2024). Forbes. https://www.forbes.com/sites/andrewleahey/2024/09/06/from-cobol-and-assembly-to-java-modernizing-the-irs/
