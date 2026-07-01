@@ -29,13 +29,11 @@ En 2011, la SAAQ adopte un **plan de pérennité** pour moderniser ses opératio
 
 Le plan de pérennité vise deux objectifs : (1) la **rénovation du système d'accès au réseau routier** et (2) la **conversion des données du fond d'assurance**. Les deux autres domaines d'activité ainsi que les opérations internes de la SAAQ (comme les ressources humaines) n'étaient pas considérés prioritaires à l'époque et donc non inclus dans le plan [2.7]. En somme, le plan de pérennité ne vise pas à changer en profondeur les opérations de la SAAQ, mais plutôt à rénover ses systèmes existants.
 
-La SAAQ a de la difficulté à évaluer précisément ses besoins à l'avance à cause du manque de documentation de ses règles métier, ce qui complexifie l'élaboration de contrats à soumettre à des partenaires externes. Elle décide donc de développer le projet par elle-même, ce qu'elle appelle un « développement maison ». Suivant un rapport de PwC, la SAAQ décide de procéder en premier lieu à la conversion des données avant de modifier ses applications [2.8] et décompose la réalisation du plan en huit blocs qui se chevauchent dans le temps. Le plan de pérennité est finalement doté d'un budget de 364 millions $ et devait s'étaler de 2012 à 2022 [2.9].
+La SAAQ a de la difficulté à évaluer précisément ses besoins à l'avance à cause du manque de documentation de ses règles métier, ce qui complexifie l'élaboration de contrats à soumettre à des partenaires externes. Elle décide donc de développer le projet par elle-même, ce qu'elle appelle un « développement maison ». Suivant un rapport de PwC, la SAAQ décide de procéder en premier lieu à la conversion des données avant de modifier ses applications [2.8] et décompose la réalisation du plan en huit blocs qui se chevauchent dans le temps. Le plan de pérennité est finalement doté d'un budget de 364 millions $ et devait s'étaler de 2012 à 2022 [2.9]. Il s'avérera toutefois que la division du travail en blocs ralentit la réalisation du projet. Certaines parties, comme les données de l'accès au réseau routier, sont fortement interconnectées et ne peuvent pas être rénovées par blocs indépendants. Les équipes travaillent en silo, les retards s'accumulent, et le plan de pérennité subira ultimement une transformation radicale en 2014 sous l'influence, notamment, d'un certain Karl Malenfant [2.10].
 
-> Exemple : Phoenix
+> Exemple : TSB Bank
 >
->
-
-Il s'avérera toutefois que la division du travail en blocs ralentit la réalisation du projet. Certaines parties, comme les données de l'accès au réseau routier, sont fortement interconnectées et ne peuvent pas être rénovées par blocs indépendants. Les équipes travaillent en silo, les retards s'accumulent, et le plan de pérennité subira une transformation radicale en 2014 sous l'influence, notamment, d'un certain Karl Malenfant [2.10].
+> En 2018, la TSB Bank, établie au Royaume-Uni, déploie un nouveau système informatique après plusieurs années de travail. Des clients deviennent alors incapables d'accéder à leur compte et certains arrivent à accéder aux informations financières d'étrangers. Le PDG de la banque quitte la direction suivant ces problèmes [16]. Un rapport indépendant conclura que le manque de communication entre les groupes de travail avait contribué aux problèmes du système [17]. Après tout, son développement avait mobilisé plus de 1400 personnes réparties à travers plus de 70 fournisseurs [18], d'où l'importance de veiller à une coordination efficace entre les groupes de travail.
 
 
 ## 3. Une équipe digne d'un cauchemar
@@ -45,19 +43,19 @@ En 2013, la SAAQ cherche un nouveau vice-président aux technologies de l'inform
 Plusieurs personnes ayant côtoyé Malenfant durant sa carrière se joignent mystérieusement à la SAAQ peu après son arrivée. Par exemple :
 
 - Madeleine Chagnon, alias Mado, ancienne employée d'Hydro-Québec et amie de Malenfant, est d'abord engagée avec des contrats de gré à gré [2.11], puis intègre la SAAQ plus définitivement en remportant en 2015 un appel d'offres de 1,2 million $. Les critères de l'appel d'offres sont très restrictifs et seule Chagnon se qualifie. [2.12]
-- Louise Savoie, alias Loulou, ancienne employée d'Hydro-Québec et amie de Malenfant, arrive d'abord à la SAAQ à titre de consultante pour l'entreprise R3D [2.11], puis en remportant un appel d'offre de 1,2 millions $. Les critères de l'appel sont tout aussi restrictifs et Savoie est la seule à se qualifier [2.12].
+- Louise Savoie, alias Loulou, ancienne employée d'Hydro-Québec et amie de Malenfant, arrive d'abord à la SAAQ à titre de consultante pour l'entreprise R3D [2.11], puis en remportant un appel d'offre de 1,2 millions $. Les critères de l'appel sont très restrictifs et Savoie est la seule à se qualifier [2.12].
 - Maurice Guénard, ancien collègue de Malenfant chez Hydro-Québec, est le seul à se qualifier à un appel d'offres restrictif de 1,28 millions de $. Malenfant détient le CV de Guénard avant la rédaction de l'appel d'offres [2.13].
 - Caroline Foldes-Busque, ancienne employée d'Hydro-Québec et conjointe de Maurice Guénard, est engagée à titre de directrice générale [2.13].
 - Éric Beauregard, ancien employé d'Hydro-Québec qui a travaillé sur le SIC, est le seul à se qualifier à un appel d'offres restrictif de 1,2 millions $. Chagnon et Savoie, alors chez la SAAQ, aident Beauregard à rédiger sa soumission [2.13].
 - Geneviève Tremblay, ancienne employée d'Hydro-Québec et conjointe de Éric Beauregard, est engagée comme consultante [2.13].
 
-On note, hormis la consanguinité de l'équipe, plusieurs irrégularités. Par exemple, les contrats de gré à gré de certains employés dépassaient 100k $, soit le seuil d'appel d'offres. La direction de la SAAQ acceptait néanmoins ces contrats [2.14]. Et lorsque le contrat de Louise Savoie prend fin en 2021, elle rejoint dès le lendemain l'entreprise LGS, qui travaille sur les projets informatiques de la SAAQ, même si cela contrevient aux règles encadrant les marchés publics [2.15].
+On note, hormis la consanguinité de l'équipe, plusieurs irrégularités. Par exemple, les contrats de gré à gré de certains employés dépassaient 100k $, soit le seuil qui oblige la conversion des contrats en appels d'offres. La direction de la SAAQ acceptait néanmoins ces contrats [2.14]. Et lorsque le contrat de Louise Savoie prend fin en 2021, elle rejoint dès le lendemain l'entreprise LGS, qui travaille sur les projets informatiques de la SAAQ, même si cela contrevient aux règles encadrant les marchés publics [2.15].
 
-> exemple :
->
->
+L'arrivé des proches de Malenfant suscite peu de résistance. La Direction de la vérification interne et de l'évaluation des programmes de la SAAQ dénonce la situation à Yves Frenette, alors vice-président aux finances, ressources humaines et à la performance de la SAAQ, en lui exposant un diagramme détaillant les liens entre Malenfant et les soumissionnaires [2.16]. Frenette communique ces informations à la présidente-directrice générale de la SAAQ, Nathalie Tremblay, qui approuve les contrats en toute connaissance de cause [2.17]. Ce que Malenfant appelle un « noyau dur » mènera la transformation numérique de la SAAQ.
 
-L'arrivé des proches de Malenfant suscite peu de résistance. La Direction de la vérification interne et de l’évaluation des programmes de la SAAQ dénonce la situation à Yves Frenette, alors vice-président aux finances, ressources humaines et à la performance, en lui exposant un diagramme détaillant les liens entre Malenfant et les soumissionnaires [2.16]. Frenette communique ces informations à la présidente-directrice générale de la SAAQ, Nathalie Tremblay, qui approuve les contrats en toute connaissance de cause [2.17]. À partir de là, ce que Malenfant appelle un « noyau dur » mènera la transformation numérique de la SAAQ.
+> Exemple : Ministère de la santé de l'Ontario
+>
+> En septembre 2008, le ministère de la santé de l'Ontario établit l'agence eHealth pour mener des projets de partage de dossiers médicaux numériques. Ces projets avait déjà débuté, mais, selon la présidente-directrice générale de eHealth, Sarah Kramer, nommée en octobre 2008, ils étaient en grand retard. Invoquant l'urgence de les faire progresser rapidement, elle outrepasse le processus habituel d'embauche pour sélectionner des consultants externes qu'elle connaît déjà sans assurer une compétition équitable entre soumissionnaires, ce qui a entraîné des augmentations de coûts [19.1]. Des contrats de 5 millions $ ont causé un scandale majeur [20]. Kramer démissionne en Juin 2009 [19.2] et le ministre de la santé de l'Ontario, David Caplan, démissionne quelques heures avant le dépôt d'un rapport d'audit [20].
 
 
 ## 4. Le PGI supplante le plan de pérennité
@@ -70,15 +68,9 @@ En principe, un PGI est moins dispendieux parce qu'il évite de développer une 
 2. Approche du meilleur produit (combiner des PGI de plusieurs fournisseurs)
 3. Suite PGI (acheter des PGI d'un seul fournisseur)
 
-En 2014, la SAAQ décide de tenir des discussions sur l'achat de PGI avec une seule entreprise, SAP, par souci d'efficacité [2.20]. C'est une approche hasardeuse. Si la Société ne discute pas avec plusieurs fournisseurs, elle ne peut comparer leurs prix et sélectionner la meilleure solution sur le marché. La SAAQ en est consciente et prépare même des suggestions de réponses aux questions que les journalistes pourraient poser au sujet de sa relation avec SAP si celle-ci devenait publique. La haute direction de la SAAQ entérine néanmoins la décision de discuter uniquement avec SAP [2.21].
+En 2014, la SAAQ décide de tenir des discussions sur l'achat de PGI avec une seule entreprise, SAP, par souci d'efficacité [2.20]. Le but n'est pas d'acheter un PGI mais plutôt de déterminer si ce serait une meilleure approche que le développement maison. Le choix de la Société de discuter uniquement avec SAP à cette étape est toutefois hasardeux. En ne discutant pas avec plusieurs fournisseurs, elle ne peut comparer leurs prix et sélectionner la meilleure solution sur le marché. La SAAQ en est consciente et prépare même des suggestions de réponses aux questions que les journalistes pourraient poser au sujet de sa relation avec SAP si celle-ci devenait publique. La haute direction de la SAAQ entérine néanmoins la décision de discuter uniquement avec SAP [2.21].
 
-La SAAQ et SAP tiennent de nombreuses discussions en 2014, et, en janvier 2015, le comité de direction donne son accord à l'acquisition d'une suite PGI. Cette décision est prise sans analyse en profondeur des deux autres options [2.22] et sans vérification des informations fournies par SAP, lesquelles peuvent se montrer très inexactes. Par exemple, SAP prévoyait des coûts de 36 millions $ pour l'intégrateur du projet. En réalité, ces coûts s'élèveront à 360 millions $ [2.23]. Les membres issus de l'entourage de Malenfant agravent le problème. En situation de conflit d'intérêts, ils font tous partie de comités aviseurs chargés de conseiller la sélection de produits à acquérir. Plusieurs d'entre eux maîtrisent particulièrement bien les produits de SAP parce qu'ils les ont utilisés chez Hydro-Québec (ce qui favorise ce fournisseur) et certains font même aussi partie du comité chargé de la sélection du fournisseur [2.24].
-
-> exemple de collusion
->
->
-
-En 2015, la SAAQ est déterminée à acquérir une suite PGI. Le fournisseur n'est pas encore sélectionné, mais SAP, grâce à ses discussions privilégiées avec la SAAQ et au parti pris des proches de Malenfant pour lui, part avec une longueur d'avance. La SAAQ est néanmoins soumise à des lois et règlements qui visent à éviter ce genre d'écueil. À condition de les appliquer.
+La SAAQ et SAP tiennent de nombreuses discussions en 2014, et, en janvier 2015, le comité de direction donne son accord à l'acquisition d'une suite PGI. Cette décision est prise sans analyse en profondeur des deux autres options [2.22] et sans vérification des informations fournies par SAP, lesquelles peuvent se montrer très inexactes. Par exemple, SAP prévoyait des coûts de 36 millions $ pour l'intégrateur du projet. En réalité, ces coûts s'élèveront à 360 millions $ [2.23]. Les membres issus de l'entourage de Malenfant agravent ce favoritisme. Plusieurs d'entre eux maîtrisent particulièrement bien les produits de SAP parce qu'ils les ont utilisés chez Hydro-Québec et certains font partie du comité chargé de la sélection du fournisseur en plus de comités aviseurs chargés de conseiller la sélection. Le noyau a aussi tendance à défendre des positions similaires, ce qui décourage la diversité de points de vue [2.24]. Malgré tout, la SAAQ est déterminée à acquérir une suite PGI. Le fournisseur n'est pas encore sélectionné, mais SAP, grâce à ses discussions privilégiées avec la SAAQ et au parti pris des proches de Malenfant pour lui, part avec une longueur d'avance. La SAAQ est néanmoins soumise à des lois et règlements qui visent à éviter ce genre d'écueil. À condition de les appliquer.
 
 
 ## 5. Ramollissement réglementaire
@@ -89,11 +81,11 @@ Dès 2011, la SAAQ se plaint à plusieurs reprises d'un dédoublement réglement
 
 Cette autonomie additionnelle était censée donner plus d'agilité à la SAAQ dans la réalisation de ses mandats, mais l'allègement va dangereusement loin : en plus de dispenser la SAAQ d'informer le Conseil du trésor en cas de dépassement de coûts, il la libère de l'obligation d'informer son DPI. À la place, la SAAQ doit informer son « dirigeant sectoriel de l'information ». Or, à l'époque, ce rôle est assumé par le vice-président des technologie de l'information, c'est-à-dire Karl Malenfant. Autrement dit, le chargé de projet a l'obligation de dénoncer *à lui-même* les dépassements de coûts [2.32].
 
-> Exemple
->
->
-
 De 2014 à 2018, soit l'année où le gouvernement recadre ses mécanismes de surveillance des organismes public, la SAAQ opère donc en marge des du contrôle gouvernemental grâce à de multiples allègements. Et même après qu'ils aient pris fin, la SAAQ poursuivra une reddition de compte déficiente [2.33]. C'est dans ce contexte que commence le programme CASA : les proches de Malenfant ont une influence disproportionnée, SAP est le seul fournisseur réellement dans la course, et la SAAQ est libérée d'importantes obligations de reddition de compte. La table est mise pour un fiasco.
+
+> Exemple : ArriveCan
+>
+>
 
 
 ## 6. Acquisition de la suite PGI : les dérapages s'annoncent
@@ -103,8 +95,6 @@ L'acquisition d'une suite PGI s'étend de 2014 à 2017.
 De 2014 à 2015, la SAAQ ne fait que *concevoir une stratégie d'acquisition*. Elle commence par discuter avec le Secrétariat du Conseil du trésor pour demander une dérogation au cadre réglementaire à l'époque, la SAAQ souhaitant en effet modifier le processus d'évaluation des soumissions et prolonger les durées de contrats [2.34]. La demande comprend une estimation de coûts de 200 millions $. Pourtant, à l'interne, la SAAQ prévoyait, au même moment, un coût minimum de 225 millions $ et un coût plausible de 269 millions $. Plusieurs membres de la SAAQ, dont Karl Malenfant, sont conscients de cet écart mais choisissent de ne pas le communiquer au gouvernement [2.35]. La stratégie d'acquisition prévoit en outre des modalités inédites, comme une clause de partage de risques assez complexe [2.36]. Le Conseil du trésor finit par accepter la stratégie en posant certaines conditions pour assurer la compétition entre les soumissionnaires, la qualité des évaluations, et la reddition de compte [2.37].
 
 De 2015 à 2017, la SAAQ effectue trois appels d'offres afin de choisir un éditeur de PGI [2.38], un intégrateur de PGI [2.39], et une « alliance » formée d'un éditeur et d'un intégrateur qualifiés aux deux précédents appels d'offres pour réaliser la suite PGI [2.40]. Les conditions d'évaluation des soumissionnaires ne sont pas toujours optimales. Dans un groupe chargé de synthétiser les rapports de comités aviseurs, des membres d'un « noyau fort » constitué de proches de Karl Malenfant discutent souvent seuls et rendent l'ambiance si tendue qu'il est nécessaire de prendre des pauses [2.41]. Un seul éditeur, SAP [2.42], ainsi que deux intégrateurs, LGS/IDM et Deloitte [2.43], se qualifient. Lors de l'évaluation en vue de la sélection de l'Alliance, SAP est donc l'unique éditeur, ce qui lui donne un pouvoir de négociation important. La SAAQ retient l'Alliance composée de SAP et LGS/IBM [2.44]. Selon la soumission finale, le coût d'acquisition de la suite PGI serait de 375 millions $ [2.45]. Le coût d'exploitation projeté sur 10 ans est de 286 millions $, pour un total de **661 millions $**. Le ministre responsable n'est pas informé de la signature du contrat avec l'Alliance [2.46].
-
-> Exemple de trop d'ambition
 
 
 ## 7. La livraison 1 : avant le déluge
@@ -133,10 +123,6 @@ La Direction de la vérification interne de la SAAQ informe à plusieurs reprise
 
 Les différends continuent d'empirer et certains employés de la SAAQ perçoivent la possibilité que l'Alliance décide d'abandonner le programme, ce qui motive la SAAQ à régler le litige [2.70]. En septembre 2020 se conclut un règlement à l'amiable : la SAAQ assumerait environ 75 % de l'augmentation des coûts de la livraison 2 [2.71]. Le programme CASA (développement et récurrence sur 10 ans) lui coûte alors **968 millions $** [2.72]. Cette augmentation passe inaperçue aux yeux du gouvernement parce que la SAAQ contourne les règles de gestion de projets pour la masquer à l'administration publique. Par ailleurs, le gouvernement se montre indulgent et ne recadre pas la SAAQ en dépit de ses écarts de conduite [2.73].
 
-> exemple de conflit avec soumissionnaires
->
->
-
 
 ## 9. N'oubliez pas les tests!
 
@@ -149,7 +135,7 @@ L'Alliance préfère l'approche graduelle parce qu'elle est plus sûre, mais la 
 
 Les tests et la correction des bogues sont réalisés selon un calendrier compressé à cause des retards. Durant cette phase, des anomalies sont détectées plus vite que les équipes arrivent à les corriger. Plus de 1200 anomalies n'étaient pas encore réglées au moment de passer la livraison 2 en production [2.79]. La SAAQ prévoyait initialement fermer ses services du 21 décembre 2022 au 4 janvier 2023, mais elle doit repousser à deux reprises le déploiement jusqu'à février 2023 et raccourcir encore davantage ses tests [2.80]. Malgré les voyants rouges et une préparation clairement insuffisante, Karl Malenfant affirme que les préparatifs du déploiement de la livraison 2 sont « terminés » et la SAAQ va de l'avant avec le déploiement [2.81].
 
-> exemple : phoenix
+> Exemple : Phoenix
 >
 >
 
@@ -160,7 +146,7 @@ Le déploiement de la livraison 2 (lundi le 20 février 2023 suivant un arrêt d
 
 Les choses se corsent alors. Les systèmes de la livraison 2 en arrachent toujours tandis que les clients continuent de se présenter aux centres de services. Les commerçants, n'arrivant pas à effectuer certaines transactions avec SAAQclic, redirigent leurs clients vers les centres, ce qui contribue à la formation d'imposantes files d'attente et d'agitations [2.84]. Les corps policiers reçoivent des informations erronées des systèmes de la SAAQ, ce qui mène à des interventions injustifiées et détentions illégales [2.85]. L'une de ces histoires d'horreur concerne un garçon qui, sortant de l'hôpital après un traitement contre le cancer, a été couché au sol par les policiers pendant que le conducteur du véhicule était mis en joue. Les systèmes de la SAAQ avait identifié par erreur le véhicule comme volé [14].
 
-Karl Malenfant avait fait face à une situation semblable chez Hydro-Québec, où le déploiement du système qu'il avait dirigé (le SIC) connut des ratés importants. Malenfant avait alors convié 500 personnes travaillant sur le projet dans un auditorium pour leur montrer une capsule vidéo sur Apollo 13 et leur livrer un discours motivationnel [9]. Les techniques de gestion de crise de la SAAQ se montrèrent d'une inefficacité similaire, si bien que le gouvernement dû intervenir. La ministre des Transports, Geneviève Guilbault, écourte un séjour professionnel en Europe et prend le dossier en charge. Elle et son équipe mettent en place plusieurs mesures pour améliorer la situation, dont la suspension temporaire de certains articles du Code de la sécurité routière. La situation se rétablit progressivement [2.86].
+Karl Malenfant avait fait face à une situation semblable chez Hydro-Québec, où le déploiement du système qu'il avait dirigé (le SIC) connut des ratés importants lors de son déploiement. Malenfant avait alors convié 500 personnes travaillant sur le projet dans un auditorium pour leur montrer une capsule vidéo sur Apollo 13 et leur livrer un discours motivationnel [9]. Les techniques de gestion de crise de la SAAQ se montrèrent d'une inefficacité similaire, si bien que le gouvernement dû intervenir. La ministre des Transports, Geneviève Guilbault, écourte un séjour professionnel en Europe et prend le dossier en charge. Elle et son équipe mettent en place plusieurs mesures pour améliorer la situation, dont la suspension temporaire de certains articles du Code de la sécurité routière. La situation se rétablit progressivement [2.86].
 
 Le gouvernement limoge le président-directeur général de la SAAQ, Denis Marsolais, le 5 avril 2023 après avoir perdu confiance en lui [2.87]. Karl Malenfant, lui, reste en poste jusqu'en janvier 2024, où il prend sa retraite. Caroline Foldes-Busque, une de ses proches, lui succède, jusqu'à être elle-même remplacée en août 2025 [2.88]. Les redditions de compte et la transparence de la SAAQ s'améliorent à mesure que se renouvelle sa direction [2.89].
 
@@ -310,3 +296,10 @@ Le Commission Gallant a formulé 26 recommandations en réponse aux déboires de
   - [15.1] page 12
   - [15.2] page 2
   - [15.3] pages 34 et 35
+- [16] Bobby Hellard. "TSB outage: CEO Paul Pester quits after IT meltdown" (4 septembre 2018). ITPro. https://www.itpro.com/it-infrastructure/30990/tsb-outage-news
+- [17] Slaughter and May. "An Independent Review Following TBD's Migration onto a New IT Platform in April 2018" (October 2019). page 50. https://www.tsb.co.uk/news-releases/slaughter-and-may.html
+- [18] Keumars Afifi-Sabet. "TSB’s IT disaster pinned on ‘big bang’ approach to migration" (20 novembre 2019). ITPro. https://www.itpro.com/business-strategy/digital-transformation/354155/tsbs-it-disaster-pinned-on-big-bang-approach-to
+- [19] Jim McCarter et al. "Ontario's Electronic Health Records Initiative" (Octobre 2009). Office of the Auditor General of Ontario. https://www.auditor.on.ca/en/content/specialreports/specialreports/ehealth_en.pdf
+  - [19.1] pages 11 et 12
+  - [19.2] page 48
+- [20] "EHealth scandal a $1B waste: auditor" (7 octobre 2009). CBC. https://www.cbc.ca/news/canada/toronto/ehealth-scandal-a-1b-waste-auditor-1.808640
