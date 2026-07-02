@@ -4,7 +4,7 @@
 >
 > Guy Morneau, président du conseil d'administration de la Société de l'assurance automobile du Québec (SAAQ) de 2013 à 2016 [1]
 
-Les déboires de la transformation numérique de la SAAQ se sont avérés plus coûteux encore [2.1], et ils ont été causés par une série de mauvaises décisions pour la plupart assez facilement évitables. Retraçons l'histoire du Carrefour des services d'affaires (CASA) de la SAAQ, un programme marqué par de multiples fiascos qui n'ont pas fini de nous servir d'apprentissage collectif.
+Les déboires de la transformation numérique de la SAAQ se sont avérés plus coûteux encore [2.1], et ils ont été causés par une série de mauvaises décisions pour la plupart assez faciles à éviter. Retraçons l'histoire du Carrefour des services d'affaires (CASA) de la SAAQ, un programme marqué par de multiples fiascos qui n'ont pas fini de nous servir d'apprentissage collectif.
 
 
 ## 1. La nécessité d'une transformation numérique
