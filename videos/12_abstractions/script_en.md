@@ -1,31 +1,36 @@
-# Software Will Keep Getting Worse
+# Moore's Law's Waluigi
 
 The biggest force at play in the history of software has been **laziness**. You'll more often see
 engineers finding ways to make their job easier than making better programs, and the results are
-fascinating. The clock speed and number of transistors in computers has increased by orders of
-magnitude over the years, yet computer you can buy now have significantly worse latency than
-machines sold in the 80s [1]. That's because software used to support very specific use cases, so it
-was easy to optimize, but when you want to support more platforms or make development faster, the
-easiest way to do this is often to introduce complexity. And that's how you eventually end up
-distributing applications by packaging it alongside an entire Web browser itself containing a
-runtime engine itself containing a just-in-time compiler.
+fascinating.
+
+Exhibit one: computers have become more powerful by orders of magnitude over the years, yet their
+response latency, that is, the time between pressing a key and seeing the corresponding character on
+screen, has not changed much. If anything, it got slightly worse [1]. Same thing happens with
+Microsoft Office: while computers became faster, the software itself became more sluggish, which
+compensated hardware improvements and resulted in consistently bad user experience over time [2]. I
+could go on: Web browsers use more and more memory [3], Electron applications consume more and more
+resources [4], modern build systems run slower than tooling from the 80s [5]. "Software is getting
+slower more rapidly than hardware becomes faster" [6]. That's because any additional computing power
+is used to support more features or more convenience for developers. No one really cares that it
+makes the code less optimized because faster hardware cancels that out anyway, so we end up with
+increasingly complex, unoptimized software.
 
 Now, this is not yet another "software is getting too bloated" video. You can find weirdos arguing
-that we should go back to writing software in assembly with vim, but most people agree that adding
-complexity is often the best thing to do. Some libraries might look needlessly byzantine and with
-too many abstractions, but they isolate complex logic and make it easy for dumber developers to
-create applications on top of that. Docker lets you make applications cross-platform without
-decreasing their performance. I refuse to jump on the Docker hate wagon, I can complain that it's
-taking too much space on my disk, but it's definitely making my life easier.
+that we should go back to writing software in assembly using vim, but this isn't the 80s anymore;
+computers are doing way more things now, largely thanks to the pile of byzantine software I was just
+complaining about. Making a video game or analyzing scientific data is, all things considered,
+pretty easy today; you just assemble existing engines and libraries instead of coding everything
+from scratch. Sure, stacking up abstraction layers can hurt performance, but I don't know anyone who
+would pick the alternative. And it doesn't always hurt performance. Docker makes applications
+cross-platform [7] and Typescript makes code safer [8]; neither of those technologies slow things
+down. Jump on the hate wagon if you want, it's not all bad.
 
-But what's not getting enough criticism are *taxing* abstractions, the poorly made ones that don't
-really make development easier and chip resources away. Historically, developers didn't care that
-much about optimization in non-real time applications because hardware improvements rolled out so
-fast that they made up for increasingly bad software practices. However, hardware progress is
-slowing down. We are hitting physical limits at the silicon level, and I'm afraid continuing to
-build software by stacking up more and more abstraction layers will begin to hurt, unless we rethink
-how we do it. Several developers are already working on solutions to make software both less
-sluggish, and I think it's only the beginning.
+However, software often does in fact get more crappy, and while most developers were happy to ignore
+this while the number of transistors on a chip was doubling every two years, things are becoming
+more taxing. Hardware progress is slowing down, and if we keep building applications by continuing
+to pile up poorly optimized code to save development time, we'll have an overall worse time
+using technology and waste resources, unless we rethink software engineering.
 
 
 ## 1. Rewrites
@@ -49,33 +54,35 @@ Docker vs VM
 
 Transcompiler (typescript / Javascript)
 
-
-## 3. Data-Oriented Design
-
 Killing OOP - cache concerns
 
+Cloudflare DNS cache entries Rust optimizations 100 TB freed insert 43 % faster
+https://blog.cloudflare.com/dns-cache-memory-optimization-1111/
 
-
-## 4. Generated Code
-
-
-
+SQLite
 
 
 Before: cross-platform compatibility, speed of development
 Now: energy consumption, AI ease use of use,
 
 
-## Jokes
 
 - Roller coaster tycoon for weirdoes
 - Let smart people implement Vulkan and let dumb people use it
+- Moore's law's Waluigi: Wirth's law
 
 - https://danluu.com/input-lag/
 - https://en.wikipedia.org/wiki/Software_bloat#Examples
 - https://en.wikipedia.org/wiki/Moore's_law
+- https://www.science.org/doi/10.1126/science.aam9744 *****
 
 
 # References
 
 - [1] https://danluu.com/input-lag/
+- [2] https://www.infoworld.com/article/2331126/fat-fatter-fattest-microsoft-s-kings-of-bloat.html
+- [3] https://laptopretrospective.com/laptops/wirths-law-and-the-story-of-fatware/
+- [4] Electron
+- [5] Tooling
+- [6] https://www.computer.org/csdl/magazine/co/1995/02/r2064/13rRUwInv7E
+- [7] Docker
