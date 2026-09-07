@@ -4,46 +4,52 @@ The biggest force at play in the history of software has been **laziness**. You'
 engineers finding ways to make their job easier than making better programs, and the results are
 fascinating.
 
-Exhibit one: computers have become more powerful by orders of magnitude over the years, yet their
+Exhibit one: computers have become more powerful by orders of magnitude over decades, yet their
 response latency, that is, the time between pressing a key and seeing the corresponding character on
 screen, has not changed much. If anything, it got slightly worse [1]. Same thing happens with
-Microsoft Office: while computers became faster, the software itself became more sluggish, which
-compensated hardware improvements and resulted in consistently bad user experience over time [2]. I
-could go on: Web browsers use more and more memory [3], Electron applications consume more and more
-resources [4], modern build systems run slower than tooling from the 80s [5]. "Software is getting
-slower more rapidly than hardware becomes faster" [6]. That's because any additional computing power
-is used to support more features or more convenience for developers. No one really cares that it
-makes the code less optimized because faster hardware cancels that out anyway, so we end up with
-increasingly complex, unoptimized software.
+Microsoft Office: the program becomes slower, but computers get faster; things balance out and you
+get a product that remains equally bad across years [2]. Once additional computing power becomes
+available, we use it to support new features [3] or make development more convenient [4], and things
+become increasingly unoptimized. In short, "software is getting slower more rapidly than hardware
+becomes faster" [5].
 
-Now, this is not yet another "software is getting too bloated" video. You can find weirdos arguing
-that we should go back to writing software in assembly using vim, but this isn't the 80s anymore;
-computers are doing way more things now, largely thanks to the pile of byzantine software I was just
-complaining about. Making a video game or analyzing scientific data is, all things considered,
-pretty easy today; you just assemble existing engines and libraries instead of coding everything
-from scratch. Sure, stacking up abstraction layers can hurt performance, but I don't know anyone who
-would pick the alternative. And it doesn't always hurt performance. Docker makes applications
-cross-platform [7] and Typescript makes code safer [8]; neither of those technologies slow things
-down. Jump on the hate wagon if you want, it's not all bad.
+Now, this isn't another "software bloat is getting is getting out of hand" video. You can find
+weirdos arguing that we should go back to writing code in assembly with vim, but this isn't the 80s
+anymore; if computers can do so many things now, it's largely thanks to the pile of byzantine
+software I was just complaining about. Making a video game or analyzing scientific data is, all
+things considered, pretty easy today; you just assemble existing engines and libraries instead of
+coding everything from scratch. And those abstraction layers don't always hurt performance.
+Containers make applications cross-platform without slowing them down [6] and transcompilers makes
+code safer without much ill effects [7] for instance.
 
-However, software often does in fact get more crappy, and while most developers were happy to ignore
-this while the number of transistors on a chip was doubling every two years, things are becoming
-more taxing. Hardware progress is slowing down, and if we keep building applications by continuing
-to pile up poorly optimized code to save development time, we'll have an overall worse time
-using technology and waste resources, unless we rethink software engineering.
+But generally speaking, software has in fact been getting slower. Developers were happy to ignore
+this while the number of transistors on chips was doubling every two years and making up for crappy
+code, however, hardware progress is slowing down [8], and that means bad software will get more and
+more taxing. If we keep building applications by piling up horrendous code to save on development
+time, things will get worse, unless we rethink software engineering.
 
 
 ## 1. Rewrites
 
-The most impressive feat of the 2020s has not been Kimi 3 blowing Californian models out of the
-water. It was uv, a project and dependency management tool for Python that dropped in 2024 and
-proved to be tens to hundreds of times faster than comparable tools. Python is one of the most
-widely used programming language, especially in AI. Managing dependencies in Python has long been a
-nightmare and several projects have been developed to address that, but somehow everyone decided to
-settle for awkwardly slow tools for years.
+The best to make better software is often to set it on fire and start again.
 
-And that's simply because not enough effort had been put in optimization. Older tools, like poetry,
-were written in Python, an interpreted language. When you run a Python program, it [explain the sequence in Python].
+Python is essentially everywhere at this point; in research, backend services, AI. But managing
+Python projects has been an absolute pain for the longest time because the ecosystem was fragmented
+across a dozen tools that really didn't work that well. Dependencies took forever to get resolved,
+packages collided or didn't work on some platforms. Python started off as a scripting language. As
+it began supporting more and more features, new tools were incrementally developed to manage more
+complex projects, and they predictably accumulated bad twists. A few of them desperately needed
+attention:
+
+- Dependency resolution
+- Zero copy virtual environments
+- Write in a compiled language
+
+
+
+Cloudflare DNS cache entries Rust optimizations 100 TB freed insert 43 % faster
+https://blog.cloudflare.com/dns-cache-memory-optimization-1111/
+
 
 
 ## 2. Zero-Cost Abstraction
@@ -56,10 +62,20 @@ Transcompiler (typescript / Javascript)
 
 Killing OOP - cache concerns
 
-Cloudflare DNS cache entries Rust optimizations 100 TB freed insert 43 % faster
-https://blog.cloudflare.com/dns-cache-memory-optimization-1111/
+- https://www.science.org/doi/10.1126/science.aam9744 *****
+
+
+## 3. Real Time Applications
 
 SQLite
+
+
+## 4. Energy
+
+
+
+## 5. Psychological Limits
+
 
 
 Before: cross-platform compatibility, speed of development
@@ -68,13 +84,12 @@ Now: energy consumption, AI ease use of use,
 
 
 - Roller coaster tycoon for weirdoes
+- toilette dans Parasite
 - Let smart people implement Vulkan and let dumb people use it
-- Moore's law's Waluigi: Wirth's law
 
 - https://danluu.com/input-lag/
 - https://en.wikipedia.org/wiki/Software_bloat#Examples
 - https://en.wikipedia.org/wiki/Moore's_law
-- https://www.science.org/doi/10.1126/science.aam9744 *****
 
 
 # References
@@ -83,6 +98,7 @@ Now: energy consumption, AI ease use of use,
 - [2] https://www.infoworld.com/article/2331126/fat-fatter-fattest-microsoft-s-kings-of-bloat.html
 - [3] https://laptopretrospective.com/laptops/wirths-law-and-the-story-of-fatware/
 - [4] Electron
-- [5] Tooling
-- [6] https://www.computer.org/csdl/magazine/co/1995/02/r2064/13rRUwInv7E
-- [7] Docker
+- [5] https://www.computer.org/csdl/magazine/co/1995/02/r2064/13rRUwInv7E
+- [6] Docker
+- [7] Typescript
+- [8] Moore's law
