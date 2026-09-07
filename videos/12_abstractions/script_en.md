@@ -8,7 +8,7 @@ Exhibit one: computers have become more powerful by orders of magnitude over dec
 response latency, that is, the time between pressing a key and seeing the corresponding character on
 screen, has not changed much. If anything, it got slightly worse [1]. Same thing happens with
 Microsoft Office: the program becomes slower, but computers get faster; things balance out and you
-get a product that remains equally bad across years [2]. Once additional computing power becomes
+get a product that remains equally bad over time [2]. Once additional computing power becomes
 available, we use it to support new features [3] or make development more convenient [4], and things
 become increasingly unoptimized. In short, "software is getting slower more rapidly than hardware
 becomes faster" [5].
@@ -16,43 +16,64 @@ becomes faster" [5].
 Now, this isn't another "software bloat is getting is getting out of hand" video. You can find
 weirdos arguing that we should go back to writing code in assembly with vim, but this isn't the 80s
 anymore; if computers can do so many things now, it's largely thanks to the pile of byzantine
-software I was just complaining about. Making a video game or analyzing scientific data is, all
-things considered, pretty easy today; you just assemble existing engines and libraries instead of
-coding everything from scratch. And those abstraction layers don't always hurt performance.
-Containers make applications cross-platform without slowing them down [6] and transcompilers makes
-code safer without much ill effects [7] for instance.
+software I was just complaining about. Software is, all things considered, relatively easy today;
+you can assemble existing engines and libraries instead of coding everything from scratch.
 
 But generally speaking, software has in fact been getting slower. Developers were happy to ignore
-this while the number of transistors on chips was doubling every two years and making up for crappy
-code, however, hardware progress is slowing down [8], and that means bad software will get more and
-more taxing. If we keep building applications by piling up horrendous code to save on development
-time, things will get worse, unless we rethink software engineering.
+this while the number of transistors on chips doubled every two years and made up for crappy code,
+however, hardware progress is slowing down [6], and that means bad software will get more and more
+taxing in the near future. If we keep building applications by piling up horrendous code to save on
+development time, things will get worse, unless we rethink software engineering.
 
 
 ## 1. Rewrites
 
-The best to make better software is often to set it on fire and start again.
+The best way to make good software is often to set it on fire and start again.
 
-Python is essentially everywhere at this point; in research, backend services, AI. But managing
-Python projects has been an absolute pain for the longest time because the ecosystem was fragmented
-across a dozen tools that really didn't work that well. Dependencies took forever to get resolved,
-packages collided or didn't work on some platforms. Python started off as a scripting language. As
-it began supporting more and more features, new tools were incrementally developed to manage more
-complex projects, and they predictably accumulated bad twists. A few of them desperately needed
-attention:
+Managing Python projects has been an absolute pain for the longest time because, before it became
+the multipurpose programming language we know and love, it started off as a scripting tool with
+little support for things like dependency installation and distribution. So people incrementally
+developed a bunch of programs to address those limitations, and they were not always well optimized.
+For example, when installing dependencies, you need to validate their versions to make sure you
+don't end up with conflicts, and for some reason that crucial piece of information was stored inside
+of archives. Instead of looking up package versions on an index, installers had to download full
+packages, check their metadata, and if the version didn't match, discard the files. That's one
+issue, the ecosystem was riddled with other inefficiencies. And on a more fundamental level, Python
+itself is slow. Around 75 times slower than C.
 
-- Dependency resolution
-- Zero copy virtual environments
-- Write in a compiled language
+People have lived with those pain points for years, but they would waste time every time you try to
+set up a project, so the community addressed them by adopting official standards to make metadata
+accessible without downloading archives and centralizing project configuration in a single file.
+That's a very unglamorous job, and it doesn't really bring new features to the language, but it
+enabled the community to make faster tools, like uv, which implements a ton of optimizations, like
+parallel download and a global cache, in addition to being written in Rust. This is basically a meme
+at this point, people point at any piece of software and call to rustify it. In that case though, it
+did lead to huge improvements, but none of that would have been possible without the community
+spending years to establish standards. uv also drops support for legacy features. Official tooling
+has to keep supporting them, but new tools are free to start from a clean slate and disprove Wirth's
+law for once.
 
+- uv optimizations: https://nesbitt.io/2025/12/26/how-uv-got-so-fast.html
+- uv resolver: https://deepwiki.com/astral-sh/uv/3.1-pubgrub-resolver
+- pip dependency resolution: https://dublog.net/blog/so-many-python-package-managers/
+- https://xkcd.com/1987/
 
+You don't always have to rewrite a project from scratch though, in many cases it's enough to patch
+inefficiencies.
 
 Cloudflare DNS cache entries Rust optimizations 100 TB freed insert 43 % faster
 https://blog.cloudflare.com/dns-cache-memory-optimization-1111/
 
 
 
-## 2. Zero-Cost Abstraction
+## 2. Negative-Cost Abstraction
+
+- Type 1: virtualization (e.g. docker / data centers), save resources
+- Type 2: developer experience (e.g. transcompiler prevent unsafe code)
+
+And those abstraction layers don't always hurt performance.
+Containers make applications cross-platform without slowing them down [x] and transcompilers makes
+code safer without much ill effects [y] for instance.
 
 Rust vs others
 
@@ -83,6 +104,9 @@ Now: energy consumption, AI ease use of use,
 
 
 
+# Jokes
+
+- Water walk by John Cage
 - Roller coaster tycoon for weirdoes
 - toilette dans Parasite
 - Let smart people implement Vulkan and let dumb people use it
@@ -99,6 +123,4 @@ Now: energy consumption, AI ease use of use,
 - [3] https://laptopretrospective.com/laptops/wirths-law-and-the-story-of-fatware/
 - [4] Electron
 - [5] https://www.computer.org/csdl/magazine/co/1995/02/r2064/13rRUwInv7E
-- [6] Docker
-- [7] Typescript
-- [8] Moore's law
+- [6] Moore's law
