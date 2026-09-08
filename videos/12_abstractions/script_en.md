@@ -22,8 +22,7 @@ you can assemble existing engines and libraries instead of coding everything fro
 But generally speaking, software has in fact been getting slower. Developers were happy to ignore
 this while the number of transistors on chips doubled every two years and made up for crappy code,
 however, hardware progress is slowing down [6], and that means bad software will get more and more
-taxing in the near future. If we keep building applications by piling up horrendous code to save on
-development time, things will get worse, unless we rethink software engineering.
+taxing in the near future, unless we rethink software engineering.
 
 
 ## 1. Rewrites
@@ -32,28 +31,29 @@ The best way to make good software is often to set it on fire and start again.
 
 Managing Python projects has been an absolute pain for the longest time because, before it became
 the multipurpose programming language we know and love, it started off as a scripting tool with
-little support for things like package installation and distribution. So people incrementally
-developed a bunch of programs to address those limitations, and they were not always good. For
-example, when installing dependencies, you need to validate their sub-dependencies to make sure you
-don't end up with conflicts, and for some reason that crucial piece of information was stored inside
-of archives. Instead of looking up package versions on an index, installers had to download full
-packages, check their metadata, and if the version didn't match, discard the files entirely. That's
-one issue, the ecosystem was riddled with other inefficiencies. And on a more fundamental level,
-Python itself is slow. Around 75 times slower than C.
+little support for things like package installation and distribution. People incrementally developed
+a bunch of utilities to address those limitations, and they were not always good. For example, when
+installing dependencies, you need to validate their sub-dependencies to make sure you don't end up
+with conflicts, and for some reason that crucial piece of information was stored inside of archives.
+Instead of looking up package versions on an index, installers had to download full packages, check
+their metadata, and if the version didn't match, discard the files entirely. That's one issue, the
+ecosystem was riddled with other inefficiencies. And on a more fundamental level, Python itself is
+slow. Around 75 times slower than C.
 
 People gradually woke up from decades of poorly improvised project management and adopted official
 standards to configure projects in a specific file format and put metadata on a public index instead
-of inside archives. That doesn't really bring new features to the language, but it makes dependency
-resolution faster. And new tools, like uv, implemented additional optimizations: parallel downloads,
-a global cache, dropping slow legacy features, and it's written in Rust. This is basically a meme at
-this point, and a lot of people focus only on that point when discussing uv but forget a lot of the
-performance gain could have been implemented in pure Python. No one bothers doing it though because
-Python isn't used for speed anyway and it can break backward compatibility. In that kind of
-situation, making new software is the best way to go against Wirth's law.
+of inside archives. That kind of an unglamorous job, it doesn't bring new features to the language,
+but it does enable faster dependency resolution. And new tools, like uv, implemented additional
+optimizations: parallel downloads, a global cache, dropping slow legacy features, and it's written
+in Rust. This is basically a meme at this point, and a lot of people focus only on that point when
+discussing uv but forget a lot of the performance gain could have been implemented in pure Python.
+No one bothered doing it because saving up on installation time didn't seem important and people
+didn't want to break backward compatibility, but I'm really glad Astral threw most of the ecosystem
+in the garbage before starting from scratch.
 
-But you don't always have to rewrite a project from scratch though, in many cases it's enough to patch
-inefficiencies.
-Cloudflare DNS cache entries Rust optimizations 100 TB freed insert 43 % faster
+It's not always necessary to rewrite a project from scratch to go against Wirth's law though, in
+many cases it's enough to patch bottlenecks. Cloudflare DNS cache entries Rust
+optimizations 100 TB freed insert 43 % faster
 
 - uv optimizations: https://nesbitt.io/2025/12/26/how-uv-got-so-fast.html
 - uv resolver: https://deepwiki.com/astral-sh/uv/3.1-pubgrub-resolver
