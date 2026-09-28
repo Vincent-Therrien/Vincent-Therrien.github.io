@@ -49,34 +49,39 @@ top of an edifice of abstractions, you get a minimal, highly optimized build. Th
 it's harder to make plugins and you start with a small user base, but it comes with advantages that
 are probably forever out of reach for Electron.
 
-That's a typical scenario: replacing an overcomplicated system build primarily with convenience in
-mind with a lean one. But it's not a panacea. Some projects, like Redpanda, invested a ton of effort
-in a rewrite but got mixed results. In other cases, "just rewriting" a codebase is really hard.
+But rebuilding software not a panacea. Some projects, like Redpanda, invested a ton of effort in a
+full rewrites but got mixed results. In other cases, "just rewriting" a codebase is really hard.
 Python started off as a scripting tool with little support for things like packages installation and
 distribution, so people incrementally developed tools to do that but without much cohesive vision.
 For example, the public index to upload packages didn't enforce a standardized way to describe
-metadata, which really complicated dependency resolution. The ecosystem was riddled with plenty of
-other inefficiencies that accumulated over decades [7]. And on a more fundamental level, Python
-itself is slow. Around 75 times slower than a compiled language like C [8].
+metadata, which heavily complicated dependency resolution. The ecosystem was riddled with other
+inefficiencies that accumulated over decades [7]. It was bothersome, but people didn't want to fix
+them out of fear of breaking existing features and because they didn't see that much benefit in
+accelerating a language that is anyways not used for high performance. Pure Python is several times
+times slower than a compiled language like C after all [8].
 
-That did not prevent developers from shipping code though, so there was no strong push to address
-those limitations. Still, the community gradually woke up from years of poor improvisation and
-adopted official standards to configure projects more brainfully. It's an unglamorous job; it
-doesn't bring new features to the language, but it did enable new tools to resolve dependencies much
-faster. And contrarily to established tools, new ones don't need to keep supporting backward
-compatibility; they are free to drop slow features and aggressively implement new optimizations.
-They are also free to get written in Rust, like uv. That's basically a meme at this point, people
-point at Rust as if it is solving all the problems, and while it is true that it's faster than pure
-Python, most issues were solved by better standards and algorithms that could have been implemented
-in any language.
+So there was no strong push to address those limitations, but the community gradually woke up from
+years of poor improvisation and adopted official standards to configure projects more brainfully.
+It's an unglamorous job; it doesn't bring new features to the language, but it did enable new tools
+to resolve dependencies much faster. And contrarily to established tools, new ones don't need to
+keep supporting backward compatibility; they are free to drop slow features and aggressively
+implement new optimizations that might break edge cases. They are also free to get written in Rust,
+like uv. That's basically a meme at this point, people point at Rust as if it is solving all the
+problems, and while it is true that it's faster than pure Python, most issues in this case were
+solved by standards and better algorithms that could have been implemented in any language. The hard
+part was building consensus among users.
 
-Of course you don't always have to redo a project from scratch to improve it; this year, Cloudflare
-patched specific bottlenecks in the cache entries of its DNS, that is, the program that resolves
-Website addresses into IP addresses, and they ended up with 43 % faster insert time. In other cases,
-more abstractions, more building on top of someone else's work, is actually the best thing to do.
+This kind of situation is often presented as a dilemma between convenience and efficiency, but there
+are other factors to consider. Of course you don't always have to redo a project from scratch to
+improve it; for example, this year, Cloudflare patched specific bottlenecks in the cache entries of
+its DNS, that is, the program that resolves Website addresses into IP addresses, and they ended up
+with 43 % faster insert time. That didn't need an entire rewrite. And in other cases, adding more
+abstractions is actually the best thing to do.
 
 
 ## 2. Negative-Cost Abstraction
+
+
 
 - Type 1: virtualization (e.g. docker / data centers), save resources
 - Type 2: developer experience (e.g. transcompiler prevent unsafe code)
