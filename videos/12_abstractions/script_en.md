@@ -13,14 +13,12 @@ more features; things balance out and you get a product that remains equally bad
 short, "software is getting slower more rapidly than hardware becomes faster" [4].
 
 Now, this isn't yet another "software bloat is getting out of hand" video. You can find weirdos
-arguing that we should go back to writing code in assembly with vim, and while I do see the appeal
-of elegant code in comparison to just stacking up badly written abstraction layers, productivity
-does matter. End users will not care you made a program 10 times faster if that means they'll wait
-for a response 1 millisecond instead of 10; they will care if you add new features, and anyways,
-hardware improvements will make up for a crappy codebase as the number of transistors on chips
-doubles every two years. So there's no need to optimize everything obsessively, right? Well,
-hardware progress is slowing down [5], and that means it won't make up for bad software as well as
-before, unless we rethink how to engineer software.
+arguing that we should go back to writing code in assembly with vim, and while elegant designs have
+an appeal in comparison to badly stacked up abstraction layers, hardware improvements will make up
+for crappy codebases as the number of transistors on chips doubles every two years. So there's no
+need to optimize everything obsessively, right? Well, hardware progress is slowing down [5], and
+that means it won't make up for bad software as well as before, unless we rethink how to engineer
+software.
 
 
 ## 1. Rewrites
@@ -57,8 +55,8 @@ For example, the public index to upload packages didn't enforce a standardized w
 metadata, which heavily complicated dependency resolution. The ecosystem was riddled with other
 inefficiencies that accumulated over decades [7]. It was bothersome, but people didn't want to fix
 them out of fear of breaking existing features and because they didn't see that much benefit in
-accelerating a language that is anyways not used for high performance. Pure Python is several times
-times slower than a compiled language like C after all [8].
+accelerating a language that is anyways not used for high performance. After all, pure Python is
+several times times slower than a compiled language like C [8].
 
 So there was no strong push to address those limitations, but the community gradually woke up from
 years of poor improvisation and adopted official standards to configure projects more brainfully.
@@ -75,13 +73,32 @@ This kind of situation is often presented as a dilemma between convenience and e
 are other factors to consider. Of course you don't always have to redo a project from scratch to
 improve it; for example, this year, Cloudflare patched specific bottlenecks in the cache entries of
 its DNS, that is, the program that resolves Website addresses into IP addresses, and they ended up
-with 43 % faster insert time. That didn't need an entire rewrite. And in other cases, adding more
-abstractions is actually the best thing to do.
+with 43 % faster insert time. That didn't need an entire rewrite. And in other cases, going the
+other way is actually the best thing to do.
 
 
 ## 2. Negative-Cost Abstraction
 
+In 2010, data centers were becoming more common to meet the demands of, you know, every single
+aspect of the economy getting digitalized. Some people got curious about the amount of electricity
+they would need. If we double the amount of data centers, would they not consume twice as much?
 
+Well, between 2010 and 2018, the number of compute instances in data centers rose by 550% while
+their electricity consumption rose by 6% because of increased efficiency [paper]. And the reason for
+that is virtualization. In a classical setup, one physical computer runs one application, like
+serving up a Web page or processing transactions of some sort. If that application sits idle, you're
+wasting most of the computer's resources. Naturally, the solution was to put fake computers inside
+of real computers. You can run multiple containers on a single computer and the containers will run
+as isolated user spaces, so without having to rewrite your application, you can execute it on
+containers. Although this adds a layer of abstraction and some overhead, it lets operators use
+computer resources at max capacity, which increases efficiency.
+
+*Abstractions* are ways of simplifying a program by hiding internal details and presenting important
+features to users; for example, you can use a graphics library to create an application without
+having to learn how GPU drivers work. But there's often a cost: programs become layers of different
+abstractions that were not necessarily engineered to work well together. That can lead to copying
+data for no reason [fragmentation] or looking up references in real time [lookup]; once again,
+trading development speed for execution speed.
 
 - Type 1: virtualization (e.g. docker / data centers), save resources
 - Type 2: developer experience (e.g. transcompiler prevent unsafe code)
@@ -98,7 +115,8 @@ Transcompiler (typescript / Javascript)
 
 Killing OOP - cache concerns
 
-- https://www.science.org/doi/10.1126/science.aam9744 *****
+- [paper] Recalibrating global data center energy-use estimates
+- [top] https://www.science.org/doi/10.1126/science.aam9744 *****
 
 
 ## 3. Real Time Applications
