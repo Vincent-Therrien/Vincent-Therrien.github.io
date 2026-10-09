@@ -1,62 +1,64 @@
 # Moore's Law's Waluigi
 
+
+## Tradeoffs
+
 The biggest force at play in the history of software has been **laziness**. You'll more often see
 engineers finding ways to make their job easier than making better programs, and the results are
 fascinating.
 
-Exhibit one: computers have become more powerful by orders of magnitude over decades, yet their
+Exhibit one: computers have become more powerful by orders of magnitude since the 70s, yet their
 response latency, that is, the time between pressing a key and seeing the corresponding character on
-screen, has not changed much. If anything, it got slightly worse [1]. The same happens with
-Microsoft Office: the program becomes slower, but over that same period, computers get faster [2].
-That happens because, once additional compute power becomes available, developers immediately add
-more features; things balance out and you get a product that remains equally bad over time [3]. In
-short, "software is getting slower more rapidly than hardware becomes faster" [4].
+screen, has not changed much [1]. The same happens with Microsoft Office: the program becomes slower
+with new versions, but computers get faster at the same time; things balance out and the product
+remains equally bad over time [2] [3]. In short, "software is getting slower more rapidly than
+hardware becomes faster" [4].
 
-Now, this isn't yet another "software bloat is getting out of hand" video. You can find weirdos
-arguing that we should go back to writing code in assembly with vim, and while elegant designs have
-an appeal in comparison to badly stacked up abstraction layers, hardware improvements will make up
-for crappy codebases as the number of transistors on chips doubles every two years. So there's no
-need to optimize everything obsessively, right? Well, hardware progress is slowing down [5], and
-that means it won't make up for bad software as well as before, unless we rethink how to engineer
-software.
+A good illustration to understand why that happens is the Electron framework. Making multi-platform
+applications has long been a black hole of frustration because you have to use different tools for
+each platforms, and those tools are often outdate, obscure, and not very efficient. In 2008, people
+at Github wanted to make a modern, cross-platform text editor called Atom, and they wanted as many
+people as possible to contribute to it. Their pick was Javascript, a programming language used for
+Web pages. It's very popular, so a lot of people would be able to use it to write plugins for Atom.
+But a problem was you couldn't even run Javascript on desktops. It only worked in browsers, so
+Github had the idea to package essentially a Web browser into a framework, Electron, and run Atom on
+top of it. That uses more way more RAM and CPU than native programs because Electron is eating it
+away, but that means you can reuse the features of the underlying Web engine instead of paying your
+employees to reimplement them. Also, developers outside of Github would have an easier time
+contributing to that project, and that's work hours that Github wouldn't have to pay. What I'm
+getting at is: there are stronger incentives to reduce the cost of development than the cost of
+running software. Github doesn't pay for the RAM and the electricity of their users, so they have
+little financial benefit to make Atom use less RAM and CPU; pushing unoptimized features is simply
+more profitable for them. And the people tailoring Atom to their needs wanted an easy way to make
+plugins; Javascript and Electron did that well enough. Software bloat is not an objectively good or
+bad thing. Software is simply shaped by the concerns of the people who make and use them, if
+optimization is not a priority, things don't get optimized more than needed. Besides, the number of
+transistors on chips doubles every two years, so even if programs become more sluggish, hardware
+improvements compensate anyways.
 
-
-## 1. Rewrites
-
-And the best way to do that is often to set things on fire and start again.
-
-Building multi-platform user interfaces has long been a black hole of frustration because you had to
-use a bunch of different tech stacks depending on the target platform, and the tools are you
-disposition were often crappy. For example, Emacs is a text editing program developed in the 70s. If
-you want to make a plugin for it, you have to use Lisp, an old programming language. In 2008, Github
-wanted to make a more modern text editor and decided to use JavaScript for it, a more common
-language used for Web pages. It couldn't run on desktop at the time so the idea was to package
-what's essentially an entire Web browser and run the text editor, Atom, on top of it on desktop.
-That uses a lot of RAM compared to native programs, but people really liked it because Javascript is
-so widespread that it reduced the barrier to make plugins. Electron, the underlying framework, now
-supports a bunch of other similarly bloated applications, and that same strategy, using Web
-technology everywhere for the sake of convenience, was followed by other projects like React.
-
-Microsoft bought Github in 2018, and since that company cannot exist with any competition they
-decided to make room for their own Electron text editor by discontinuing Atom. Not too pleased with
-this, one of its former developer decided to resurrect Atom under a new name: Zed. The original plan
-was to use Web tech again for it, but not only is that inefficient, it also complicates access to
-some features like interactions with the operating system. So they decided to go completely the
-other way and make it from scratch with Rust. That's a huge shift: instead of yet again building on
-top of an edifice of abstractions, you get a minimal, highly optimized build. The downside is that
+But maybe software bloat can go too far after all. Progress in hardware has been slowing down in
+recent years [5], and that means it won't make up for bad software as well as before. And it's not
+just a question of using too much computer resources, bloated software can also be harder to
+maintain. After Microsoft bought Github, it made room for its own Electron text editor by pulling
+the plug on Atom. One of its original developer decided to resurrect it under a new name: Zed. The
+original plan was to use Web tech again for it, but not only is that inefficient, they also realized
+it complicates access to some features like interactions with the operating system. So they decided
+to pull a 180 and make a native program from scratch with Rust. That's a huge shift: instead of
+building on top of abstractions, you get a minimal, highly optimized build. The downside is that
 it's harder to make plugins and you start with a small user base, but it comes with advantages that
 are probably forever out of reach for Electron.
 
-But rebuilding software not a panacea. Some projects, like Redpanda, invested a ton of effort in a
-full rewrites but got mixed results. In other cases, "just rewriting" a codebase is really hard.
-Python started off as a scripting tool with little support for things like packages installation and
-distribution, so people incrementally developed tools to do that but without much cohesive vision.
-For example, the public index to upload packages didn't enforce a standardized way to describe
-metadata, which heavily complicated dependency resolution. The ecosystem was riddled with other
-inefficiencies that accumulated over decades [7]. It was bothersome, but people didn't want to fix
-them out of fear of breaking existing features and because they didn't see that much benefit in
-accelerating a language that is anyways not used for high performance. After all, pure Python is
-several times times slower than a compiled language like C [8].
+"Rewrite it in Rust" is basically a meme at this point, but rebuilding software is not a panacea.
+Some projects, like Redpanda, invested a ton of effort in a full rewrites but got mixed results. In
+other cases, "just rewriting" a codebase is really hard. Python started off as a scripting tool with
+little support for things like packages installation and distribution, so people incrementally
+developed tools to do that but without much cohesive vision. For example, the public index to upload
+packages didn't enforce a standardized way to describe metadata, which heavily complicated
+dependency resolution. The ecosystem was riddled with other inefficiencies that accumulated over
+decades [7]. It was bothersome, but people didn't want to fix them out of fear of breaking existing
+features and because they didn't see that much benefit in accelerating a language that is anyways
+not used for high performance. After all, pure Python is several times slower than a compiled
+language like C [8].
 
 So there was no strong push to address those limitations, but the community gradually woke up from
 years of poor improvisation and adopted official standards to configure projects more brainfully.
@@ -84,14 +86,14 @@ aspect of the economy getting digitalized. Some people got curious about the amo
 they would need. If we double the amount of data centers, would they not consume twice as much?
 
 Well, between 2010 and 2018, the number of compute instances in data centers rose by 550% while
-their electricity consumption rose by 6% because of increased efficiency [paper]. And the reason for
-that is virtualization. In a classical setup, one physical computer runs one application, like
-serving up a Web page or processing transactions of some sort. If that application sits idle, you're
-wasting most of the computer's resources. Naturally, the solution was to put fake computers inside
-of real computers. You can run multiple containers on a single computer and the containers will run
-as isolated user spaces, so without having to rewrite your application, you can execute it on
-containers. Although this adds a layer of abstraction and some overhead, it lets operators use
-computer resources at max capacity, which increases efficiency.
+their electricity consumption rose by 6% [paper]. And that's because virtualization increased
+efficiency. In a classical setup, one physical computer runs one application, like serving up a Web
+page or processing transactions of some sort. If that application sits idle, you're wasting most of
+the computer's resources. The solution was to run fake computers inside of real computers. You can
+run multiple containers on a single computer and the containers will run as isolated user spaces, so
+without having to rewrite your application, you can execute it on containers. Although this adds a
+layer of abstraction and some overhead, it lets operators use computer resources at max capacity,
+which increases efficiency.
 
 *Abstractions* are ways of simplifying a program by hiding internal details and presenting important
 features to users; for example, you can use a graphics library to create an application without
