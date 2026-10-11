@@ -1,85 +1,39 @@
 # Moore's Law's Waluigi
 
-
-## Tradeoffs
-
 The biggest force at play in the history of software has been **laziness**. You'll more often see
 engineers finding ways to make their job easier than making better programs, and the results are
 fascinating.
 
-Exhibit one: computers have become more powerful by orders of magnitude since the 70s, yet their
-response latency, that is, the time between pressing a key and seeing the corresponding character on
-screen, has not changed much [1]. The same happens with Microsoft Office: the program becomes slower
-with new versions, but computers get faster at the same time; things balance out and the product
-remains equally bad over time [2] [3]. In short, "software is getting slower more rapidly than
-hardware becomes faster" [4].
+Exhibit one: the Electron framework. Making cross-platform applications has long been a black hole
+of frustration because you have to use different tools for each platforms, and those tools are often
+outdated and not very efficient. In 2008, Github wanted to make a modern text editor called Atom,
+and they wanted as many people as possible to contribute to it. They decided to pick Javascript, a
+programming language used for Web pages. It's very popular; a lot of people would be able to use it
+to write plugins for Atom, but a problem was you couldn't even run Javascript on desktops. It only
+worked in browsers, so Github had the idea to package essentially a Web browser and run Atom on top
+of it. That uses more way more RAM and CPU than native programs, but it means you can reuse the
+features of the underlying Web engine instead of paying people to reimplement them. Also, developers
+outside of Github would have an easier time contributing to that project. What I'm getting at is:
+there are stronger incentives to reduce the cost of developing software than running it. Github
+doesn't pay for the RAM and the electricity of their users, so they have little financial benefit to
+make Atom use less memory and CPU. And users wanted an easy way to tailor the editor to their needs;
+Javascript plugins do it better than dynamic linked libraries. Software bloat is not an objectively
+good or bad thing, it's just the consequence of whatever the people making the software prioritize.
+Besides, the number of transistors on chips doubles every two years, so even if programs become
+increasingly unoptimized, hardware improvements compensate anyways.
 
-A good illustration to understand why that happens is the Electron framework. Making multi-platform
-applications has long been a black hole of frustration because you have to use different tools for
-each platforms, and those tools are often outdate, obscure, and not very efficient. In 2008, people
-at Github wanted to make a modern, cross-platform text editor called Atom, and they wanted as many
-people as possible to contribute to it. Their pick was Javascript, a programming language used for
-Web pages. It's very popular, so a lot of people would be able to use it to write plugins for Atom.
-But a problem was you couldn't even run Javascript on desktops. It only worked in browsers, so
-Github had the idea to package essentially a Web browser into a framework, Electron, and run Atom on
-top of it. That uses more way more RAM and CPU than native programs because Electron is eating it
-away, but that means you can reuse the features of the underlying Web engine instead of paying your
-employees to reimplement them. Also, developers outside of Github would have an easier time
-contributing to that project, and that's work hours that Github wouldn't have to pay. What I'm
-getting at is: there are stronger incentives to reduce the cost of development than the cost of
-running software. Github doesn't pay for the RAM and the electricity of their users, so they have
-little financial benefit to make Atom use less RAM and CPU; pushing unoptimized features is simply
-more profitable for them. And the people tailoring Atom to their needs wanted an easy way to make
-plugins; Javascript and Electron did that well enough. Software bloat is not an objectively good or
-bad thing. Software is simply shaped by the concerns of the people who make and use them, if
-optimization is not a priority, things don't get optimized more than needed. Besides, the number of
-transistors on chips doubles every two years, so even if programs become more sluggish, hardware
-improvements compensate anyways.
-
-But maybe software bloat can go too far after all. Progress in hardware has been slowing down in
-recent years [5], and that means it won't make up for bad software as well as before. And it's not
-just a question of using too much computer resources, bloated software can also be harder to
-maintain. After Microsoft bought Github, it made room for its own Electron text editor by pulling
-the plug on Atom. One of its original developer decided to resurrect it under a new name: Zed. The
-original plan was to use Web tech again for it, but not only is that inefficient, they also realized
-it complicates access to some features like interactions with the operating system. So they decided
-to pull a 180 and make a native program from scratch with Rust. That's a huge shift: instead of
-building on top of abstractions, you get a minimal, highly optimized build. The downside is that
-it's harder to make plugins and you start with a small user base, but it comes with advantages that
-are probably forever out of reach for Electron.
-
-"Rewrite it in Rust" is basically a meme at this point, but rebuilding software is not a panacea.
-Some projects, like Redpanda, invested a ton of effort in a full rewrites but got mixed results. In
-other cases, "just rewriting" a codebase is really hard. Python started off as a scripting tool with
-little support for things like packages installation and distribution, so people incrementally
-developed tools to do that but without much cohesive vision. For example, the public index to upload
-packages didn't enforce a standardized way to describe metadata, which heavily complicated
-dependency resolution. The ecosystem was riddled with other inefficiencies that accumulated over
-decades [7]. It was bothersome, but people didn't want to fix them out of fear of breaking existing
-features and because they didn't see that much benefit in accelerating a language that is anyways
-not used for high performance. After all, pure Python is several times slower than a compiled
-language like C [8].
-
-So there was no strong push to address those limitations, but the community gradually woke up from
-years of poor improvisation and adopted official standards to configure projects more brainfully.
-It's an unglamorous job; it doesn't bring new features to the language, but it did enable new tools
-to resolve dependencies much faster. And contrarily to established tools, new ones don't need to
-keep supporting backward compatibility; they are free to drop slow features and aggressively
-implement new optimizations that might break edge cases. They are also free to get written in Rust,
-like uv. That's basically a meme at this point, people point at Rust as if it is solving all the
-problems, and while it is true that it's faster than pure Python, most issues in this case were
-solved by standards and better algorithms that could have been implemented in any language. The hard
-part was building consensus among users.
-
-This kind of situation is often presented as a dilemma between convenience and efficiency, but there
-are other factors to consider. Of course you don't always have to redo a project from scratch to
-improve it; for example, this year, Cloudflare patched specific bottlenecks in the cache entries of
-its DNS, that is, the program that resolves Website addresses into IP addresses, and they ended up
-with 43 % faster insert time. That didn't need an entire rewrite. And in other cases, going the
-other way is actually the best thing to do.
+That's how Wirth's law has been functioning since more or less the beginning software engineering,
+the solution is often to stack layers of abstractions, and that's how "software is getting slower
+more rapidly than hardware becomes faster". But I think that's fundamentally changing as I am
+recording this.
 
 
-## 2. Negative-Cost Abstraction
+## Reason 1: Cost of Development
+
+The first reason is that the cost of software development is changing very fast.
+
+
+## Reason 2: Energy
 
 In 2010, data centers were becoming more common to meet the demands of, you know, every single
 aspect of the economy getting digitalized. Some people got curious about the amount of electricity
@@ -121,19 +75,67 @@ Killing OOP - cache concerns
 - [top] https://www.science.org/doi/10.1126/science.aam9744 *****
 
 
-## 3. Real Time Applications
+## Reason 3: Social Inertia
+
+"Rewrite it in Rust" is basically a meme at this point, but rebuilding software is not a panacea.
+Some projects, like Redpanda, invested a ton of effort in a full rewrites but got mixed results. In
+other cases, "just rewriting" a codebase is really hard. Python started off as a scripting tool with
+little support for things like packages installation and distribution, so people incrementally
+developed tools to do that but without much cohesive vision. For example, the public index to upload
+packages didn't enforce a standardized way to describe metadata, which heavily complicated
+dependency resolution. The ecosystem was riddled with other inefficiencies that accumulated over
+decades [7]. It was bothersome, but people didn't want to fix them out of fear of breaking existing
+features and because they didn't see that much benefit in accelerating a language that is anyways
+not used for high performance. After all, pure Python is several times slower than a compiled
+language like C [8].
+
+So there was no strong push to address those limitations, but the community gradually woke up from
+years of poor improvisation and adopted official standards to configure projects more brainfully.
+It's an unglamorous job; it doesn't bring new features to the language, but it did enable new tools
+to resolve dependencies much faster. And contrarily to established tools, new ones don't need to
+keep supporting backward compatibility; they are free to drop slow features and aggressively
+implement new optimizations that might break edge cases. They are also free to get written in Rust,
+like uv. That's basically a meme at this point, people point at Rust as if it is solving all the
+problems, and while it is true that it's faster than pure Python, most issues in this case were
+solved by standards and better algorithms that could have been implemented in any language. The hard
+part was building consensus among users.
+
+
+## Reason 4: Moore's Law's Death
+
+Perhaps the most profound reason Wirth's law as we know it is changing is that its hardware
+counterpart doesn't really hold anymore.
+
+
+
+
+
+
+
+Well, things are changing fast. The limitations that determined how software has evolved for the
+last decades are fundamentally changing
+
+But maybe software bloat can go too far after all. Progress in hardware has been slowing down in
+recent years [5], and that means it won't make up for bad software as well as before. And it's not
+just a question of using too much computer resources, bloated software can also be harder to
+maintain. After Microsoft bought Github, it made room for its own Electron text editor by pulling
+the plug on Atom. One of its original developer decided to resurrect it under a new name: Zed. The
+original plan was to use Web tech again for it, but not only is that inefficient, they also realized
+it complicates access to some features like interactions with the operating system. So they decided
+to pull a 180 and make a native program from scratch with Rust. That's a huge shift: instead of
+building on top of abstractions, you get a minimal, highly optimized build. The downside is that
+it's harder to make plugins and you start with a small user base, but it comes with advantages that
+are probably forever out of reach for Electron.
+
+
+This kind of situation is often presented as a dilemma between convenience and efficiency, but there
+are other factors to consider. Of course you don't always have to redo a project from scratch to
+improve it; for example, this year, Cloudflare patched specific bottlenecks in the cache entries of
+its DNS, that is, the program that resolves Website addresses into IP addresses, and they ended up
+with 43 % faster insert time. That didn't need an entire rewrite. And in other cases, going the
+other way is actually the best thing to do.
 
 SQLite / DuckDB
-
-
-## 4. Energy
-
-
-
-
-Before: cross-platform compatibility, speed of development
-Now: energy consumption, AI ease use of use,
-
 
 
 # Jokes
@@ -173,3 +175,13 @@ Now: energy consumption, AI ease use of use,
   - https://web.archive.org/web/20220805204227/https://zed.dev/tech
 - [Atom] https://www.wired.com/2015/06/github-atoms-code-editor-nerds-take-universe/
 - Cloudflare: https://blog.cloudflare.com/dns-cache-memory-optimization-1111/
+
+
+## Scratchpad
+
+Exhibit one: computers have become more powerful by orders of magnitude since the 70s, yet their
+response latency, that is, the time between pressing a key and seeing the corresponding character on
+screen, has not changed much [1]. The same happens with Microsoft Office: the program becomes slower
+with new versions, but computers get faster at the same time; things balance out and the product
+remains equally bad over time [2] [3]. In short, "software is getting slower more rapidly than
+hardware becomes faster" [4].
