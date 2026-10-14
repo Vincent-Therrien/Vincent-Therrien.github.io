@@ -5,35 +5,50 @@ engineers finding ways to make their job easier than making better programs, and
 fascinating.
 
 Exhibit one: the Electron framework. Making cross-platform applications has long been a black hole
-of frustration because you have to use different tools for each platforms, and those tools are often
-outdated and not very efficient. In 2008, Github wanted to make a modern text editor called Atom,
-and they wanted as many people as possible to contribute to it. They decided to pick Javascript, a
-programming language used for Web pages. It's very popular; a lot of people would be able to use it
-to write plugins for Atom, but a problem was you couldn't even run Javascript on desktops. It only
-worked in browsers, so Github had the idea to package essentially a Web browser and run Atom on top
-of it. That uses more way more RAM and CPU than native programs, but it means you can reuse the
-features of the underlying Web engine instead of paying people to reimplement them. Also, developers
-outside of Github would have an easier time contributing to that project. What I'm getting at is:
-there are stronger incentives to reduce the cost of developing software than running it. Github
-doesn't pay for the RAM and the electricity of their users, so they have little financial benefit to
-make Atom use less memory and CPU. And users wanted an easy way to tailor the editor to their needs;
-Javascript plugins do it better than dynamic linked libraries. Software bloat is not an objectively
-good or bad thing, it's just the consequence of whatever the people making the software prioritize.
-Besides, the number of transistors on chips doubles every two years, so even if programs become
-increasingly unoptimized, hardware improvements compensate anyways.
+of frustration because you have to use different tools for each platforms, and those tools can be
+outdated and not very efficient. In 2008, Github wanted to make a modern text editor called Atom.
+They wanted as many people as possible to contribute to it, so they picked Javascript, a programming
+language used to make Web pages [1]. It's very popular; a lot of people would be able to use it to
+write plugins for Atom, but a problem was you couldn't even run Javascript on desktops; it only
+worked in browsers. Github had the idea to package essentially a Web browser and run Atom on top of
+it [2]. That uses way more RAM and CPU than native programs, but it means you can reuse the features
+of the underlying Web engine instead of paying people to reimplement them, and developers outside of
+Github would have an easier time contributing to that project; for those reasons, several companies
+adopted the same approach [3]. What I'm getting at is: there are stronger incentives to reduce the
+cost of developing software than running it. Github doesn't pay for the RAM and the electricity of
+their users, so they would not lose money if Atom used more memory and CPU. And users wanted an easy
+way to tailor the editor to their needs; Javascript plugins do it better than dynamic linked
+libraries. Software bloat is not an objectively good or bad thing, it's just the consequence of
+whatever the people making the software prioritize. Besides, the number of transistors on chips
+doubles every two years, so even if programs become increasingly unoptimized, hardware improvements
+compensate anyways [4].
 
-That's how Wirth's law has been functioning since more or less the beginning software engineering,
-the solution is often to stack layers of abstractions, and that's how "software is getting slower
-more rapidly than hardware becomes faster". But I think that's fundamentally changing as I am
-recording this.
-
-
-## Reason 1: Cost of Development
-
-The first reason is that the cost of software development is changing very fast.
+And that's how "software is getting slower more rapidly than hardware becomes faster" [5]. Has been
+the case since the 90s at least, according to Wirth. But I believe that is fundamentally changing as
+I'm recording this.
 
 
-## Reason 2: Energy
+## Reason 1: Development Costs Decrease
+
+The first reason is that the cost of software development is changing fast.
+
+In 2020, Shopify announced it would build all of its new mobile apps with React Native instead of
+platform-specific tools for Android and iOS [6]. This is based on the same philosophy as the
+Electron framework: a technology originally developed for Web applications is applied to another
+context with the goal of facilitating cross-platform development. React Native is a completely
+different beast than Electron, but they both promise to reduce maintenance cost, and as late as
+January 2025, Shopify was convinced that was the best approach [7]. Yet, in September 2026, they
+pulled a 180 and decided to go back to native [8]. React has not become suddenly worse within that
+time, it's just that, according to experiments conducted by Shopify, coding agents can now translate
+code across platforms efficiently. The whole point of React Native is you get a shared
+implementation instead of platform-specific ones, but you have to sacrifice performance because of
+abstraction overhead. If coding agents can write native implementations at a small enough cost, the
+benefit of React Native decrease, and, in the case of Shopify, that's enough to drop it.
+
+
+## Reason 2: Energy Costs Increase
+
+The second reason Wirth's law is changing is that the cost of running software changes.
 
 In 2010, data centers were becoming more common to meet the demands of, you know, every single
 aspect of the economy getting digitalized. Some people got curious about the amount of electricity
@@ -75,7 +90,7 @@ Killing OOP - cache concerns
 - [top] https://www.science.org/doi/10.1126/science.aam9744 *****
 
 
-## Reason 3: Social Inertia
+## Reason 3: The Social Side of Things
 
 "Rewrite it in Rust" is basically a meme at this point, but rebuilding software is not a panacea.
 Some projects, like Redpanda, invested a ton of effort in a full rewrites but got mixed results. In
@@ -157,6 +172,25 @@ SQLite / DuckDB
 
 
 # References
+
+- [1] https://www.wired.com/2015/06/github-atoms-code-editor-nerds-take-universe/
+- [2] https://www.electronjs.org/blog/10-years-of-electron
+- [3] https://www.howtogeek.com/hate-windows-ram-usage-wait-until-you-find-out-about-electron-apps/
+- [4] There is a consensus that Moore's law is slowing down because the size of transistors is
+  limited by physical constraints, but there is no consensus on *how fast* Moore's law is slowing down.
+  - https://web.archive.org/web/20140706081110/http://news.techworld.com/operating-systems/3477/moores-law-is-dead-says-gordon-moore/ (Moore's opinion)
+  - https://www.marketwatch.com/story/moores-laws-dead-nvidia-ceo-jensen-says-in-justifying-gaming-card-price-hike-11663798618 (Huang's opinion)
+  - https://arstechnica.com/gadgets/2022/09/the-intel-arc-a770-gpu-launches-october-12-for-329/ (Intel's opinion)
+  - https://www.tomshardware.com/tech-industry/semiconductors/intels-ceo-says-moores-law-is-slowing-to-a-three-year-cadence-but-its-not-dead-yet
+  - https://www.eetimes.com/the-impact-of-the-end-of-moores-law-on-the-ai-gold-rush/
+- [5] https://www.computer.org/csdl/magazine/co/1995/02/r2064/13rRUwInv7E
+- [6] https://shopify.engineering/react-native-future-mobile-shopify
+- [7] https://shopify.engineering/five-years-of-react-native-at-shopify
+- [8] https://shopify.engineering/back-to-native
+
+
+
+
 
 - [1] https://danluu.com/input-lag/
 - [2] https://www.infoworld.com/article/2331126/fat-fatter-fattest-microsoft-s-kings-of-bloat.html
